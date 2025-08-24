@@ -128,14 +128,31 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     line-height: 1.6;
     letter-spacing: -0.01em;
   }
 
   /* Improved typography hierarchy */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold leading-tight tracking-tight;
     text-rendering: optimizeLegibility;
   }
@@ -172,7 +189,8 @@
   }
 
   /* Stylish button and interactive element fonts */
-  button, .btn {
+  button,
+  .btn {
     @apply font-semibold tracking-wide;
     font-variant-numeric: tabular-nums;
   }
@@ -185,7 +203,8 @@
   }
 
   /* Better spacing for inline elements */
-  span, a {
+  span,
+  a {
     word-spacing: 0.05em;
   }
 

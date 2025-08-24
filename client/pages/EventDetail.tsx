@@ -210,7 +210,11 @@ Key highlights:
       { name: "Satya Nadella", time: "10:00 AM", stage: "Main Stage" },
       { name: "Jensen Huang", time: "11:30 AM", stage: "Main Stage" },
       { name: "AI Panel Discussion", time: "2:00 PM", stage: "Tech Stage" },
-      { name: "Startup Pitch Finals", time: "4:00 PM", stage: "Innovation Stage" },
+      {
+        name: "Startup Pitch Finals",
+        time: "4:00 PM",
+        stage: "Innovation Stage",
+      },
     ],
 
     host: {
@@ -303,7 +307,11 @@ Special features:
 
     lineup: [
       { name: "Wine Master Class", time: "1:00 PM", stage: "Tasting Room" },
-      { name: "Chef Demo: Perfect Pairings", time: "3:00 PM", stage: "Culinary Stage" },
+      {
+        name: "Chef Demo: Perfect Pairings",
+        time: "3:00 PM",
+        stage: "Culinary Stage",
+      },
       { name: "Sunset Wine Tasting", time: "6:00 PM", stage: "Terrace" },
       { name: "Vineyard Tour", time: "4:00 PM", stage: "Outdoor" },
     ],
@@ -398,7 +406,11 @@ Bonus features:
     lineup: [
       { name: "Social Media Strategy", time: "10:00 AM", stage: "Main Hall" },
       { name: "Data Analytics Workshop", time: "1:00 PM", stage: "Lab A" },
-      { name: "Content Creation Masterclass", time: "3:00 PM", stage: "Studio" },
+      {
+        name: "Content Creation Masterclass",
+        time: "3:00 PM",
+        stage: "Studio",
+      },
     ],
 
     host: {
@@ -472,7 +484,11 @@ Venue features:
     • Commemorative program booklet`,
 
     lineup: [
-      { name: "NY Philharmonic Orchestra", time: "8:00 PM", stage: "Main Stage" },
+      {
+        name: "NY Philharmonic Orchestra",
+        time: "8:00 PM",
+        stage: "Main Stage",
+      },
       { name: "Piano Solo - Maria Chen", time: "8:45 PM", stage: "Main Stage" },
       { name: "Symphony Finale", time: "9:30 PM", stage: "Main Stage" },
     ],
@@ -1122,11 +1138,11 @@ export default function EventDetail() {
             className="w-24 h-24 bg-gradient-to-r from-instagram-pink to-instagram-purple rounded-full flex items-center justify-center mx-auto mb-6"
             animate={{
               rotate: [0, 10, -10, 0],
-              scale: [1, 1.1, 1]
+              scale: [1, 1.1, 1],
             }}
             transition={{
               duration: 2,
-              repeat: Infinity
+              repeat: Infinity,
             }}
           >
             <span className="text-4xl">🎭</span>
@@ -1135,19 +1151,30 @@ export default function EventDetail() {
             Oops! Event Not Found
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mb-8">
-            The event you're looking for might have been moved, deleted, or the link might be incorrect. Let's get you back to discovering amazing events!
+            The event you're looking for might have been moved, deleted, or the
+            link might be incorrect. Let's get you back to discovering amazing
+            events!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/events">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button className="bg-gradient-to-r from-instagram-pink to-instagram-purple text-white rounded-2xl px-8 py-3 font-bold">
                   🎉 Browse All Events
                 </Button>
               </motion.div>
             </Link>
             <Link to="/dashboard">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" className="rounded-2xl px-8 py-3 font-bold border-2 border-instagram-purple text-instagram-purple hover:bg-instagram-purple hover:text-white">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  variant="outline"
+                  className="rounded-2xl px-8 py-3 font-bold border-2 border-instagram-purple text-instagram-purple hover:bg-instagram-purple hover:text-white"
+                >
                   🚀 Create Event
                 </Button>
               </motion.div>

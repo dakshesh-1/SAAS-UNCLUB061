@@ -228,7 +228,9 @@ export function Navigation() {
                             : "text-white/90 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm hover:border hover:border-white/20"
                         }`}
                         whileHover={{
-                          backgroundImage: isActive ? undefined : `linear-gradient(135deg,
+                          backgroundImage: isActive
+                            ? undefined
+                            : `linear-gradient(135deg,
                             hsl(var(--unclub-blue) / 0.3),
                             hsl(var(--unclub-pink) / 0.3),
                             hsl(var(--unclub-red) / 0.3))`,
@@ -322,9 +324,17 @@ export function Navigation() {
                       />
                     </div>
                     <div className="space-y-3">
-                      <h4 className="font-semibold text-gray-700 dark:text-gray-300">Popular Searches</h4>
+                      <h4 className="font-semibold text-gray-700 dark:text-gray-300">
+                        Popular Searches
+                      </h4>
                       <div className="flex flex-wrap gap-2">
-                        {["Music Festivals", "Tech Events", "Food & Wine", "Art Shows", "Networking"].map((term) => (
+                        {[
+                          "Music Festivals",
+                          "Tech Events",
+                          "Food & Wine",
+                          "Art Shows",
+                          "Networking",
+                        ].map((term) => (
                           <Button
                             key={term}
                             variant="outline"
@@ -342,7 +352,10 @@ export function Navigation() {
               </Dialog>
 
               {/* Notifications Dialog */}
-              <Dialog open={isNotificationOpen} onOpenChange={setIsNotificationOpen}>
+              <Dialog
+                open={isNotificationOpen}
+                onOpenChange={setIsNotificationOpen}
+              >
                 <DialogTrigger asChild>
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: -8 }}
@@ -384,19 +397,37 @@ export function Navigation() {
                     </h3>
                     <div className="space-y-4">
                       <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl">
-                        <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-1">🎉 Event Reminder</h4>
-                        <p className="text-sm text-blue-600 dark:text-blue-400">Summer Music Festival starts in 2 hours!</p>
-                        <span className="text-xs text-gray-500">10 min ago</span>
+                        <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-1">
+                          🎉 Event Reminder
+                        </h4>
+                        <p className="text-sm text-blue-600 dark:text-blue-400">
+                          Summer Music Festival starts in 2 hours!
+                        </p>
+                        <span className="text-xs text-gray-500">
+                          10 min ago
+                        </span>
                       </div>
                       <div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl">
-                        <h4 className="font-semibold text-green-700 dark:text-green-300 mb-1">💰 Payment Received</h4>
-                        <p className="text-sm text-green-600 dark:text-green-400">You earned $125 from ticket sales</p>
-                        <span className="text-xs text-gray-500">1 hour ago</span>
+                        <h4 className="font-semibold text-green-700 dark:text-green-300 mb-1">
+                          💰 Payment Received
+                        </h4>
+                        <p className="text-sm text-green-600 dark:text-green-400">
+                          You earned $125 from ticket sales
+                        </p>
+                        <span className="text-xs text-gray-500">
+                          1 hour ago
+                        </span>
                       </div>
                       <div className="p-4 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-2xl">
-                        <h4 className="font-semibold text-orange-700 dark:text-orange-300 mb-1">⭐ New Review</h4>
-                        <p className="text-sm text-orange-600 dark:text-orange-400">Someone left a 5-star review for your event!</p>
-                        <span className="text-xs text-gray-500">3 hours ago</span>
+                        <h4 className="font-semibold text-orange-700 dark:text-orange-300 mb-1">
+                          ⭐ New Review
+                        </h4>
+                        <p className="text-sm text-orange-600 dark:text-orange-400">
+                          Someone left a 5-star review for your event!
+                        </p>
+                        <span className="text-xs text-gray-500">
+                          3 hours ago
+                        </span>
                       </div>
                     </div>
                   </div>

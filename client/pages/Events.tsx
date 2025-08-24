@@ -204,7 +204,9 @@ const FilterPanel = ({
           >
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Filters</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  Filters
+                </h3>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -218,7 +220,9 @@ const FilterPanel = ({
               <div className="space-y-6">
                 {/* Category Filter */}
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-3">Categories</h4>
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-3">
+                    Categories
+                  </h4>
                   <div className="space-y-3">
                     {categories.slice(1).map((category) => (
                       <motion.div
@@ -268,7 +272,9 @@ const FilterPanel = ({
 
                 {/* Date Filter */}
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-3">Date</h4>
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-3">
+                    Date
+                  </h4>
                   <Select
                     value={selectedDateRange}
                     onValueChange={setSelectedDateRange}
@@ -288,7 +294,9 @@ const FilterPanel = ({
 
                 {/* Rating Filter */}
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-3">Rating</h4>
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-3">
+                    Rating
+                  </h4>
                   <div className="space-y-2">
                     {[5, 4, 3].map((rating) => (
                       <motion.div

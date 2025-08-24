@@ -771,7 +771,7 @@ export default function Dashboard() {
       });
       setTimeout(() => setCopiedText(""), 2000);
     } catch (err) {
-      console.error('Failed to copy: ', err);
+      console.error("Failed to copy: ", err);
     }
   };
 
@@ -1081,10 +1081,15 @@ export default function Dashboard() {
                           <div className="text-center p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl">
                             <div className="flex items-center justify-center gap-1 text-blue-600 dark:text-blue-400 mb-1">
                               <Gauge className="w-4 h-4" />
-                              <span className="text-xs font-semibold">Capacity</span>
+                              <span className="text-xs font-semibold">
+                                Capacity
+                              </span>
                             </div>
                             <div className="font-bold text-lg text-blue-700 dark:text-blue-300">
-                              {Math.round((event.ticketsSold / event.capacity) * 100)}%
+                              {Math.round(
+                                (event.ticketsSold / event.capacity) * 100,
+                              )}
+                              %
                             </div>
                             <Progress
                               value={(event.ticketsSold / event.capacity) * 100}
@@ -1094,7 +1099,9 @@ export default function Dashboard() {
                           <div className="text-center p-3 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-xl">
                             <div className="flex items-center justify-center gap-1 text-green-600 dark:text-green-400 mb-1">
                               <Activity className="w-4 h-4" />
-                              <span className="text-xs font-semibold">Engagement</span>
+                              <span className="text-xs font-semibold">
+                                Engagement
+                              </span>
                             </div>
                             <div className="font-bold text-lg text-green-700 dark:text-green-300">
                               {event.engagementRate}%
@@ -1106,7 +1113,9 @@ export default function Dashboard() {
                           <div className="text-center p-3 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-xl">
                             <div className="flex items-center justify-center gap-1 text-purple-600 dark:text-purple-400 mb-1">
                               <Share2 className="w-4 h-4" />
-                              <span className="text-xs font-semibold">Shares</span>
+                              <span className="text-xs font-semibold">
+                                Shares
+                              </span>
                             </div>
                             <div className="font-bold text-lg text-purple-700 dark:text-purple-300">
                               {event.socialShares}
@@ -1313,7 +1322,9 @@ export default function Dashboard() {
                   <SelectContent>
                     <SelectItem value="Music">🎵 Music</SelectItem>
                     <SelectItem value="Technology">💻 Technology</SelectItem>
-                    <SelectItem value="Food & Drink">🍷 Food & Drink</SelectItem>
+                    <SelectItem value="Food & Drink">
+                      🍷 Food & Drink
+                    </SelectItem>
                     <SelectItem value="Business">💼 Business</SelectItem>
                     <SelectItem value="Art">🎨 Art</SelectItem>
                     <SelectItem value="Wellness">🧘 Wellness</SelectItem>
@@ -1365,7 +1376,9 @@ export default function Dashboard() {
             </div>
 
             <div className="space-y-3">
-              <h4 className="font-semibold text-gray-900 dark:text-gray-100">Share Link</h4>
+              <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                Share Link
+              </h4>
               <div className="flex gap-2">
                 <Input
                   value={`https://unclub.events/event/${selectedEvent?.id}`}
@@ -1373,27 +1386,58 @@ export default function Dashboard() {
                   className="rounded-xl bg-gray-50 dark:bg-gray-800"
                 />
                 <Button
-                  onClick={() => copyToClipboard(`https://unclub.events/event/${selectedEvent?.id}`, 'link')}
+                  onClick={() =>
+                    copyToClipboard(
+                      `https://unclub.events/event/${selectedEvent?.id}`,
+                      "link",
+                    )
+                  }
                   className="px-4 rounded-xl"
                 >
-                  {copiedText === 'link' ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                  {copiedText === "link" ? (
+                    <Check className="w-4 h-4" />
+                  ) : (
+                    <Copy className="w-4 h-4" />
+                  )}
                 </Button>
               </div>
             </div>
 
             <div className="space-y-3">
-              <h4 className="font-semibold text-gray-900 dark:text-gray-100">Share on Social</h4>
+              <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                Share on Social
+              </h4>
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { name: 'Instagram', icon: '📸', color: 'from-pink-500 to-purple-500', share: `Check out this amazing event: ${selectedEvent?.title}! 🎉` },
-                  { name: 'Twitter', icon: '🐦', color: 'from-blue-400 to-blue-600', share: `🎉 Just discovered: ${selectedEvent?.title}! Can't wait to attend. Join me?` },
-                  { name: 'LinkedIn', icon: '💼', color: 'from-blue-600 to-blue-800', share: `Excited to attend ${selectedEvent?.title} - great networking opportunity!` },
+                  {
+                    name: "Instagram",
+                    icon: "📸",
+                    color: "from-pink-500 to-purple-500",
+                    share: `Check out this amazing event: ${selectedEvent?.title}! 🎉`,
+                  },
+                  {
+                    name: "Twitter",
+                    icon: "🐦",
+                    color: "from-blue-400 to-blue-600",
+                    share: `🎉 Just discovered: ${selectedEvent?.title}! Can't wait to attend. Join me?`,
+                  },
+                  {
+                    name: "LinkedIn",
+                    icon: "💼",
+                    color: "from-blue-600 to-blue-800",
+                    share: `Excited to attend ${selectedEvent?.title} - great networking opportunity!`,
+                  },
                 ].map((platform) => (
                   <motion.button
                     key={platform.name}
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => copyToClipboard(platform.share, platform.name.toLowerCase())}
+                    onClick={() =>
+                      copyToClipboard(
+                        platform.share,
+                        platform.name.toLowerCase(),
+                      )
+                    }
                     className={`p-4 rounded-xl bg-gradient-to-r ${platform.color} text-white text-center font-semibold shadow-lg`}
                   >
                     <div className="text-2xl mb-1">{platform.icon}</div>
@@ -1409,12 +1453,15 @@ export default function Dashboard() {
             <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl">
               <div className="flex items-center gap-2 mb-2">
                 <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
-                <span className="font-semibold text-green-700 dark:text-green-300">Sharing Impact</span>
+                <span className="font-semibold text-green-700 dark:text-green-300">
+                  Sharing Impact
+                </span>
               </div>
               <div className="text-sm text-green-600 dark:text-green-400">
-                • {selectedEvent?.socialShares} total shares<br/>
-                • Events with high social shares sell 3x faster<br/>
-                • Share to unlock audience insights
+                • {selectedEvent?.socialShares} total shares
+                <br />
+                • Events with high social shares sell 3x faster
+                <br />• Share to unlock audience insights
               </div>
             </div>
           </div>

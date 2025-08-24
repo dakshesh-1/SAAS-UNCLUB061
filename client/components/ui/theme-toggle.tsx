@@ -15,19 +15,24 @@ export function ThemeToggle() {
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
         className="relative rounded-xl backdrop-blur-sm border transition-all duration-300 overflow-hidden"
         style={{
-          background: theme === "dark"
-            ? "linear-gradient(135deg, hsl(210 40% 98% / 0.1), hsl(210 40% 98% / 0.2))"
-            : "linear-gradient(135deg, hsl(222.2 84% 4.9% / 0.1), hsl(222.2 84% 4.9% / 0.2))",
-          borderColor: theme === "dark" ? "hsl(210 40% 98% / 0.2)" : "hsl(222.2 84% 4.9% / 0.2)",
-          color: theme === "dark" ? "hsl(210 40% 98%)" : "hsl(222.2 84% 4.9%)"
+          background:
+            theme === "dark"
+              ? "linear-gradient(135deg, hsl(210 40% 98% / 0.1), hsl(210 40% 98% / 0.2))"
+              : "linear-gradient(135deg, hsl(222.2 84% 4.9% / 0.1), hsl(222.2 84% 4.9% / 0.2))",
+          borderColor:
+            theme === "dark"
+              ? "hsl(210 40% 98% / 0.2)"
+              : "hsl(222.2 84% 4.9% / 0.2)",
+          color: theme === "dark" ? "hsl(210 40% 98%)" : "hsl(222.2 84% 4.9%)",
         }}
       >
         <motion.div
           className="absolute inset-0 opacity-20"
           animate={{
-            background: theme === "dark"
-              ? "linear-gradient(135deg, #f59e0b, #fbbf24, #d97706)"
-              : "linear-gradient(135deg, #1e1b4b, #312e81, #1e3a8a)",
+            background:
+              theme === "dark"
+                ? "linear-gradient(135deg, #f59e0b, #fbbf24, #d97706)"
+                : "linear-gradient(135deg, #1e1b4b, #312e81, #1e3a8a)",
           }}
           transition={{ duration: 0.4 }}
           style={{ borderRadius: "0.75rem" }}
