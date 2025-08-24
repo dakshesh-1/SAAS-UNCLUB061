@@ -962,11 +962,12 @@ export default function EventDetail() {
                                 {review.images && (
                                   <div className="flex gap-2 mb-3">
                                     {review.images.map((image, imgIndex) => (
-                                      <motion.img
+                                      <Image
                                         key={imgIndex}
                                         src={image}
-                                        alt="Review"
+                                        alt={`Review photo by ${review.name}`}
                                         className="w-20 h-20 object-cover rounded-xl"
+                                        animated={true}
                                         whileHover={{ scale: 1.1 }}
                                       />
                                     ))}
