@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Events from "./pages/Events";
+import EventDetail from "./pages/EventDetail";
 import Placeholder from "./pages/Placeholder";
 import NotFound from "./pages/NotFound";
 import { Navigation } from "./components/Navigation";
@@ -24,23 +25,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/events" element={<Events />} />
-          <Route
-            path="/event/:id"
-            element={
-              <Placeholder
-                title="Event Details"
-                description="Detailed event page with booking flow, reviews, and host information."
-                features={[
-                  "Animated banner with parallax scroll",
-                  "Interactive booking modal",
-                  "Reviews and ratings system",
-                  "Host profile and information",
-                  "Smooth scroll navigation",
-                  "Social sharing options"
-                ]}
-              />
-            }
-          />
+          <Route path="/event/:id" element={<EventDetail />} />
           <Route
             path="/auth"
             element={
