@@ -66,33 +66,33 @@
   }
 
   .dark {
-    --background: 225 25% 8%;
-    --foreground: 225 15% 95%;
+    --background: 222 84% 2%;
+    --foreground: 210 40% 98%;
 
-    --card: 225 25% 10%;
-    --card-foreground: 225 15% 95%;
+    --card: 222 84% 3%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 225 25% 12%;
-    --popover-foreground: 225 15% 95%;
+    --popover: 222 84% 4%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 225 70% 65%;
-    --primary-foreground: 225 25% 8%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 84% 4.9%;
 
-    --secondary: 225 20% 15%;
-    --secondary-foreground: 225 15% 85%;
+    --secondary: 217 32% 12%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 225 20% 15%;
-    --muted-foreground: 225 10% 65%;
+    --muted: 217 32% 12%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 225 30% 18%;
-    --accent-foreground: 225 15% 90%;
+    --accent: 217 32% 15%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 75% 60%;
-    --destructive-foreground: 225 15% 95%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 225 20% 20%;
-    --input: 225 20% 18%;
-    --ring: 225 70% 65%;
+    --border: 217 32% 15%;
+    --input: 217 32% 12%;
+    --ring: 212 97% 87%;
 
     /* Classy dark UnClub colors */
     --unclub-blue: 225 85% 65%;
