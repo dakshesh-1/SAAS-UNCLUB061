@@ -69,8 +69,8 @@ export function Navigation() {
   const { scrollY } = useScroll();
   const { theme } = useTheme();
 
-  const backgroundOpacity = useTransform(scrollY, [0, 100], [0.85, 0.95]);
-  const blurAmount = useTransform(scrollY, [0, 100], [12, 24]);
+  const backgroundOpacity = useTransform(scrollY, [0, 100], [0.98, 1]);
+  const blurAmount = useTransform(scrollY, [0, 100], [20, 40]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,12 +113,17 @@ export function Navigation() {
       </div>
 
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/20 dark:border-gray-700/50 shadow-lg"
         style={{
-          background: `linear-gradient(135deg, 
-            hsl(var(--unclub-blue) / ${backgroundOpacity}), 
-            hsl(var(--unclub-pink) / ${backgroundOpacity}), 
-            hsl(var(--unclub-red) / ${backgroundOpacity}))`,
+          background: theme === 'dark'
+            ? `linear-gradient(135deg,
+                hsl(var(--background) / 0.99),
+                hsl(var(--card) / 0.99),
+                hsl(var(--background) / 0.99))`
+            : `linear-gradient(135deg,
+                hsl(var(--unclub-blue) / ${backgroundOpacity}),
+                hsl(var(--unclub-pink) / ${backgroundOpacity}),
+                hsl(var(--unclub-red) / ${backgroundOpacity}))`,
           backdropFilter: `blur(${blurAmount}px)`,
         }}
         initial={{ y: -100 }}
