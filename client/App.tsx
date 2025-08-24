@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import Events from "./pages/Events";
 import EventDetail from "./pages/EventDetail";
 import Auth from "./pages/Auth";
+import Dashboard from "./pages/Dashboard";
 import Placeholder from "./pages/Placeholder";
 import NotFound from "./pages/NotFound";
 import { Navigation } from "./components/Navigation";
@@ -28,23 +29,7 @@ const App = () => (
           <Route path="/events" element={<Events />} />
           <Route path="/event/:id" element={<EventDetail />} />
           <Route path="/auth" element={<Auth />} />
-          <Route
-            path="/dashboard"
-            element={
-              <Placeholder
-                title="Host Dashboard"
-                description="Comprehensive dashboard for event hosts to manage their events and bookings."
-                features={[
-                  "Animated sidebar navigation",
-                  "Event creation wizard",
-                  "Booking management table",
-                  "Revenue analytics charts",
-                  "Real-time notifications",
-                  "Performance metrics"
-                ]}
-              />
-            }
-          />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route
             path="/admin"
             element={
