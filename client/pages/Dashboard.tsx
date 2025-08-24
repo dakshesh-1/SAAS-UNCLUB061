@@ -449,7 +449,7 @@ const CreateEventModal = ({
                   onClick={() => setStep(1)}
                   className="flex-1 rounded-2xl h-12"
                 >
-                  ← Back
+                  �� Back
                 </Button>
                 <motion.div
                   className="flex-2"
@@ -852,7 +852,10 @@ export default function Dashboard() {
                     className="relative mb-4"
                   >
                     <Avatar className="w-20 h-20 mx-auto border-4 border-white shadow-xl">
-                      <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" />
+                      <AvatarImage
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                        alt="John Doe"
+                      />
                       <AvatarFallback>JD</AvatarFallback>
                     </Avatar>
                     <motion.div
