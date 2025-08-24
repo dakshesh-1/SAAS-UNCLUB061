@@ -408,10 +408,11 @@ const EventCard = ({
     >
       <Card className="overflow-hidden rounded-2xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white/80 backdrop-blur-sm">
         <div className="relative overflow-hidden">
-          <motion.img
+          <Image
             src={event.image}
             alt={event.title}
             className="w-full h-48 object-cover"
+            animated={true}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           />
@@ -465,7 +466,7 @@ const EventCard = ({
                   size="sm"
                   className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl shadow-lg"
                 >
-                  Book Now
+                  View Details
                 </Button>
               </Link>
             </motion.div>
