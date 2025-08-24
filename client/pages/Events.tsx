@@ -586,7 +586,7 @@ export default function Events() {
 
       {/* Header */}
       <motion.div
-        className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0 z-30"
+        className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 sticky top-16 sm:top-20 z-30"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
@@ -651,13 +651,13 @@ export default function Events() {
         </div>
       </motion.div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-6 pt-4 pb-8">
         {/* Host Event CTA Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 rounded-3xl p-8 mb-8 text-white overflow-hidden relative"
+          className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 rounded-3xl p-6 lg:p-8 mb-8 text-white overflow-hidden relative"
         >
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(15)].map((_, i) => (
