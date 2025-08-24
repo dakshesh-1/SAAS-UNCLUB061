@@ -1186,7 +1186,7 @@ export default function EventDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-orange-50 dark:from-gray-900 dark:via-purple-900/30 dark:to-pink-900/25">
       {/* Hero Section with Parallax */}
       <motion.section
         ref={heroRef}
