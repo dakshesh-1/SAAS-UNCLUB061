@@ -866,21 +866,21 @@ const BookingModal = ({
 
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h4 className="font-bold text-lg">{ticket.name}</h4>
-                      <p className="text-sm text-gray-600">
+                      <h4 className="font-bold text-lg text-gray-900 dark:text-gray-100">{ticket.name}</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
                         {ticket.available} left
                       </p>
                     </div>
                     <div className="text-right">
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-bold text-gray-900">
+                        <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
                           ${ticket.price}
                         </span>
-                        <span className="text-sm text-gray-500 line-through">
+                        <span className="text-sm text-gray-500 dark:text-gray-400 line-through">
                           ${ticket.originalPrice}
                         </span>
                       </div>
-                      <div className="text-xs text-green-600 font-semibold">
+                      <div className="text-xs text-green-600 dark:text-green-400 font-semibold">
                         Save ${ticket.originalPrice - ticket.price}
                       </div>
                     </div>
@@ -893,7 +893,7 @@ const BookingModal = ({
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="flex items-center gap-2 text-sm"
+                        className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300"
                       >
                         <motion.div
                           whileHover={{ scale: 1.2 }}
