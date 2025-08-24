@@ -513,7 +513,7 @@ export default function EventDetail() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  const event = eventData[id as keyof typeof eventData];
+  const event = id ? eventData[id as unknown as keyof typeof eventData] : undefined;
 
   if (!event) {
     return (
