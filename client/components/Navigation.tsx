@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useTheme } from "next-themes";
 
 const navItems = [
@@ -318,10 +318,12 @@ export function Navigation() {
                   </motion.div>
                 </DialogTrigger>
                 <DialogContent className="max-w-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-0 rounded-3xl">
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                       🔍 Search Events
-                    </h3>
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="p-6">
                     <div className="relative mb-6">
                       <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                       <Input
@@ -404,10 +406,12 @@ export function Navigation() {
                   </motion.div>
                 </DialogTrigger>
                 <DialogContent className="max-w-md bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-0 rounded-3xl">
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                       🔔 Notifications
-                    </h3>
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="p-6">
                     <div className="space-y-4">
                       <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl">
                         <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-1">
