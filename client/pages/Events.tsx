@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { GenZParticles } from "@/components/GenZParticles";
+import { useTheme } from "next-themes";
 
 // Expanded mock event data
 const allEvents = [
@@ -195,7 +196,7 @@ const FilterPanel = ({
             onClick={onClose}
           />
           <motion.div
-            className="fixed lg:static top-0 left-0 w-80 h-full lg:h-auto bg-white lg:bg-white/90 backdrop-blur-md rounded-none lg:rounded-2xl shadow-xl z-50 border-r lg:border border-gray-200/50 overflow-y-auto"
+            className="fixed lg:static top-0 left-0 w-80 h-full lg:h-auto bg-white dark:bg-gray-900 lg:bg-white/90 lg:dark:bg-gray-900/90 backdrop-blur-md rounded-none lg:rounded-2xl shadow-xl z-50 border-r lg:border border-gray-200/50 dark:border-gray-700/50 overflow-y-auto"
             initial={{ x: -320 }}
             animate={{ x: 0 }}
             exit={{ x: -320 }}
@@ -203,12 +204,12 @@ const FilterPanel = ({
           >
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-lg font-semibold text-gray-900">Filters</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Filters</h3>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={onClose}
-                  className="lg:hidden"
+                  className="lg:hidden text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
                 >
                   ×
                 </Button>
@@ -217,7 +218,7 @@ const FilterPanel = ({
               <div className="space-y-6">
                 {/* Category Filter */}
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-3">Categories</h4>
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-3">Categories</h4>
                   <div className="space-y-3">
                     {categories.slice(1).map((category) => (
                       <motion.div
@@ -235,7 +236,7 @@ const FilterPanel = ({
                         />
                         <label
                           htmlFor={category}
-                          className="text-sm text-gray-700 cursor-pointer"
+                          className="text-sm text-gray-700 dark:text-gray-300 cursor-pointer"
                         >
                           {category}
                         </label>
@@ -246,7 +247,7 @@ const FilterPanel = ({
 
                 {/* Price Range */}
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-3">
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-3">
                     Price Range
                   </h4>
                   <div className="px-2">
@@ -258,7 +259,7 @@ const FilterPanel = ({
                       step={10}
                       className="mb-3"
                     />
-                    <div className="flex justify-between text-sm text-gray-600">
+                    <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                       <span>${priceRange[0]}</span>
                       <span>${priceRange[1]}</span>
                     </div>
@@ -267,12 +268,12 @@ const FilterPanel = ({
 
                 {/* Date Filter */}
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-3">Date</h4>
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-3">Date</h4>
                   <Select
                     value={selectedDateRange}
                     onValueChange={setSelectedDateRange}
                   >
-                    <SelectTrigger className="border-gray-200">
+                    <SelectTrigger className="border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
                       <SelectValue placeholder="Select date range" />
                     </SelectTrigger>
                     <SelectContent>
@@ -287,7 +288,7 @@ const FilterPanel = ({
 
                 {/* Rating Filter */}
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-3">Rating</h4>
+                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-3">Rating</h4>
                   <div className="space-y-2">
                     {[5, 4, 3].map((rating) => (
                       <motion.div
@@ -305,14 +306,14 @@ const FilterPanel = ({
                         />
                         <label
                           htmlFor={`rating-${rating}`}
-                          className="text-sm text-gray-700 cursor-pointer flex items-center"
+                          className="text-sm text-gray-700 dark:text-gray-300 cursor-pointer flex items-center"
                         >
                           {rating}+
                           <div className="flex ml-1">
                             {[...Array(5)].map((_, i) => (
                               <Star
                                 key={i}
-                                className={`w-3 h-3 ${i < rating ? "text-yellow-400 fill-current" : "text-gray-300"}`}
+                                className={`w-3 h-3 ${i < rating ? "text-yellow-400 fill-current" : "text-gray-300 dark:text-gray-600"}`}
                               />
                             ))}
                           </div>
@@ -360,7 +361,7 @@ const EventCard = ({
         whileHover={{ x: 4 }}
         className="group"
       >
-        <Card className="overflow-hidden rounded-2xl border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm">
+        <Card className="overflow-hidden rounded-2xl border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
           <CardContent className="p-6">
             <div className="flex gap-6">
               <motion.div
@@ -378,22 +379,22 @@ const EventCard = ({
                 <div className="flex items-start justify-between mb-2">
                   <div>
                     <Badge className="mb-2">{event.category}</Badge>
-                    <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors">
+                    <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {event.title}
                     </h3>
                   </div>
                   <div className="text-right">
-                    <div className="font-bold text-xl text-gray-900">
+                    <div className="font-bold text-xl text-gray-900 dark:text-gray-100">
                       ${event.price}
                     </div>
-                    <div className="flex items-center gap-1 text-sm text-gray-600">
+                    <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
                       <Star className="w-4 h-4 text-yellow-500 fill-current" />
                       {event.rating}
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
                     {event.date}
@@ -438,7 +439,7 @@ const EventCard = ({
       whileHover={{ y: -8, transition: { duration: 0.2 } }}
       className="group"
     >
-      <Card className="overflow-hidden rounded-2xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white/80 backdrop-blur-sm">
+      <Card className="overflow-hidden rounded-2xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
         <div className="relative overflow-hidden">
           <Image
             src={event.image}
@@ -463,30 +464,30 @@ const EventCard = ({
         </div>
 
         <CardContent className="p-6">
-          <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
+          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-2">
             <Calendar className="w-4 h-4" />
             {event.date}
           </div>
 
-          <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+          <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
             {event.title}
           </h3>
 
-          <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
+          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
             <MapPin className="w-4 h-4" />
             {event.location}
           </div>
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <span className="font-bold text-xl text-gray-900">
+              <span className="font-bold text-xl text-gray-900 dark:text-gray-100">
                 ${event.price}
               </span>
-              <div className="flex items-center gap-1 text-sm text-gray-600">
+              <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
                 <Users className="w-4 h-4" />
                 {event.attendees}
               </div>
-              <div className="flex items-center gap-1 text-sm text-gray-600">
+              <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
                 <Star className="w-4 h-4 text-yellow-500 fill-current" />
                 {event.rating}
               </div>
@@ -515,6 +516,7 @@ export default function Events() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState("featured");
+  const { theme } = useTheme();
 
   // Advanced filter states
   const [priceRange, setPriceRange] = useState([0, 500]);
@@ -578,13 +580,13 @@ export default function Events() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-instagram-pink/20 via-instagram-purple/20 to-instagram-orange/20">
+    <div className="min-h-screen bg-gradient-to-br from-instagram-pink/20 via-instagram-purple/20 to-instagram-orange/20 dark:from-gray-900 dark:via-purple-900/10 dark:to-pink-900/10">
       {/* GenZ Particles */}
       <GenZParticles />
 
       {/* Header */}
       <motion.div
-        className="bg-white/90 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-30"
+        className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0 z-30"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
@@ -594,7 +596,7 @@ export default function Events() {
             <h1 className="text-4xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent">
               🎉 Discover Epic Events 🎉
             </h1>
-            <p className="text-lg text-gray-600 mt-2">
+            <p className="text-lg text-gray-600 dark:text-gray-400 mt-2">
               Find your next unforgettable experience!
             </p>
 
@@ -778,12 +780,12 @@ export default function Events() {
                     placeholder="Search events, locations..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 border-0 bg-white/80 backdrop-blur-sm focus:bg-white transition-colors rounded-xl shadow-md"
+                    className="pl-10 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm focus:bg-white dark:focus:bg-gray-800 transition-colors rounded-xl shadow-md text-gray-900 dark:text-gray-100"
                   />
                 </div>
 
                 <Select value={sortBy} onValueChange={setSortBy}>
-                  <SelectTrigger className="w-48 border-0 bg-white/80 backdrop-blur-sm rounded-xl shadow-md">
+                  <SelectTrigger className="w-48 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-md">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -834,7 +836,7 @@ export default function Events() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 Found {sortedEvents.length} events
                 {selectedCategory !== "All" && ` in ${selectedCategory}`}
               </p>
@@ -869,10 +871,10 @@ export default function Events() {
                 <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Search className="w-8 h-8 text-gray-400" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
                   No events found
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-400">
                   Try adjusting your search or filters
                 </p>
               </motion.div>
