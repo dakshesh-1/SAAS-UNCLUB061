@@ -369,7 +369,7 @@ const EventCard = ({
         whileHover={{ x: 4 }}
         className="group"
       >
-        <Card className="overflow-hidden rounded-2xl border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+        <Card className="overflow-hidden rounded-2xl border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
           <CardContent className="p-6">
             <div className="flex gap-6">
               <motion.div
@@ -386,7 +386,7 @@ const EventCard = ({
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between mb-2">
                   <div>
-                    <Badge className="mb-2">{event.category}</Badge>
+                    <Badge className="mb-2 bg-primary/10 text-primary border-primary/20">{event.category}</Badge>
                     <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {event.title}
                     </h3>
@@ -447,7 +447,7 @@ const EventCard = ({
       whileHover={{ y: -8, transition: { duration: 0.2 } }}
       className="group"
     >
-      <Card className="overflow-hidden rounded-2xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+      <Card className="overflow-hidden rounded-2xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
         <div className="relative overflow-hidden">
           <Image
             src={event.image}
@@ -458,7 +458,7 @@ const EventCard = ({
             transition={{ duration: 0.3 }}
           />
           <div className="absolute top-4 left-4">
-            <Badge className="bg-white/90 text-gray-800 hover:bg-white">
+            <Badge className="bg-white/95 dark:bg-gray-800/95 text-gray-800 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-600">
               {event.category}
             </Badge>
           </div>
