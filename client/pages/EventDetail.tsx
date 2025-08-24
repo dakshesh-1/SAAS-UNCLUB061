@@ -33,7 +33,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -575,7 +581,7 @@ Why attend:
     • Scout emerging investment opportunities
     • Connect with innovative founders
     • Learn from successful entrepreneurs
-    • Experience Austin's startup culture
+    �� Experience Austin's startup culture
     • Exclusive investor meetups`,
 
     lineup: [
@@ -797,22 +803,20 @@ const BookingModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white via-purple-50 to-pink-50 border-0 rounded-3xl">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white via-purple-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border-0 rounded-3xl">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange bg-clip-text text-transparent">
+            Book Your Spot! 🎟️
+          </DialogTitle>
+        </DialogHeader>
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           className="p-6"
         >
-          {/* Header */}
-          <div className="flex items-center justify-between mb-6">
-            <motion.h2
-              className="text-2xl font-bold bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange bg-clip-text text-transparent"
-              initial={{ x: -20 }}
-              animate={{ x: 0 }}
-            >
-              Book Your Spot! 🎟️
-            </motion.h2>
+          {/* Step Progress */}
+          <div className="flex items-center justify-center gap-2 mb-6">
             <div className="flex items-center gap-2">
               {[1, 2, 3].map((stepNum) => (
                 <motion.div
@@ -836,7 +840,7 @@ const BookingModal = ({
               animate={{ x: 0, opacity: 1 }}
               className="space-y-4"
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
                 Choose Your Experience
               </h3>
               {event.ticketTypes.map((ticket: any) => (
@@ -866,21 +870,23 @@ const BookingModal = ({
 
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h4 className="font-bold text-lg">{ticket.name}</h4>
-                      <p className="text-sm text-gray-600">
+                      <h4 className="font-bold text-lg text-gray-900 dark:text-gray-100">
+                        {ticket.name}
+                      </h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
                         {ticket.available} left
                       </p>
                     </div>
                     <div className="text-right">
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-bold text-gray-900">
+                        <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
                           ${ticket.price}
                         </span>
-                        <span className="text-sm text-gray-500 line-through">
+                        <span className="text-sm text-gray-500 dark:text-gray-400 line-through">
                           ${ticket.originalPrice}
                         </span>
                       </div>
-                      <div className="text-xs text-green-600 font-semibold">
+                      <div className="text-xs text-green-600 dark:text-green-400 font-semibold">
                         Save ${ticket.originalPrice - ticket.price}
                       </div>
                     </div>
@@ -893,7 +899,7 @@ const BookingModal = ({
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="flex items-center gap-2 text-sm"
+                        className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300"
                       >
                         <motion.div
                           whileHover={{ scale: 1.2 }}
@@ -907,8 +913,10 @@ const BookingModal = ({
               ))}
 
               {/* Quantity Selector */}
-              <div className="flex items-center justify-between p-4 bg-white/80 rounded-2xl">
-                <span className="font-semibold">Quantity:</span>
+              <div className="flex items-center justify-between p-4 bg-white/80 dark:bg-gray-700/60 rounded-2xl">
+                <span className="font-semibold text-gray-900 dark:text-gray-100">
+                  Quantity:
+                </span>
                 <div className="flex items-center gap-3">
                   <motion.button
                     whileHover={{ scale: 1.1 }}
@@ -918,7 +926,7 @@ const BookingModal = ({
                   >
                     -
                   </motion.button>
-                  <span className="text-xl font-bold w-8 text-center">
+                  <span className="text-xl font-bold w-8 text-center text-gray-900 dark:text-gray-100">
                     {quantity}
                   </span>
                   <motion.button
@@ -934,15 +942,19 @@ const BookingModal = ({
 
               {/* Total */}
               <motion.div
-                className="p-4 bg-gradient-to-r from-instagram-pink/10 to-instagram-purple/10 rounded-2xl"
+                className="p-4 bg-gradient-to-r from-instagram-pink/10 to-instagram-purple/10 dark:from-instagram-pink/20 dark:to-instagram-purple/20 rounded-2xl"
                 whileHover={{ scale: 1.01 }}
               >
                 <div className="flex justify-between items-center mb-2">
-                  <span className="font-semibold">Total:</span>
-                  <span className="text-2xl font-bold">${total}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-100">
+                    Total:
+                  </span>
+                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                    ${total}
+                  </span>
                 </div>
                 {savings > 0 && (
-                  <div className="text-sm text-green-600 text-center">
+                  <div className="text-sm text-green-600 dark:text-green-400 text-center">
                     🎉 You're saving ${savings} with this deal!
                   </div>
                 )}
@@ -969,7 +981,7 @@ const BookingModal = ({
               animate={{ x: 0, opacity: 1 }}
               className="space-y-4"
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
                 Your Details
               </h3>
 
@@ -1025,32 +1037,40 @@ const BookingModal = ({
               animate={{ x: 0, opacity: 1 }}
               className="space-y-4"
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
                 Payment & Confirmation
               </h3>
 
               {/* Order Summary */}
-              <div className="p-4 bg-white/80 rounded-2xl space-y-3">
+              <div className="p-4 bg-white/80 dark:bg-gray-700/60 rounded-2xl space-y-3">
                 <div className="flex justify-between">
-                  <span>
+                  <span className="text-gray-900 dark:text-gray-100">
                     {selectedTicket.name} × {quantity}
                   </span>
-                  <span className="font-semibold">${total}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-100">
+                    ${total}
+                  </span>
                 </div>
-                <div className="flex justify-between text-sm text-gray-600">
+                <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                   <span>Processing Fee</span>
                   <span>$5.99</span>
                 </div>
-                <hr />
+                <hr className="border-gray-300 dark:border-gray-600" />
                 <div className="flex justify-between text-lg font-bold">
-                  <span>Total</span>
-                  <span>${total + 5.99}</span>
+                  <span className="text-gray-900 dark:text-gray-100">
+                    Total
+                  </span>
+                  <span className="text-gray-900 dark:text-gray-100">
+                    ${total + 5.99}
+                  </span>
                 </div>
               </div>
 
               {/* Payment Methods */}
               <div className="space-y-3">
-                <h4 className="font-semibold">Payment Method</h4>
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                  Payment Method
+                </h4>
                 {[
                   "💳 Credit Card",
                   "📱 Apple Pay",
@@ -1060,7 +1080,7 @@ const BookingModal = ({
                   <motion.div
                     key={method}
                     whileHover={{ scale: 1.02, x: 5 }}
-                    className="p-3 border border-gray-200 rounded-xl cursor-pointer hover:border-instagram-purple/50 transition-colors"
+                    className="p-3 border border-gray-200 dark:border-gray-600 rounded-xl cursor-pointer hover:border-instagram-purple/50 transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                   >
                     {method}
                   </motion.div>
@@ -1186,7 +1206,7 @@ export default function EventDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-orange-50 dark:from-gray-900 dark:via-purple-900/30 dark:to-pink-900/25">
       {/* Hero Section with Parallax */}
       <motion.section
         ref={heroRef}
@@ -1659,7 +1679,7 @@ export default function EventDetail() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border-0 shadow-2xl sticky top-24">
+              <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border-0 shadow-2xl sticky top-24">
                 <CardContent className="p-6">
                   <div className="text-center mb-6">
                     <div className="flex items-center justify-center gap-2 mb-3">
@@ -1697,8 +1717,10 @@ export default function EventDetail() {
 
                   <div className="space-y-4 mb-6">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">Availability:</span>
-                      <span className="font-semibold text-green-600">
+                      <span className="text-gray-600 dark:text-gray-400">
+                        Availability:
+                      </span>
+                      <span className="font-semibold text-green-600 dark:text-green-400">
                         {event.maxCapacity - event.attendees} spots left
                       </span>
                     </div>
@@ -1714,7 +1736,7 @@ export default function EventDetail() {
                       />
                     </div>
 
-                    <p className="text-xs text-gray-600 text-center">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 text-center">
                       {event.attendees.toLocaleString()} of{" "}
                       {event.maxCapacity.toLocaleString()} spots taken
                     </p>
@@ -1732,7 +1754,7 @@ export default function EventDetail() {
                     </Button>
                   </motion.div>
 
-                  <p className="text-xs text-gray-500 text-center mt-3">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">
                     ✅ Free cancellation until 24h before event
                   </p>
                 </CardContent>
@@ -1745,9 +1767,11 @@ export default function EventDetail() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <Card className="bg-white/80 backdrop-blur-sm rounded-2xl border-0 shadow-xl">
+              <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-xl">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-bold mb-4">Event Host</h3>
+                  <h3 className="text-lg font-bold mb-4 text-gray-900 dark:text-gray-100">
+                    Event Host
+                  </h3>
                   <div className="flex items-start gap-4">
                     <div className="relative">
                       <Avatar className="w-16 h-16">

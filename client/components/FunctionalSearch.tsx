@@ -96,7 +96,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
       transition={{ delay: 0.3, duration: 0.6 }}
     >
       <motion.div
-        className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-6 border border-white/30"
+        className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-3xl shadow-2xl p-6 border border-white/30 dark:border-gray-700/50"
         whileHover={{
           y: -4,
           boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
@@ -106,35 +106,35 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
           {/* Search Query */}
           <div className="relative md:col-span-2">
-            <Search className="absolute left-4 top-4 w-5 h-5 text-gray-400" />
+            <Search className="absolute left-4 top-4 w-5 h-5 text-gray-400 dark:text-gray-500" />
             <Input
               placeholder="What party are you looking for?"
               value={searchParams.query}
               onChange={(e) => updateParam("query", e.target.value)}
               onFocus={() => setShowSuggestions(true)}
-              className="pl-12 border-2 border-gray-200 focus:border-unclub-blue transition-colors rounded-2xl h-12 text-lg font-medium"
+              className="pl-12 border-2 border-gray-200 dark:border-gray-600 focus:border-unclub-blue dark:focus:border-unclub-pink transition-colors rounded-2xl h-12 text-lg font-semibold bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           {/* Location */}
           <div className="relative">
-            <MapPin className="absolute left-4 top-4 w-5 h-5 text-gray-400" />
+            <MapPin className="absolute left-4 top-4 w-5 h-5 text-gray-400 dark:text-gray-500" />
             <Input
               placeholder="City"
               value={searchParams.location}
               onChange={(e) => updateParam("location", e.target.value)}
-              className="pl-12 border-2 border-gray-200 focus:border-unclub-pink transition-colors rounded-2xl h-12"
+              className="pl-12 border-2 border-gray-200 dark:border-gray-600 focus:border-unclub-pink dark:focus:border-unclub-blue transition-colors rounded-2xl h-12 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           {/* Date */}
           <div className="relative">
-            <Calendar className="absolute left-4 top-4 w-5 h-5 text-gray-400" />
+            <Calendar className="absolute left-4 top-4 w-5 h-5 text-gray-400 dark:text-gray-500" />
             <Input
               type="date"
               value={searchParams.date}
               onChange={(e) => updateParam("date", e.target.value)}
-              className="pl-12 border-2 border-gray-200 focus:border-unclub-red transition-colors rounded-2xl h-12"
+              className="pl-12 border-2 border-gray-200 dark:border-gray-600 focus:border-unclub-red dark:focus:border-unclub-coral transition-colors rounded-2xl h-12 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             />
           </div>
         </div>
@@ -146,7 +146,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
               value={searchParams.category}
               onValueChange={(value) => updateParam("category", value)}
             >
-              <SelectTrigger className="rounded-2xl h-12 border-2 border-gray-200 focus:border-unclub-blue">
+              <SelectTrigger className="rounded-2xl h-12 border-2 border-gray-200 dark:border-gray-600 focus:border-unclub-blue dark:focus:border-unclub-pink bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
                 <SelectValue placeholder="Event type" />
               </SelectTrigger>
               <SelectContent>
@@ -177,7 +177,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
             <Button
               variant="outline"
               onClick={() => setIsExpanded(!isExpanded)}
-              className="h-12 px-4 rounded-2xl border-2 border-gray-200 hover:border-unclub-blue"
+              className="h-12 px-4 rounded-2xl border-2 border-gray-200 dark:border-gray-600 hover:border-unclub-blue dark:hover:border-unclub-pink bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <Filter className="w-5 h-5" />
             </Button>
@@ -194,9 +194,9 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
               transition={{ duration: 0.3 }}
               className="overflow-hidden mt-6"
             >
-              <div className="border-t border-gray-200 pt-6">
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
                 <div className="mb-4">
-                  <h4 className="text-sm font-bold text-gray-700 mb-3">
+                  <h4 className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
                     🔥 Trending Searches
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -208,7 +208,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
                       >
                         <Badge
                           variant="outline"
-                          className="cursor-pointer hover:bg-unclub-blue hover:text-white hover:border-unclub-blue transition-all duration-200 rounded-full px-4 py-2"
+                          className="cursor-pointer hover:bg-unclub-blue hover:text-white hover:border-unclub-blue transition-all duration-200 rounded-full px-4 py-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300"
                           onClick={() => handleQuickSearch(search)}
                         >
                           {search}
@@ -219,7 +219,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-bold text-gray-700 mb-3">
+                  <h4 className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
                     📍 Popular Cities
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -231,7 +231,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
                       >
                         <Badge
                           variant="outline"
-                          className="cursor-pointer hover:bg-unclub-pink hover:text-white hover:border-unclub-pink transition-all duration-200 rounded-full px-4 py-2"
+                          className="cursor-pointer hover:bg-unclub-pink hover:text-white hover:border-unclub-pink transition-all duration-200 rounded-full px-4 py-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300"
                           onClick={() => updateParam("location", location)}
                         >
                           {location}
@@ -243,7 +243,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
 
                 <motion.button
                   onClick={() => setShowSuggestions(false)}
-                  className="mt-4 text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-2"
+                  className="mt-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                 >
                   <X className="w-4 h-4" />
@@ -264,14 +264,14 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="border-t border-gray-200 pt-6 mt-6">
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-6 mt-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                       Price Range
                     </label>
                     <Select>
-                      <SelectTrigger className="rounded-xl">
+                      <SelectTrigger className="rounded-xl bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100">
                         <SelectValue placeholder="Any price" />
                       </SelectTrigger>
                       <SelectContent>
@@ -285,11 +285,11 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                       Time
                     </label>
                     <Select>
-                      <SelectTrigger className="rounded-xl">
+                      <SelectTrigger className="rounded-xl bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100">
                         <SelectValue placeholder="Any time" />
                       </SelectTrigger>
                       <SelectContent>
@@ -302,11 +302,11 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                       Vibe
                     </label>
                     <Select>
-                      <SelectTrigger className="rounded-xl">
+                      <SelectTrigger className="rounded-xl bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100">
                         <SelectValue placeholder="Any vibe" />
                       </SelectTrigger>
                       <SelectContent>
@@ -331,11 +331,13 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
           animate={{ opacity: 1, y: 0 }}
           className="mt-4"
         >
-          <Card className="bg-white/90 backdrop-blur-sm rounded-2xl border-0 shadow-lg">
+          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl border-0 shadow-lg">
             <CardContent className="p-4">
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-gray-600 dark:text-gray-400">
                 🎉 Found{" "}
-                <span className="font-bold text-unclub-blue">42 parties</span>{" "}
+                <span className="font-bold text-unclub-blue dark:text-unclub-pink">
+                  42 parties
+                </span>{" "}
                 matching "{searchParams.query}"
               </div>
             </CardContent>

@@ -240,7 +240,7 @@ const FilterPanel = ({
                         />
                         <label
                           htmlFor={category}
-                          className="text-sm text-gray-700 dark:text-gray-300 cursor-pointer"
+                          className="text-sm text-gray-700 dark:text-gray-200 cursor-pointer font-medium"
                         >
                           {category}
                         </label>
@@ -279,7 +279,7 @@ const FilterPanel = ({
                     value={selectedDateRange}
                     onValueChange={setSelectedDateRange}
                   >
-                    <SelectTrigger className="border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+                    <SelectTrigger className="border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
                       <SelectValue placeholder="Select date range" />
                     </SelectTrigger>
                     <SelectContent>
@@ -369,7 +369,7 @@ const EventCard = ({
         whileHover={{ x: 4 }}
         className="group"
       >
-        <Card className="overflow-hidden rounded-2xl border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+        <Card className="overflow-hidden rounded-2xl border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
           <CardContent className="p-6">
             <div className="flex gap-6">
               <motion.div
@@ -386,7 +386,9 @@ const EventCard = ({
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between mb-2">
                   <div>
-                    <Badge className="mb-2">{event.category}</Badge>
+                    <Badge className="mb-2 bg-primary/10 text-primary border-primary/20">
+                      {event.category}
+                    </Badge>
                     <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {event.title}
                     </h3>
@@ -447,7 +449,7 @@ const EventCard = ({
       whileHover={{ y: -8, transition: { duration: 0.2 } }}
       className="group"
     >
-      <Card className="overflow-hidden rounded-2xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+      <Card className="overflow-hidden rounded-2xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
         <div className="relative overflow-hidden">
           <Image
             src={event.image}
@@ -458,7 +460,7 @@ const EventCard = ({
             transition={{ duration: 0.3 }}
           />
           <div className="absolute top-4 left-4">
-            <Badge className="bg-white/90 text-gray-800 hover:bg-white">
+            <Badge className="bg-white/95 dark:bg-gray-800/95 text-gray-800 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-600">
               {event.category}
             </Badge>
           </div>
@@ -588,7 +590,7 @@ export default function Events() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-instagram-pink/20 via-instagram-purple/20 to-instagram-orange/20 dark:from-gray-900 dark:via-purple-900/10 dark:to-pink-900/10">
+    <div className="min-h-screen bg-gradient-to-br from-instagram-pink/12 via-instagram-purple/12 to-instagram-orange/12 dark:from-gray-900 dark:via-instagram-purple/25 dark:to-instagram-pink/20">
       {/* GenZ Particles */}
       <GenZParticles />
 
@@ -602,10 +604,10 @@ export default function Events() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div className="flex-1">
-              <h1 className="text-3xl lg:text-4xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent mb-2 leading-tight">
+              <h1 className="display-text text-3xl lg:text-4xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent mb-2 leading-tight">
                 🎉 Discover Epic Events 🎉
               </h1>
-              <p className="text-base lg:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="accent-text text-base lg:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
                 Find your next unforgettable experience!
               </p>
             </div>
@@ -659,13 +661,13 @@ export default function Events() {
         </div>
       </motion.div>
 
-      <div className="max-w-7xl mx-auto px-6 pt-4 pb-8">
+      <div className="max-w-7xl mx-auto px-6 pt-8 pb-8">
         {/* Host Event CTA Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 rounded-3xl p-6 lg:p-8 mb-8 text-white overflow-hidden relative"
+          className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 rounded-3xl p-6 lg:p-8 mb-8 mt-4 text-white overflow-hidden relative shadow-2xl"
         >
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(15)].map((_, i) => (
@@ -693,10 +695,10 @@ export default function Events() {
 
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
-              <h2 className="text-3xl font-black mb-2">
+              <h2 className="display-text text-3xl font-black mb-2">
                 🌟 Ready to Host Your Own Epic Event? 🌟
               </h2>
-              <p className="text-lg text-white/90">
+              <p className="accent-text text-lg text-white/90">
                 Join thousands of successful hosts earning money while creating
                 amazing experiences!
               </p>
@@ -785,17 +787,17 @@ export default function Events() {
             >
               <div className="flex flex-col md:flex-row gap-4 mb-6">
                 <div className="relative flex-1">
-                  <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                  <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400 dark:text-gray-500" />
                   <Input
                     placeholder="Search events, locations..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm focus:bg-white dark:focus:bg-gray-800 transition-colors rounded-xl shadow-md text-gray-900 dark:text-gray-100"
+                    className="pl-10 border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm focus:bg-white dark:focus:bg-gray-800 transition-colors rounded-xl shadow-md text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                   />
                 </div>
 
                 <Select value={sortBy} onValueChange={setSortBy}>
-                  <SelectTrigger className="w-48 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-md">
+                  <SelectTrigger className="w-48 border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md text-gray-900 dark:text-gray-100">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>

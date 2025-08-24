@@ -22,7 +22,13 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useTheme } from "next-themes";
 
 const navItems = [
@@ -69,8 +75,8 @@ export function Navigation() {
   const { scrollY } = useScroll();
   const { theme } = useTheme();
 
-  const backgroundOpacity = useTransform(scrollY, [0, 100], [0.85, 0.95]);
-  const blurAmount = useTransform(scrollY, [0, 100], [12, 24]);
+  const backgroundOpacity = useTransform(scrollY, [0, 100], [0.98, 1]);
+  const blurAmount = useTransform(scrollY, [0, 100], [20, 40]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,12 +119,18 @@ export function Navigation() {
       </div>
 
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/20 dark:border-gray-700/50 shadow-lg"
         style={{
-          background: `linear-gradient(135deg, 
-            hsl(var(--unclub-blue) / ${backgroundOpacity}), 
-            hsl(var(--unclub-pink) / ${backgroundOpacity}), 
-            hsl(var(--unclub-red) / ${backgroundOpacity}))`,
+          background:
+            theme === "dark"
+              ? `linear-gradient(135deg,
+                hsl(var(--background) / 0.99),
+                hsl(var(--card) / 0.99),
+                hsl(var(--background) / 0.99))`
+              : `linear-gradient(135deg,
+                hsl(var(--unclub-blue) / ${backgroundOpacity}),
+                hsl(var(--unclub-pink) / ${backgroundOpacity}),
+                hsl(var(--unclub-red) / ${backgroundOpacity}))`,
           backdropFilter: `blur(${blurAmount}px)`,
         }}
         initial={{ y: -100 }}
@@ -183,7 +195,7 @@ export function Navigation() {
                 </motion.div>
                 <div className="hidden sm:block">
                   <motion.span
-                    className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent"
+                    className="display-text text-2xl sm:text-3xl font-black bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent"
                     whileHover={{
                       backgroundImage:
                         "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
@@ -192,7 +204,7 @@ export function Navigation() {
                     UnClub
                   </motion.span>
                   <motion.div
-                    className="text-xs font-bold text-white/90 tracking-wider uppercase"
+                    className="accent-text text-xs font-bold text-white/90 tracking-wider uppercase"
                     animate={{
                       opacity: [0.7, 1, 0.7],
                     }}
@@ -302,17 +314,23 @@ export function Navigation() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="rounded-xl sm:rounded-2xl text-white hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300 px-3 py-2"
+                      className={`rounded-xl sm:rounded-2xl backdrop-blur-sm border transition-all duration-300 px-3 py-2 ${
+                        theme === "dark"
+                          ? "text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100"
+                          : "text-white hover:bg-white/20 border-white/20"
+                      }`}
                     >
                       <Search className="w-4 h-4 sm:w-5 sm:h-5" />
                     </Button>
                   </motion.div>
                 </DialogTrigger>
                 <DialogContent className="max-w-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-0 rounded-3xl">
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                       🔍 Search Events
-                    </h3>
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="p-6">
                     <div className="relative mb-6">
                       <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                       <Input
@@ -365,7 +383,11 @@ export function Navigation() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="rounded-xl sm:rounded-2xl text-white hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300 px-3 py-2"
+                      className={`rounded-xl sm:rounded-2xl backdrop-blur-sm border transition-all duration-300 px-3 py-2 ${
+                        theme === "dark"
+                          ? "text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100"
+                          : "text-white hover:bg-white/20 border-white/20"
+                      }`}
                     >
                       <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
                     </Button>
@@ -391,10 +413,12 @@ export function Navigation() {
                   </motion.div>
                 </DialogTrigger>
                 <DialogContent className="max-w-md bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-0 rounded-3xl">
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                       🔔 Notifications
-                    </h3>
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="p-6">
                     <div className="space-y-4">
                       <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl">
                         <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-1">
@@ -466,7 +490,11 @@ export function Navigation() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-xl text-white hover:bg-white/20 backdrop-blur-sm border border-white/20 px-3 py-2"
+                className={`rounded-xl backdrop-blur-sm border px-3 py-2 ${
+                  theme === "dark"
+                    ? "text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100"
+                    : "text-white hover:bg-white/20 border-white/20"
+                }`}
               >
                 <motion.div
                   animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
