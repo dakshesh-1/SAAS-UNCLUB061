@@ -162,9 +162,9 @@ const EventCard = ({
               <Link to={`/event/${event.id}`}>
                 <Button
                   size="sm"
-                  className="bg-gradient-to-r from-unclub-blue via-unclub-pink to-unclub-red hover:from-unclub-pink hover:to-unclub-blue text-white rounded-xl shadow-lg"
+                  className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white rounded-xl shadow-lg font-bold transform transition-all duration-200 hover:scale-105"
                 >
-                  View Details
+                  🎟️ Get Tickets
                 </Button>
               </Link>
             </motion.div>
