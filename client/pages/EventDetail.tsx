@@ -575,7 +575,7 @@ Why attend:
     • Scout emerging investment opportunities
     • Connect with innovative founders
     • Learn from successful entrepreneurs
-    • Experience Austin's startup culture
+    �� Experience Austin's startup culture
     • Exclusive investor meetups`,
 
     lineup: [
@@ -797,7 +797,7 @@ const BookingModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white via-purple-50 to-pink-50 border-0 rounded-3xl">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white via-purple-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border-0 rounded-3xl">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -836,7 +836,7 @@ const BookingModal = ({
               animate={{ x: 0, opacity: 1 }}
               className="space-y-4"
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
                 Choose Your Experience
               </h3>
               {event.ticketTypes.map((ticket: any) => (
@@ -1659,7 +1659,7 @@ export default function EventDetail() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border-0 shadow-2xl sticky top-24">
+              <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border-0 shadow-2xl sticky top-24">
                 <CardContent className="p-6">
                   <div className="text-center mb-6">
                     <div className="flex items-center justify-center gap-2 mb-3">
@@ -1697,8 +1697,8 @@ export default function EventDetail() {
 
                   <div className="space-y-4 mb-6">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">Availability:</span>
-                      <span className="font-semibold text-green-600">
+                      <span className="text-gray-600 dark:text-gray-400">Availability:</span>
+                      <span className="font-semibold text-green-600 dark:text-green-400">
                         {event.maxCapacity - event.attendees} spots left
                       </span>
                     </div>
@@ -1714,7 +1714,7 @@ export default function EventDetail() {
                       />
                     </div>
 
-                    <p className="text-xs text-gray-600 text-center">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 text-center">
                       {event.attendees.toLocaleString()} of{" "}
                       {event.maxCapacity.toLocaleString()} spots taken
                     </p>
@@ -1732,7 +1732,7 @@ export default function EventDetail() {
                     </Button>
                   </motion.div>
 
-                  <p className="text-xs text-gray-500 text-center mt-3">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">
                     ✅ Free cancellation until 24h before event
                   </p>
                 </CardContent>
@@ -1745,9 +1745,9 @@ export default function EventDetail() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <Card className="bg-white/80 backdrop-blur-sm rounded-2xl border-0 shadow-xl">
+              <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-xl">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-bold mb-4">Event Host</h3>
+                  <h3 className="text-lg font-bold mb-4 text-gray-900 dark:text-gray-100">Event Host</h3>
                   <div className="flex items-start gap-4">
                     <div className="relative">
                       <Avatar className="w-16 h-16">
