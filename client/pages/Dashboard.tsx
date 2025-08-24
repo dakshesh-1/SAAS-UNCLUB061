@@ -111,50 +111,74 @@ const dashboardStats = [
   },
 ];
 
-// More compelling event data
+// Enhanced event data with more interactive details
 const recentEvents = [
   {
     id: 1,
     title: "Epic Summer Music Festival 🎵",
     date: "Jul 15, 2024",
     attendees: 2500,
+    capacity: 3000,
     revenue: "$12,450",
+    profit: "$8,200",
     status: "sold-out",
     image:
       "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     category: "Music",
     rating: 4.9,
+    reviews: 247,
     highlights: [
       "Sold Out in 2 Hours",
       "500+ Photos Shared",
       "3 Media Features",
     ],
+    socialShares: 1250,
+    viewsToday: 89,
+    daysUntil: -5, // Past event
+    ticketsSold: 2500,
+    engagementRate: 94,
   },
   {
     id: 2,
     title: "Exclusive Tech Innovation Summit 🚀",
     date: "Aug 22, 2024",
     attendees: 800,
+    capacity: 1000,
     revenue: "$8,900",
+    profit: "$6,100",
     status: "upcoming",
     image:
       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     category: "Technology",
     rating: 4.8,
+    reviews: 134,
     highlights: ["VIP Networking", "Industry Leaders", "Premium Location"],
+    socialShares: 892,
+    viewsToday: 156,
+    daysUntil: 28,
+    ticketsSold: 800,
+    engagementRate: 87,
   },
   {
     id: 3,
     title: "Luxury Food & Wine Experience 🍷",
     date: "Sep 10, 2024",
     attendees: 300,
+    capacity: 350,
     revenue: "$4,200",
+    profit: "$2,800",
     status: "filling-fast",
     image:
       "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     category: "Food & Drink",
     rating: 4.7,
+    reviews: 89,
     highlights: ["5-Star Catering", "Wine Tastings", "Celebrity Chef"],
+    socialShares: 445,
+    viewsToday: 67,
+    daysUntil: 47,
+    ticketsSold: 300,
+    engagementRate: 91,
   },
 ];
 
