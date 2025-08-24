@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Events from "./pages/Events";
 import EventDetail from "./pages/EventDetail";
+import Auth from "./pages/Auth";
 import Placeholder from "./pages/Placeholder";
 import NotFound from "./pages/NotFound";
 import { Navigation } from "./components/Navigation";
@@ -26,22 +27,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/events" element={<Events />} />
           <Route path="/event/:id" element={<EventDetail />} />
-          <Route
-            path="/auth"
-            element={
-              <Placeholder
-                title="Authentication"
-                description="Beautiful login and registration forms with smooth animations."
-                features={[
-                  "Glassmorphism login modal",
-                  "Social authentication",
-                  "Animated form validation",
-                  "Password strength indicator",
-                  "Smooth form transitions"
-                ]}
-              />
-            }
-          />
+          <Route path="/auth" element={<Auth />} />
           <Route
             path="/dashboard"
             element={
