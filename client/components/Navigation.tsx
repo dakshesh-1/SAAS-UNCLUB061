@@ -23,16 +23,16 @@ import { Badge } from "@/components/ui/badge";
 
 const navItems = [
   {
-    name: "Discover",
-    path: "/",
-    icon: Home,
-    gradient: "from-unclub-blue via-unclub-pink to-unclub-red",
-  },
-  {
     name: "Events",
     path: "/events",
     icon: Calendar,
     gradient: "from-party-blue via-unclub-electric to-party-neon",
+  },
+  {
+    name: "Discover",
+    path: "/",
+    icon: Home,
+    gradient: "from-unclub-blue via-unclub-pink to-unclub-red",
   },
   {
     name: "Create",
