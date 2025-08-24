@@ -222,11 +222,12 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent mb-6">
+            <h1 className="display-text text-5xl md:text-7xl font-black bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent mb-6">
               Discover Epic
               <br />
               <span className="relative">
                 <motion.span
+                  className="display-text"
                   animate={{
                     textShadow: [
                       "0 0 20px rgba(168, 85, 247, 0.4)",
@@ -253,7 +254,7 @@ export default function Index() {
           </motion.div>
 
           <motion.p
-            className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto"
+            className="body-text text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -313,10 +314,10 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <h2 className="text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
-              🔥 Trending Events Right Now
+            <h2 className="display-text text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+              ���� Trending Events Right Now
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
+            <p className="accent-text text-lg text-gray-600 dark:text-gray-400">
               These events are selling out fast - grab your spot before it's too
               late!
             </p>
