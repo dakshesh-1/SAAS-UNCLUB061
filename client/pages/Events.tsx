@@ -591,16 +591,18 @@ export default function Events() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-4xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent">
-              🎉 Discover Epic Events 🎉
-            </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400 mt-2">
-              Find your next unforgettable experience!
-            </p>
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div className="flex-1">
+              <h1 className="text-3xl lg:text-4xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent mb-2 leading-tight">
+                🎉 Discover Epic Events 🎉
+              </h1>
+              <p className="text-base lg:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                Find your next unforgettable experience!
+              </p>
+            </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 flex-shrink-0">
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
