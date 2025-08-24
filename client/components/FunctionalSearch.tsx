@@ -194,9 +194,9 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
               transition={{ duration: 0.3 }}
               className="overflow-hidden mt-6"
             >
-              <div className="border-t border-gray-200 pt-6">
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
                 <div className="mb-4">
-                  <h4 className="text-sm font-bold text-gray-700 mb-3">
+                  <h4 className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
                     🔥 Trending Searches
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -208,7 +208,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
                       >
                         <Badge
                           variant="outline"
-                          className="cursor-pointer hover:bg-unclub-blue hover:text-white hover:border-unclub-blue transition-all duration-200 rounded-full px-4 py-2"
+                          className="cursor-pointer hover:bg-unclub-blue hover:text-white hover:border-unclub-blue transition-all duration-200 rounded-full px-4 py-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300"
                           onClick={() => handleQuickSearch(search)}
                         >
                           {search}
@@ -219,7 +219,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-bold text-gray-700 mb-3">
+                  <h4 className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
                     📍 Popular Cities
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -231,7 +231,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
                       >
                         <Badge
                           variant="outline"
-                          className="cursor-pointer hover:bg-unclub-pink hover:text-white hover:border-unclub-pink transition-all duration-200 rounded-full px-4 py-2"
+                          className="cursor-pointer hover:bg-unclub-pink hover:text-white hover:border-unclub-pink transition-all duration-200 rounded-full px-4 py-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300"
                           onClick={() => updateParam("location", location)}
                         >
                           {location}
