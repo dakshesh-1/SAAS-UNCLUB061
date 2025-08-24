@@ -907,8 +907,8 @@ const BookingModal = ({
               ))}
 
               {/* Quantity Selector */}
-              <div className="flex items-center justify-between p-4 bg-white/80 rounded-2xl">
-                <span className="font-semibold">Quantity:</span>
+              <div className="flex items-center justify-between p-4 bg-white/80 dark:bg-gray-700/60 rounded-2xl">
+                <span className="font-semibold text-gray-900 dark:text-gray-100">Quantity:</span>
                 <div className="flex items-center gap-3">
                   <motion.button
                     whileHover={{ scale: 1.1 }}
@@ -918,7 +918,7 @@ const BookingModal = ({
                   >
                     -
                   </motion.button>
-                  <span className="text-xl font-bold w-8 text-center">
+                  <span className="text-xl font-bold w-8 text-center text-gray-900 dark:text-gray-100">
                     {quantity}
                   </span>
                   <motion.button
@@ -934,15 +934,15 @@ const BookingModal = ({
 
               {/* Total */}
               <motion.div
-                className="p-4 bg-gradient-to-r from-instagram-pink/10 to-instagram-purple/10 rounded-2xl"
+                className="p-4 bg-gradient-to-r from-instagram-pink/10 to-instagram-purple/10 dark:from-instagram-pink/20 dark:to-instagram-purple/20 rounded-2xl"
                 whileHover={{ scale: 1.01 }}
               >
                 <div className="flex justify-between items-center mb-2">
-                  <span className="font-semibold">Total:</span>
-                  <span className="text-2xl font-bold">${total}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-100">Total:</span>
+                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">${total}</span>
                 </div>
                 {savings > 0 && (
-                  <div className="text-sm text-green-600 text-center">
+                  <div className="text-sm text-green-600 dark:text-green-400 text-center">
                     🎉 You're saving ${savings} with this deal!
                   </div>
                 )}
@@ -969,7 +969,7 @@ const BookingModal = ({
               animate={{ x: 0, opacity: 1 }}
               className="space-y-4"
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
                 Your Details
               </h3>
 
