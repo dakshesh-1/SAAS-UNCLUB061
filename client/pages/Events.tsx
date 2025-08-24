@@ -511,14 +511,40 @@ export default function Events() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState("featured");
 
+  // Advanced filter states
+  const [priceRange, setPriceRange] = useState([0, 500]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedDateRange, setSelectedDateRange] = useState("all");
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [filtersApplied, setFiltersApplied] = useState(false);
+
   const filteredEvents = allEvents.filter((event) => {
     const matchesSearch =
       event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       event.location.toLowerCase().includes(searchQuery.toLowerCase());
+
     const matchesCategory =
       selectedCategory === "All" || event.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+
+    // Advanced filter logic
+    const matchesPrice = !filtersApplied || (event.price >= priceRange[0] && event.price <= priceRange[1]);
+
+    const matchesAdvancedCategories = !filtersApplied ||
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(event.category);
+
+    const matchesRating = !filtersApplied || selectedRating === 0 || event.rating >= selectedRating;
+
+    // Note: Date filtering would need proper date parsing in a real app
+    const matchesDate = !filtersApplied || selectedDateRange === "all";
+
+    return matchesSearch && matchesCategory && matchesPrice && matchesAdvancedCategories && matchesRating && matchesDate;
   });
+
+  const handleApplyFilters = () => {
+    setFiltersApplied(true);
+    setIsFilterOpen(false);
+  };
 
   const sortedEvents = [...filteredEvents].sort((a, b) => {
     switch (sortBy) {
