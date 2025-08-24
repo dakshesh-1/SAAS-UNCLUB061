@@ -33,7 +33,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -864,7 +870,9 @@ const BookingModal = ({
 
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h4 className="font-bold text-lg text-gray-900 dark:text-gray-100">{ticket.name}</h4>
+                      <h4 className="font-bold text-lg text-gray-900 dark:text-gray-100">
+                        {ticket.name}
+                      </h4>
                       <p className="text-sm text-gray-600 dark:text-gray-400">
                         {ticket.available} left
                       </p>
@@ -906,7 +914,9 @@ const BookingModal = ({
 
               {/* Quantity Selector */}
               <div className="flex items-center justify-between p-4 bg-white/80 dark:bg-gray-700/60 rounded-2xl">
-                <span className="font-semibold text-gray-900 dark:text-gray-100">Quantity:</span>
+                <span className="font-semibold text-gray-900 dark:text-gray-100">
+                  Quantity:
+                </span>
                 <div className="flex items-center gap-3">
                   <motion.button
                     whileHover={{ scale: 1.1 }}
@@ -936,8 +946,12 @@ const BookingModal = ({
                 whileHover={{ scale: 1.01 }}
               >
                 <div className="flex justify-between items-center mb-2">
-                  <span className="font-semibold text-gray-900 dark:text-gray-100">Total:</span>
-                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">${total}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-100">
+                    Total:
+                  </span>
+                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                    ${total}
+                  </span>
                 </div>
                 {savings > 0 && (
                   <div className="text-sm text-green-600 dark:text-green-400 text-center">
@@ -1033,7 +1047,9 @@ const BookingModal = ({
                   <span className="text-gray-900 dark:text-gray-100">
                     {selectedTicket.name} × {quantity}
                   </span>
-                  <span className="font-semibold text-gray-900 dark:text-gray-100">${total}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-100">
+                    ${total}
+                  </span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                   <span>Processing Fee</span>
@@ -1041,14 +1057,20 @@ const BookingModal = ({
                 </div>
                 <hr className="border-gray-300 dark:border-gray-600" />
                 <div className="flex justify-between text-lg font-bold">
-                  <span className="text-gray-900 dark:text-gray-100">Total</span>
-                  <span className="text-gray-900 dark:text-gray-100">${total + 5.99}</span>
+                  <span className="text-gray-900 dark:text-gray-100">
+                    Total
+                  </span>
+                  <span className="text-gray-900 dark:text-gray-100">
+                    ${total + 5.99}
+                  </span>
                 </div>
               </div>
 
               {/* Payment Methods */}
               <div className="space-y-3">
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100">Payment Method</h4>
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                  Payment Method
+                </h4>
                 {[
                   "💳 Credit Card",
                   "📱 Apple Pay",
@@ -1695,7 +1717,9 @@ export default function EventDetail() {
 
                   <div className="space-y-4 mb-6">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600 dark:text-gray-400">Availability:</span>
+                      <span className="text-gray-600 dark:text-gray-400">
+                        Availability:
+                      </span>
                       <span className="font-semibold text-green-600 dark:text-green-400">
                         {event.maxCapacity - event.attendees} spots left
                       </span>
@@ -1745,7 +1769,9 @@ export default function EventDetail() {
             >
               <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-xl">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-bold mb-4 text-gray-900 dark:text-gray-100">Event Host</h3>
+                  <h3 className="text-lg font-bold mb-4 text-gray-900 dark:text-gray-100">
+                    Event Host
+                  </h3>
                   <div className="flex items-start gap-4">
                     <div className="relative">
                       <Avatar className="w-16 h-16">

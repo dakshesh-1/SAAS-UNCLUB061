@@ -335,7 +335,9 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
             <CardContent className="p-4">
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 🎉 Found{" "}
-                <span className="font-bold text-unclub-blue dark:text-unclub-pink">42 parties</span>{" "}
+                <span className="font-bold text-unclub-blue dark:text-unclub-pink">
+                  42 parties
+                </span>{" "}
                 matching "{searchParams.query}"
               </div>
             </CardContent>

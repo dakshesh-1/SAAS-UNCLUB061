@@ -22,7 +22,13 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useTheme } from "next-themes";
 
 const navItems = [
@@ -115,12 +121,13 @@ export function Navigation() {
       <motion.nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/20 dark:border-gray-700/50 shadow-lg"
         style={{
-          background: theme === 'dark'
-            ? `linear-gradient(135deg,
+          background:
+            theme === "dark"
+              ? `linear-gradient(135deg,
                 hsl(var(--background) / 0.99),
                 hsl(var(--card) / 0.99),
                 hsl(var(--background) / 0.99))`
-            : `linear-gradient(135deg,
+              : `linear-gradient(135deg,
                 hsl(var(--unclub-blue) / ${backgroundOpacity}),
                 hsl(var(--unclub-pink) / ${backgroundOpacity}),
                 hsl(var(--unclub-red) / ${backgroundOpacity}))`,
@@ -308,9 +315,9 @@ export function Navigation() {
                       variant="ghost"
                       size="sm"
                       className={`rounded-xl sm:rounded-2xl backdrop-blur-sm border transition-all duration-300 px-3 py-2 ${
-                        theme === 'dark'
-                          ? 'text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100'
-                          : 'text-white hover:bg-white/20 border-white/20'
+                        theme === "dark"
+                          ? "text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100"
+                          : "text-white hover:bg-white/20 border-white/20"
                       }`}
                     >
                       <Search className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -377,9 +384,9 @@ export function Navigation() {
                       variant="ghost"
                       size="sm"
                       className={`rounded-xl sm:rounded-2xl backdrop-blur-sm border transition-all duration-300 px-3 py-2 ${
-                        theme === 'dark'
-                          ? 'text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100'
-                          : 'text-white hover:bg-white/20 border-white/20'
+                        theme === "dark"
+                          ? "text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100"
+                          : "text-white hover:bg-white/20 border-white/20"
                       }`}
                     >
                       <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -484,9 +491,9 @@ export function Navigation() {
                 size="sm"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={`rounded-xl backdrop-blur-sm border px-3 py-2 ${
-                  theme === 'dark'
-                    ? 'text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100'
-                    : 'text-white hover:bg-white/20 border-white/20'
+                  theme === "dark"
+                    ? "text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100"
+                    : "text-white hover:bg-white/20 border-white/20"
                 }`}
               >
                 <motion.div

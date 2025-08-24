@@ -239,11 +239,11 @@ const FilterPanel = ({
                           }
                         />
                         <label
-                      htmlFor={category}
-                      className="text-sm text-gray-700 dark:text-gray-200 cursor-pointer font-medium"
-                    >
-                      {category}
-                    </label>
+                          htmlFor={category}
+                          className="text-sm text-gray-700 dark:text-gray-200 cursor-pointer font-medium"
+                        >
+                          {category}
+                        </label>
                       </motion.div>
                     ))}
                   </div>
@@ -386,7 +386,9 @@ const EventCard = ({
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between mb-2">
                   <div>
-                    <Badge className="mb-2 bg-primary/10 text-primary border-primary/20">{event.category}</Badge>
+                    <Badge className="mb-2 bg-primary/10 text-primary border-primary/20">
+                      {event.category}
+                    </Badge>
                     <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {event.title}
                     </h3>
