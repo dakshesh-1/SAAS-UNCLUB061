@@ -480,7 +480,7 @@ const BookingModal = ({
                       // Simulate booking success
                       setTimeout(() => {
                         alert(
-                          "🎉 Booking confirmed! Check your email for tickets.",
+                          "🎉 AMAZING! Your booking is confirmed! 🎟️\n\n✅ Tickets sent to your email\n🎁 You've saved $" + (event.originalPrice - event.price) + "!\n📱 Add to calendar reminder sent\n🔥 Get ready for an EPIC experience!\n\nSee you there! 🚀"
                         );
                         onClose();
                       }, 1000);
@@ -1010,33 +1010,37 @@ export default function EventDetail() {
               <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border-0 shadow-2xl sticky top-24">
                 <CardContent className="p-6">
                   <div className="text-center mb-6">
-                    <div className="flex items-center justify-center gap-2 mb-2">
-                      <span className="text-3xl font-black text-gray-900">
+                    <div className="flex items-center justify-center gap-2 mb-3">
+                      <span className="text-4xl font-black bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">
                         ${event.price}
                       </span>
-                      <span className="text-lg text-gray-500 line-through">
+                      <span className="text-xl text-gray-500 line-through">
                         ${event.originalPrice}
                       </span>
                     </div>
                     <motion.div
                       animate={{
-                        scale: [1, 1.05, 1],
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 5, -5, 0],
                       }}
                       transition={{
-                        duration: 2,
+                        duration: 1.5,
                         repeat: Infinity,
                       }}
                     >
-                      <Badge className="bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full px-4 py-1">
-                        🔥{" "}
+                      <Badge className="bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full px-6 py-2 text-lg font-black">
+                        🔥 LIMITED TIME: {" "}
                         {Math.round(
                           ((event.originalPrice - event.price) /
                             event.originalPrice) *
                             100,
                         )}
-                        % OFF
+                        % OFF!
                       </Badge>
                     </motion.div>
+                    <p className="text-sm text-red-600 font-bold mt-2 animate-pulse">
+                      ⚠️ Only {event.maxCapacity - event.attendees} spots left!
+                    </p>
                   </div>
 
                   <div className="space-y-4 mb-6">
@@ -1070,9 +1074,9 @@ export default function EventDetail() {
                   >
                     <Button
                       onClick={() => setIsBookingOpen(true)}
-                      className="w-full bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white rounded-2xl py-4 text-lg font-bold shadow-2xl"
+                      className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white rounded-2xl py-6 text-xl font-black shadow-2xl transform transition-all duration-300 hover:scale-105"
                     >
-                      🎟️ Book Now
+                      🎟️ SECURE MY SPOT NOW!
                     </Button>
                   </motion.div>
 
