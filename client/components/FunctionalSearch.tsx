@@ -302,11 +302,11 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                       Vibe
                     </label>
                     <Select>
-                      <SelectTrigger className="rounded-xl">
+                      <SelectTrigger className="rounded-xl bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100">
                         <SelectValue placeholder="Any vibe" />
                       </SelectTrigger>
                       <SelectContent>
@@ -331,11 +331,11 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
           animate={{ opacity: 1, y: 0 }}
           className="mt-4"
         >
-          <Card className="bg-white/90 backdrop-blur-sm rounded-2xl border-0 shadow-lg">
+          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl border-0 shadow-lg">
             <CardContent className="p-4">
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-gray-600 dark:text-gray-400">
                 🎉 Found{" "}
-                <span className="font-bold text-unclub-blue">42 parties</span>{" "}
+                <span className="font-bold text-unclub-blue dark:text-unclub-pink">42 parties</span>{" "}
                 matching "{searchParams.query}"
               </div>
             </CardContent>
