@@ -527,7 +527,7 @@ const CreateEventModal = ({
 
                 <div>
                   <label className="block text-lg font-bold text-gray-700 mb-3">
-                    📸 Upload some stunning photos
+                    ���� Upload some stunning photos
                   </label>
                   <motion.div
                     className="border-2 border-dashed border-purple-300 rounded-2xl p-8 text-center hover:border-purple-500 transition-colors cursor-pointer bg-gradient-to-br from-purple-50 to-pink-50"
@@ -1236,6 +1236,166 @@ export default function Dashboard() {
         isOpen={isCreateModalOpen}
         onClose={() => setIsCreateModalOpen(false)}
       />
+
+      {/* Edit Event Modal */}
+      <Dialog open={isEditModalOpen} onOpenChange={setIsEditModalOpen}>
+        <DialogContent className="max-w-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-0 rounded-3xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              ✏️ Edit Event: {selectedEvent?.title}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="p-6 space-y-6">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                  Event Title
+                </label>
+                <Input
+                  defaultValue={selectedEvent?.title}
+                  className="rounded-xl border-2"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                  Date
+                </label>
+                <Input
+                  type="date"
+                  defaultValue={selectedEvent?.date}
+                  className="rounded-xl border-2"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                  Capacity
+                </label>
+                <Input
+                  type="number"
+                  defaultValue={selectedEvent?.capacity}
+                  className="rounded-xl border-2"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                  Category
+                </label>
+                <Select defaultValue={selectedEvent?.category}>
+                  <SelectTrigger className="rounded-xl border-2">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Music">🎵 Music</SelectItem>
+                    <SelectItem value="Technology">💻 Technology</SelectItem>
+                    <SelectItem value="Food & Drink">🍷 Food & Drink</SelectItem>
+                    <SelectItem value="Business">💼 Business</SelectItem>
+                    <SelectItem value="Art">🎨 Art</SelectItem>
+                    <SelectItem value="Wellness">🧘 Wellness</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <div className="flex gap-3 mt-8">
+              <Button
+                onClick={() => {
+                  toast({
+                    title: "Event Updated! 🎉",
+                    description: "Your event has been successfully updated.",
+                  });
+                  setIsEditModalOpen(false);
+                }}
+                className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-bold py-3"
+              >
+                💾 Save Changes
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setIsEditModalOpen(false)}
+                className="px-8 rounded-xl"
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Share Event Modal */}
+      <Dialog open={isShareModalOpen} onOpenChange={setIsShareModalOpen}>
+        <DialogContent className="max-w-lg bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-0 rounded-3xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              🚀 Share Your Event
+            </DialogTitle>
+          </DialogHeader>
+          <div className="p-6 space-y-6">
+            <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
+                {selectedEvent?.title}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                {selectedEvent?.attendees} people going • {selectedEvent?.date}
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <h4 className="font-semibold text-gray-900 dark:text-gray-100">Share Link</h4>
+              <div className="flex gap-2">
+                <Input
+                  value={`https://unclub.events/event/${selectedEvent?.id}`}
+                  readOnly
+                  className="rounded-xl bg-gray-50 dark:bg-gray-800"
+                />
+                <Button
+                  onClick={() => copyToClipboard(`https://unclub.events/event/${selectedEvent?.id}`, 'link')}
+                  className="px-4 rounded-xl"
+                >
+                  {copiedText === 'link' ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                </Button>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <h4 className="font-semibold text-gray-900 dark:text-gray-100">Share on Social</h4>
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { name: 'Instagram', icon: '📸', color: 'from-pink-500 to-purple-500', share: `Check out this amazing event: ${selectedEvent?.title}! 🎉` },
+                  { name: 'Twitter', icon: '🐦', color: 'from-blue-400 to-blue-600', share: `🎉 Just discovered: ${selectedEvent?.title}! Can't wait to attend. Join me?` },
+                  { name: 'LinkedIn', icon: '💼', color: 'from-blue-600 to-blue-800', share: `Excited to attend ${selectedEvent?.title} - great networking opportunity!` },
+                ].map((platform) => (
+                  <motion.button
+                    key={platform.name}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => copyToClipboard(platform.share, platform.name.toLowerCase())}
+                    className={`p-4 rounded-xl bg-gradient-to-r ${platform.color} text-white text-center font-semibold shadow-lg`}
+                  >
+                    <div className="text-2xl mb-1">{platform.icon}</div>
+                    <div className="text-xs">{platform.name}</div>
+                    {copiedText === platform.name.toLowerCase() && (
+                      <div className="text-xs mt-1">✅ Copied!</div>
+                    )}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl">
+              <div className="flex items-center gap-2 mb-2">
+                <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
+                <span className="font-semibold text-green-700 dark:text-green-300">Sharing Impact</span>
+              </div>
+              <div className="text-sm text-green-600 dark:text-green-400">
+                • {selectedEvent?.socialShares} total shares<br/>
+                • Events with high social shares sell 3x faster<br/>
+                • Share to unlock audience insights
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
