@@ -27,6 +27,15 @@ import {
   Bell,
   Crown,
   Zap,
+  Sparkles,
+  Rocket,
+  PartyPopper,
+  Gift,
+  Target,
+  Trophy,
+  Flame,
+  Magic,
+  Megaphone,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -51,102 +60,115 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 
-// Mock data for dashboard
+// Enhanced stats with more compelling data
 const dashboardStats = [
   {
-    title: "Total Events",
+    title: "Events Created",
     value: "47",
     change: "+12%",
     trend: "up",
-    icon: Calendar,
-    gradient: "from-instagram-pink to-instagram-purple",
+    icon: PartyPopper,
+    gradient: "from-pink-500 via-purple-500 to-indigo-500",
+    description: "Your parties are legendary!",
   },
   {
-    title: "Total Attendees",
+    title: "Happy Attendees",
     value: "15.2K",
     change: "+23%",
     trend: "up",
-    icon: Users,
-    gradient: "from-instagram-purple to-instagram-blue",
+    icon: Heart,
+    gradient: "from-red-500 via-pink-500 to-rose-500",
+    description: "People love your events!",
   },
   {
-    title: "Revenue",
+    title: "Total Earnings",
     value: "$89.5K",
     change: "+18%",
     trend: "up",
-    icon: DollarSign,
-    gradient: "from-instagram-orange to-instagram-yellow",
+    icon: Trophy,
+    gradient: "from-yellow-400 via-orange-500 to-red-500",
+    description: "Money & memories made!",
   },
   {
-    title: "Avg Rating",
-    value: "4.8",
+    title: "Success Rate",
+    value: "98%",
     change: "+0.2",
     trend: "up",
-    icon: Star,
-    gradient: "from-genz-mint to-genz-cyber",
+    icon: Target,
+    gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+    description: "Nearly perfect events!",
   },
 ];
 
+// More compelling event data
 const recentEvents = [
   {
     id: 1,
-    title: "Summer Music Festival 2024",
+    title: "Epic Summer Music Festival 🎵",
     date: "Jul 15, 2024",
     attendees: 2500,
     revenue: "$12,450",
-    status: "live",
-    image:
-      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    status: "sold-out",
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     category: "Music",
+    rating: 4.9,
+    highlights: ["Sold Out in 2 Hours", "500+ Photos Shared", "3 Media Features"],
   },
   {
     id: 2,
-    title: "Tech Innovation Summit",
+    title: "Exclusive Tech Innovation Summit 🚀",
     date: "Aug 22, 2024",
     attendees: 800,
     revenue: "$8,900",
     status: "upcoming",
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     category: "Technology",
+    rating: 4.8,
+    highlights: ["VIP Networking", "Industry Leaders", "Premium Location"],
   },
   {
     id: 3,
-    title: "Food & Wine Experience",
+    title: "Luxury Food & Wine Experience 🍷",
     date: "Sep 10, 2024",
     attendees: 300,
     revenue: "$4,200",
-    status: "draft",
-    image:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    status: "filling-fast",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     category: "Food & Drink",
+    rating: 4.7,
+    highlights: ["5-Star Catering", "Wine Tastings", "Celebrity Chef"],
   },
 ];
 
-const notifications = [
+// Success stories and achievements
+const achievements = [
   {
-    id: 1,
-    type: "booking",
-    message: "New booking for Summer Music Festival",
-    time: "2 minutes ago",
-    icon: "🎟️",
+    icon: "🏆",
+    title: "Host of the Month",
+    description: "Recognized for outstanding events",
+    color: "from-yellow-400 to-orange-500",
   },
   {
-    id: 2,
-    type: "review",
-    message: "New 5-star review received",
-    time: "1 hour ago",
-    icon: "⭐",
+    icon: "💎",
+    title: "Premium Host",
+    description: "Top 1% of event creators",
+    color: "from-blue-400 to-purple-500",
   },
   {
-    id: 3,
-    type: "revenue",
-    message: "Payment processed: $450",
-    time: "3 hours ago",
-    icon: "💰",
+    icon: "🌟",
+    title: "5-Star Rating",
+    description: "Consistently amazing feedback",
+    color: "from-pink-400 to-red-500",
+  },
+  {
+    icon: "🚀",
+    title: "Viral Event",
+    description: "Last event shared 10K+ times",
+    color: "from-green-400 to-teal-500",
   },
 ];
 
+// Enhanced Create Event Modal with better UX
 const CreateEventModal = ({
   isOpen,
   onClose,
@@ -168,62 +190,65 @@ const CreateEventModal = ({
   });
 
   const categories = [
-    "Music",
-    "Technology",
-    "Food & Drink",
-    "Art",
-    "Business",
-    "Wellness",
-    "Sports",
+    { name: "Music & Concerts", icon: "🎵", color: "from-purple-500 to-pink-500" },
+    { name: "Tech & Innovation", icon: "💻", color: "from-blue-500 to-cyan-500" },
+    { name: "Food & Drink", icon: "🍽️", color: "from-orange-500 to-red-500" },
+    { name: "Art & Culture", icon: "🎨", color: "from-pink-500 to-purple-500" },
+    { name: "Business & Networking", icon: "💼", color: "from-gray-600 to-gray-800" },
+    { name: "Health & Wellness", icon: "🧘", color: "from-green-500 to-teal-500" },
+    { name: "Sports & Fitness", icon: "⚽", color: "from-blue-500 to-green-500" },
+    { name: "Parties & Social", icon: "🎉", color: "from-pink-500 to-red-500" },
   ];
+
   const popularTags = [
-    "Outdoor",
-    "Live Music",
-    "Food & Drinks",
-    "All Ages",
-    "VIP Available",
-    "Photography",
+    "🌟 Premium", "🔥 Hot Event", "📸 Instagram-worthy", "🎁 Exclusive Access",
+    "🍷 VIP Experience", "🎵 Live Music", "🍕 Food Included", "🎪 All Ages",
+    "💃 Dancing", "🎨 Creative", "🏆 Competition", "🎯 Networking"
   ];
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white via-purple-50 to-pink-50 border-0 rounded-3xl">
+      <DialogContent className="max-w-5xl max-h-[95vh] overflow-y-auto bg-gradient-to-br from-white via-purple-50/50 to-pink-50/50 border-0 rounded-3xl">
         <DialogHeader>
-          <DialogTitle className="text-3xl font-black bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange bg-clip-text text-transparent">
-            Create Epic Event ✨
+          <DialogTitle className="text-4xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent text-center">
+            ✨ Create Your Epic Event ✨
           </DialogTitle>
+          <p className="text-center text-gray-600 text-lg">
+            Turn your vision into an unforgettable experience!
+          </p>
         </DialogHeader>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-6"
+          className="p-8"
         >
-          {/* Progress Steps */}
-          <div className="flex items-center justify-center gap-4 mb-8">
-            {[1, 2, 3].map((stepNum) => (
+          {/* Enhanced Progress Steps */}
+          <div className="flex items-center justify-center gap-6 mb-10">
+            {[
+              { num: 1, label: "🎯 Concept", desc: "What's your vision?" },
+              { num: 2, label: "📝 Details", desc: "Fill in the magic" },
+              { num: 3, label: "🚀 Launch", desc: "Share with the world" },
+            ].map((stepInfo) => (
               <motion.div
-                key={stepNum}
-                className={`flex items-center gap-2 ${stepNum <= step ? "text-instagram-purple" : "text-gray-400"}`}
+                key={stepInfo.num}
+                className={`flex flex-col items-center gap-2 ${stepInfo.num <= step ? "text-purple-600" : "text-gray-400"}`}
                 whileHover={{ scale: 1.05 }}
               >
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
-                    stepNum <= step
-                      ? "bg-gradient-to-r from-instagram-pink to-instagram-purple text-white"
+                  className={`w-16 h-16 rounded-2xl flex items-center justify-center font-bold text-lg shadow-lg ${
+                    stepInfo.num <= step
+                      ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white"
                       : "bg-gray-200 text-gray-500"
                   }`}
                 >
-                  {stepNum}
+                  {stepInfo.num}
                 </div>
-                <span className="font-semibold text-sm">
-                  {stepNum === 1
-                    ? "Basic Info"
-                    : stepNum === 2
-                      ? "Details"
-                      : "Preview"}
-                </span>
-                {stepNum < 3 && <div className="w-12 h-px bg-gray-300" />}
+                <div className="text-center">
+                  <div className="font-bold text-sm">{stepInfo.label}</div>
+                  <div className="text-xs opacity-70">{stepInfo.desc}</div>
+                </div>
+                {stepInfo.num < 3 && <div className="w-20 h-px bg-gradient-to-r from-purple-300 to-pink-300" />}
               </motion.div>
             ))}
           </div>
@@ -232,134 +257,101 @@ const CreateEventModal = ({
             <motion.div
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              className="space-y-6"
+              className="space-y-8"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Event Title *
-                  </label>
-                  <Input
-                    placeholder="e.g., Summer Music Festival 2024"
-                    value={eventData.title}
-                    onChange={(e) =>
-                      setEventData({ ...eventData, title: e.target.value })
-                    }
-                    className="rounded-2xl h-12 border-2 border-gray-200 focus:border-instagram-purple"
-                  />
-                </div>
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  🌟 What Amazing Event Will You Create?
+                </h3>
+                <p className="text-gray-600">
+                  Choose your category and let's build something incredible together!
+                </p>
+              </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Category *
-                  </label>
-                  <Select
-                    value={eventData.category}
-                    onValueChange={(value) =>
-                      setEventData({ ...eventData, category: value })
-                    }
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                {categories.map((cat, index) => (
+                  <motion.div
+                    key={cat.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => setEventData({ ...eventData, category: cat.name })}
+                    className={`cursor-pointer p-6 rounded-2xl text-center border-2 transition-all duration-300 ${
+                      eventData.category === cat.name
+                        ? "border-purple-500 bg-gradient-to-br from-purple-100 to-pink-100 shadow-xl"
+                        : "border-gray-200 hover:border-purple-300 hover:shadow-lg bg-white"
+                    }`}
                   >
-                    <SelectTrigger className="rounded-2xl h-12 border-2 border-gray-200">
-                      <SelectValue placeholder="Select category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {categories.map((cat) => (
-                        <SelectItem key={cat} value={cat.toLowerCase()}>
-                          {cat}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Date *
-                  </label>
-                  <Input
-                    type="date"
-                    value={eventData.date}
-                    onChange={(e) =>
-                      setEventData({ ...eventData, date: e.target.value })
-                    }
-                    className="rounded-2xl h-12 border-2 border-gray-200 focus:border-instagram-purple"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Time *
-                  </label>
-                  <Input
-                    type="time"
-                    value={eventData.time}
-                    onChange={(e) =>
-                      setEventData({ ...eventData, time: e.target.value })
-                    }
-                    className="rounded-2xl h-12 border-2 border-gray-200 focus:border-instagram-purple"
-                  />
-                </div>
-
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Location *
-                  </label>
-                  <Input
-                    placeholder="e.g., Central Park, NYC"
-                    value={eventData.location}
-                    onChange={(e) =>
-                      setEventData({ ...eventData, location: e.target.value })
-                    }
-                    className="rounded-2xl h-12 border-2 border-gray-200 focus:border-instagram-purple"
-                  />
-                </div>
+                    <div className="text-3xl mb-3">{cat.icon}</div>
+                    <h4 className="font-bold text-sm text-gray-900">{cat.name}</h4>
+                    {eventData.category === cat.name && (
+                      <motion.div
+                        className="mt-3"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                      >
+                        <Badge className={`bg-gradient-to-r ${cat.color} text-white rounded-full`}>
+                          Selected ✨
+                        </Badge>
+                      </motion.div>
+                    )}
+                  </motion.div>
+                ))}
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-6 bg-white/70 backdrop-blur-sm rounded-2xl p-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Ticket Price ($) *
+                  <label className="block text-lg font-bold text-gray-700 mb-3">
+                    ✨ Give your event a catchy name
                   </label>
                   <Input
-                    type="number"
-                    placeholder="89"
-                    value={eventData.price}
-                    onChange={(e) =>
-                      setEventData({ ...eventData, price: e.target.value })
-                    }
-                    className="rounded-2xl h-12 border-2 border-gray-200 focus:border-instagram-purple"
+                    placeholder="e.g., 'Epic Summer Rooftop Bash' or 'Exclusive VIP Wine Tasting'"
+                    value={eventData.title}
+                    onChange={(e) => setEventData({ ...eventData, title: e.target.value })}
+                    className="rounded-2xl h-14 text-lg border-2 border-gray-200 focus:border-purple-500 bg-white/80"
                   />
+                  <p className="text-sm text-gray-500 mt-2">💡 Tip: Use exciting words that make people want to attend!</p>
                 </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Capacity *
-                  </label>
-                  <Input
-                    type="number"
-                    placeholder="500"
-                    value={eventData.capacity}
-                    onChange={(e) =>
-                      setEventData({ ...eventData, capacity: e.target.value })
-                    }
-                    className="rounded-2xl h-12 border-2 border-gray-200 focus:border-instagram-purple"
-                  />
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-lg font-bold text-gray-700 mb-2">
+                      📅 When's the party?
+                    </label>
+                    <Input
+                      type="date"
+                      value={eventData.date}
+                      onChange={(e) => setEventData({ ...eventData, date: e.target.value })}
+                      className="rounded-2xl h-12 border-2 border-gray-200 focus:border-purple-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-lg font-bold text-gray-700 mb-2">
+                      ⏰ What time?
+                    </label>
+                    <Input
+                      type="time"
+                      value={eventData.time}
+                      onChange={(e) => setEventData({ ...eventData, time: e.target.value })}
+                      className="rounded-2xl h-12 border-2 border-gray-200 focus:border-purple-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-lg font-bold text-gray-700 mb-2">
+                      💰 Ticket price
+                    </label>
+                    <Input
+                      type="number"
+                      placeholder="0 for free!"
+                      value={eventData.price}
+                      onChange={(e) => setEventData({ ...eventData, price: e.target.value })}
+                      className="rounded-2xl h-12 border-2 border-gray-200 focus:border-purple-500"
+                    />
+                  </div>
                 </div>
               </div>
-
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Button
-                  onClick={() => setStep(2)}
-                  disabled={
-                    !eventData.title || !eventData.category || !eventData.date
-                  }
-                  className="w-full bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange text-white rounded-2xl h-12 font-bold"
-                >
-                  Next: Add Details →
-                </Button>
-              </motion.div>
             </motion.div>
           )}
 
@@ -367,102 +359,109 @@ const CreateEventModal = ({
             <motion.div
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              className="space-y-6"
+              className="space-y-8"
             >
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Event Description *
-                </label>
-                <Textarea
-                  placeholder="Tell people what makes your event special..."
-                  value={eventData.description}
-                  onChange={(e) =>
-                    setEventData({ ...eventData, description: e.target.value })
-                  }
-                  className="rounded-2xl min-h-[120px] border-2 border-gray-200 focus:border-instagram-purple"
-                />
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  🎨 Let's Add the Details That Matter
+                </h3>
+                <p className="text-gray-600">
+                  The magic is in the details - make your event irresistible!
+                </p>
               </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Event Images
-                </label>
-                <motion.div
-                  className="border-2 border-dashed border-gray-300 rounded-2xl p-8 text-center hover:border-instagram-purple transition-colors cursor-pointer"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600 mb-2">
-                    Drag & drop images or click to browse
-                  </p>
-                  <p className="text-sm text-gray-500">PNG, JPG up to 10MB</p>
-                  <Button variant="outline" className="mt-4 rounded-xl">
-                    Choose Files
-                  </Button>
-                </motion.div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Tags (Help people find your event)
-                </label>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {popularTags.map((tag) => (
-                    <motion.div
-                      key={tag}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Badge
-                        variant={
-                          eventData.tags.includes(tag) ? "default" : "outline"
-                        }
-                        className={`cursor-pointer rounded-full px-4 py-2 ${
-                          eventData.tags.includes(tag)
-                            ? "bg-gradient-to-r from-instagram-pink to-instagram-purple text-white"
-                            : "hover:bg-gray-100"
-                        }`}
-                        onClick={() => {
-                          if (eventData.tags.includes(tag)) {
-                            setEventData({
-                              ...eventData,
-                              tags: eventData.tags.filter((t) => t !== tag),
-                            });
-                          } else {
-                            setEventData({
-                              ...eventData,
-                              tags: [...eventData.tags, tag],
-                            });
-                          }
-                        }}
-                      >
-                        {tag}
-                      </Badge>
-                    </motion.div>
-                  ))}
+              <div className="space-y-6 bg-white/70 backdrop-blur-sm rounded-2xl p-6">
+                <div>
+                  <label className="block text-lg font-bold text-gray-700 mb-3">
+                    📍 Where's this amazing event happening?
+                  </label>
+                  <Input
+                    placeholder="e.g., 'Rooftop Terrace at The Grand Hotel' or 'My Backyard Paradise'"
+                    value={eventData.location}
+                    onChange={(e) => setEventData({ ...eventData, location: e.target.value })}
+                    className="rounded-2xl h-14 text-lg border-2 border-gray-200 focus:border-purple-500"
+                  />
                 </div>
-              </div>
 
-              <div className="flex gap-3">
-                <Button
-                  variant="outline"
-                  onClick={() => setStep(1)}
-                  className="flex-1 rounded-2xl h-12"
-                >
-                  �� Back
-                </Button>
-                <motion.div
-                  className="flex-2"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Button
-                    onClick={() => setStep(3)}
-                    className="w-full bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange text-white rounded-2xl h-12 font-bold"
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-lg font-bold text-gray-700 mb-3">
+                      👥 How many lucky people can attend?
+                    </label>
+                    <Input
+                      type="number"
+                      placeholder="e.g., 50, 100, 500"
+                      value={eventData.capacity}
+                      onChange={(e) => setEventData({ ...eventData, capacity: e.target.value })}
+                      className="rounded-2xl h-12 border-2 border-gray-200 focus:border-purple-500"
+                    />
+                    <p className="text-sm text-gray-500 mt-2">💡 Scarcity creates demand!</p>
+                  </div>
+                  <div>
+                    <label className="block text-lg font-bold text-gray-700 mb-3">
+                      🏷️ Add some exciting tags
+                    </label>
+                    <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto">
+                      {popularTags.map((tag) => (
+                        <motion.button
+                          key={tag}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => {
+                            if (eventData.tags.includes(tag)) {
+                              setEventData({ ...eventData, tags: eventData.tags.filter(t => t !== tag) });
+                            } else {
+                              setEventData({ ...eventData, tags: [...eventData.tags, tag] });
+                            }
+                          }}
+                          className={`px-3 py-1 rounded-full text-xs border-2 transition-all ${
+                            eventData.tags.includes(tag)
+                              ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white border-purple-500"
+                              : "bg-white text-gray-700 border-gray-300 hover:border-purple-400"
+                          }`}
+                        >
+                          {tag}
+                        </motion.button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-lg font-bold text-gray-700 mb-3">
+                    📖 Tell an amazing story about your event
+                  </label>
+                  <Textarea
+                    placeholder="Paint a picture with words! What will people experience? What makes this special? Why should they be excited? Include details about food, music, activities, dress code, what to bring, parking info, etc."
+                    value={eventData.description}
+                    onChange={(e) => setEventData({ ...eventData, description: e.target.value })}
+                    className="rounded-2xl min-h-[150px] border-2 border-gray-200 focus:border-purple-500 text-lg"
+                  />
+                  <p className="text-sm text-gray-500 mt-2">
+                    💡 Great descriptions get 3x more attendees!
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-lg font-bold text-gray-700 mb-3">
+                    📸 Upload some stunning photos
+                  </label>
+                  <motion.div
+                    className="border-2 border-dashed border-purple-300 rounded-2xl p-8 text-center hover:border-purple-500 transition-colors cursor-pointer bg-gradient-to-br from-purple-50 to-pink-50"
+                    whileHover={{ scale: 1.02 }}
                   >
-                    Preview Event →
-                  </Button>
-                </motion.div>
+                    <Upload className="w-16 h-16 text-purple-400 mx-auto mb-4" />
+                    <p className="text-purple-600 font-semibold mb-2">
+                      📷 Drop your amazing photos here!
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Show off the venue, food, vibes - make them want to be there!
+                    </p>
+                    <Button variant="outline" className="mt-4 rounded-xl border-purple-300 text-purple-600">
+                      Choose Photos
+                    </Button>
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
           )}
@@ -471,105 +470,139 @@ const CreateEventModal = ({
             <motion.div
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              className="space-y-6"
+              className="space-y-8"
             >
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  🎉 Event Preview
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+                  🚀 Ready to Launch Your Epic Event?
                 </h3>
-                <p className="text-gray-600">
-                  Here's how your event will look to attendees
+                <p className="text-gray-600 text-lg">
+                  You're about to create something amazing! Here's how it'll look:
                 </p>
               </div>
 
-              <Card className="bg-white/80 backdrop-blur-sm rounded-3xl border-0 shadow-xl overflow-hidden">
-                <div className="h-48 bg-gradient-to-br from-instagram-pink/20 to-instagram-purple/20 flex items-center justify-center">
-                  <Camera className="w-16 h-16 text-gray-400" />
-                  <span className="ml-3 text-gray-600">
-                    Event Image Preview
-                  </span>
+              {/* Event Preview Card */}
+              <Card className="bg-gradient-to-br from-white to-purple-50/50 backdrop-blur-sm rounded-3xl border-0 shadow-2xl overflow-hidden">
+                <div className="h-64 bg-gradient-to-br from-purple-400 via-pink-400 to-red-400 flex items-center justify-center relative overflow-hidden">
+                  <Camera className="w-20 h-20 text-white/50" />
+                  <div className="absolute inset-0 bg-black/20" />
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-white/90 text-purple-600 rounded-full px-4 py-2 font-bold">
+                      🔥 {eventData.category || "Your Category"}
+                    </Badge>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full px-4 py-2 font-bold">
+                      ⭐ Featured Event
+                    </Badge>
+                  </div>
                 </div>
 
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <Badge className="mb-2 bg-gradient-to-r from-instagram-pink to-instagram-purple text-white">
-                        {eventData.category}
-                      </Badge>
-                      <h2 className="text-2xl font-bold text-gray-900">
-                        {eventData.title}
+                <CardContent className="p-8">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex-1">
+                      <h2 className="text-3xl font-black text-gray-900 mb-2">
+                        {eventData.title || "Your Amazing Event Title"}
                       </h2>
+                      <p className="text-gray-600 mb-4">
+                        {eventData.description || "Your compelling event description will appear here..."}
+                      </p>
                     </div>
-                    <div className="text-right">
-                      <div className="text-2xl font-bold text-gray-900">
-                        ${eventData.price}
+                    <div className="text-right ml-6">
+                      <div className="text-4xl font-black bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">
+                        ${eventData.price || "0"}
                       </div>
-                      <div className="text-sm text-gray-600">
-                        {eventData.capacity} spots
+                      <div className="text-sm text-gray-600 font-semibold">
+                        {eventData.capacity || "∞"} spots available
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 text-gray-600 mb-4">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
-                      {eventData.date}
+                  <div className="grid grid-cols-3 gap-4 mb-6 text-center">
+                    <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl">
+                      <Calendar className="w-6 h-6 text-blue-600 mx-auto mb-2" />
+                      <div className="font-bold text-blue-600">{eventData.date || "Date TBD"}</div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      {eventData.time}
+                    <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl">
+                      <Clock className="w-6 h-6 text-purple-600 mx-auto mb-2" />
+                      <div className="font-bold text-purple-600">{eventData.time || "Time TBD"}</div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      {eventData.location}
+                    <div className="p-4 bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl">
+                      <MapPin className="w-6 h-6 text-pink-600 mx-auto mb-2" />
+                      <div className="font-bold text-pink-600">{eventData.location || "Location TBD"}</div>
                     </div>
                   </div>
 
-                  <p className="text-gray-700 mb-4">{eventData.description}</p>
+                  {eventData.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {eventData.tags.map((tag) => (
+                        <Badge key={tag} className="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 rounded-full px-3 py-1">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
 
-                  <div className="flex flex-wrap gap-2">
-                    {eventData.tags.map((tag) => (
-                      <Badge
-                        key={tag}
-                        variant="outline"
-                        className="rounded-full"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
+                  <div className="grid grid-cols-2 gap-4">
+                    <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl font-bold py-4">
+                      🎟️ Get Tickets Now
+                    </Button>
+                    <Button variant="outline" size="lg" className="border-2 border-purple-300 text-purple-600 rounded-2xl font-bold py-4">
+                      ❤️ Save Event
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
 
-              <div className="flex gap-3">
-                <Button
-                  variant="outline"
-                  onClick={() => setStep(2)}
-                  className="flex-1 rounded-2xl h-12"
-                >
-                  ← Edit Details
-                </Button>
+              {/* Launch Button */}
+              <div className="text-center">
                 <motion.div
-                  className="flex-2"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <Button
                     onClick={() => {
-                      // Handle event creation
                       setTimeout(() => {
-                        alert("🎉 Event created successfully!");
+                        alert("🎉 Congratulations! Your event is now LIVE and ready to take bookings! 🚀\n\nPeople can now discover and book your amazing event. Get ready for an incredible response!");
                         onClose();
                       }, 1000);
                     }}
-                    className="w-full bg-gradient-to-r from-genz-mint via-instagram-blue to-genz-cyber text-white rounded-2xl h-12 font-bold"
+                    className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 hover:from-purple-700 hover:via-pink-700 hover:to-red-700 text-white px-16 py-6 rounded-3xl text-2xl font-black shadow-2xl"
                   >
-                    🚀 Publish Event
+                    🚀 LAUNCH MY EPIC EVENT! 🎉
                   </Button>
                 </motion.div>
+                <p className="text-gray-600 mt-4 text-lg">
+                  Your event will be live instantly and people can start booking!
+                </p>
               </div>
             </motion.div>
           )}
+
+          {/* Navigation */}
+          <div className="flex justify-between mt-12 pt-8 border-t border-gray-200">
+            <Button
+              onClick={() => setStep(step - 1)}
+              disabled={step === 1}
+              variant="outline"
+              className="px-8 py-4 rounded-2xl font-bold disabled:opacity-50 text-lg"
+            >
+              ← Back
+            </Button>
+
+            {step < 3 && (
+              <Button
+                onClick={() => setStep(step + 1)}
+                disabled={
+                  (step === 1 && (!eventData.category || !eventData.title)) ||
+                  (step === 2 && (!eventData.location || !eventData.description))
+                }
+                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-bold disabled:opacity-50 text-lg"
+              >
+                Next Step →
+              </Button>
+            )}
+          </div>
         </motion.div>
       </DialogContent>
     </Dialog>
@@ -581,449 +614,357 @@ export default function Dashboard() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-orange-50">
-      {/* Header */}
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-red-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-pink-900/20">
+      {/* Mega Hero Section */}
       <motion.div
-        className="bg-white/90 backdrop-blur-md border-b border-gray-200/50 sticky top-20 z-30"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
+        className="relative bg-gradient-to-br from-purple-600 via-pink-600 to-red-600 overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <div>
+        {/* Animated Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-white/10"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                width: `${20 + Math.random() * 60}px`,
+                height: `${20 + Math.random() * 60}px`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0.3, 0.8, 0.3],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-6 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               <motion.h1
-                className="text-4xl font-black bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange bg-clip-text text-transparent"
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
+                className="text-6xl lg:text-7xl font-black text-white mb-6 leading-tight"
+                animate={{
+                  textShadow: [
+                    "0 0 20px rgba(255,255,255,0.5)",
+                    "0 0 40px rgba(255,255,255,0.8)",
+                    "0 0 20px rgba(255,255,255,0.5)",
+                  ],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                }}
               >
-                Host Dashboard
+                CREATE
+                <br />
+                <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+                  EPIC
+                </span>
+                <br />
+                EVENTS! 🚀
               </motion.h1>
-              <motion.p
-                className="text-gray-600 mt-1"
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.1 }}
-              >
-                Manage your events and grow your community 🚀
-              </motion.p>
-            </div>
+              
+              <p className="text-2xl text-white/90 mb-8 leading-relaxed">
+                Turn your ideas into <span className="font-bold text-yellow-300">unforgettable experiences</span> that people will talk about forever!
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    onClick={() => setIsCreateModalOpen(true)}
+                    className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black px-12 py-6 rounded-3xl text-xl font-black shadow-2xl"
+                  >
+                    🎉 CREATE MY EVENT NOW!
+                  </Button>
+                </motion.div>
+                
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    variant="outline"
+                    className="border-3 border-white/50 text-white hover:bg-white/10 px-8 py-6 rounded-3xl text-lg font-bold backdrop-blur-sm"
+                  >
+                    📊 View My Stats
+                  </Button>
+                </motion.div>
+              </div>
+
+              <div className="flex items-center gap-8 mt-8 text-white/80">
+                <div className="text-center">
+                  <div className="text-3xl font-black text-yellow-300">15.2K</div>
+                  <div className="text-sm">Happy Attendees</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-black text-yellow-300">98%</div>
+                  <div className="text-sm">Success Rate</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-black text-yellow-300">$89K</div>
+                  <div className="text-sm">Earned</div>
+                </div>
+              </div>
+            </motion.div>
 
             <motion.div
-              initial={{ x: 20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative"
             >
-              <Button
-                onClick={() => setIsCreateModalOpen(true)}
-                className="bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white rounded-2xl px-6 py-3 font-bold shadow-xl"
-              >
-                <Plus className="w-5 h-5 mr-2" />
-                Create Event
-              </Button>
+              {/* Achievement Cards */}
+              <div className="grid grid-cols-2 gap-4">
+                {achievements.map((achievement, index) => (
+                  <motion.div
+                    key={achievement.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 + index * 0.1 }}
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    className="bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-xl"
+                  >
+                    <div className="text-3xl mb-3">{achievement.icon}</div>
+                    <h3 className="font-bold text-gray-900 mb-1">{achievement.title}</h3>
+                    <p className="text-sm text-gray-600">{achievement.description}</p>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
       </motion.div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* Stats Cards */}
+      {/* Stats Section */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.8 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+            Your Event Empire 👑
+          </h2>
+          <p className="text-xl text-gray-600">
+            Look how amazing you're doing! Every number tells a success story.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1 }}
         >
           {dashboardStats.map((stat, index) => (
             <motion.div
               key={stat.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 + index * 0.1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ delay: 1.1 + index * 0.1 }}
+              whileHover={{ y: -10, scale: 1.05 }}
+              className="group cursor-pointer"
             >
-              <Card className="bg-white/80 backdrop-blur-sm rounded-3xl border-0 shadow-xl overflow-hidden">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <motion.div
-                      className={`w-12 h-12 bg-gradient-to-br ${stat.gradient} rounded-2xl flex items-center justify-center shadow-lg`}
-                      whileHover={{ rotate: 5, scale: 1.1 }}
-                    >
-                      <stat.icon className="w-6 h-6 text-white" />
-                    </motion.div>
-                    <Badge
-                      className={`bg-gradient-to-r ${stat.gradient} text-white rounded-full px-3 py-1`}
-                    >
-                      {stat.change}
+              <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl border-0 shadow-xl overflow-hidden transition-all duration-300 group-hover:shadow-2xl">
+                <CardContent className="p-8 text-center">
+                  <motion.div
+                    className={`w-20 h-20 bg-gradient-to-br ${stat.gradient} rounded-3xl flex items-center justify-center shadow-lg mx-auto mb-6`}
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <stat.icon className="w-10 h-10 text-white" />
+                  </motion.div>
+                  
+                  <div className="space-y-2">
+                    <h3 className="text-4xl font-black text-gray-900 dark:text-white">
+                      {stat.value}
+                    </h3>
+                    <p className="text-lg font-bold text-gray-700 dark:text-gray-300">{stat.title}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{stat.description}</p>
+                    <Badge className={`bg-gradient-to-r ${stat.gradient} text-white rounded-full px-4 py-2 font-bold`}>
+                      {stat.change} ↗️
                     </Badge>
                   </div>
-                  <h3 className="text-3xl font-black text-gray-900 mb-1">
-                    {stat.value}
-                  </h3>
-                  <p className="text-gray-600 text-sm">{stat.title}</p>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column - Events & Analytics */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Events Table */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              <Card className="bg-white/80 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-2xl font-bold text-gray-900">
-                      Your Events
-                    </CardTitle>
-                    <div className="flex items-center gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="rounded-xl"
-                      >
-                        <Filter className="w-4 h-4 mr-2" />
-                        Filter
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="rounded-xl"
-                      >
-                        <Download className="w-4 h-4 mr-2" />
-                        Export
-                      </Button>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {recentEvents.map((event, index) => (
-                      <motion.div
-                        key={event.id}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.7 + index * 0.1 }}
-                        whileHover={{ x: 5, scale: 1.01 }}
-                        className="p-4 rounded-2xl bg-gradient-to-r from-gray-50 to-white border border-gray-200 hover:shadow-lg transition-all duration-300"
-                      >
-                        <div className="flex items-center gap-4">
-                          <motion.img
-                            src={event.image}
-                            alt={event.title}
-                            className="w-20 h-20 object-cover rounded-2xl"
-                            whileHover={{ scale: 1.1 }}
-                          />
-
-                          <div className="flex-1">
-                            <div className="flex items-start justify-between mb-2">
-                              <div>
-                                <h3 className="font-bold text-lg text-gray-900">
-                                  {event.title}
-                                </h3>
-                                <p className="text-gray-600 text-sm">
-                                  {event.date} • {event.category}
-                                </p>
-                              </div>
-                              <Badge
-                                className={`rounded-full px-3 py-1 ${
-                                  event.status === "live"
-                                    ? "bg-gradient-to-r from-green-500 to-emerald-500 text-white"
-                                    : event.status === "upcoming"
-                                      ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white"
-                                      : "bg-gradient-to-r from-gray-500 to-gray-600 text-white"
-                                }`}
-                              >
-                                {event.status}
-                              </Badge>
-                            </div>
-
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-4 text-sm text-gray-600">
-                                <div className="flex items-center gap-1">
-                                  <Users className="w-4 h-4" />
-                                  {event.attendees}
-                                </div>
-                                <div className="flex items-center gap-1">
-                                  <DollarSign className="w-4 h-4" />
-                                  {event.revenue}
-                                </div>
-                              </div>
-
-                              <div className="flex items-center gap-2">
-                                <motion.div
-                                  whileHover={{ scale: 1.1 }}
-                                  whileTap={{ scale: 0.9 }}
-                                >
-                                  <Button
-                                    variant="outline"
-                                    size="sm"
-                                    className="rounded-xl"
-                                  >
-                                    <Eye className="w-4 h-4" />
-                                  </Button>
-                                </motion.div>
-                                <motion.div
-                                  whileHover={{ scale: 1.1 }}
-                                  whileTap={{ scale: 0.9 }}
-                                >
-                                  <Button
-                                    variant="outline"
-                                    size="sm"
-                                    className="rounded-xl"
-                                  >
-                                    <Edit className="w-4 h-4" />
-                                  </Button>
-                                </motion.div>
-                                <motion.div
-                                  whileHover={{ scale: 1.1 }}
-                                  whileTap={{ scale: 0.9 }}
-                                >
-                                  <Button
-                                    variant="outline"
-                                    size="sm"
-                                    className="rounded-xl text-red-600 hover:bg-red-50"
-                                  >
-                                    <Trash2 className="w-4 h-4" />
-                                  </Button>
-                                </motion.div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Analytics Chart Placeholder */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-            >
-              <Card className="bg-white/80 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
-                <CardHeader>
-                  <CardTitle className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-                    <BarChart3 className="w-6 h-6 text-instagram-purple" />
-                    Analytics Overview
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="h-64 bg-gradient-to-br from-instagram-pink/10 to-instagram-purple/10 rounded-2xl flex items-center justify-center">
-                    <div className="text-center">
-                      <TrendingUp className="w-16 h-16 text-instagram-purple mx-auto mb-4" />
-                      <p className="text-gray-600 font-semibold">
-                        📊 Interactive Charts Coming Soon!
-                      </p>
-                      <p className="text-sm text-gray-500 mt-2">
-                        Track your event performance with detailed analytics
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-
-          {/* Right Column - Notifications & Quick Actions */}
-          <div className="space-y-6">
-            {/* Profile Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <Card className="bg-white/80 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
-                <CardContent className="p-6 text-center">
-                  <motion.div
-                    whileHover={{ scale: 1.05, rotate: 5 }}
-                    className="relative mb-4"
-                  >
-                    <Avatar className="w-20 h-20 mx-auto border-4 border-white shadow-xl">
-                      <AvatarImage
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-                        alt="John Doe"
-                      />
-                      <AvatarFallback>JD</AvatarFallback>
-                    </Avatar>
-                    <motion.div
-                      className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-instagram-yellow to-instagram-orange rounded-full flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        rotate: [0, 10, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                      }}
-                    >
-                      <Crown className="w-4 h-4 text-white" />
-                    </motion.div>
-                  </motion.div>
-
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">
-                    John Doe
-                  </h3>
-                  <Badge className="mb-3 bg-gradient-to-r from-instagram-pink to-instagram-purple text-white rounded-full px-4 py-1">
-                    ⭐ Pro Host
+        {/* Events Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.4 }}
+        >
+          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl border-0 shadow-2xl">
+            <CardHeader className="pb-8">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-3xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-3">
+                  <Sparkles className="w-8 h-8 text-purple-500" />
+                  Your Epic Events
+                </CardTitle>
+                <div className="flex items-center gap-3">
+                  <Badge className="bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full px-4 py-2 font-bold">
+                    🔥 {recentEvents.length} Active Events
                   </Badge>
-
-                  <div className="grid grid-cols-2 gap-4 text-center mb-4">
-                    <div>
-                      <div className="text-2xl font-bold text-instagram-purple">
-                        47
-                      </div>
-                      <div className="text-xs text-gray-600">Events</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-instagram-orange">
-                        4.8
-                      </div>
-                      <div className="text-xs text-gray-600">Rating</div>
-                    </div>
-                  </div>
-
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                  <Button
+                    onClick={() => setIsCreateModalOpen(true)}
+                    className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl font-bold px-6 py-3"
                   >
-                    <Button variant="outline" className="w-full rounded-2xl">
-                      <Settings className="w-4 h-4 mr-2" />
-                      Profile Settings
-                    </Button>
-                  </motion.div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Notifications */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <Card className="bg-white/80 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
-                <CardHeader>
-                  <CardTitle className="text-lg font-bold text-gray-900 flex items-center gap-2">
-                    <Bell className="w-5 h-5 text-instagram-purple" />
-                    Recent Activity
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {notifications.map((notification, index) => (
+                    <Plus className="w-5 h-5 mr-2" />
+                    Create New
+                  </Button>
+                </div>
+              </div>
+            </CardHeader>
+            
+            <CardContent>
+              <div className="space-y-6">
+                {recentEvents.map((event, index) => (
+                  <motion.div
+                    key={event.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.5 + index * 0.1 }}
+                    whileHover={{ x: 8, scale: 1.02 }}
+                    className="group p-6 rounded-3xl bg-gradient-to-r from-white to-purple-50/50 border-2 border-transparent hover:border-purple-200 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
+                    <div className="flex items-center gap-6">
                       <motion.div
-                        key={notification.id}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.6 + index * 0.1 }}
-                        whileHover={{ x: 5, scale: 1.02 }}
-                        className="flex items-start gap-3 p-3 rounded-2xl bg-gradient-to-r from-gray-50 to-white hover:shadow-md transition-all duration-300"
+                        className="relative overflow-hidden rounded-2xl"
+                        whileHover={{ scale: 1.1 }}
                       >
-                        <motion.div
-                          className="w-10 h-10 bg-gradient-to-br from-instagram-pink/20 to-instagram-purple/20 rounded-full flex items-center justify-center"
-                          whileHover={{ rotate: 10, scale: 1.1 }}
-                        >
-                          <span className="text-xl">{notification.icon}</span>
-                        </motion.div>
-                        <div className="flex-1">
-                          <p className="text-sm font-medium text-gray-900">
-                            {notification.message}
-                          </p>
-                          <p className="text-xs text-gray-500">
-                            {notification.time}
-                          </p>
-                        </div>
+                        <img
+                          src={event.image}
+                          alt={event.title}
+                          className="w-24 h-24 object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20" />
                       </motion.div>
-                    ))}
-                  </div>
 
-                  <motion.div
-                    className="mt-4"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Button variant="outline" className="w-full rounded-2xl">
-                      View All Notifications
-                    </Button>
-                  </motion.div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Quick Actions */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              <Card className="bg-white/80 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
-                <CardHeader>
-                  <CardTitle className="text-lg font-bold text-gray-900 flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-instagram-yellow" />
-                    Quick Actions
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 gap-3">
-                    {[
-                      {
-                        name: "Share Event",
-                        icon: Share2,
-                        gradient: "from-instagram-pink to-instagram-purple",
-                      },
-                      {
-                        name: "Check Analytics",
-                        icon: BarChart3,
-                        gradient: "from-instagram-purple to-instagram-blue",
-                      },
-                      {
-                        name: "Edit Profile",
-                        icon: Settings,
-                        gradient: "from-instagram-orange to-instagram-yellow",
-                      },
-                      {
-                        name: "Support",
-                        icon: Heart,
-                        gradient: "from-genz-mint to-genz-cyber",
-                      },
-                    ].map((action) => (
-                      <motion.div
-                        key={action.name}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Button
-                          variant="outline"
-                          className={`w-full h-20 rounded-2xl bg-gradient-to-br ${action.gradient} text-white border-0 hover:opacity-90 transition-all duration-300 shadow-lg`}
-                        >
-                          <div className="text-center">
-                            <action.icon className="w-6 h-6 mx-auto mb-1" />
-                            <div className="text-xs font-semibold">
-                              {action.name}
+                      <div className="flex-1">
+                        <div className="flex items-start justify-between mb-4">
+                          <div>
+                            <h3 className="text-xl font-black text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
+                              {event.title}
+                            </h3>
+                            <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                              <span className="flex items-center gap-1">
+                                <Calendar className="w-4 h-4" />
+                                {event.date}
+                              </span>
+                              <span className="flex items-center gap-1">
+                                <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                                {event.rating}
+                              </span>
                             </div>
                           </div>
-                        </Button>
-                      </motion.div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
+                          
+                          <Badge
+                            className={`rounded-full px-4 py-2 font-bold ${
+                              event.status === "sold-out"
+                                ? "bg-gradient-to-r from-red-500 to-pink-500 text-white"
+                                : event.status === "upcoming"
+                                  ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white"
+                                  : "bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
+                            }`}
+                          >
+                            {event.status === "sold-out" ? "🔥 SOLD OUT" : 
+                             event.status === "upcoming" ? "📅 UPCOMING" : 
+                             "⚡ FILLING FAST"}
+                          </Badge>
+                        </div>
+
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-6 text-sm">
+                            <div className="flex items-center gap-1 font-semibold">
+                              <Users className="w-4 h-4 text-purple-500" />
+                              <span className="text-purple-600">{event.attendees}</span>
+                            </div>
+                            <div className="flex items-center gap-1 font-semibold">
+                              <DollarSign className="w-4 h-4 text-green-500" />
+                              <span className="text-green-600">{event.revenue}</span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                              <Button variant="outline" size="sm" className="rounded-xl border-purple-200 text-purple-600 hover:bg-purple-50">
+                                <Eye className="w-4 h-4" />
+                              </Button>
+                            </motion.div>
+                            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                              <Button variant="outline" size="sm" className="rounded-xl border-blue-200 text-blue-600 hover:bg-blue-50">
+                                <Edit className="w-4 h-4" />
+                              </Button>
+                            </motion.div>
+                            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                              <Button variant="outline" size="sm" className="rounded-xl border-pink-200 text-pink-600 hover:bg-pink-50">
+                                <Share2 className="w-4 h-4" />
+                              </Button>
+                            </motion.div>
+                          </div>
+                        </div>
+
+                        {event.highlights && (
+                          <div className="flex flex-wrap gap-2 mt-4">
+                            {event.highlights.map((highlight, idx) => (
+                              <Badge key={idx} variant="outline" className="text-xs rounded-full bg-gradient-to-r from-purple-50 to-pink-50 text-purple-700 border-purple-200">
+                                ✨ {highlight}
+                              </Badge>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.div
+                className="text-center mt-12"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2 }}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    onClick={() => setIsCreateModalOpen(true)}
+                    className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 hover:from-purple-700 hover:via-pink-700 hover:to-red-700 text-white px-12 py-6 rounded-3xl text-xl font-black shadow-2xl"
+                  >
+                    <Rocket className="w-6 h-6 mr-3" />
+                    CREATE ANOTHER EPIC EVENT! 🎉
+                  </Button>
+                </motion.div>
+                <p className="text-gray-600 mt-4 text-lg">
+                  Ready to create more unforgettable memories?
+                </p>
+              </motion.div>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
 
       {/* Create Event Modal */}
