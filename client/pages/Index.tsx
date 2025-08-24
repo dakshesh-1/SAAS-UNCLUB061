@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GenZFloatingElements } from "@/components/GenZFloatingElements";
+import { FunctionalSearch } from "@/components/FunctionalSearch";
 
 // Mock event data
 const featuredEvents = [
@@ -143,7 +144,7 @@ const EventCard = ({ event, index }: { event: typeof featuredEvents[0], index: n
               <Link to={`/event/${event.id}`}>
                 <Button
                   size="sm"
-                  className="bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white rounded-xl shadow-lg"
+                  className="bg-gradient-to-r from-unclub-blue via-unclub-pink to-unclub-red hover:from-unclub-pink hover:to-unclub-blue text-white rounded-xl shadow-lg"
                 >
                   View Details
                 </Button>
@@ -203,7 +204,7 @@ const SearchBar = () => {
             whileTap={{ scale: 0.98 }}
           >
             <Button 
-              className="w-full h-11 bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white rounded-xl font-semibold shadow-lg"
+              className="w-full h-11 bg-gradient-to-r from-unclub-blue via-unclub-pink to-unclub-red hover:from-unclub-pink hover:to-unclub-blue text-white rounded-xl font-semibold shadow-lg"
             >
               <Search className="w-5 h-5 mr-2" />
               Search Events
@@ -244,14 +245,14 @@ const SearchBar = () => {
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-instagram-pink/20 via-instagram-purple/20 to-instagram-orange/20">
+    <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20">
       {/* GenZ Floating Elements */}
       <GenZFloatingElements />
 
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-instagram-pink/30 to-instagram-purple/30 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-unclub-blue/30 to-unclub-pink/30 rounded-full blur-3xl"
           animate={{
             x: [0, 50, 0],
             y: [0, -30, 0],
@@ -264,7 +265,7 @@ export default function Index() {
           }}
         />
         <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-instagram-orange/30 to-genz-neon/30 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-unclub-red/30 to-party-pink/30 rounded-full blur-3xl"
           animate={{
             x: [0, -50, 0],
             y: [0, 30, 0],
@@ -286,13 +287,13 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange bg-clip-text text-transparent mb-6">
-              Discover Amazing
+            <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-unclub-blue via-unclub-pink to-unclub-red bg-clip-text text-transparent mb-6">
+              Find Your Next
               <br />
               <span className="relative">
-                Events
+                Party
                 <motion.div
-                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-instagram-pink to-instagram-purple rounded-full"
+                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-unclub-pink to-unclub-red rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 1, duration: 0.8 }}
@@ -307,11 +308,11 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Find and book the perfect events for every occasion. From concerts to conferences, 
-            we have something for everyone.
+            Discover the hottest parties, coolest events, and most exclusive gatherings.
+            Your next unforgettable experience is just a click away! 🎉
           </motion.p>
           
-          <SearchBar />
+          <FunctionalSearch />
         </div>
       </section>
 
@@ -351,9 +352,9 @@ export default function Index() {
               <Link to="/events">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white px-8 py-3 rounded-2xl font-semibold shadow-xl"
+                  className="bg-gradient-to-r from-unclub-blue via-unclub-pink to-unclub-red hover:from-unclub-pink hover:to-unclub-blue text-white px-8 py-3 rounded-2xl font-semibold shadow-xl"
                 >
-                  Explore All Events
+                  Find More Parties
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
@@ -381,7 +382,7 @@ export default function Index() {
                 whileHover={{ y: -5 }}
               >
                 <motion.div
-                  className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-instagram-pink via-instagram-purple to-instagram-orange text-white rounded-2xl mb-4 shadow-lg"
+                  className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-unclub-blue via-unclub-pink to-unclub-red text-white rounded-2xl mb-4 shadow-lg"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                 >
                   <stat.icon className="w-8 h-8" />
