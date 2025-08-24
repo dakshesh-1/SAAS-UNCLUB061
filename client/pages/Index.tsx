@@ -244,7 +244,10 @@ const SearchBar = () => {
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-instagram-pink/20 via-instagram-purple/20 to-instagram-orange/20">
+      {/* GenZ Floating Elements */}
+      <GenZFloatingElements />
+
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div

@@ -445,6 +445,9 @@ export default function Events() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-instagram-pink/20 via-instagram-purple/20 to-instagram-orange/20">
+      {/* GenZ Particles */}
+      <GenZParticles />
+
       {/* Header */}
       <motion.div
         className="bg-white/90 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-30"
