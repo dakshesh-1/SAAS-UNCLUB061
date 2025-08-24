@@ -31,24 +31,21 @@ const socialProviders = [
     icon: "🔥",
     gradient: "from-red-500 to-orange-500",
     hoverGradient: "from-red-600 to-orange-600",
-  },
-  {
-    name: "Apple",
-    icon: "🍎",
-    gradient: "from-gray-800 to-gray-900",
-    hoverGradient: "from-gray-900 to-black",
+    textColor: "text-white",
   },
   {
     name: "Instagram",
     icon: "📸",
-    gradient: "from-instagram-pink via-instagram-purple to-instagram-orange",
-    hoverGradient: "from-instagram-purple via-instagram-pink to-instagram-red",
+    gradient: "from-pink-500 via-purple-500 to-orange-500",
+    hoverGradient: "from-pink-600 via-purple-600 to-orange-600",
+    textColor: "text-white",
   },
   {
     name: "TikTok",
     icon: "🎵",
-    gradient: "from-gray-900 to-red-600",
-    hoverGradient: "from-black to-red-700",
+    gradient: "from-gray-900 to-red-500",
+    hoverGradient: "from-black to-red-600",
+    textColor: "text-white",
   },
 ];
 
@@ -144,7 +141,7 @@ const AuthForm = ({
               >
                 <Button
                   variant="outline"
-                  className={`w-full h-12 bg-gradient-to-r ${provider.gradient} hover:${provider.hoverGradient} text-white border-0 rounded-2xl font-semibold shadow-lg transition-all duration-300`}
+                  className={`w-full h-12 bg-gradient-to-r ${provider.gradient} hover:${provider.hoverGradient} ${provider.textColor} border-0 rounded-2xl font-semibold shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02]`}
                 >
                   <span className="text-xl mr-3">{provider.icon}</span>
                   Continue with {provider.name}
