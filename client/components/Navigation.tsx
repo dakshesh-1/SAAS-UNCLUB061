@@ -1,7 +1,7 @@
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, Calendar, User, Shield, Menu, X, Search, Bell, Plus, Heart, MessageCircle } from "lucide-react";
+import { Home, Calendar, User, Plus, Menu, X, Search, Bell, Zap, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -10,31 +10,31 @@ const navItems = [
     name: "Discover", 
     path: "/", 
     icon: Home,
-    gradient: "from-instagram-pink via-instagram-purple to-instagram-orange"
+    gradient: "from-unclub-blue via-unclub-pink to-unclub-red"
   },
   { 
     name: "Events", 
     path: "/events", 
     icon: Calendar,
-    gradient: "from-genz-electric via-genz-cyber to-instagram-blue"
+    gradient: "from-party-blue via-unclub-electric to-party-neon"
   },
   { 
     name: "Create", 
     path: "/dashboard", 
     icon: Plus,
-    gradient: "from-genz-sunset via-instagram-yellow to-genz-mint"
+    gradient: "from-unclub-pink via-party-red to-unclub-coral"
   },
   { 
     name: "Profile", 
-    path: "/admin", 
+    path: "/profile", 
     icon: User,
-    gradient: "from-genz-neon via-genz-lavender to-instagram-purple"
+    gradient: "from-party-electric via-unclub-hotpink to-party-pink"
   }
 ];
 
 const floatingIcons = [
-  { icon: Heart, delay: 0, duration: 3, range: 20 },
-  { icon: MessageCircle, delay: 1, duration: 4, range: 25 },
+  { icon: Sparkles, delay: 0, duration: 3, range: 20 },
+  { icon: Zap, delay: 1, duration: 4, range: 25 },
   { icon: Plus, delay: 2, duration: 3.5, range: 30 },
 ];
 
@@ -45,8 +45,8 @@ export function Navigation() {
   const location = useLocation();
   const { scrollY } = useScroll();
   
-  const backgroundOpacity = useTransform(scrollY, [0, 100], [0.8, 0.95]);
-  const blurAmount = useTransform(scrollY, [0, 100], [8, 20]);
+  const backgroundOpacity = useTransform(scrollY, [0, 100], [0.85, 0.95]);
+  const blurAmount = useTransform(scrollY, [0, 100], [12, 24]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,14 +65,14 @@ export function Navigation() {
             key={index}
             className="absolute"
             style={{
-              left: `${20 + index * 30}%`,
-              top: `${10 + index * 20}%`,
+              left: `${15 + index * 25}%`,
+              top: `${8 + index * 18}%`,
             }}
             animate={{
               y: [-item.range, item.range, -item.range],
               x: [-item.range/2, item.range/2, -item.range/2],
               rotate: [0, 180, 360],
-              scale: [1, 1.2, 1],
+              scale: [1, 1.3, 1],
             }}
             transition={{
               duration: item.duration,
@@ -81,8 +81,8 @@ export function Navigation() {
               ease: "easeInOut",
             }}
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-instagram-pink/20 to-instagram-purple/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-              <item.icon className="w-4 h-4 text-instagram-purple/60" />
+            <div className="w-10 h-10 bg-gradient-to-br from-unclub-blue/25 to-unclub-pink/25 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20">
+              <item.icon className="w-5 h-5 text-unclub-blue/70" />
             </div>
           </motion.div>
         ))}
@@ -92,9 +92,9 @@ export function Navigation() {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
           background: `linear-gradient(135deg, 
-            hsl(var(--instagram-pink) / ${backgroundOpacity}), 
-            hsl(var(--instagram-purple) / ${backgroundOpacity}), 
-            hsl(var(--instagram-orange) / ${backgroundOpacity}))`,
+            hsl(var(--unclub-blue) / ${backgroundOpacity}), 
+            hsl(var(--unclub-pink) / ${backgroundOpacity}), 
+            hsl(var(--unclub-red) / ${backgroundOpacity}))`,
           backdropFilter: `blur(${blurAmount}px)`,
         }}
         initial={{ y: -100 }}
@@ -103,12 +103,12 @@ export function Navigation() {
       >
         {/* Animated background gradient overlay */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-instagram-pink/30 via-instagram-purple/30 to-instagram-orange/30"
+          className="absolute inset-0 bg-gradient-to-r from-unclub-blue/30 via-unclub-pink/30 to-unclub-red/30"
           animate={{
             backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
           }}
           transition={{
-            duration: 8,
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -117,63 +117,73 @@ export function Navigation() {
           }}
         />
 
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16 sm:h-18">
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="relative"
             >
-              <Link to="/" className="flex items-center space-x-3">
+              <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
                 <motion.div
-                  className="relative w-12 h-12 bg-gradient-to-br from-instagram-pink via-instagram-purple to-instagram-orange rounded-3xl flex items-center justify-center shadow-2xl"
+                  className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-unclub-blue via-unclub-pink to-unclub-red rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-2xl"
                   whileHover={{ 
-                    rotate: [0, -5, 5, 0],
+                    rotate: [0, -8, 8, 0],
                     scale: 1.1 
                   }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.4 }}
                 >
                   <motion.div
                     animate={{
                       rotate: [0, 360],
                     }}
                     transition={{
-                      duration: 10,
+                      duration: 8,
                       repeat: Infinity,
                       ease: "linear",
                     }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-3xl"
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-2xl sm:rounded-3xl"
                   />
-                  <Calendar className="w-7 h-7 text-white relative z-10" />
-                </motion.div>
-                <div className="hidden sm:block">
-                  <motion.span 
-                    className="text-3xl font-black bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent"
-                    whileHover={{
-                      backgroundImage: "linear-gradient(45deg, #fff, #fef7cd, #fff)",
-                    }}
-                  >
-                    EventVibe
-                  </motion.span>
                   <motion.div
-                    className="text-xs font-semibold text-white/80 tracking-wider uppercase"
                     animate={{
-                      opacity: [0.6, 1, 0.6],
+                      scale: [1, 1.1, 1],
                     }}
                     transition={{
-                      duration: 3,
+                      duration: 2,
                       repeat: Infinity,
                     }}
                   >
-                    Gen Z Events
+                    <Zap className="w-5 h-5 sm:w-7 sm:h-7 text-white relative z-10" />
+                  </motion.div>
+                </motion.div>
+                <div className="hidden sm:block">
+                  <motion.span 
+                    className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent"
+                    whileHover={{
+                      backgroundImage: "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
+                    }}
+                  >
+                    UnClub
+                  </motion.span>
+                  <motion.div
+                    className="text-xs font-bold text-white/90 tracking-wider uppercase"
+                    animate={{
+                      opacity: [0.7, 1, 0.7],
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      repeat: Infinity,
+                    }}
+                  >
+                    Party Ready
                   </motion.div>
                 </div>
               </Link>
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-2">
+            <div className="hidden md:flex items-center space-x-1">
               {navItems.map((item) => {
                 const isActive = location.pathname === item.path;
                 return (
@@ -190,29 +200,29 @@ export function Navigation() {
                       className="relative group"
                     >
                       <motion.div
-                        className={`relative px-6 py-3 rounded-2xl font-bold transition-all duration-300 ${
+                        className={`relative px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-bold transition-all duration-300 ${
                           isActive
                             ? "text-white shadow-2xl"
-                            : "text-white/80 hover:text-white"
+                            : "text-white/85 hover:text-white"
                         }`}
                         whileHover={{
                           backgroundImage: `linear-gradient(135deg, 
-                            hsl(var(--instagram-pink)), 
-                            hsl(var(--instagram-purple)), 
-                            hsl(var(--instagram-orange)))`,
+                            hsl(var(--unclub-blue)), 
+                            hsl(var(--unclub-pink)), 
+                            hsl(var(--unclub-red)))`,
                         }}
                       >
                         {(isActive || hoveredItem === item.path) && (
                           <motion.div
-                            className={`absolute inset-0 bg-gradient-to-r ${item.gradient} rounded-2xl opacity-90`}
+                            className={`absolute inset-0 bg-gradient-to-r ${item.gradient} rounded-xl sm:rounded-2xl opacity-90`}
                             layoutId="activeBackground"
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 0.9, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.8 }}
                             transition={{ 
                               type: "spring", 
-                              damping: 20, 
-                              stiffness: 300 
+                              damping: 25, 
+                              stiffness: 400 
                             }}
                           />
                         )}
@@ -220,17 +230,17 @@ export function Navigation() {
                         <div className="relative z-10 flex items-center space-x-2">
                           <motion.div
                             animate={isActive ? {
-                              rotate: [0, 10, -10, 0],
-                              scale: [1, 1.1, 1],
+                              rotate: [0, 15, -15, 0],
+                              scale: [1, 1.15, 1],
                             } : {}}
                             transition={{
-                              duration: 2,
+                              duration: 1.8,
                               repeat: isActive ? Infinity : 0,
                             }}
                           >
-                            <item.icon className="w-5 h-5" />
+                            <item.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                           </motion.div>
-                          <span className="font-bold">{item.name}</span>
+                          <span className="font-bold text-sm sm:text-base">{item.name}</span>
                         </div>
 
                         {isActive && (
@@ -249,48 +259,48 @@ export function Navigation() {
             </div>
 
             {/* Desktop Actions */}
-            <div className="hidden md:flex items-center space-x-3">
+            <div className="hidden md:flex items-center space-x-2 sm:space-x-3">
               <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileHover={{ scale: 1.1, rotate: 8 }}
                 whileTap={{ scale: 0.9 }}
               >
                 <Button 
                   variant="ghost" 
                   size="sm" 
-                  className="rounded-2xl text-white hover:bg-white/20 transition-all duration-300"
+                  className="rounded-xl sm:rounded-2xl text-white hover:bg-white/20 transition-all duration-300"
                 >
-                  <Search className="w-5 h-5" />
+                  <Search className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Button>
               </motion.div>
               
               <motion.div
-                whileHover={{ scale: 1.1, rotate: -5 }}
+                whileHover={{ scale: 1.1, rotate: -8 }}
                 whileTap={{ scale: 0.9 }}
                 className="relative"
               >
                 <Button 
                   variant="ghost" 
                   size="sm" 
-                  className="rounded-2xl text-white hover:bg-white/20 transition-all duration-300"
+                  className="rounded-xl sm:rounded-2xl text-white hover:bg-white/20 transition-all duration-300"
                 >
-                  <Bell className="w-5 h-5" />
+                  <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Button>
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   className="absolute -top-1 -right-1"
                 >
-                  <Badge className="w-6 h-6 p-0 text-xs bg-gradient-to-r from-instagram-red to-instagram-pink text-white border-2 border-white rounded-full shadow-lg">
+                  <Badge className="w-5 h-5 sm:w-6 sm:h-6 p-0 text-xs bg-gradient-to-r from-unclub-red to-party-red text-white border-2 border-white rounded-full shadow-lg">
                     <motion.span
                       animate={{
-                        scale: [1, 1.2, 1],
+                        scale: [1, 1.3, 1],
                       }}
                       transition={{
-                        duration: 2,
+                        duration: 1.5,
                         repeat: Infinity,
                       }}
                     >
-                      9+
+                      3
                     </motion.span>
                   </Badge>
                 </motion.div>
@@ -301,15 +311,16 @@ export function Navigation() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link to="/auth">
-                  <Button className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white rounded-2xl shadow-xl border border-white/30 font-bold px-6 transition-all duration-300">
+                  <Button className="bg-white/25 backdrop-blur-sm hover:bg-white/35 text-white rounded-xl sm:rounded-2xl shadow-xl border border-white/40 font-bold px-4 sm:px-6 py-2 transition-all duration-300">
                     <motion.span
+                      className="text-sm sm:text-base"
                       whileHover={{
-                        backgroundImage: "linear-gradient(45deg, #fff, #fef7cd, #fff)",
+                        backgroundImage: "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
                         backgroundClip: "text",
                         color: "transparent",
                       }}
                     >
-                      Join Vibe
+                      Join Party
                     </motion.span>
                   </Button>
                 </Link>
@@ -326,16 +337,16 @@ export function Navigation() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-2xl text-white hover:bg-white/20"
+                className="rounded-xl text-white hover:bg-white/20"
               >
                 <motion.div
                   animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
                 >
                   {isMobileMenuOpen ? (
-                    <X className="w-6 h-6" />
+                    <X className="w-5 h-5" />
                   ) : (
-                    <Menu className="w-6 h-6" />
+                    <Menu className="w-5 h-5" />
                   )}
                 </motion.div>
               </Button>
@@ -356,13 +367,13 @@ export function Navigation() {
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
-              className="fixed top-20 left-0 right-0 bg-gradient-to-br from-instagram-pink via-instagram-purple to-instagram-orange backdrop-blur-2xl z-50 md:hidden rounded-b-3xl"
+              className="fixed top-16 left-0 right-0 bg-gradient-to-br from-unclub-blue via-unclub-pink to-unclub-red backdrop-blur-2xl z-50 md:hidden rounded-b-3xl mx-2"
               initial={{ y: -400, opacity: 0, scale: 0.95 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={{ y: -400, opacity: 0, scale: 0.95 }}
               transition={{ type: "spring", damping: 20, stiffness: 300 }}
             >
-              <div className="px-6 py-6 space-y-1">
+              <div className="px-4 py-6 space-y-2">
                 {navItems.map((item, index) => {
                   const isActive = location.pathname === item.path;
                   return (
@@ -375,16 +386,16 @@ export function Navigation() {
                       <Link
                         to={item.path}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`flex items-center space-x-4 px-4 py-4 rounded-2xl font-bold transition-all duration-300 ${
+                        className={`flex items-center space-x-4 px-4 py-3 rounded-2xl font-bold transition-all duration-300 ${
                           isActive
-                            ? "bg-white/20 text-white shadow-lg"
-                            : "text-white/80 hover:bg-white/10 hover:text-white"
+                            ? "bg-white/25 text-white shadow-lg"
+                            : "text-white/85 hover:bg-white/15 hover:text-white"
                         }`}
                       >
                         <motion.div
-                          whileHover={{ rotate: 10, scale: 1.1 }}
+                          whileHover={{ rotate: 15, scale: 1.1 }}
                         >
-                          <item.icon className="w-6 h-6" />
+                          <item.icon className="w-5 h-5" />
                         </motion.div>
                         <span className="text-lg">{item.name}</span>
                       </Link>
@@ -402,8 +413,8 @@ export function Navigation() {
                     to="/auth"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <Button className="w-full bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white rounded-2xl shadow-xl border border-white/30 font-bold py-4 text-lg">
-                      Join the Vibe ✨
+                    <Button className="w-full bg-white/25 backdrop-blur-sm hover:bg-white/35 text-white rounded-2xl shadow-xl border border-white/40 font-bold py-4 text-lg">
+                      Join the Party 🎉
                     </Button>
                   </Link>
                 </motion.div>

@@ -57,23 +57,23 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Instagram-inspired gradients
-        instagram: {
-          pink: "hsl(var(--instagram-pink))",
-          purple: "hsl(var(--instagram-purple))",
-          orange: "hsl(var(--instagram-orange))",
-          yellow: "hsl(var(--instagram-yellow))",
-          blue: "hsl(var(--instagram-blue))",
-          red: "hsl(var(--instagram-red))",
+        // UnClub catchy colors
+        unclub: {
+          blue: "hsl(var(--unclub-blue))",
+          pink: "hsl(var(--unclub-pink))",
+          red: "hsl(var(--unclub-red))",
+          electric: "hsl(var(--unclub-electric))",
+          hotpink: "hsl(var(--unclub-hot-pink))",
+          coral: "hsl(var(--unclub-coral))",
         },
-        // Gen Z appealing colors
-        genz: {
-          electric: "hsl(var(--electric-blue))",
-          neon: "hsl(var(--neon-pink))",
-          cyber: "hsl(var(--cyber-purple))",
-          sunset: "hsl(var(--sunset-orange))",
-          mint: "hsl(var(--mint-green))",
-          lavender: "hsl(var(--lavender))",
+        // Party vibes colors
+        party: {
+          blue: "hsl(var(--party-blue))",
+          pink: "hsl(var(--party-pink))",
+          red: "hsl(var(--party-red))",
+          neon: "hsl(var(--neon-blue))",
+          electric: "hsl(var(--electric-pink))",
+          vibrant: "hsl(var(--vibrant-red))",
         },
       },
       borderRadius: {
