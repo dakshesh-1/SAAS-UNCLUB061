@@ -1025,32 +1025,32 @@ const BookingModal = ({
               animate={{ x: 0, opacity: 1 }}
               className="space-y-4"
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
                 Payment & Confirmation
               </h3>
 
               {/* Order Summary */}
-              <div className="p-4 bg-white/80 rounded-2xl space-y-3">
+              <div className="p-4 bg-white/80 dark:bg-gray-700/60 rounded-2xl space-y-3">
                 <div className="flex justify-between">
-                  <span>
+                  <span className="text-gray-900 dark:text-gray-100">
                     {selectedTicket.name} × {quantity}
                   </span>
-                  <span className="font-semibold">${total}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-100">${total}</span>
                 </div>
-                <div className="flex justify-between text-sm text-gray-600">
+                <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                   <span>Processing Fee</span>
                   <span>$5.99</span>
                 </div>
-                <hr />
+                <hr className="border-gray-300 dark:border-gray-600" />
                 <div className="flex justify-between text-lg font-bold">
-                  <span>Total</span>
-                  <span>${total + 5.99}</span>
+                  <span className="text-gray-900 dark:text-gray-100">Total</span>
+                  <span className="text-gray-900 dark:text-gray-100">${total + 5.99}</span>
                 </div>
               </div>
 
               {/* Payment Methods */}
               <div className="space-y-3">
-                <h4 className="font-semibold">Payment Method</h4>
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100">Payment Method</h4>
                 {[
                   "💳 Credit Card",
                   "📱 Apple Pay",
@@ -1060,7 +1060,7 @@ const BookingModal = ({
                   <motion.div
                     key={method}
                     whileHover={{ scale: 1.02, x: 5 }}
-                    className="p-3 border border-gray-200 rounded-xl cursor-pointer hover:border-instagram-purple/50 transition-colors"
+                    className="p-3 border border-gray-200 dark:border-gray-600 rounded-xl cursor-pointer hover:border-instagram-purple/50 transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                   >
                     {method}
                   </motion.div>
