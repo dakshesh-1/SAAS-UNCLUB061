@@ -411,9 +411,9 @@ const EventCard = ({
                   <Link to={`/event/${event.id}`}>
                     <Button
                       size="sm"
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl"
+                      className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white rounded-xl font-bold shadow-lg transform transition-all duration-200 hover:scale-105"
                     >
-                      View Details
+                      🎟️ Get Tickets
                     </Button>
                   </Link>
                 </motion.div>
@@ -491,9 +491,9 @@ const EventCard = ({
               <Link to={`/event/${event.id}`}>
                 <Button
                   size="sm"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl shadow-lg"
+                  className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white rounded-xl font-bold shadow-lg transform transition-all duration-200 hover:scale-105"
                 >
-                  View Details
+                  🎟️ Book Now
                 </Button>
               </Link>
             </motion.div>
@@ -575,9 +575,12 @@ export default function Events() {
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-black bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange bg-clip-text text-transparent">
-              Discover Events
+            <h1 className="text-4xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent">
+              🎉 Discover Epic Events 🎉
             </h1>
+            <p className="text-lg text-gray-600 mt-2">
+              Find your next unforgettable experience!
+            </p>
 
             <div className="flex items-center gap-4">
               <motion.div
@@ -629,6 +632,88 @@ export default function Events() {
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Host Event CTA Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 rounded-3xl p-8 mb-8 text-white overflow-hidden relative"
+        >
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(15)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute rounded-full bg-white/10"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${10 + Math.random() * 20}px`,
+                  height: `${10 + Math.random() * 20}px`,
+                }}
+                animate={{
+                  y: [0, -20, 0],
+                  opacity: [0.3, 0.8, 0.3],
+                }}
+                transition={{
+                  duration: 2 + Math.random() * 3,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="text-center md:text-left">
+              <h2 className="text-3xl font-black mb-2">
+                🌟 Ready to Host Your Own Epic Event? 🌟
+              </h2>
+              <p className="text-lg text-white/90">
+                Join thousands of successful hosts earning money while creating amazing experiences!
+              </p>
+              <div className="flex items-center gap-6 mt-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                    <span className="text-black font-bold">$</span>
+                  </div>
+                  <span>Earn $1K+ per event</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center">
+                    <span className="text-black font-bold">⭐</span>
+                  </div>
+                  <span>98% success rate</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  onClick={() => window.location.href = '/dashboard'}
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-4 rounded-2xl font-black text-lg shadow-lg"
+                >
+                  🚀 START HOSTING NOW!
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  variant="outline"
+                  className="border-white/50 text-white hover:bg-white/10 px-6 py-4 rounded-2xl font-bold backdrop-blur-sm"
+                >
+                  📖 Learn More
+                </Button>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+
         <div className="flex gap-8">
           {/* Filter Panel */}
           <div className="hidden lg:block flex-shrink-0">
@@ -712,10 +797,10 @@ export default function Events() {
                       }
                       size="sm"
                       onClick={() => setSelectedCategory(category)}
-                      className={`rounded-full ${
+                      className={`rounded-full font-bold transition-all duration-300 ${
                         selectedCategory === category
-                          ? "bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white"
-                          : "hover:bg-instagram-pink/10"
+                          ? "bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white shadow-lg transform scale-105"
+                          : "hover:bg-purple-100 hover:text-purple-700 hover:scale-105"
                       }`}
                     >
                       {category}
