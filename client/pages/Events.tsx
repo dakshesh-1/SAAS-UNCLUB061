@@ -602,10 +602,10 @@ export default function Events() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div className="flex-1">
-              <h1 className="text-3xl lg:text-4xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent mb-2 leading-tight">
+              <h1 className="display-text text-3xl lg:text-4xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent mb-2 leading-tight">
                 🎉 Discover Epic Events 🎉
               </h1>
-              <p className="text-base lg:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="accent-text text-base lg:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
                 Find your next unforgettable experience!
               </p>
             </div>
@@ -693,10 +693,10 @@ export default function Events() {
 
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
-              <h2 className="text-3xl font-black mb-2">
+              <h2 className="display-text text-3xl font-black mb-2">
                 🌟 Ready to Host Your Own Epic Event? 🌟
               </h2>
-              <p className="text-lg text-white/90">
+              <p className="accent-text text-lg text-white/90">
                 Join thousands of successful hosts earning money while creating
                 amazing experiences!
               </p>
