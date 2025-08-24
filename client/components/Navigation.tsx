@@ -20,19 +20,20 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navItems = [
   {
-    name: "Discover",
-    path: "/",
-    icon: Home,
-    gradient: "from-unclub-blue via-unclub-pink to-unclub-red",
-  },
-  {
     name: "Events",
-    path: "/events",
+    path: "/",
     icon: Calendar,
     gradient: "from-party-blue via-unclub-electric to-party-neon",
+  },
+  {
+    name: "Discover",
+    path: "/discover",
+    icon: Home,
+    gradient: "from-unclub-blue via-unclub-pink to-unclub-red",
   },
   {
     name: "Create",
@@ -280,6 +281,8 @@ export function Navigation() {
 
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center space-x-2 sm:space-x-3">
+              <ThemeToggle />
+
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 8 }}
                 whileTap={{ scale: 0.9 }}

@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Image from "@/components/ui/image";
 import {
   Search,
   Filter,
@@ -148,19 +149,38 @@ const categories = [
 const FilterPanel = ({
   isOpen,
   onClose,
+  priceRange,
+  setPriceRange,
+  selectedCategories,
+  setSelectedCategories,
+  selectedDateRange,
+  setSelectedDateRange,
+  selectedRating,
+  setSelectedRating,
+  onApplyFilters,
 }: {
   isOpen: boolean;
   onClose: () => void;
+  priceRange: number[];
+  setPriceRange: (range: number[]) => void;
+  selectedCategories: string[];
+  setSelectedCategories: (categories: string[]) => void;
+  selectedDateRange: string;
+  setSelectedDateRange: (range: string) => void;
+  selectedRating: number;
+  setSelectedRating: (rating: number) => void;
+  onApplyFilters: () => void;
 }) => {
-  const [priceRange, setPriceRange] = useState([0, 500]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-
   const handleCategoryChange = (category: string, checked: boolean) => {
     if (checked) {
       setSelectedCategories([...selectedCategories, category]);
     } else {
       setSelectedCategories(selectedCategories.filter((c) => c !== category));
     }
+  };
+
+  const handleRatingChange = (rating: number, checked: boolean) => {
+    setSelectedRating(checked ? rating : 0);
   };
 
   return (
@@ -248,11 +268,15 @@ const FilterPanel = ({
                 {/* Date Filter */}
                 <div>
                   <h4 className="font-medium text-gray-900 mb-3">Date</h4>
-                  <Select>
+                  <Select
+                    value={selectedDateRange}
+                    onValueChange={setSelectedDateRange}
+                  >
                     <SelectTrigger className="border-gray-200">
                       <SelectValue placeholder="Select date range" />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="all">All Dates</SelectItem>
                       <SelectItem value="today">Today</SelectItem>
                       <SelectItem value="week">This Week</SelectItem>
                       <SelectItem value="month">This Month</SelectItem>
@@ -272,7 +296,13 @@ const FilterPanel = ({
                         whileHover={{ x: 2 }}
                         transition={{ duration: 0.1 }}
                       >
-                        <Checkbox id={`rating-${rating}`} />
+                        <Checkbox
+                          id={`rating-${rating}`}
+                          checked={selectedRating === rating}
+                          onCheckedChange={(checked) =>
+                            handleRatingChange(rating, checked as boolean)
+                          }
+                        />
                         <label
                           htmlFor={`rating-${rating}`}
                           className="text-sm text-gray-700 cursor-pointer flex items-center"
@@ -296,7 +326,10 @@ const FilterPanel = ({
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl">
+                  <Button
+                    onClick={onApplyFilters}
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl"
+                  >
                     Apply Filters
                   </Button>
                 </motion.div>
@@ -334,7 +367,7 @@ const EventCard = ({
                 className="flex-shrink-0 w-24 h-24 rounded-xl overflow-hidden"
                 whileHover={{ scale: 1.05 }}
               >
-                <img
+                <Image
                   src={event.image}
                   alt={event.title}
                   className="w-full h-full object-cover"
@@ -383,9 +416,9 @@ const EventCard = ({
                   <Link to={`/event/${event.id}`}>
                     <Button
                       size="sm"
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl"
+                      className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white rounded-xl font-bold shadow-lg transform transition-all duration-200 hover:scale-105"
                     >
-                      View Details
+                      🎟️ Get Tickets
                     </Button>
                   </Link>
                 </motion.div>
@@ -407,10 +440,11 @@ const EventCard = ({
     >
       <Card className="overflow-hidden rounded-2xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white/80 backdrop-blur-sm">
         <div className="relative overflow-hidden">
-          <motion.img
+          <Image
             src={event.image}
             alt={event.title}
             className="w-full h-48 object-cover"
+            animated={true}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           />
@@ -462,9 +496,9 @@ const EventCard = ({
               <Link to={`/event/${event.id}`}>
                 <Button
                   size="sm"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl shadow-lg"
+                  className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white rounded-xl font-bold shadow-lg transform transition-all duration-200 hover:scale-105"
                 >
-                  Book Now
+                  🎟️ Book Now
                 </Button>
               </Link>
             </motion.div>
@@ -482,14 +516,51 @@ export default function Events() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState("featured");
 
+  // Advanced filter states
+  const [priceRange, setPriceRange] = useState([0, 500]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedDateRange, setSelectedDateRange] = useState("all");
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [filtersApplied, setFiltersApplied] = useState(false);
+
   const filteredEvents = allEvents.filter((event) => {
     const matchesSearch =
       event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       event.location.toLowerCase().includes(searchQuery.toLowerCase());
+
     const matchesCategory =
       selectedCategory === "All" || event.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+
+    // Advanced filter logic
+    const matchesPrice =
+      !filtersApplied ||
+      (event.price >= priceRange[0] && event.price <= priceRange[1]);
+
+    const matchesAdvancedCategories =
+      !filtersApplied ||
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(event.category);
+
+    const matchesRating =
+      !filtersApplied || selectedRating === 0 || event.rating >= selectedRating;
+
+    // Note: Date filtering would need proper date parsing in a real app
+    const matchesDate = !filtersApplied || selectedDateRange === "all";
+
+    return (
+      matchesSearch &&
+      matchesCategory &&
+      matchesPrice &&
+      matchesAdvancedCategories &&
+      matchesRating &&
+      matchesDate
+    );
   });
+
+  const handleApplyFilters = () => {
+    setFiltersApplied(true);
+    setIsFilterOpen(false);
+  };
 
   const sortedEvents = [...filteredEvents].sort((a, b) => {
     switch (sortBy) {
@@ -520,9 +591,12 @@ export default function Events() {
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-black bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange bg-clip-text text-transparent">
-              Discover Events
+            <h1 className="text-4xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent">
+              🎉 Discover Epic Events 🎉
             </h1>
+            <p className="text-lg text-gray-600 mt-2">
+              Find your next unforgettable experience!
+            </p>
 
             <div className="flex items-center gap-4">
               <motion.div
@@ -574,14 +648,118 @@ export default function Events() {
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Host Event CTA Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 rounded-3xl p-8 mb-8 text-white overflow-hidden relative"
+        >
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(15)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute rounded-full bg-white/10"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${10 + Math.random() * 20}px`,
+                  height: `${10 + Math.random() * 20}px`,
+                }}
+                animate={{
+                  y: [0, -20, 0],
+                  opacity: [0.3, 0.8, 0.3],
+                }}
+                transition={{
+                  duration: 2 + Math.random() * 3,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="text-center md:text-left">
+              <h2 className="text-3xl font-black mb-2">
+                🌟 Ready to Host Your Own Epic Event? 🌟
+              </h2>
+              <p className="text-lg text-white/90">
+                Join thousands of successful hosts earning money while creating
+                amazing experiences!
+              </p>
+              <div className="flex items-center gap-6 mt-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                    <span className="text-black font-bold">$</span>
+                  </div>
+                  <span>Earn $1K+ per event</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center">
+                    <span className="text-black font-bold">⭐</span>
+                  </div>
+                  <span>98% success rate</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  onClick={() => (window.location.href = "/dashboard")}
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-4 rounded-2xl font-black text-lg shadow-lg"
+                >
+                  🚀 START HOSTING NOW!
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  variant="outline"
+                  className="border-white/50 text-white hover:bg-white/10 px-6 py-4 rounded-2xl font-bold backdrop-blur-sm"
+                >
+                  📖 Learn More
+                </Button>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+
         <div className="flex gap-8">
           {/* Filter Panel */}
           <div className="hidden lg:block flex-shrink-0">
-            <FilterPanel isOpen={true} onClose={() => {}} />
+            <FilterPanel
+              isOpen={true}
+              onClose={() => {}}
+              priceRange={priceRange}
+              setPriceRange={setPriceRange}
+              selectedCategories={selectedCategories}
+              setSelectedCategories={setSelectedCategories}
+              selectedDateRange={selectedDateRange}
+              setSelectedDateRange={setSelectedDateRange}
+              selectedRating={selectedRating}
+              setSelectedRating={setSelectedRating}
+              onApplyFilters={handleApplyFilters}
+            />
           </div>
           <FilterPanel
             isOpen={isFilterOpen}
             onClose={() => setIsFilterOpen(false)}
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+            selectedCategories={selectedCategories}
+            setSelectedCategories={setSelectedCategories}
+            selectedDateRange={selectedDateRange}
+            setSelectedDateRange={setSelectedDateRange}
+            selectedRating={selectedRating}
+            setSelectedRating={setSelectedRating}
+            onApplyFilters={handleApplyFilters}
           />
 
           {/* Main Content */}
@@ -636,10 +814,10 @@ export default function Events() {
                       }
                       size="sm"
                       onClick={() => setSelectedCategory(category)}
-                      className={`rounded-full ${
+                      className={`rounded-full font-bold transition-all duration-300 ${
                         selectedCategory === category
-                          ? "bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white"
-                          : "hover:bg-instagram-pink/10"
+                          ? "bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white shadow-lg transform scale-105"
+                          : "hover:bg-purple-100 hover:text-purple-700 hover:scale-105"
                       }`}
                     >
                       {category}

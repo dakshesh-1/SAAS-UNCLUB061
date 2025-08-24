@@ -162,9 +162,9 @@ const EventCard = ({
               <Link to={`/event/${event.id}`}>
                 <Button
                   size="sm"
-                  className="bg-gradient-to-r from-unclub-blue via-unclub-pink to-unclub-red hover:from-unclub-pink hover:to-unclub-blue text-white rounded-xl shadow-lg"
+                  className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white rounded-xl shadow-lg font-bold transform transition-all duration-200 hover:scale-105"
                 >
-                  View Details
+                  🎟️ Get Tickets
                 </Button>
               </Link>
             </motion.div>
@@ -219,13 +219,28 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-unclub-blue via-unclub-pink to-unclub-red bg-clip-text text-transparent mb-6">
-              Find Your Next
+            <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent mb-6">
+              Discover Epic
               <br />
               <span className="relative">
-                Party
+                <motion.span
+                  animate={{
+                    textShadow: [
+                      "0 0 20px rgba(168, 85, 247, 0.4)",
+                      "0 0 40px rgba(236, 72, 153, 0.6)",
+                      "0 0 20px rgba(239, 68, 68, 0.4)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  Events! 🎉
+                </motion.span>
                 <motion.div
-                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-unclub-pink to-unclub-red rounded-full"
+                  className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 1, duration: 0.8 }}
@@ -235,15 +250,52 @@ export default function Index() {
           </motion.div>
 
           <motion.p
-            className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto"
+            className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Discover the hottest parties, coolest events, and most exclusive
-            gatherings. Your next unforgettable experience is just a click away!
-            🎉
+            Join thousands discovering{" "}
+            <span className="font-bold text-purple-600">amazing events</span>{" "}
+            and creating
+            <span className="font-bold text-pink-600">
+              {" "}
+              unforgettable memories
+            </span>{" "}
+            every day! Whether you want to{" "}
+            <span className="font-bold text-red-600">attend</span> or{" "}
+            <span className="font-bold text-green-600">host</span> - we've got
+            you covered! ✨
           </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link to="/events">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white px-12 py-6 text-xl font-black rounded-3xl shadow-2xl"
+                >
+                  🎟️ FIND EVENTS
+                </Button>
+              </Link>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link to="/dashboard">
+                <Button
+                  size="lg"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black px-12 py-6 text-xl font-black rounded-3xl shadow-2xl"
+                >
+                  🚀 HOST EVENT
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
 
           <FunctionalSearch />
         </div>
@@ -258,11 +310,12 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Featured Events
+            <h2 className="text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+              🔥 Trending Events Right Now
             </h2>
             <p className="text-lg text-gray-600">
-              Don't miss these trending events in your area
+              These events are selling out fast - grab your spot before it's too
+              late!
             </p>
           </motion.div>
 
