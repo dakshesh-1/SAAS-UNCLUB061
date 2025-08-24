@@ -1012,20 +1012,75 @@ export default function Dashboard() {
                           </Badge>
                         </div>
 
+                        {/* Enhanced Event Stats */}
+                        <div className="grid grid-cols-3 gap-4 mb-4">
+                          <div className="text-center p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl">
+                            <div className="flex items-center justify-center gap-1 text-blue-600 dark:text-blue-400 mb-1">
+                              <Gauge className="w-4 h-4" />
+                              <span className="text-xs font-semibold">Capacity</span>
+                            </div>
+                            <div className="font-bold text-lg text-blue-700 dark:text-blue-300">
+                              {Math.round((event.ticketsSold / event.capacity) * 100)}%
+                            </div>
+                            <Progress
+                              value={(event.ticketsSold / event.capacity) * 100}
+                              className="h-2 mt-1"
+                            />
+                          </div>
+                          <div className="text-center p-3 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-xl">
+                            <div className="flex items-center justify-center gap-1 text-green-600 dark:text-green-400 mb-1">
+                              <Activity className="w-4 h-4" />
+                              <span className="text-xs font-semibold">Engagement</span>
+                            </div>
+                            <div className="font-bold text-lg text-green-700 dark:text-green-300">
+                              {event.engagementRate}%
+                            </div>
+                            <div className="text-xs text-green-600 dark:text-green-400">
+                              +{event.viewsToday} today
+                            </div>
+                          </div>
+                          <div className="text-center p-3 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-xl">
+                            <div className="flex items-center justify-center gap-1 text-purple-600 dark:text-purple-400 mb-1">
+                              <Share2 className="w-4 h-4" />
+                              <span className="text-xs font-semibold">Shares</span>
+                            </div>
+                            <div className="font-bold text-lg text-purple-700 dark:text-purple-300">
+                              {event.socialShares}
+                            </div>
+                            <div className="text-xs text-purple-600 dark:text-purple-400">
+                              ⭐ {event.reviews} reviews
+                            </div>
+                          </div>
+                        </div>
+
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-6 text-sm">
                             <div className="flex items-center gap-1 font-semibold">
                               <Users className="w-4 h-4 text-purple-500" />
-                              <span className="text-purple-600">
-                                {event.attendees}
+                              <span className="text-purple-600 dark:text-purple-400">
+                                {event.attendees.toLocaleString()}
                               </span>
                             </div>
                             <div className="flex items-center gap-1 font-semibold">
                               <DollarSign className="w-4 h-4 text-green-500" />
-                              <span className="text-green-600">
+                              <span className="text-green-600 dark:text-green-400">
                                 {event.revenue}
                               </span>
                             </div>
+                            <div className="flex items-center gap-1 font-semibold">
+                              <TrendingUp className="w-4 h-4 text-blue-500" />
+                              <span className="text-blue-600 dark:text-blue-400">
+                                {event.profit} profit
+                              </span>
+                            </div>
+                            {event.daysUntil > 0 && (
+                              <div className="flex items-center gap-1 font-semibold">
+                                <Clock className="w-4 h-4 text-orange-500" />
+                                <span className="text-orange-600 dark:text-orange-400">
+                                  {event.daysUntil}d left
+                                </span>
+                              </div>
+                            )}
                           </div>
 
                           <div className="flex items-center gap-2">
@@ -1033,13 +1088,16 @@ export default function Dashboard() {
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
                             >
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                className="rounded-xl border-purple-200 text-purple-600 hover:bg-purple-50"
-                              >
-                                <Eye className="w-4 h-4" />
-                              </Button>
+                              <Link to={`/event/${event.id}`}>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="rounded-xl border-purple-200 text-purple-600 hover:bg-purple-50 dark:border-purple-700 dark:text-purple-400 dark:hover:bg-purple-900/20"
+                                  title="View Event Details"
+                                >
+                                  <Eye className="w-4 h-4" />
+                                </Button>
+                              </Link>
                             </motion.div>
                             <motion.div
                               whileHover={{ scale: 1.1 }}
@@ -1048,7 +1106,9 @@ export default function Dashboard() {
                               <Button
                                 variant="outline"
                                 size="sm"
-                                className="rounded-xl border-blue-200 text-blue-600 hover:bg-blue-50"
+                                onClick={() => handleEdit(event)}
+                                className="rounded-xl border-blue-200 text-blue-600 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-400 dark:hover:bg-blue-900/20"
+                                title="Edit Event"
                               >
                                 <Edit className="w-4 h-4" />
                               </Button>
@@ -1060,10 +1120,27 @@ export default function Dashboard() {
                               <Button
                                 variant="outline"
                                 size="sm"
-                                className="rounded-xl border-pink-200 text-pink-600 hover:bg-pink-50"
+                                onClick={() => handleShare(event)}
+                                className="rounded-xl border-pink-200 text-pink-600 hover:bg-pink-50 dark:border-pink-700 dark:text-pink-400 dark:hover:bg-pink-900/20"
+                                title="Share Event"
                               >
                                 <Share2 className="w-4 h-4" />
                               </Button>
+                            </motion.div>
+                            <motion.div
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.9 }}
+                            >
+                              <Link to={`/event/${event.id}#analytics`}>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="rounded-xl border-green-200 text-green-600 hover:bg-green-50 dark:border-green-700 dark:text-green-400 dark:hover:bg-green-900/20"
+                                  title="View Analytics"
+                                >
+                                  <BarChart3 className="w-4 h-4" />
+                                </Button>
+                              </Link>
                             </motion.div>
                           </div>
                         </div>
