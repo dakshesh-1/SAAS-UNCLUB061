@@ -239,11 +239,11 @@ const FilterPanel = ({
                           }
                         />
                         <label
-                          htmlFor={category}
-                          className="text-sm text-gray-700 dark:text-gray-300 cursor-pointer"
-                        >
-                          {category}
-                        </label>
+                      htmlFor={category}
+                      className="text-sm text-gray-700 dark:text-gray-200 cursor-pointer font-medium"
+                    >
+                      {category}
+                    </label>
                       </motion.div>
                     ))}
                   </div>
@@ -279,7 +279,7 @@ const FilterPanel = ({
                     value={selectedDateRange}
                     onValueChange={setSelectedDateRange}
                   >
-                    <SelectTrigger className="border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+                    <SelectTrigger className="border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
                       <SelectValue placeholder="Select date range" />
                     </SelectTrigger>
                     <SelectContent>
@@ -785,17 +785,17 @@ export default function Events() {
             >
               <div className="flex flex-col md:flex-row gap-4 mb-6">
                 <div className="relative flex-1">
-                  <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                  <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400 dark:text-gray-500" />
                   <Input
                     placeholder="Search events, locations..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm focus:bg-white dark:focus:bg-gray-800 transition-colors rounded-xl shadow-md text-gray-900 dark:text-gray-100"
+                    className="pl-10 border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm focus:bg-white dark:focus:bg-gray-800 transition-colors rounded-xl shadow-md text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                   />
                 </div>
 
                 <Select value={sortBy} onValueChange={setSortBy}>
-                  <SelectTrigger className="w-48 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-md">
+                  <SelectTrigger className="w-48 border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-md text-gray-900 dark:text-gray-100">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
