@@ -302,7 +302,11 @@ export function Navigation() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="rounded-xl sm:rounded-2xl text-white hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300 px-3 py-2"
+                      className={`rounded-xl sm:rounded-2xl backdrop-blur-sm border transition-all duration-300 px-3 py-2 ${
+                        theme === 'dark'
+                          ? 'text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100'
+                          : 'text-white hover:bg-white/20 border-white/20'
+                      }`}
                     >
                       <Search className="w-4 h-4 sm:w-5 sm:h-5" />
                     </Button>
@@ -365,7 +369,11 @@ export function Navigation() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="rounded-xl sm:rounded-2xl text-white hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300 px-3 py-2"
+                      className={`rounded-xl sm:rounded-2xl backdrop-blur-sm border transition-all duration-300 px-3 py-2 ${
+                        theme === 'dark'
+                          ? 'text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100'
+                          : 'text-white hover:bg-white/20 border-white/20'
+                      }`}
                     >
                       <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
                     </Button>
@@ -466,7 +474,11 @@ export function Navigation() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-xl text-white hover:bg-white/20 backdrop-blur-sm border border-white/20 px-3 py-2"
+                className={`rounded-xl backdrop-blur-sm border px-3 py-2 ${
+                  theme === 'dark'
+                    ? 'text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100'
+                    : 'text-white hover:bg-white/20 border-white/20'
+                }`}
               >
                 <motion.div
                   animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
