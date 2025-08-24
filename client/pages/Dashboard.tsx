@@ -36,6 +36,13 @@ import {
   Flame,
   Magic,
   Megaphone,
+  Copy,
+  Check,
+  ExternalLink,
+  MessageCircle,
+  Send,
+  Gauge,
+  Activity,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -59,6 +66,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
+import { Progress } from "@/components/ui/progress";
+import { useTheme } from "next-themes";
+import { Link } from "react-router-dom";
+import { toast } from "@/components/ui/use-toast";
 
 // Enhanced stats with more compelling data
 const dashboardStats = [
@@ -710,6 +721,35 @@ const CreateEventModal = ({
 export default function Dashboard() {
   const [selectedTab, setSelectedTab] = useState("overview");
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [copiedText, setCopiedText] = useState("");
+  const { theme } = useTheme();
+
+  const handleShare = (event: any) => {
+    setSelectedEvent(event);
+    setIsShareModalOpen(true);
+  };
+
+  const handleEdit = (event: any) => {
+    setSelectedEvent(event);
+    setIsEditModalOpen(true);
+  };
+
+  const copyToClipboard = async (text: string, type: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedText(type);
+      toast({
+        title: "Copied to clipboard!",
+        description: "Link copied successfully.",
+      });
+      setTimeout(() => setCopiedText(""), 2000);
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-red-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-pink-900/20">
