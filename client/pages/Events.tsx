@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Search, Filter, MapPin, Calendar, Users, Star, Grid, List, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -319,9 +320,11 @@ const EventCard = ({ event, index, viewMode }: {
                   whileTap={{ scale: 0.98 }}
                   className="inline-block"
                 >
-                  <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl">
-                    View Details
-                  </Button>
+                  <Link to={`/event/${event.id}`}>
+                    <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl">
+                      View Details
+                    </Button>
+                  </Link>
                 </motion.div>
               </div>
             </div>
@@ -394,12 +397,14 @@ const EventCard = ({ event, index, viewMode }: {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button 
-                size="sm" 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl shadow-lg"
-              >
-                Book Now
-              </Button>
+              <Link to={`/event/${event.id}`}>
+                <Button
+                  size="sm"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl shadow-lg"
+                >
+                  Book Now
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </CardContent>
