@@ -66,49 +66,49 @@
   }
 
   .dark {
-    --background: 222 84% 2%;
+    --background: 222 84% 4%;
     --foreground: 210 40% 98%;
 
-    --card: 222 84% 3%;
+    --card: 222 84% 6%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 84% 4%;
+    --popover: 222 84% 6%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 84% 4.9%;
 
-    --secondary: 217 32% 12%;
+    --secondary: 217 32% 15%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217 32% 12%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 217 32% 15%;
+    --muted-foreground: 215 20% 75%;
 
-    --accent: 217 32% 15%;
+    --accent: 217 32% 18%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 75% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 32% 15%;
-    --input: 217 32% 12%;
+    --border: 217 32% 20%;
+    --input: 217 32% 15%;
     --ring: 212 97% 87%;
 
-    /* Classy dark UnClub colors */
-    --unclub-blue: 225 85% 65%;
-    --unclub-pink: 320 70% 70%;
-    --unclub-red: 0 75% 65%;
-    --unclub-electric: 200 80% 60%;
-    --unclub-hot-pink: 320 75% 70%;
-    --unclub-coral: 15 75% 65%;
+    /* Enhanced dark UnClub colors for better contrast */
+    --unclub-blue: 225 90% 70%;
+    --unclub-pink: 320 80% 75%;
+    --unclub-red: 0 85% 70%;
+    --unclub-electric: 200 85% 65%;
+    --unclub-hot-pink: 320 85% 75%;
+    --unclub-coral: 15 85% 70%;
 
-    /* Classy dark party colors */
-    --party-blue: 225 80% 60%;
-    --party-pink: 320 75% 70%;
-    --party-red: 345 75% 65%;
-    --neon-blue: 200 85% 55%;
-    --electric-pink: 315 80% 70%;
-    --vibrant-red: 5 80% 65%;
+    /* Enhanced dark party colors for better contrast */
+    --party-blue: 225 85% 65%;
+    --party-pink: 320 80% 75%;
+    --party-red: 345 85% 70%;
+    --neon-blue: 200 90% 60%;
+    --electric-pink: 315 85% 75%;
+    --vibrant-red: 5 85% 70%;
 
     --sidebar-background: 225 25% 8%;
     --sidebar-foreground: 225 15% 95%;
