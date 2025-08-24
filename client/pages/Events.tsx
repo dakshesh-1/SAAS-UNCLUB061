@@ -632,11 +632,32 @@ export default function Events() {
         <div className="flex gap-8">
           {/* Filter Panel */}
           <div className="hidden lg:block flex-shrink-0">
-            <FilterPanel isOpen={true} onClose={() => {}} />
+            <FilterPanel
+              isOpen={true}
+              onClose={() => {}}
+              priceRange={priceRange}
+              setPriceRange={setPriceRange}
+              selectedCategories={selectedCategories}
+              setSelectedCategories={setSelectedCategories}
+              selectedDateRange={selectedDateRange}
+              setSelectedDateRange={setSelectedDateRange}
+              selectedRating={selectedRating}
+              setSelectedRating={setSelectedRating}
+              onApplyFilters={handleApplyFilters}
+            />
           </div>
           <FilterPanel
             isOpen={isFilterOpen}
             onClose={() => setIsFilterOpen(false)}
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+            selectedCategories={selectedCategories}
+            setSelectedCategories={setSelectedCategories}
+            selectedDateRange={selectedDateRange}
+            setSelectedDateRange={setSelectedDateRange}
+            selectedRating={selectedRating}
+            setSelectedRating={setSelectedRating}
+            onApplyFilters={handleApplyFilters}
           />
 
           {/* Main Content */}
