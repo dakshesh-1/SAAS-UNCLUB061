@@ -39,20 +39,29 @@
 
     --radius: 0.5rem;
 
+    /* Instagram-inspired gradient colors */
+    --instagram-pink: 315 100% 72%;
+    --instagram-purple: 282 100% 65%;
+    --instagram-orange: 25 100% 65%;
+    --instagram-yellow: 45 100% 65%;
+    --instagram-blue: 220 100% 65%;
+    --instagram-red: 350 100% 65%;
+
+    /* Gen Z appealing colors */
+    --electric-blue: 210 100% 56%;
+    --neon-pink: 320 100% 75%;
+    --cyber-purple: 270 100% 70%;
+    --sunset-orange: 20 100% 65%;
+    --mint-green: 165 100% 75%;
+    --lavender: 260 100% 85%;
+
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -84,6 +93,23 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    /* Dark mode Instagram colors */
+    --instagram-pink: 315 80% 60%;
+    --instagram-purple: 282 80% 55%;
+    --instagram-orange: 25 80% 55%;
+    --instagram-yellow: 45 80% 55%;
+    --instagram-blue: 220 80% 55%;
+    --instagram-red: 350 80% 55%;
+
+    /* Dark mode Gen Z colors */
+    --electric-blue: 210 80% 46%;
+    --neon-pink: 320 80% 65%;
+    --cyber-purple: 270 80% 60%;
+    --sunset-orange: 20 80% 55%;
+    --mint-green: 165 80% 65%;
+    --lavender: 260 80% 75%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;

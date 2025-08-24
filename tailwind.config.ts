@@ -57,6 +57,24 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Instagram-inspired gradients
+        instagram: {
+          pink: "hsl(var(--instagram-pink))",
+          purple: "hsl(var(--instagram-purple))",
+          orange: "hsl(var(--instagram-orange))",
+          yellow: "hsl(var(--instagram-yellow))",
+          blue: "hsl(var(--instagram-blue))",
+          red: "hsl(var(--instagram-red))",
+        },
+        // Gen Z appealing colors
+        genz: {
+          electric: "hsl(var(--electric-blue))",
+          neon: "hsl(var(--neon-pink))",
+          cyber: "hsl(var(--cyber-purple))",
+          sunset: "hsl(var(--sunset-orange))",
+          mint: "hsl(var(--mint-green))",
+          lavender: "hsl(var(--lavender))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
