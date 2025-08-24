@@ -268,7 +268,10 @@ const FilterPanel = ({
                 {/* Date Filter */}
                 <div>
                   <h4 className="font-medium text-gray-900 mb-3">Date</h4>
-                  <Select value={selectedDateRange} onValueChange={setSelectedDateRange}>
+                  <Select
+                    value={selectedDateRange}
+                    onValueChange={setSelectedDateRange}
+                  >
                     <SelectTrigger className="border-gray-200">
                       <SelectValue placeholder="Select date range" />
                     </SelectTrigger>
@@ -296,7 +299,9 @@ const FilterPanel = ({
                         <Checkbox
                           id={`rating-${rating}`}
                           checked={selectedRating === rating}
-                          onCheckedChange={(checked) => handleRatingChange(rating, checked as boolean)}
+                          onCheckedChange={(checked) =>
+                            handleRatingChange(rating, checked as boolean)
+                          }
                         />
                         <label
                           htmlFor={`rating-${rating}`}
@@ -527,18 +532,29 @@ export default function Events() {
       selectedCategory === "All" || event.category === selectedCategory;
 
     // Advanced filter logic
-    const matchesPrice = !filtersApplied || (event.price >= priceRange[0] && event.price <= priceRange[1]);
+    const matchesPrice =
+      !filtersApplied ||
+      (event.price >= priceRange[0] && event.price <= priceRange[1]);
 
-    const matchesAdvancedCategories = !filtersApplied ||
+    const matchesAdvancedCategories =
+      !filtersApplied ||
       selectedCategories.length === 0 ||
       selectedCategories.includes(event.category);
 
-    const matchesRating = !filtersApplied || selectedRating === 0 || event.rating >= selectedRating;
+    const matchesRating =
+      !filtersApplied || selectedRating === 0 || event.rating >= selectedRating;
 
     // Note: Date filtering would need proper date parsing in a real app
     const matchesDate = !filtersApplied || selectedDateRange === "all";
 
-    return matchesSearch && matchesCategory && matchesPrice && matchesAdvancedCategories && matchesRating && matchesDate;
+    return (
+      matchesSearch &&
+      matchesCategory &&
+      matchesPrice &&
+      matchesAdvancedCategories &&
+      matchesRating &&
+      matchesDate
+    );
   });
 
   const handleApplyFilters = () => {
@@ -669,7 +685,8 @@ export default function Events() {
                 🌟 Ready to Host Your Own Epic Event? 🌟
               </h2>
               <p className="text-lg text-white/90">
-                Join thousands of successful hosts earning money while creating amazing experiences!
+                Join thousands of successful hosts earning money while creating
+                amazing experiences!
               </p>
               <div className="flex items-center gap-6 mt-4 text-sm">
                 <div className="flex items-center gap-2">
@@ -693,7 +710,7 @@ export default function Events() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button
-                  onClick={() => window.location.href = '/dashboard'}
+                  onClick={() => (window.location.href = "/dashboard")}
                   className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-4 rounded-2xl font-black text-lg shadow-lg"
                 >
                   🚀 START HOSTING NOW!

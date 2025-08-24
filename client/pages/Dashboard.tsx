@@ -109,10 +109,15 @@ const recentEvents = [
     attendees: 2500,
     revenue: "$12,450",
     status: "sold-out",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     category: "Music",
     rating: 4.9,
-    highlights: ["Sold Out in 2 Hours", "500+ Photos Shared", "3 Media Features"],
+    highlights: [
+      "Sold Out in 2 Hours",
+      "500+ Photos Shared",
+      "3 Media Features",
+    ],
   },
   {
     id: 2,
@@ -121,7 +126,8 @@ const recentEvents = [
     attendees: 800,
     revenue: "$8,900",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     category: "Technology",
     rating: 4.8,
     highlights: ["VIP Networking", "Industry Leaders", "Premium Location"],
@@ -133,7 +139,8 @@ const recentEvents = [
     attendees: 300,
     revenue: "$4,200",
     status: "filling-fast",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     category: "Food & Drink",
     rating: 4.7,
     highlights: ["5-Star Catering", "Wine Tastings", "Celebrity Chef"],
@@ -190,20 +197,49 @@ const CreateEventModal = ({
   });
 
   const categories = [
-    { name: "Music & Concerts", icon: "🎵", color: "from-purple-500 to-pink-500" },
-    { name: "Tech & Innovation", icon: "💻", color: "from-blue-500 to-cyan-500" },
+    {
+      name: "Music & Concerts",
+      icon: "🎵",
+      color: "from-purple-500 to-pink-500",
+    },
+    {
+      name: "Tech & Innovation",
+      icon: "💻",
+      color: "from-blue-500 to-cyan-500",
+    },
     { name: "Food & Drink", icon: "🍽️", color: "from-orange-500 to-red-500" },
     { name: "Art & Culture", icon: "🎨", color: "from-pink-500 to-purple-500" },
-    { name: "Business & Networking", icon: "💼", color: "from-gray-600 to-gray-800" },
-    { name: "Health & Wellness", icon: "🧘", color: "from-green-500 to-teal-500" },
-    { name: "Sports & Fitness", icon: "⚽", color: "from-blue-500 to-green-500" },
+    {
+      name: "Business & Networking",
+      icon: "💼",
+      color: "from-gray-600 to-gray-800",
+    },
+    {
+      name: "Health & Wellness",
+      icon: "🧘",
+      color: "from-green-500 to-teal-500",
+    },
+    {
+      name: "Sports & Fitness",
+      icon: "⚽",
+      color: "from-blue-500 to-green-500",
+    },
     { name: "Parties & Social", icon: "🎉", color: "from-pink-500 to-red-500" },
   ];
 
   const popularTags = [
-    "🌟 Premium", "🔥 Hot Event", "📸 Instagram-worthy", "🎁 Exclusive Access",
-    "🍷 VIP Experience", "🎵 Live Music", "🍕 Food Included", "🎪 All Ages",
-    "💃 Dancing", "🎨 Creative", "🏆 Competition", "🎯 Networking"
+    "🌟 Premium",
+    "🔥 Hot Event",
+    "📸 Instagram-worthy",
+    "🎁 Exclusive Access",
+    "🍷 VIP Experience",
+    "🎵 Live Music",
+    "🍕 Food Included",
+    "🎪 All Ages",
+    "💃 Dancing",
+    "🎨 Creative",
+    "🏆 Competition",
+    "🎯 Networking",
   ];
 
   return (
@@ -248,7 +284,9 @@ const CreateEventModal = ({
                   <div className="font-bold text-sm">{stepInfo.label}</div>
                   <div className="text-xs opacity-70">{stepInfo.desc}</div>
                 </div>
-                {stepInfo.num < 3 && <div className="w-20 h-px bg-gradient-to-r from-purple-300 to-pink-300" />}
+                {stepInfo.num < 3 && (
+                  <div className="w-20 h-px bg-gradient-to-r from-purple-300 to-pink-300" />
+                )}
               </motion.div>
             ))}
           </div>
@@ -264,7 +302,8 @@ const CreateEventModal = ({
                   🌟 What Amazing Event Will You Create?
                 </h3>
                 <p className="text-gray-600">
-                  Choose your category and let's build something incredible together!
+                  Choose your category and let's build something incredible
+                  together!
                 </p>
               </div>
 
@@ -277,7 +316,9 @@ const CreateEventModal = ({
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ y: -5, scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={() => setEventData({ ...eventData, category: cat.name })}
+                    onClick={() =>
+                      setEventData({ ...eventData, category: cat.name })
+                    }
                     className={`cursor-pointer p-6 rounded-2xl text-center border-2 transition-all duration-300 ${
                       eventData.category === cat.name
                         ? "border-purple-500 bg-gradient-to-br from-purple-100 to-pink-100 shadow-xl"
@@ -285,14 +326,18 @@ const CreateEventModal = ({
                     }`}
                   >
                     <div className="text-3xl mb-3">{cat.icon}</div>
-                    <h4 className="font-bold text-sm text-gray-900">{cat.name}</h4>
+                    <h4 className="font-bold text-sm text-gray-900">
+                      {cat.name}
+                    </h4>
                     {eventData.category === cat.name && (
                       <motion.div
                         className="mt-3"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                       >
-                        <Badge className={`bg-gradient-to-r ${cat.color} text-white rounded-full`}>
+                        <Badge
+                          className={`bg-gradient-to-r ${cat.color} text-white rounded-full`}
+                        >
                           Selected ✨
                         </Badge>
                       </motion.div>
@@ -309,10 +354,14 @@ const CreateEventModal = ({
                   <Input
                     placeholder="e.g., 'Epic Summer Rooftop Bash' or 'Exclusive VIP Wine Tasting'"
                     value={eventData.title}
-                    onChange={(e) => setEventData({ ...eventData, title: e.target.value })}
+                    onChange={(e) =>
+                      setEventData({ ...eventData, title: e.target.value })
+                    }
                     className="rounded-2xl h-14 text-lg border-2 border-gray-200 focus:border-purple-500 bg-white/80"
                   />
-                  <p className="text-sm text-gray-500 mt-2">💡 Tip: Use exciting words that make people want to attend!</p>
+                  <p className="text-sm text-gray-500 mt-2">
+                    💡 Tip: Use exciting words that make people want to attend!
+                  </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -323,7 +372,9 @@ const CreateEventModal = ({
                     <Input
                       type="date"
                       value={eventData.date}
-                      onChange={(e) => setEventData({ ...eventData, date: e.target.value })}
+                      onChange={(e) =>
+                        setEventData({ ...eventData, date: e.target.value })
+                      }
                       className="rounded-2xl h-12 border-2 border-gray-200 focus:border-purple-500"
                     />
                   </div>
@@ -334,7 +385,9 @@ const CreateEventModal = ({
                     <Input
                       type="time"
                       value={eventData.time}
-                      onChange={(e) => setEventData({ ...eventData, time: e.target.value })}
+                      onChange={(e) =>
+                        setEventData({ ...eventData, time: e.target.value })
+                      }
                       className="rounded-2xl h-12 border-2 border-gray-200 focus:border-purple-500"
                     />
                   </div>
@@ -346,7 +399,9 @@ const CreateEventModal = ({
                       type="number"
                       placeholder="0 for free!"
                       value={eventData.price}
-                      onChange={(e) => setEventData({ ...eventData, price: e.target.value })}
+                      onChange={(e) =>
+                        setEventData({ ...eventData, price: e.target.value })
+                      }
                       className="rounded-2xl h-12 border-2 border-gray-200 focus:border-purple-500"
                     />
                   </div>
@@ -378,7 +433,9 @@ const CreateEventModal = ({
                   <Input
                     placeholder="e.g., 'Rooftop Terrace at The Grand Hotel' or 'My Backyard Paradise'"
                     value={eventData.location}
-                    onChange={(e) => setEventData({ ...eventData, location: e.target.value })}
+                    onChange={(e) =>
+                      setEventData({ ...eventData, location: e.target.value })
+                    }
                     className="rounded-2xl h-14 text-lg border-2 border-gray-200 focus:border-purple-500"
                   />
                 </div>
@@ -392,10 +449,14 @@ const CreateEventModal = ({
                       type="number"
                       placeholder="e.g., 50, 100, 500"
                       value={eventData.capacity}
-                      onChange={(e) => setEventData({ ...eventData, capacity: e.target.value })}
+                      onChange={(e) =>
+                        setEventData({ ...eventData, capacity: e.target.value })
+                      }
                       className="rounded-2xl h-12 border-2 border-gray-200 focus:border-purple-500"
                     />
-                    <p className="text-sm text-gray-500 mt-2">💡 Scarcity creates demand!</p>
+                    <p className="text-sm text-gray-500 mt-2">
+                      💡 Scarcity creates demand!
+                    </p>
                   </div>
                   <div>
                     <label className="block text-lg font-bold text-gray-700 mb-3">
@@ -409,9 +470,15 @@ const CreateEventModal = ({
                           whileTap={{ scale: 0.95 }}
                           onClick={() => {
                             if (eventData.tags.includes(tag)) {
-                              setEventData({ ...eventData, tags: eventData.tags.filter(t => t !== tag) });
+                              setEventData({
+                                ...eventData,
+                                tags: eventData.tags.filter((t) => t !== tag),
+                              });
                             } else {
-                              setEventData({ ...eventData, tags: [...eventData.tags, tag] });
+                              setEventData({
+                                ...eventData,
+                                tags: [...eventData.tags, tag],
+                              });
                             }
                           }}
                           className={`px-3 py-1 rounded-full text-xs border-2 transition-all ${
@@ -434,7 +501,12 @@ const CreateEventModal = ({
                   <Textarea
                     placeholder="Paint a picture with words! What will people experience? What makes this special? Why should they be excited? Include details about food, music, activities, dress code, what to bring, parking info, etc."
                     value={eventData.description}
-                    onChange={(e) => setEventData({ ...eventData, description: e.target.value })}
+                    onChange={(e) =>
+                      setEventData({
+                        ...eventData,
+                        description: e.target.value,
+                      })
+                    }
                     className="rounded-2xl min-h-[150px] border-2 border-gray-200 focus:border-purple-500 text-lg"
                   />
                   <p className="text-sm text-gray-500 mt-2">
@@ -455,9 +527,13 @@ const CreateEventModal = ({
                       📷 Drop your amazing photos here!
                     </p>
                     <p className="text-sm text-gray-600">
-                      Show off the venue, food, vibes - make them want to be there!
+                      Show off the venue, food, vibes - make them want to be
+                      there!
                     </p>
-                    <Button variant="outline" className="mt-4 rounded-xl border-purple-300 text-purple-600">
+                    <Button
+                      variant="outline"
+                      className="mt-4 rounded-xl border-purple-300 text-purple-600"
+                    >
                       Choose Photos
                     </Button>
                   </motion.div>
@@ -477,7 +553,8 @@ const CreateEventModal = ({
                   🚀 Ready to Launch Your Epic Event?
                 </h3>
                 <p className="text-gray-600 text-lg">
-                  You're about to create something amazing! Here's how it'll look:
+                  You're about to create something amazing! Here's how it'll
+                  look:
                 </p>
               </div>
 
@@ -505,7 +582,8 @@ const CreateEventModal = ({
                         {eventData.title || "Your Amazing Event Title"}
                       </h2>
                       <p className="text-gray-600 mb-4">
-                        {eventData.description || "Your compelling event description will appear here..."}
+                        {eventData.description ||
+                          "Your compelling event description will appear here..."}
                       </p>
                     </div>
                     <div className="text-right ml-6">
@@ -521,22 +599,31 @@ const CreateEventModal = ({
                   <div className="grid grid-cols-3 gap-4 mb-6 text-center">
                     <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl">
                       <Calendar className="w-6 h-6 text-blue-600 mx-auto mb-2" />
-                      <div className="font-bold text-blue-600">{eventData.date || "Date TBD"}</div>
+                      <div className="font-bold text-blue-600">
+                        {eventData.date || "Date TBD"}
+                      </div>
                     </div>
                     <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl">
                       <Clock className="w-6 h-6 text-purple-600 mx-auto mb-2" />
-                      <div className="font-bold text-purple-600">{eventData.time || "Time TBD"}</div>
+                      <div className="font-bold text-purple-600">
+                        {eventData.time || "Time TBD"}
+                      </div>
                     </div>
                     <div className="p-4 bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl">
                       <MapPin className="w-6 h-6 text-pink-600 mx-auto mb-2" />
-                      <div className="font-bold text-pink-600">{eventData.location || "Location TBD"}</div>
+                      <div className="font-bold text-pink-600">
+                        {eventData.location || "Location TBD"}
+                      </div>
                     </div>
                   </div>
 
                   {eventData.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-6">
                       {eventData.tags.map((tag) => (
-                        <Badge key={tag} className="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 rounded-full px-3 py-1">
+                        <Badge
+                          key={tag}
+                          className="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 rounded-full px-3 py-1"
+                        >
                           {tag}
                         </Badge>
                       ))}
@@ -544,10 +631,17 @@ const CreateEventModal = ({
                   )}
 
                   <div className="grid grid-cols-2 gap-4">
-                    <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl font-bold py-4">
+                    <Button
+                      size="lg"
+                      className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl font-bold py-4"
+                    >
                       🎟️ Get Tickets Now
                     </Button>
-                    <Button variant="outline" size="lg" className="border-2 border-purple-300 text-purple-600 rounded-2xl font-bold py-4">
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="border-2 border-purple-300 text-purple-600 rounded-2xl font-bold py-4"
+                    >
                       ❤️ Save Event
                     </Button>
                   </div>
@@ -563,7 +657,9 @@ const CreateEventModal = ({
                   <Button
                     onClick={() => {
                       setTimeout(() => {
-                        alert("🎉 Congratulations! Your event is now LIVE and ready to take bookings! 🚀\n\nPeople can now discover and book your amazing event. Get ready for an incredible response!");
+                        alert(
+                          "🎉 Congratulations! Your event is now LIVE and ready to take bookings! 🚀\n\nPeople can now discover and book your amazing event. Get ready for an incredible response!",
+                        );
                         onClose();
                       }, 1000);
                     }}
@@ -573,7 +669,8 @@ const CreateEventModal = ({
                   </Button>
                 </motion.div>
                 <p className="text-gray-600 mt-4 text-lg">
-                  Your event will be live instantly and people can start booking!
+                  Your event will be live instantly and people can start
+                  booking!
                 </p>
               </div>
             </motion.div>
@@ -595,7 +692,8 @@ const CreateEventModal = ({
                 onClick={() => setStep(step + 1)}
                 disabled={
                   (step === 1 && (!eventData.category || !eventData.title)) ||
-                  (step === 2 && (!eventData.location || !eventData.description))
+                  (step === 2 &&
+                    (!eventData.location || !eventData.description))
                 }
                 className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-bold disabled:opacity-50 text-lg"
               >
@@ -677,9 +775,13 @@ export default function Dashboard() {
                 <br />
                 EVENTS! 🚀
               </motion.h1>
-              
+
               <p className="text-2xl text-white/90 mb-8 leading-relaxed">
-                Turn your ideas into <span className="font-bold text-yellow-300">unforgettable experiences</span> that people will talk about forever!
+                Turn your ideas into{" "}
+                <span className="font-bold text-yellow-300">
+                  unforgettable experiences
+                </span>{" "}
+                that people will talk about forever!
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -694,7 +796,7 @@ export default function Dashboard() {
                     🎉 CREATE MY EVENT NOW!
                   </Button>
                 </motion.div>
-                
+
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -710,7 +812,9 @@ export default function Dashboard() {
 
               <div className="flex items-center gap-8 mt-8 text-white/80">
                 <div className="text-center">
-                  <div className="text-3xl font-black text-yellow-300">15.2K</div>
+                  <div className="text-3xl font-black text-yellow-300">
+                    15.2K
+                  </div>
                   <div className="text-sm">Happy Attendees</div>
                 </div>
                 <div className="text-center">
@@ -718,7 +822,9 @@ export default function Dashboard() {
                   <div className="text-sm">Success Rate</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-black text-yellow-300">$89K</div>
+                  <div className="text-3xl font-black text-yellow-300">
+                    $89K
+                  </div>
                   <div className="text-sm">Earned</div>
                 </div>
               </div>
@@ -742,8 +848,12 @@ export default function Dashboard() {
                     className="bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-xl"
                   >
                     <div className="text-3xl mb-3">{achievement.icon}</div>
-                    <h3 className="font-bold text-gray-900 mb-1">{achievement.title}</h3>
-                    <p className="text-sm text-gray-600">{achievement.description}</p>
+                    <h3 className="font-bold text-gray-900 mb-1">
+                      {achievement.title}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {achievement.description}
+                    </p>
                   </motion.div>
                 ))}
               </div>
@@ -792,14 +902,20 @@ export default function Dashboard() {
                   >
                     <stat.icon className="w-10 h-10 text-white" />
                   </motion.div>
-                  
+
                   <div className="space-y-2">
                     <h3 className="text-4xl font-black text-gray-900 dark:text-white">
                       {stat.value}
                     </h3>
-                    <p className="text-lg font-bold text-gray-700 dark:text-gray-300">{stat.title}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{stat.description}</p>
-                    <Badge className={`bg-gradient-to-r ${stat.gradient} text-white rounded-full px-4 py-2 font-bold`}>
+                    <p className="text-lg font-bold text-gray-700 dark:text-gray-300">
+                      {stat.title}
+                    </p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      {stat.description}
+                    </p>
+                    <Badge
+                      className={`bg-gradient-to-r ${stat.gradient} text-white rounded-full px-4 py-2 font-bold`}
+                    >
                       {stat.change} ↗️
                     </Badge>
                   </div>
@@ -836,7 +952,7 @@ export default function Dashboard() {
                 </div>
               </div>
             </CardHeader>
-            
+
             <CardContent>
               <div className="space-y-6">
                 {recentEvents.map((event, index) => (
@@ -878,7 +994,7 @@ export default function Dashboard() {
                               </span>
                             </div>
                           </div>
-                          
+
                           <Badge
                             className={`rounded-full px-4 py-2 font-bold ${
                               event.status === "sold-out"
@@ -888,9 +1004,11 @@ export default function Dashboard() {
                                   : "bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
                             }`}
                           >
-                            {event.status === "sold-out" ? "🔥 SOLD OUT" : 
-                             event.status === "upcoming" ? "📅 UPCOMING" : 
-                             "⚡ FILLING FAST"}
+                            {event.status === "sold-out"
+                              ? "🔥 SOLD OUT"
+                              : event.status === "upcoming"
+                                ? "📅 UPCOMING"
+                                : "⚡ FILLING FAST"}
                           </Badge>
                         </div>
 
@@ -898,27 +1016,52 @@ export default function Dashboard() {
                           <div className="flex items-center gap-6 text-sm">
                             <div className="flex items-center gap-1 font-semibold">
                               <Users className="w-4 h-4 text-purple-500" />
-                              <span className="text-purple-600">{event.attendees}</span>
+                              <span className="text-purple-600">
+                                {event.attendees}
+                              </span>
                             </div>
                             <div className="flex items-center gap-1 font-semibold">
                               <DollarSign className="w-4 h-4 text-green-500" />
-                              <span className="text-green-600">{event.revenue}</span>
+                              <span className="text-green-600">
+                                {event.revenue}
+                              </span>
                             </div>
                           </div>
 
                           <div className="flex items-center gap-2">
-                            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                              <Button variant="outline" size="sm" className="rounded-xl border-purple-200 text-purple-600 hover:bg-purple-50">
+                            <motion.div
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.9 }}
+                            >
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="rounded-xl border-purple-200 text-purple-600 hover:bg-purple-50"
+                              >
                                 <Eye className="w-4 h-4" />
                               </Button>
                             </motion.div>
-                            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                              <Button variant="outline" size="sm" className="rounded-xl border-blue-200 text-blue-600 hover:bg-blue-50">
+                            <motion.div
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.9 }}
+                            >
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="rounded-xl border-blue-200 text-blue-600 hover:bg-blue-50"
+                              >
                                 <Edit className="w-4 h-4" />
                               </Button>
                             </motion.div>
-                            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                              <Button variant="outline" size="sm" className="rounded-xl border-pink-200 text-pink-600 hover:bg-pink-50">
+                            <motion.div
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.9 }}
+                            >
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="rounded-xl border-pink-200 text-pink-600 hover:bg-pink-50"
+                              >
                                 <Share2 className="w-4 h-4" />
                               </Button>
                             </motion.div>
@@ -928,7 +1071,11 @@ export default function Dashboard() {
                         {event.highlights && (
                           <div className="flex flex-wrap gap-2 mt-4">
                             {event.highlights.map((highlight, idx) => (
-                              <Badge key={idx} variant="outline" className="text-xs rounded-full bg-gradient-to-r from-purple-50 to-pink-50 text-purple-700 border-purple-200">
+                              <Badge
+                                key={idx}
+                                variant="outline"
+                                className="text-xs rounded-full bg-gradient-to-r from-purple-50 to-pink-50 text-purple-700 border-purple-200"
+                              >
                                 ✨ {highlight}
                               </Badge>
                             ))}

@@ -255,9 +255,17 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Join thousands discovering <span className="font-bold text-purple-600">amazing events</span> and creating
-            <span className="font-bold text-pink-600"> unforgettable memories</span> every day!
-            Whether you want to <span className="font-bold text-red-600">attend</span> or <span className="font-bold text-green-600">host</span> - we've got you covered! ✨
+            Join thousands discovering{" "}
+            <span className="font-bold text-purple-600">amazing events</span>{" "}
+            and creating
+            <span className="font-bold text-pink-600">
+              {" "}
+              unforgettable memories
+            </span>{" "}
+            every day! Whether you want to{" "}
+            <span className="font-bold text-red-600">attend</span> or{" "}
+            <span className="font-bold text-green-600">host</span> - we've got
+            you covered! ✨
           </motion.p>
 
           <motion.div
@@ -306,7 +314,8 @@ export default function Index() {
               🔥 Trending Events Right Now
             </h2>
             <p className="text-lg text-gray-600">
-              These events are selling out fast - grab your spot before it's too late!
+              These events are selling out fast - grab your spot before it's too
+              late!
             </p>
           </motion.div>
 

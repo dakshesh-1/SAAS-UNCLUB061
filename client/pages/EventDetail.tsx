@@ -480,7 +480,9 @@ const BookingModal = ({
                       // Simulate booking success
                       setTimeout(() => {
                         alert(
-                          "🎉 AMAZING! Your booking is confirmed! 🎟️\n\n✅ Tickets sent to your email\n🎁 You've saved $" + (event.originalPrice - event.price) + "!\n📱 Add to calendar reminder sent\n🔥 Get ready for an EPIC experience!\n\nSee you there! 🚀"
+                          "🎉 AMAZING! Your booking is confirmed! 🎟️\n\n✅ Tickets sent to your email\n🎁 You've saved $" +
+                            (event.originalPrice - event.price) +
+                            "!\n📱 Add to calendar reminder sent\n🔥 Get ready for an EPIC experience!\n\nSee you there! 🚀",
                         );
                         onClose();
                       }, 1000);
@@ -506,7 +508,9 @@ export default function EventDetail() {
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const heroRef = useRef(null);
-  const event = id ? eventData[id as unknown as keyof typeof eventData] : undefined;
+  const event = id
+    ? eventData[id as unknown as keyof typeof eventData]
+    : undefined;
 
   const { scrollYProgress } = useScroll({
     target: event ? heroRef : undefined,
@@ -1029,7 +1033,7 @@ export default function EventDetail() {
                       }}
                     >
                       <Badge className="bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full px-6 py-2 text-lg font-black">
-                        🔥 LIMITED TIME: {" "}
+                        🔥 LIMITED TIME:{" "}
                         {Math.round(
                           ((event.originalPrice - event.price) /
                             event.originalPrice) *

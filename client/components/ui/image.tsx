@@ -15,7 +15,9 @@ interface StaticImageProps extends BaseImageProps {
   animated?: false;
 }
 
-interface AnimatedImageProps extends BaseImageProps, Omit<MotionProps, 'src' | 'alt' | 'className' | 'onError'> {
+interface AnimatedImageProps
+  extends BaseImageProps,
+    Omit<MotionProps, "src" | "alt" | "className" | "onError"> {
   animated: true;
 }
 
@@ -42,7 +44,7 @@ export function Image({
   };
 
   // For animated images using framer-motion
-  if ('animated' in props && props.animated) {
+  if ("animated" in props && props.animated) {
     const { animated, ...motionProps } = props;
     return (
       <motion.img

@@ -97,7 +97,10 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
     >
       <motion.div
         className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-6 border border-white/30"
-        whileHover={{ y: -4, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
+        whileHover={{
+          y: -4,
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+        }}
         transition={{ duration: 0.3 }}
       >
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
