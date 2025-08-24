@@ -1,8 +1,20 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { 
-  User, Camera, Edit, Settings, Calendar, Users, Heart, 
-  MapPin, Star, Trophy, Zap, Share2, Crown, Medal
+import {
+  User,
+  Camera,
+  Edit,
+  Settings,
+  Calendar,
+  Users,
+  Heart,
+  MapPin,
+  Star,
+  Trophy,
+  Zap,
+  Share2,
+  Crown,
+  Medal,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,8 +27,10 @@ import { GenZParticles } from "@/components/GenZParticles";
 const userData = {
   name: "Alex Chen",
   username: "@alexpartyking",
-  avatar: "https://images.unsplash.com/photo-1494790108755-2616b9e2b36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-  coverImage: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+  avatar:
+    "https://images.unsplash.com/photo-1494790108755-2616b9e2b36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+  coverImage:
+    "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
   bio: "Party planner extraordinaire 🎉 | Event enthusiast | Making memories one party at a time ✨",
   location: "Los Angeles, CA",
   joinDate: "March 2024",
@@ -25,14 +39,34 @@ const userData = {
     eventsAttended: 47,
     eventsHosted: 12,
     friends: 2847,
-    rating: 4.9
+    rating: 4.9,
   },
   badges: [
-    { id: 1, name: "Party Legend", icon: Crown, color: "from-unclub-red to-party-red" },
-    { id: 2, name: "Social Butterfly", icon: Users, color: "from-unclub-pink to-party-pink" },
-    { id: 3, name: "Event Master", icon: Trophy, color: "from-unclub-blue to-party-blue" },
-    { id: 4, name: "Super Host", icon: Medal, color: "from-party-electric to-unclub-hotpink" }
-  ]
+    {
+      id: 1,
+      name: "Party Legend",
+      icon: Crown,
+      color: "from-unclub-red to-party-red",
+    },
+    {
+      id: 2,
+      name: "Social Butterfly",
+      icon: Users,
+      color: "from-unclub-pink to-party-pink",
+    },
+    {
+      id: 3,
+      name: "Event Master",
+      icon: Trophy,
+      color: "from-unclub-blue to-party-blue",
+    },
+    {
+      id: 4,
+      name: "Super Host",
+      icon: Medal,
+      color: "from-party-electric to-unclub-hotpink",
+    },
+  ],
 };
 
 const recentActivity = [
@@ -41,22 +75,25 @@ const recentActivity = [
     type: "attended",
     event: "Summer Pool Party",
     date: "2 days ago",
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+    image:
+      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
   },
   {
     id: 2,
     type: "hosted",
     event: "Rooftop Sunset Vibes",
     date: "1 week ago",
-    image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+    image:
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
   },
   {
     id: 3,
     type: "attended",
     event: "Electronic Music Festival",
     date: "2 weeks ago",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
-  }
+    image:
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+  },
 ];
 
 const upcomingEvents = [
@@ -66,7 +103,8 @@ const upcomingEvents = [
     date: "Saturday, Aug 24",
     type: "hosting",
     attendees: 85,
-    image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+    image:
+      "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
   },
   {
     id: 2,
@@ -74,8 +112,9 @@ const upcomingEvents = [
     date: "Friday, Sep 1",
     type: "attending",
     attendees: 25,
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
-  }
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+  },
 ];
 
 export default function Profile() {
@@ -84,7 +123,7 @@ export default function Profile() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20">
       <GenZParticles />
-      
+
       {/* Cover Image & Profile Header */}
       <div className="relative h-64 sm:h-80 overflow-hidden">
         <motion.img
@@ -96,7 +135,7 @@ export default function Profile() {
           transition={{ duration: 0.8 }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-        
+
         {/* Edit Cover Button */}
         <motion.div
           className="absolute top-6 right-6"
@@ -128,7 +167,7 @@ export default function Profile() {
                   <AvatarImage src={userData.avatar} alt={userData.name} />
                   <AvatarFallback>{userData.name[0]}</AvatarFallback>
                 </Avatar>
-                
+
                 {userData.isVerified && (
                   <motion.div
                     className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-unclub-blue to-party-blue rounded-full flex items-center justify-center border-2 border-white shadow-lg"
@@ -139,7 +178,7 @@ export default function Profile() {
                     <Zap className="w-4 h-4 text-white" />
                   </motion.div>
                 )}
-                
+
                 <motion.button
                   className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-r from-unclub-pink to-party-pink rounded-full flex items-center justify-center border-2 border-white shadow-lg"
                   whileHover={{ scale: 1.1 }}
@@ -148,7 +187,7 @@ export default function Profile() {
                   <Edit className="w-4 h-4 text-white" />
                 </motion.button>
               </motion.div>
-              
+
               <div className="flex-1 pb-4">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -156,7 +195,9 @@ export default function Profile() {
                   transition={{ delay: 0.3 }}
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <h1 className="text-3xl sm:text-4xl font-black text-white">{userData.name}</h1>
+                    <h1 className="text-3xl sm:text-4xl font-black text-white">
+                      {userData.name}
+                    </h1>
                     {userData.isVerified && (
                       <Badge className="bg-gradient-to-r from-unclub-blue to-party-blue text-white rounded-full px-3 py-1">
                         <Zap className="w-3 h-3 mr-1" />
@@ -164,7 +205,9 @@ export default function Profile() {
                       </Badge>
                     )}
                   </div>
-                  <p className="text-white/90 font-medium text-lg mb-1">{userData.username}</p>
+                  <p className="text-white/90 font-medium text-lg mb-1">
+                    {userData.username}
+                  </p>
                   <div className="flex items-center gap-2 text-white/80">
                     <MapPin className="w-4 h-4" />
                     <span>{userData.location}</span>
@@ -173,7 +216,7 @@ export default function Profile() {
                   </div>
                 </motion.div>
               </div>
-              
+
               <motion.div
                 className="flex gap-3"
                 initial={{ opacity: 0, x: 20 }}
@@ -208,13 +251,25 @@ export default function Profile() {
           <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
             <CardContent className="p-6">
               <p className="text-gray-700 text-lg mb-6">{userData.bio}</p>
-              
+
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                 {[
-                  { label: "Events Attended", value: userData.stats.eventsAttended, icon: Calendar },
-                  { label: "Events Hosted", value: userData.stats.eventsHosted, icon: Users },
-                  { label: "Party Friends", value: userData.stats.friends.toLocaleString(), icon: Heart },
-                  { label: "Rating", value: userData.stats.rating, icon: Star }
+                  {
+                    label: "Events Attended",
+                    value: userData.stats.eventsAttended,
+                    icon: Calendar,
+                  },
+                  {
+                    label: "Events Hosted",
+                    value: userData.stats.eventsHosted,
+                    icon: Users,
+                  },
+                  {
+                    label: "Party Friends",
+                    value: userData.stats.friends.toLocaleString(),
+                    icon: Heart,
+                  },
+                  { label: "Rating", value: userData.stats.rating, icon: Star },
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -230,7 +285,9 @@ export default function Profile() {
                     >
                       <stat.icon className="w-6 h-6 text-white" />
                     </motion.div>
-                    <div className="text-2xl font-black text-gray-900">{stat.value}</div>
+                    <div className="text-2xl font-black text-gray-900">
+                      {stat.value}
+                    </div>
                     <div className="text-sm text-gray-600">{stat.label}</div>
                   </motion.div>
                 ))}
@@ -270,7 +327,9 @@ export default function Profile() {
                     >
                       <badge.icon className="w-8 h-8 text-white" />
                     </motion.div>
-                    <div className="text-sm font-bold text-gray-900">{badge.name}</div>
+                    <div className="text-sm font-bold text-gray-900">
+                      {badge.name}
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -284,11 +343,27 @@ export default function Profile() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
         >
-          <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
+          <Tabs
+            value={selectedTab}
+            onValueChange={setSelectedTab}
+            className="w-full"
+          >
             <TabsList className="grid w-full grid-cols-3 bg-white/80 backdrop-blur-sm rounded-2xl p-1 mb-6">
-              <TabsTrigger value="overview" className="rounded-xl font-semibold">Activity</TabsTrigger>
-              <TabsTrigger value="upcoming" className="rounded-xl font-semibold">Upcoming</TabsTrigger>
-              <TabsTrigger value="photos" className="rounded-xl font-semibold">Photos</TabsTrigger>
+              <TabsTrigger
+                value="overview"
+                className="rounded-xl font-semibold"
+              >
+                Activity
+              </TabsTrigger>
+              <TabsTrigger
+                value="upcoming"
+                className="rounded-xl font-semibold"
+              >
+                Upcoming
+              </TabsTrigger>
+              <TabsTrigger value="photos" className="rounded-xl font-semibold">
+                Photos
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="overview" className="space-y-4">
@@ -311,17 +386,27 @@ export default function Profile() {
                         />
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <span className="font-bold text-gray-900">{activity.type === 'hosted' ? 'Hosted' : 'Attended'}</span>
-                            <Badge className={`rounded-full px-3 py-1 ${
-                              activity.type === 'hosted' 
-                                ? 'bg-gradient-to-r from-unclub-pink to-party-pink text-white'
-                                : 'bg-gradient-to-r from-unclub-blue to-party-blue text-white'
-                            }`}>
-                              {activity.type === 'hosted' ? '🎉' : '✨'}
+                            <span className="font-bold text-gray-900">
+                              {activity.type === "hosted"
+                                ? "Hosted"
+                                : "Attended"}
+                            </span>
+                            <Badge
+                              className={`rounded-full px-3 py-1 ${
+                                activity.type === "hosted"
+                                  ? "bg-gradient-to-r from-unclub-pink to-party-pink text-white"
+                                  : "bg-gradient-to-r from-unclub-blue to-party-blue text-white"
+                              }`}
+                            >
+                              {activity.type === "hosted" ? "🎉" : "✨"}
                             </Badge>
                           </div>
-                          <h3 className="font-bold text-lg text-gray-900">{activity.event}</h3>
-                          <p className="text-gray-600 text-sm">{activity.date}</p>
+                          <h3 className="font-bold text-lg text-gray-900">
+                            {activity.event}
+                          </h3>
+                          <p className="text-gray-600 text-sm">
+                            {activity.date}
+                          </p>
                         </div>
                       </div>
                     </CardContent>
@@ -350,23 +435,29 @@ export default function Profile() {
                         />
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
-                            <Badge className={`rounded-full px-3 py-1 ${
-                              event.type === 'hosting'
-                                ? 'bg-gradient-to-r from-unclub-red to-party-red text-white'
-                                : 'bg-gradient-to-r from-unclub-blue to-party-blue text-white'
-                            }`}>
-                              {event.type === 'hosting' ? '🎯 Hosting' : '✨ Attending'}
+                            <Badge
+                              className={`rounded-full px-3 py-1 ${
+                                event.type === "hosting"
+                                  ? "bg-gradient-to-r from-unclub-red to-party-red text-white"
+                                  : "bg-gradient-to-r from-unclub-blue to-party-blue text-white"
+                              }`}
+                            >
+                              {event.type === "hosting"
+                                ? "🎯 Hosting"
+                                : "✨ Attending"}
                             </Badge>
                           </div>
-                          <h3 className="font-bold text-xl text-gray-900 mb-1">{event.title}</h3>
+                          <h3 className="font-bold text-xl text-gray-900 mb-1">
+                            {event.title}
+                          </h3>
                           <p className="text-gray-600 mb-2">{event.date}</p>
                           <div className="flex items-center gap-2 text-sm text-gray-600">
                             <Users className="w-4 h-4" />
                             {event.attendees} going
                           </div>
                         </div>
-                        <Button 
-                          variant="outline" 
+                        <Button
+                          variant="outline"
                           className="rounded-2xl border-2 border-unclub-pink text-unclub-pink hover:bg-unclub-pink hover:text-white"
                         >
                           View Event
@@ -382,8 +473,12 @@ export default function Profile() {
               <Card className="bg-white/80 backdrop-blur-sm rounded-2xl border-0 shadow-xl">
                 <CardContent className="p-8 text-center">
                   <Camera className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Party Photo Gallery</h3>
-                  <p className="text-gray-600 mb-6">Your best party moments will appear here!</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Party Photo Gallery
+                  </h3>
+                  <p className="text-gray-600 mb-6">
+                    Your best party moments will appear here!
+                  </p>
                   <Button className="bg-gradient-to-r from-unclub-blue to-unclub-pink text-white rounded-2xl font-bold">
                     Upload Photos
                   </Button>

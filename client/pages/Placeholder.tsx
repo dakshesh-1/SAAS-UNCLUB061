@@ -9,7 +9,11 @@ interface PlaceholderProps {
   features?: string[];
 }
 
-export default function Placeholder({ title, description, features = [] }: PlaceholderProps) {
+export default function Placeholder({
+  title,
+  description,
+  features = [],
+}: PlaceholderProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       {/* Header */}
@@ -40,14 +44,14 @@ export default function Placeholder({ title, description, features = [] }: Place
             transition={{ delay: 0.2, duration: 0.8, type: "spring" }}
           >
             <motion.div
-              animate={{ 
+              animate={{
                 y: [0, -10, 0],
-                rotate: [0, 5, -5, 0]
+                rotate: [0, 5, -5, 0],
               }}
-              transition={{ 
+              transition={{
                 duration: 3,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             >
               <MessageCircle className="w-16 h-16 text-white" />
@@ -96,13 +100,15 @@ export default function Placeholder({ title, description, features = [] }: Place
                           <motion.div
                             className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"
                             animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ 
+                            transition={{
                               duration: 2,
                               repeat: Infinity,
-                              delay: index * 0.2
+                              delay: index * 0.2,
                             }}
                           />
-                          <span className="text-gray-700 font-medium">{feature}</span>
+                          <span className="text-gray-700 font-medium">
+                            {feature}
+                          </span>
                         </div>
                       </CardContent>
                     </Card>
@@ -122,14 +128,12 @@ export default function Placeholder({ title, description, features = [] }: Place
               Want this page implemented?
             </h3>
             <p className="text-gray-600 mb-6">
-              Continue the conversation to have me build out this section with beautiful animations and interactions.
+              Continue the conversation to have me build out this section with
+              beautiful animations and interactions.
             </p>
-            
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button 
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-2xl font-semibold shadow-xl"
               >

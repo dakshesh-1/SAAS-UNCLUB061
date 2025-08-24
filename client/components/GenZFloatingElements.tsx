@@ -1,63 +1,72 @@
 import { motion } from "framer-motion";
-import { Heart, Star, Sparkles, Camera, Music, Coffee, Zap, Crown } from "lucide-react";
+import {
+  Heart,
+  Star,
+  Sparkles,
+  Camera,
+  Music,
+  Coffee,
+  Zap,
+  Crown,
+} from "lucide-react";
 
 const floatingElements = [
-  { 
-    icon: Heart, 
-    delay: 0, 
+  {
+    icon: Heart,
+    delay: 0,
     emoji: "💖",
     gradient: "from-instagram-pink to-instagram-red",
-    position: { top: "15%", left: "10%" }
+    position: { top: "15%", left: "10%" },
   },
-  { 
-    icon: Star, 
-    delay: 1, 
+  {
+    icon: Star,
+    delay: 1,
     emoji: "⭐",
     gradient: "from-instagram-yellow to-instagram-orange",
-    position: { top: "25%", right: "15%" }
+    position: { top: "25%", right: "15%" },
   },
-  { 
-    icon: Sparkles, 
-    delay: 2, 
+  {
+    icon: Sparkles,
+    delay: 2,
     emoji: "✨",
     gradient: "from-instagram-purple to-genz-cyber",
-    position: { top: "60%", left: "5%" }
+    position: { top: "60%", left: "5%" },
   },
-  { 
-    icon: Camera, 
-    delay: 0.5, 
+  {
+    icon: Camera,
+    delay: 0.5,
     emoji: "📸",
     gradient: "from-genz-neon to-instagram-pink",
-    position: { top: "70%", right: "10%" }
+    position: { top: "70%", right: "10%" },
   },
-  { 
-    icon: Music, 
-    delay: 1.5, 
+  {
+    icon: Music,
+    delay: 1.5,
     emoji: "🎵",
     gradient: "from-genz-mint to-instagram-blue",
-    position: { top: "40%", right: "5%" }
+    position: { top: "40%", right: "5%" },
   },
-  { 
-    icon: Coffee, 
-    delay: 2.5, 
+  {
+    icon: Coffee,
+    delay: 2.5,
     emoji: "☕",
     gradient: "from-instagram-orange to-genz-sunset",
-    position: { top: "80%", left: "15%" }
+    position: { top: "80%", left: "15%" },
   },
-  { 
-    icon: Zap, 
-    delay: 3, 
+  {
+    icon: Zap,
+    delay: 3,
     emoji: "⚡",
     gradient: "from-genz-electric to-instagram-yellow",
-    position: { top: "30%", left: "20%" }
+    position: { top: "30%", left: "20%" },
   },
-  { 
-    icon: Crown, 
-    delay: 3.5, 
+  {
+    icon: Crown,
+    delay: 3.5,
     emoji: "👑",
     gradient: "from-instagram-yellow to-genz-sunset",
-    position: { top: "50%", right: "20%" }
-  }
+    position: { top: "50%", right: "20%" },
+  },
 ];
 
 export function GenZFloatingElements() {
@@ -108,9 +117,11 @@ export function GenZFloatingElements() {
                 delay: element.delay,
               }}
             >
-              <element.icon className={`w-10 h-10 text-transparent bg-gradient-to-br ${element.gradient} bg-clip-text`} />
+              <element.icon
+                className={`w-10 h-10 text-transparent bg-gradient-to-br ${element.gradient} bg-clip-text`}
+              />
             </motion.div>
-            
+
             {/* Emoji version that alternates */}
             <motion.div
               className="absolute text-3xl"
@@ -129,7 +140,7 @@ export function GenZFloatingElements() {
           </motion.div>
         </motion.div>
       ))}
-      
+
       {/* Floating text bubbles */}
       {[
         { text: "So lit! 🔥", delay: 0, side: "left" },
@@ -141,18 +152,18 @@ export function GenZFloatingElements() {
       ].map((bubble, index) => (
         <motion.div
           key={index}
-          className={`absolute ${bubble.side === 'left' ? 'left-4' : 'right-4'} bg-gradient-to-r from-white/90 to-white/80 backdrop-blur-md rounded-3xl p-4 shadow-xl max-w-xs border border-white/20`}
+          className={`absolute ${bubble.side === "left" ? "left-4" : "right-4"} bg-gradient-to-r from-white/90 to-white/80 backdrop-blur-md rounded-3xl p-4 shadow-xl max-w-xs border border-white/20`}
           style={{
             top: `${15 + index * 12}%`,
           }}
-          initial={{ 
-            opacity: 0, 
-            x: bubble.side === 'left' ? -150 : 150,
+          initial={{
+            opacity: 0,
+            x: bubble.side === "left" ? -150 : 150,
             scale: 0.8,
-            rotate: bubble.side === 'left' ? -10 : 10,
+            rotate: bubble.side === "left" ? -10 : 10,
           }}
-          animate={{ 
-            opacity: [0, 1, 1, 0], 
+          animate={{
+            opacity: [0, 1, 1, 0],
             x: 0,
             scale: [0.8, 1, 1, 0.8],
             rotate: 0,
@@ -165,7 +176,7 @@ export function GenZFloatingElements() {
           }}
         >
           <div className="flex items-center gap-3">
-            <motion.div 
+            <motion.div
               className="w-10 h-10 bg-gradient-to-br from-instagram-pink to-instagram-purple rounded-full flex items-center justify-center"
               animate={{
                 rotate: [0, 360],
@@ -186,7 +197,7 @@ export function GenZFloatingElements() {
           </div>
         </motion.div>
       ))}
-      
+
       {/* Sparkle effects */}
       {[...Array(20)].map((_, index) => (
         <motion.div

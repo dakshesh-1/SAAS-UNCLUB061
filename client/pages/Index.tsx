@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, MapPin, Calendar, Users, Star, ArrowRight } from "lucide-react";
+import {
+  Search,
+  MapPin,
+  Calendar,
+  Users,
+  Star,
+  ArrowRight,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,10 +24,11 @@ const featuredEvents = [
     location: "Central Park, NYC",
     date: "Jul 15, 2024",
     price: "$89",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 2500,
     rating: 4.8,
-    category: "Music"
+    category: "Music",
   },
   {
     id: 2,
@@ -28,10 +36,11 @@ const featuredEvents = [
     location: "Silicon Valley, CA",
     date: "Aug 22, 2024",
     price: "$299",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 800,
     rating: 4.9,
-    category: "Technology"
+    category: "Technology",
   },
   {
     id: 3,
@@ -39,10 +48,11 @@ const featuredEvents = [
     location: "Napa Valley, CA",
     date: "Sep 10, 2024",
     price: "$149",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 300,
     rating: 4.7,
-    category: "Food & Drink"
+    category: "Food & Drink",
   },
   {
     id: 4,
@@ -50,10 +60,11 @@ const featuredEvents = [
     location: "SoHo, NYC",
     date: "Oct 5, 2024",
     price: "$45",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 150,
     rating: 4.6,
-    category: "Art"
+    category: "Art",
   },
   {
     id: 5,
@@ -61,10 +72,11 @@ const featuredEvents = [
     location: "Austin, TX",
     date: "Nov 12, 2024",
     price: "$25",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 200,
     rating: 4.5,
-    category: "Business"
+    category: "Business",
   },
   {
     id: 6,
@@ -72,14 +84,21 @@ const featuredEvents = [
     location: "Big Sur, CA",
     date: "Dec 3, 2024",
     price: "$399",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 50,
     rating: 4.9,
-    category: "Wellness"
-  }
+    category: "Wellness",
+  },
 ];
 
-const EventCard = ({ event, index }: { event: typeof featuredEvents[0], index: number }) => {
+const EventCard = ({
+  event,
+  index,
+}: {
+  event: (typeof featuredEvents)[0];
+  index: number;
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -112,35 +131,34 @@ const EventCard = ({ event, index }: { event: typeof featuredEvents[0], index: n
             </motion.div>
           </div>
         </div>
-        
+
         <CardContent className="p-6">
           <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
             <Calendar className="w-4 h-4" />
             {event.date}
           </div>
-          
+
           <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
             {event.title}
           </h3>
-          
+
           <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
             <MapPin className="w-4 h-4" />
             {event.location}
           </div>
-          
+
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <span className="font-bold text-xl text-gray-900">{event.price}</span>
+              <span className="font-bold text-xl text-gray-900">
+                {event.price}
+              </span>
               <div className="flex items-center gap-1 text-sm text-gray-600">
                 <Users className="w-4 h-4" />
                 {event.attendees}
               </div>
             </div>
-            
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link to={`/event/${event.id}`}>
                 <Button
                   size="sm"
@@ -156,7 +174,6 @@ const EventCard = ({ event, index }: { event: typeof featuredEvents[0], index: n
     </motion.div>
   );
 };
-
 
 export default function Index() {
   return (
@@ -216,17 +233,18 @@ export default function Index() {
               </span>
             </h1>
           </motion.div>
-          
+
           <motion.p
             className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Discover the hottest parties, coolest events, and most exclusive gatherings.
-            Your next unforgettable experience is just a click away! 🎉
+            Discover the hottest parties, coolest events, and most exclusive
+            gatherings. Your next unforgettable experience is just a click away!
+            🎉
           </motion.p>
-          
+
           <FunctionalSearch />
         </div>
       </section>
@@ -247,23 +265,20 @@ export default function Index() {
               Don't miss these trending events in your area
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredEvents.map((event, index) => (
               <EventCard key={event.id} event={event} index={index} />
             ))}
           </div>
-          
+
           <motion.div
             className="text-center mt-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
           >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link to="/events">
                 <Button
                   size="lg"
@@ -302,7 +317,9 @@ export default function Index() {
                 >
                   <stat.icon className="w-8 h-8" />
                 </motion.div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</h3>
+                <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                  {stat.number}
+                </h3>
                 <p className="text-gray-600">{stat.label}</p>
               </motion.div>
             ))}

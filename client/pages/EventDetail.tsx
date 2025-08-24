@@ -1,10 +1,31 @@
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
-import { 
-  Calendar, MapPin, Users, Star, Clock, Share2, Heart, 
-  ChevronLeft, ChevronRight, Play, Bookmark, MessageCircle,
-  User, Shield, ArrowRight, Camera, Music, Coffee, Crown
+import {
+  Calendar,
+  MapPin,
+  Users,
+  Star,
+  Clock,
+  Share2,
+  Heart,
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Bookmark,
+  MessageCircle,
+  User,
+  Shield,
+  ArrowRight,
+  Camera,
+  Music,
+  Coffee,
+  Crown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -47,55 +68,64 @@ const eventData = {
     • Interactive art installations
     • VIP lounge areas with exclusive perks
     • Professional photography opportunities`,
-    
+
     lineup: [
       { name: "Arctic Monkeys", time: "9:30 PM", stage: "Main Stage" },
       { name: "Billie Eilish", time: "8:00 PM", stage: "Main Stage" },
       { name: "The Chainsmokers", time: "10:30 PM", stage: "Electronic Stage" },
       { name: "Lorde", time: "7:00 PM", stage: "Indie Stage" },
     ],
-    
+
     host: {
       name: "NYC Events Co.",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      avatar:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
       verified: true,
       rating: 4.9,
       eventsHosted: 156,
       bio: "Premium event organizers bringing world-class experiences to NYC for over 10 years.",
-      followers: 25400
+      followers: 25400,
     },
-    
+
     reviews: [
       {
         id: 1,
         name: "Sarah Chen",
-        avatar: "https://images.unsplash.com/photo-1494790108755-2616b9e2b36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        avatar:
+          "https://images.unsplash.com/photo-1494790108755-2616b9e2b36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
         rating: 5,
         date: "Last month",
-        comment: "Absolutely incredible event! The organization was flawless and the artists were amazing. Already bought tickets for next year! 🎵✨",
+        comment:
+          "Absolutely incredible event! The organization was flawless and the artists were amazing. Already bought tickets for next year! 🎵✨",
         helpful: 42,
-        images: ["https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"]
+        images: [
+          "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        ],
       },
       {
         id: 2,
         name: "Marcus Johnson",
-        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        avatar:
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
         rating: 5,
         date: "2 weeks ago",
-        comment: "Best festival experience I've ever had! The sound quality was perfect, crowd was amazing, and the food was actually good (rare for festivals lol). 10/10 would recommend!",
-        helpful: 38
+        comment:
+          "Best festival experience I've ever had! The sound quality was perfect, crowd was amazing, and the food was actually good (rare for festivals lol). 10/10 would recommend!",
+        helpful: 38,
       },
       {
         id: 3,
         name: "Emma Rodriguez",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        avatar:
+          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
         rating: 4,
         date: "1 week ago",
-        comment: "Great event overall! Only minor complaint was the long lines for drinks, but the music more than made up for it. The sunset set was magical! 🌅",
-        helpful: 29
-      }
+        comment:
+          "Great event overall! Only minor complaint was the long lines for drinks, but the music more than made up for it. The sunset set was magical! 🌅",
+        helpful: 29,
+      },
     ],
-    
+
     ticketTypes: [
       {
         id: 1,
@@ -104,37 +134,60 @@ const eventData = {
         originalPrice: 120,
         features: ["Festival Access", "Food Court Access", "Basic Parking"],
         available: 127,
-        popular: false
+        popular: false,
       },
       {
         id: 2,
         name: "VIP Experience",
         price: 199,
         originalPrice: 250,
-        features: ["Festival Access", "VIP Lounge", "Premium Bar", "Express Entry", "VIP Parking", "Welcome Gift Bag"],
+        features: [
+          "Festival Access",
+          "VIP Lounge",
+          "Premium Bar",
+          "Express Entry",
+          "VIP Parking",
+          "Welcome Gift Bag",
+        ],
         available: 23,
-        popular: true
+        popular: true,
       },
       {
         id: 3,
         name: "Premium VIP",
         price: 349,
         originalPrice: 450,
-        features: ["All VIP Benefits", "Meet & Greet", "Backstage Access", "Professional Photos", "Exclusive Merch", "Private Transport"],
+        features: [
+          "All VIP Benefits",
+          "Meet & Greet",
+          "Backstage Access",
+          "Professional Photos",
+          "Exclusive Merch",
+          "Private Transport",
+        ],
         available: 8,
-        popular: false
-      }
-    ]
-  }
+        popular: false,
+      },
+    ],
+  },
 };
 
-const BookingModal = ({ isOpen, onClose, event }: { isOpen: boolean; onClose: () => void; event: any }) => {
+const BookingModal = ({
+  isOpen,
+  onClose,
+  event,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  event: any;
+}) => {
   const [selectedTicket, setSelectedTicket] = useState(event.ticketTypes[0]);
   const [quantity, setQuantity] = useState(1);
   const [step, setStep] = useState(1); // 1: ticket selection, 2: details, 3: payment
 
   const total = selectedTicket.price * quantity;
-  const savings = (selectedTicket.originalPrice - selectedTicket.price) * quantity;
+  const savings =
+    (selectedTicket.originalPrice - selectedTicket.price) * quantity;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -147,7 +200,7 @@ const BookingModal = ({ isOpen, onClose, event }: { isOpen: boolean; onClose: ()
         >
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
-            <motion.h2 
+            <motion.h2
               className="text-2xl font-bold bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange bg-clip-text text-transparent"
               initial={{ x: -20 }}
               animate={{ x: 0 }}
@@ -159,9 +212,9 @@ const BookingModal = ({ isOpen, onClose, event }: { isOpen: boolean; onClose: ()
                 <motion.div
                   key={stepNum}
                   className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                    step >= stepNum 
-                      ? 'bg-gradient-to-r from-instagram-pink to-instagram-purple text-white' 
-                      : 'bg-gray-200 text-gray-500'
+                    step >= stepNum
+                      ? "bg-gradient-to-r from-instagram-pink to-instagram-purple text-white"
+                      : "bg-gray-200 text-gray-500"
                   }`}
                   whileHover={{ scale: 1.1 }}
                 >
@@ -177,7 +230,9 @@ const BookingModal = ({ isOpen, onClose, event }: { isOpen: boolean; onClose: ()
               animate={{ x: 0, opacity: 1 }}
               className="space-y-4"
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Choose Your Experience</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Choose Your Experience
+              </h3>
               {event.ticketTypes.map((ticket: any) => (
                 <motion.div
                   key={ticket.id}
@@ -185,8 +240,8 @@ const BookingModal = ({ isOpen, onClose, event }: { isOpen: boolean; onClose: ()
                   whileTap={{ scale: 0.98 }}
                   className={`relative p-4 rounded-2xl border-2 cursor-pointer transition-all duration-300 ${
                     selectedTicket.id === ticket.id
-                      ? 'border-instagram-pink bg-gradient-to-r from-instagram-pink/10 to-instagram-purple/10'
-                      : 'border-gray-200 hover:border-instagram-purple/50'
+                      ? "border-instagram-pink bg-gradient-to-r from-instagram-pink/10 to-instagram-purple/10"
+                      : "border-gray-200 hover:border-instagram-purple/50"
                   }`}
                   onClick={() => setSelectedTicket(ticket)}
                 >
@@ -202,23 +257,29 @@ const BookingModal = ({ isOpen, onClose, event }: { isOpen: boolean; onClose: ()
                       </Badge>
                     </motion.div>
                   )}
-                  
+
                   <div className="flex justify-between items-start mb-3">
                     <div>
                       <h4 className="font-bold text-lg">{ticket.name}</h4>
-                      <p className="text-sm text-gray-600">{ticket.available} left</p>
+                      <p className="text-sm text-gray-600">
+                        {ticket.available} left
+                      </p>
                     </div>
                     <div className="text-right">
                       <div className="flex items-center gap-2">
-                        <span className="text-lg font-bold text-gray-900">${ticket.price}</span>
-                        <span className="text-sm text-gray-500 line-through">${ticket.originalPrice}</span>
+                        <span className="text-lg font-bold text-gray-900">
+                          ${ticket.price}
+                        </span>
+                        <span className="text-sm text-gray-500 line-through">
+                          ${ticket.originalPrice}
+                        </span>
                       </div>
                       <div className="text-xs text-green-600 font-semibold">
                         Save ${ticket.originalPrice - ticket.price}
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-2 gap-2">
                     {ticket.features.map((feature: string, index: number) => (
                       <motion.div
@@ -251,7 +312,9 @@ const BookingModal = ({ isOpen, onClose, event }: { isOpen: boolean; onClose: ()
                   >
                     -
                   </motion.button>
-                  <span className="text-xl font-bold w-8 text-center">{quantity}</span>
+                  <span className="text-xl font-bold w-8 text-center">
+                    {quantity}
+                  </span>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -283,7 +346,7 @@ const BookingModal = ({ isOpen, onClose, event }: { isOpen: boolean; onClose: ()
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button 
+                <Button
                   onClick={() => setStep(2)}
                   className="w-full bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white rounded-2xl py-6 text-lg font-bold shadow-2xl"
                 >
@@ -300,31 +363,45 @@ const BookingModal = ({ isOpen, onClose, event }: { isOpen: boolean; onClose: ()
               animate={{ x: 0, opacity: 1 }}
               className="space-y-4"
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Your Details</h3>
-              
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Your Details
+              </h3>
+
               <div className="grid grid-cols-2 gap-4">
                 <Input placeholder="First Name" className="rounded-xl" />
                 <Input placeholder="Last Name" className="rounded-xl" />
               </div>
-              
-              <Input placeholder="Email Address" type="email" className="rounded-xl" />
-              <Input placeholder="Phone Number" type="tel" className="rounded-xl" />
-              
-              <Textarea 
-                placeholder="Any special requirements or questions?" 
-                className="rounded-xl min-h-[100px]" 
+
+              <Input
+                placeholder="Email Address"
+                type="email"
+                className="rounded-xl"
+              />
+              <Input
+                placeholder="Phone Number"
+                type="tel"
+                className="rounded-xl"
+              />
+
+              <Textarea
+                placeholder="Any special requirements or questions?"
+                className="rounded-xl min-h-[100px]"
               />
 
               <div className="flex gap-3">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => setStep(1)}
                   className="flex-1 rounded-xl"
                 >
                   Back
                 </Button>
-                <motion.div className="flex-2" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button 
+                <motion.div
+                  className="flex-2"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Button
                     onClick={() => setStep(3)}
                     className="w-full bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange text-white rounded-xl"
                   >
@@ -342,12 +419,16 @@ const BookingModal = ({ isOpen, onClose, event }: { isOpen: boolean; onClose: ()
               animate={{ x: 0, opacity: 1 }}
               className="space-y-4"
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Payment & Confirmation</h3>
-              
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Payment & Confirmation
+              </h3>
+
               {/* Order Summary */}
               <div className="p-4 bg-white/80 rounded-2xl space-y-3">
                 <div className="flex justify-between">
-                  <span>{selectedTicket.name} × {quantity}</span>
+                  <span>
+                    {selectedTicket.name} × {quantity}
+                  </span>
                   <span className="font-semibold">${total}</span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-600">
@@ -364,7 +445,12 @@ const BookingModal = ({ isOpen, onClose, event }: { isOpen: boolean; onClose: ()
               {/* Payment Methods */}
               <div className="space-y-3">
                 <h4 className="font-semibold">Payment Method</h4>
-                {['💳 Credit Card', '📱 Apple Pay', '🔵 PayPal', '💰 Google Pay'].map((method) => (
+                {[
+                  "💳 Credit Card",
+                  "📱 Apple Pay",
+                  "🔵 PayPal",
+                  "💰 Google Pay",
+                ].map((method) => (
                   <motion.div
                     key={method}
                     whileHover={{ scale: 1.02, x: 5 }}
@@ -376,19 +462,25 @@ const BookingModal = ({ isOpen, onClose, event }: { isOpen: boolean; onClose: ()
               </div>
 
               <div className="flex gap-3">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => setStep(2)}
                   className="flex-1 rounded-xl"
                 >
                   Back
                 </Button>
-                <motion.div className="flex-2" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button 
+                <motion.div
+                  className="flex-2"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Button
                     onClick={() => {
                       // Simulate booking success
                       setTimeout(() => {
-                        alert('🎉 Booking confirmed! Check your email for tickets.');
+                        alert(
+                          "🎉 Booking confirmed! Check your email for tickets.",
+                        );
                         onClose();
                       }, 1000);
                     }}
@@ -415,19 +507,21 @@ export default function EventDetail() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end start"],
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const event = eventData[id as keyof typeof eventData];
-  
+
   if (!event) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-instagram-pink/20 to-instagram-purple/20">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Event Not Found</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Event Not Found
+          </h1>
           <Link to="/events">
             <Button className="bg-gradient-to-r from-instagram-pink to-instagram-purple text-white rounded-2xl">
               Back to Events
@@ -441,7 +535,7 @@ export default function EventDetail() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-orange-50">
       {/* Hero Section with Parallax */}
-      <motion.section 
+      <motion.section
         ref={heroRef}
         className="relative h-[70vh] overflow-hidden"
         style={{ y, opacity }}
@@ -463,10 +557,10 @@ export default function EventDetail() {
             className="w-full h-full object-cover"
           />
         </motion.div>
-        
+
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-        
+
         {/* Back Button */}
         <motion.div
           className="absolute top-24 left-6 z-20"
@@ -475,9 +569,9 @@ export default function EventDetail() {
           transition={{ delay: 0.3 }}
         >
           <Link to="/events">
-            <Button 
-              variant="outline" 
-              size="sm" 
+            <Button
+              variant="outline"
+              size="sm"
               className="bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30 rounded-2xl"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
@@ -499,26 +593,28 @@ export default function EventDetail() {
               size="sm"
               onClick={() => setIsLiked(!isLiked)}
               className={`bg-white/20 backdrop-blur-md border-white/30 hover:bg-white/30 rounded-2xl ${
-                isLiked ? 'text-red-400' : 'text-white'
+                isLiked ? "text-red-400" : "text-white"
               }`}
             >
-              <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
+              <Heart className={`w-4 h-4 ${isLiked ? "fill-current" : ""}`} />
             </Button>
           </motion.div>
-          
+
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <Button
               variant="outline"
               size="sm"
               onClick={() => setIsSaved(!isSaved)}
               className={`bg-white/20 backdrop-blur-md border-white/30 hover:bg-white/30 rounded-2xl ${
-                isSaved ? 'text-yellow-400' : 'text-white'
+                isSaved ? "text-yellow-400" : "text-white"
               }`}
             >
-              <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
+              <Bookmark
+                className={`w-4 h-4 ${isSaved ? "fill-current" : ""}`}
+              />
             </Button>
           </motion.div>
-          
+
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <Button
               variant="outline"
@@ -538,9 +634,7 @@ export default function EventDetail() {
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentImageIndex 
-                    ? 'bg-white' 
-                    : 'bg-white/50'
+                  index === currentImageIndex ? "bg-white" : "bg-white/50"
                 }`}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.8 }}
@@ -566,7 +660,7 @@ export default function EventDetail() {
                 {event.category}
               </Badge>
             </motion.div>
-            
+
             <motion.h1
               className="text-4xl md:text-6xl font-black mb-4"
               initial={{ y: 20, opacity: 0 }}
@@ -575,7 +669,7 @@ export default function EventDetail() {
             >
               {event.title}
             </motion.h1>
-            
+
             <motion.div
               className="flex flex-wrap items-center gap-6 text-lg"
               initial={{ y: 20, opacity: 0 }}
@@ -618,7 +712,10 @@ export default function EventDetail() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.05, y: -2 }}
                 >
-                  <Badge variant="outline" className="rounded-full px-4 py-2 bg-white/80 backdrop-blur-sm">
+                  <Badge
+                    variant="outline"
+                    className="rounded-full px-4 py-2 bg-white/80 backdrop-blur-sm"
+                  >
                     {tag}
                   </Badge>
                 </motion.div>
@@ -628,9 +725,24 @@ export default function EventDetail() {
             {/* Tabs */}
             <Tabs defaultValue="details" className="w-full">
               <TabsList className="grid w-full grid-cols-3 bg-white/80 backdrop-blur-sm rounded-2xl p-1">
-                <TabsTrigger value="details" className="rounded-xl font-semibold">Details</TabsTrigger>
-                <TabsTrigger value="lineup" className="rounded-xl font-semibold">Lineup</TabsTrigger>
-                <TabsTrigger value="reviews" className="rounded-xl font-semibold">Reviews</TabsTrigger>
+                <TabsTrigger
+                  value="details"
+                  className="rounded-xl font-semibold"
+                >
+                  Details
+                </TabsTrigger>
+                <TabsTrigger
+                  value="lineup"
+                  className="rounded-xl font-semibold"
+                >
+                  Lineup
+                </TabsTrigger>
+                <TabsTrigger
+                  value="reviews"
+                  className="rounded-xl font-semibold"
+                >
+                  Reviews
+                </TabsTrigger>
               </TabsList>
 
               <TabsContent value="details" className="mt-6">
@@ -645,17 +757,19 @@ export default function EventDetail() {
                         About This Event
                       </h3>
                       <div className="prose prose-gray max-w-none">
-                        {event.description.split('\n').map((paragraph, index) => (
-                          <motion.p
-                            key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            className="mb-4 text-gray-700 leading-relaxed"
-                          >
-                            {paragraph}
-                          </motion.p>
-                        ))}
+                        {event.description
+                          .split("\n")
+                          .map((paragraph, index) => (
+                            <motion.p
+                              key={index}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.1 }}
+                              className="mb-4 text-gray-700 leading-relaxed"
+                            >
+                              {paragraph}
+                            </motion.p>
+                          ))}
                       </div>
                     </CardContent>
                   </Card>
@@ -668,14 +782,18 @@ export default function EventDetail() {
                         Location & Venue
                       </h3>
                       <div className="space-y-3">
-                        <p className="text-lg font-semibold">{event.location}</p>
+                        <p className="text-lg font-semibold">
+                          {event.location}
+                        </p>
                         <p className="text-gray-600">{event.fullAddress}</p>
-                        <motion.div 
+                        <motion.div
                           className="h-48 bg-gray-200 rounded-xl overflow-hidden"
                           whileHover={{ scale: 1.02 }}
                         >
                           <div className="w-full h-full bg-gradient-to-br from-instagram-pink/20 to-instagram-purple/20 flex items-center justify-center">
-                            <p className="text-gray-600">🗺️ Interactive Map Coming Soon</p>
+                            <p className="text-gray-600">
+                              🗺️ Interactive Map Coming Soon
+                            </p>
                           </div>
                         </motion.div>
                       </div>
@@ -709,7 +827,9 @@ export default function EventDetail() {
                                 <Music className="w-8 h-8 text-white" />
                               </motion.div>
                               <div>
-                                <h4 className="text-xl font-bold">{artist.name}</h4>
+                                <h4 className="text-xl font-bold">
+                                  {artist.name}
+                                </h4>
                                 <p className="text-gray-600">{artist.stage}</p>
                               </div>
                             </div>
@@ -746,28 +866,44 @@ export default function EventDetail() {
                                 key={i}
                                 className={`w-6 h-6 ${
                                   i < Math.floor(event.rating)
-                                    ? 'text-yellow-400 fill-current'
-                                    : 'text-gray-300'
+                                    ? "text-yellow-400 fill-current"
+                                    : "text-gray-300"
                                 }`}
                               />
                             ))}
                           </div>
-                          <p className="text-gray-600">{event.totalReviews} reviews</p>
+                          <p className="text-gray-600">
+                            {event.totalReviews} reviews
+                          </p>
                         </div>
                         <div className="space-y-2">
                           {[5, 4, 3, 2, 1].map((stars) => (
-                            <div key={stars} className="flex items-center gap-3">
-                              <span className="text-sm font-medium w-8">{stars}★</span>
+                            <div
+                              key={stars}
+                              className="flex items-center gap-3"
+                            >
+                              <span className="text-sm font-medium w-8">
+                                {stars}★
+                              </span>
                               <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
                                 <motion.div
                                   className="h-full bg-gradient-to-r from-instagram-pink to-instagram-purple"
                                   initial={{ width: 0 }}
-                                  animate={{ width: `${stars === 5 ? 75 : stars === 4 ? 20 : 5}%` }}
-                                  transition={{ delay: stars * 0.1, duration: 0.5 }}
+                                  animate={{
+                                    width: `${stars === 5 ? 75 : stars === 4 ? 20 : 5}%`,
+                                  }}
+                                  transition={{
+                                    delay: stars * 0.1,
+                                    duration: 0.5,
+                                  }}
                                 />
                               </div>
                               <span className="text-sm text-gray-600 w-8">
-                                {stars === 5 ? '75%' : stars === 4 ? '20%' : '5%'}
+                                {stars === 5
+                                  ? "75%"
+                                  : stars === 4
+                                    ? "20%"
+                                    : "5%"}
                               </span>
                             </div>
                           ))}
@@ -789,13 +925,22 @@ export default function EventDetail() {
                           <CardContent className="p-6">
                             <div className="flex items-start gap-4">
                               <Avatar className="w-12 h-12">
-                                <AvatarImage src={review.avatar} alt={review.name} />
-                                <AvatarFallback>{review.name[0]}</AvatarFallback>
+                                <AvatarImage
+                                  src={review.avatar}
+                                  alt={review.name}
+                                />
+                                <AvatarFallback>
+                                  {review.name[0]}
+                                </AvatarFallback>
                               </Avatar>
                               <div className="flex-1">
                                 <div className="flex items-center justify-between mb-2">
-                                  <h4 className="font-semibold">{review.name}</h4>
-                                  <span className="text-sm text-gray-500">{review.date}</span>
+                                  <h4 className="font-semibold">
+                                    {review.name}
+                                  </h4>
+                                  <span className="text-sm text-gray-500">
+                                    {review.date}
+                                  </span>
                                 </div>
                                 <div className="flex items-center gap-2 mb-3">
                                   {[...Array(5)].map((_, i) => (
@@ -803,13 +948,15 @@ export default function EventDetail() {
                                       key={i}
                                       className={`w-4 h-4 ${
                                         i < review.rating
-                                          ? 'text-yellow-400 fill-current'
-                                          : 'text-gray-300'
+                                          ? "text-yellow-400 fill-current"
+                                          : "text-gray-300"
                                       }`}
                                     />
                                   ))}
                                 </div>
-                                <p className="text-gray-700 mb-3">{review.comment}</p>
+                                <p className="text-gray-700 mb-3">
+                                  {review.comment}
+                                </p>
                                 {review.images && (
                                   <div className="flex gap-2 mb-3">
                                     {review.images.map((image, imgIndex) => (
@@ -878,7 +1025,13 @@ export default function EventDetail() {
                       }}
                     >
                       <Badge className="bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full px-4 py-1">
-                        🔥 {Math.round(((event.originalPrice - event.price) / event.originalPrice) * 100)}% OFF
+                        🔥{" "}
+                        {Math.round(
+                          ((event.originalPrice - event.price) /
+                            event.originalPrice) *
+                            100,
+                        )}
+                        % OFF
                       </Badge>
                     </motion.div>
                   </div>
@@ -890,18 +1043,21 @@ export default function EventDetail() {
                         {event.maxCapacity - event.attendees} spots left
                       </span>
                     </div>
-                    
+
                     <div className="w-full bg-gray-200 rounded-full h-2">
                       <motion.div
                         className="bg-gradient-to-r from-instagram-pink to-instagram-orange h-2 rounded-full"
                         initial={{ width: 0 }}
-                        animate={{ width: `${(event.attendees / event.maxCapacity) * 100}%` }}
+                        animate={{
+                          width: `${(event.attendees / event.maxCapacity) * 100}%`,
+                        }}
                         transition={{ duration: 1, delay: 0.5 }}
                       />
                     </div>
-                    
+
                     <p className="text-xs text-gray-600 text-center">
-                      {event.attendees.toLocaleString()} of {event.maxCapacity.toLocaleString()} spots taken
+                      {event.attendees.toLocaleString()} of{" "}
+                      {event.maxCapacity.toLocaleString()} spots taken
                     </p>
                   </div>
 
@@ -909,7 +1065,7 @@ export default function EventDetail() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <Button 
+                    <Button
                       onClick={() => setIsBookingOpen(true)}
                       className="w-full bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white rounded-2xl py-4 text-lg font-bold shadow-2xl"
                     >
@@ -936,7 +1092,10 @@ export default function EventDetail() {
                   <div className="flex items-start gap-4">
                     <div className="relative">
                       <Avatar className="w-16 h-16">
-                        <AvatarImage src={event.host.avatar} alt={event.host.name} />
+                        <AvatarImage
+                          src={event.host.avatar}
+                          alt={event.host.name}
+                        />
                         <AvatarFallback>{event.host.name[0]}</AvatarFallback>
                       </Avatar>
                       {event.host.verified && (
@@ -956,7 +1115,10 @@ export default function EventDetail() {
                       <div className="flex items-center gap-2 mb-1">
                         <h4 className="font-semibold">{event.host.name}</h4>
                         {event.host.verified && (
-                          <Badge variant="outline" className="text-xs px-2 py-0">
+                          <Badge
+                            variant="outline"
+                            className="text-xs px-2 py-0"
+                          >
                             Verified
                           </Badge>
                         )}
@@ -996,10 +1158,26 @@ export default function EventDetail() {
                   <h3 className="text-lg font-bold mb-4">Share This Event</h3>
                   <div className="grid grid-cols-2 gap-3">
                     {[
-                      { name: 'Instagram', icon: '📸', gradient: 'from-instagram-pink to-instagram-purple' },
-                      { name: 'TikTok', icon: '🎵', gradient: 'from-gray-900 to-red-600' },
-                      { name: 'Snapchat', icon: '👻', gradient: 'from-yellow-400 to-yellow-500' },
-                      { name: 'WhatsApp', icon: '💬', gradient: 'from-green-500 to-green-600' }
+                      {
+                        name: "Instagram",
+                        icon: "📸",
+                        gradient: "from-instagram-pink to-instagram-purple",
+                      },
+                      {
+                        name: "TikTok",
+                        icon: "🎵",
+                        gradient: "from-gray-900 to-red-600",
+                      },
+                      {
+                        name: "Snapchat",
+                        icon: "👻",
+                        gradient: "from-yellow-400 to-yellow-500",
+                      },
+                      {
+                        name: "WhatsApp",
+                        icon: "💬",
+                        gradient: "from-green-500 to-green-600",
+                      },
                     ].map((platform) => (
                       <motion.button
                         key={platform.name}
@@ -1020,9 +1198,9 @@ export default function EventDetail() {
       </div>
 
       {/* Booking Modal */}
-      <BookingModal 
-        isOpen={isBookingOpen} 
-        onClose={() => setIsBookingOpen(false)} 
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
         event={event}
       />
     </div>

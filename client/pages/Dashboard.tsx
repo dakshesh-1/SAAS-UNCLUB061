@@ -1,20 +1,54 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { 
-  Plus, Calendar, Users, DollarSign, TrendingUp, Star, 
-  Edit, Trash2, Eye, Settings, BarChart3, MapPin, Clock,
-  Image, Music, Coffee, Camera, Heart, Share2, Filter,
-  ChevronDown, Download, Upload, Bell, Crown, Zap
+import {
+  Plus,
+  Calendar,
+  Users,
+  DollarSign,
+  TrendingUp,
+  Star,
+  Edit,
+  Trash2,
+  Eye,
+  Settings,
+  BarChart3,
+  MapPin,
+  Clock,
+  Image,
+  Music,
+  Coffee,
+  Camera,
+  Heart,
+  Share2,
+  Filter,
+  ChevronDown,
+  Download,
+  Upload,
+  Bell,
+  Crown,
+  Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 
 // Mock data for dashboard
@@ -25,7 +59,7 @@ const dashboardStats = [
     change: "+12%",
     trend: "up",
     icon: Calendar,
-    gradient: "from-instagram-pink to-instagram-purple"
+    gradient: "from-instagram-pink to-instagram-purple",
   },
   {
     title: "Total Attendees",
@@ -33,7 +67,7 @@ const dashboardStats = [
     change: "+23%",
     trend: "up",
     icon: Users,
-    gradient: "from-instagram-purple to-instagram-blue"
+    gradient: "from-instagram-purple to-instagram-blue",
   },
   {
     title: "Revenue",
@@ -41,7 +75,7 @@ const dashboardStats = [
     change: "+18%",
     trend: "up",
     icon: DollarSign,
-    gradient: "from-instagram-orange to-instagram-yellow"
+    gradient: "from-instagram-orange to-instagram-yellow",
   },
   {
     title: "Avg Rating",
@@ -49,8 +83,8 @@ const dashboardStats = [
     change: "+0.2",
     trend: "up",
     icon: Star,
-    gradient: "from-genz-mint to-genz-cyber"
-  }
+    gradient: "from-genz-mint to-genz-cyber",
+  },
 ];
 
 const recentEvents = [
@@ -61,8 +95,9 @@ const recentEvents = [
     attendees: 2500,
     revenue: "$12,450",
     status: "live",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    category: "Music"
+    image:
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    category: "Music",
   },
   {
     id: 2,
@@ -71,8 +106,9 @@ const recentEvents = [
     attendees: 800,
     revenue: "$8,900",
     status: "upcoming",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    category: "Technology"
+    image:
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    category: "Technology",
   },
   {
     id: 3,
@@ -81,9 +117,10 @@ const recentEvents = [
     attendees: 300,
     revenue: "$4,200",
     status: "draft",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    category: "Food & Drink"
-  }
+    image:
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    category: "Food & Drink",
+  },
 ];
 
 const notifications = [
@@ -92,25 +129,31 @@ const notifications = [
     type: "booking",
     message: "New booking for Summer Music Festival",
     time: "2 minutes ago",
-    icon: "🎟️"
+    icon: "🎟️",
   },
   {
     id: 2,
     type: "review",
     message: "New 5-star review received",
     time: "1 hour ago",
-    icon: "⭐"
+    icon: "⭐",
   },
   {
     id: 3,
     type: "revenue",
     message: "Payment processed: $450",
     time: "3 hours ago",
-    icon: "💰"
-  }
+    icon: "💰",
+  },
 ];
 
-const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+const CreateEventModal = ({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) => {
   const [step, setStep] = useState(1);
   const [eventData, setEventData] = useState({
     title: "",
@@ -121,11 +164,26 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
     location: "",
     price: "",
     capacity: "",
-    tags: [] as string[]
+    tags: [] as string[],
   });
 
-  const categories = ["Music", "Technology", "Food & Drink", "Art", "Business", "Wellness", "Sports"];
-  const popularTags = ["Outdoor", "Live Music", "Food & Drinks", "All Ages", "VIP Available", "Photography"];
+  const categories = [
+    "Music",
+    "Technology",
+    "Food & Drink",
+    "Art",
+    "Business",
+    "Wellness",
+    "Sports",
+  ];
+  const popularTags = [
+    "Outdoor",
+    "Live Music",
+    "Food & Drinks",
+    "All Ages",
+    "VIP Available",
+    "Photography",
+  ];
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -146,18 +204,24 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
             {[1, 2, 3].map((stepNum) => (
               <motion.div
                 key={stepNum}
-                className={`flex items-center gap-2 ${stepNum <= step ? 'text-instagram-purple' : 'text-gray-400'}`}
+                className={`flex items-center gap-2 ${stepNum <= step ? "text-instagram-purple" : "text-gray-400"}`}
                 whileHover={{ scale: 1.05 }}
               >
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
-                  stepNum <= step 
-                    ? 'bg-gradient-to-r from-instagram-pink to-instagram-purple text-white' 
-                    : 'bg-gray-200 text-gray-500'
-                }`}>
+                <div
+                  className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
+                    stepNum <= step
+                      ? "bg-gradient-to-r from-instagram-pink to-instagram-purple text-white"
+                      : "bg-gray-200 text-gray-500"
+                  }`}
+                >
                   {stepNum}
                 </div>
                 <span className="font-semibold text-sm">
-                  {stepNum === 1 ? "Basic Info" : stepNum === 2 ? "Details" : "Preview"}
+                  {stepNum === 1
+                    ? "Basic Info"
+                    : stepNum === 2
+                      ? "Details"
+                      : "Preview"}
                 </span>
                 {stepNum < 3 && <div className="w-12 h-px bg-gray-300" />}
               </motion.div>
@@ -178,7 +242,9 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                   <Input
                     placeholder="e.g., Summer Music Festival 2024"
                     value={eventData.title}
-                    onChange={(e) => setEventData({...eventData, title: e.target.value})}
+                    onChange={(e) =>
+                      setEventData({ ...eventData, title: e.target.value })
+                    }
                     className="rounded-2xl h-12 border-2 border-gray-200 focus:border-instagram-purple"
                   />
                 </div>
@@ -187,13 +253,20 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Category *
                   </label>
-                  <Select value={eventData.category} onValueChange={(value) => setEventData({...eventData, category: value})}>
+                  <Select
+                    value={eventData.category}
+                    onValueChange={(value) =>
+                      setEventData({ ...eventData, category: value })
+                    }
+                  >
                     <SelectTrigger className="rounded-2xl h-12 border-2 border-gray-200">
                       <SelectValue placeholder="Select category" />
                     </SelectTrigger>
                     <SelectContent>
                       {categories.map((cat) => (
-                        <SelectItem key={cat} value={cat.toLowerCase()}>{cat}</SelectItem>
+                        <SelectItem key={cat} value={cat.toLowerCase()}>
+                          {cat}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
@@ -206,7 +279,9 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                   <Input
                     type="date"
                     value={eventData.date}
-                    onChange={(e) => setEventData({...eventData, date: e.target.value})}
+                    onChange={(e) =>
+                      setEventData({ ...eventData, date: e.target.value })
+                    }
                     className="rounded-2xl h-12 border-2 border-gray-200 focus:border-instagram-purple"
                   />
                 </div>
@@ -218,7 +293,9 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                   <Input
                     type="time"
                     value={eventData.time}
-                    onChange={(e) => setEventData({...eventData, time: e.target.value})}
+                    onChange={(e) =>
+                      setEventData({ ...eventData, time: e.target.value })
+                    }
                     className="rounded-2xl h-12 border-2 border-gray-200 focus:border-instagram-purple"
                   />
                 </div>
@@ -230,7 +307,9 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                   <Input
                     placeholder="e.g., Central Park, NYC"
                     value={eventData.location}
-                    onChange={(e) => setEventData({...eventData, location: e.target.value})}
+                    onChange={(e) =>
+                      setEventData({ ...eventData, location: e.target.value })
+                    }
                     className="rounded-2xl h-12 border-2 border-gray-200 focus:border-instagram-purple"
                   />
                 </div>
@@ -245,7 +324,9 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                     type="number"
                     placeholder="89"
                     value={eventData.price}
-                    onChange={(e) => setEventData({...eventData, price: e.target.value})}
+                    onChange={(e) =>
+                      setEventData({ ...eventData, price: e.target.value })
+                    }
                     className="rounded-2xl h-12 border-2 border-gray-200 focus:border-instagram-purple"
                   />
                 </div>
@@ -257,7 +338,9 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                     type="number"
                     placeholder="500"
                     value={eventData.capacity}
-                    onChange={(e) => setEventData({...eventData, capacity: e.target.value})}
+                    onChange={(e) =>
+                      setEventData({ ...eventData, capacity: e.target.value })
+                    }
                     className="rounded-2xl h-12 border-2 border-gray-200 focus:border-instagram-purple"
                   />
                 </div>
@@ -267,9 +350,11 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button 
+                <Button
                   onClick={() => setStep(2)}
-                  disabled={!eventData.title || !eventData.category || !eventData.date}
+                  disabled={
+                    !eventData.title || !eventData.category || !eventData.date
+                  }
                   className="w-full bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange text-white rounded-2xl h-12 font-bold"
                 >
                   Next: Add Details →
@@ -291,7 +376,9 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 <Textarea
                   placeholder="Tell people what makes your event special..."
                   value={eventData.description}
-                  onChange={(e) => setEventData({...eventData, description: e.target.value})}
+                  onChange={(e) =>
+                    setEventData({ ...eventData, description: e.target.value })
+                  }
                   className="rounded-2xl min-h-[120px] border-2 border-gray-200 focus:border-instagram-purple"
                 />
               </div>
@@ -305,7 +392,9 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                   whileHover={{ scale: 1.02 }}
                 >
                   <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600 mb-2">Drag & drop images or click to browse</p>
+                  <p className="text-gray-600 mb-2">
+                    Drag & drop images or click to browse
+                  </p>
                   <p className="text-sm text-gray-500">PNG, JPG up to 10MB</p>
                   <Button variant="outline" className="mt-4 rounded-xl">
                     Choose Files
@@ -325,17 +414,25 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                       whileTap={{ scale: 0.95 }}
                     >
                       <Badge
-                        variant={eventData.tags.includes(tag) ? "default" : "outline"}
+                        variant={
+                          eventData.tags.includes(tag) ? "default" : "outline"
+                        }
                         className={`cursor-pointer rounded-full px-4 py-2 ${
-                          eventData.tags.includes(tag) 
-                            ? 'bg-gradient-to-r from-instagram-pink to-instagram-purple text-white'
-                            : 'hover:bg-gray-100'
+                          eventData.tags.includes(tag)
+                            ? "bg-gradient-to-r from-instagram-pink to-instagram-purple text-white"
+                            : "hover:bg-gray-100"
                         }`}
                         onClick={() => {
                           if (eventData.tags.includes(tag)) {
-                            setEventData({...eventData, tags: eventData.tags.filter(t => t !== tag)});
+                            setEventData({
+                              ...eventData,
+                              tags: eventData.tags.filter((t) => t !== tag),
+                            });
                           } else {
-                            setEventData({...eventData, tags: [...eventData.tags, tag]});
+                            setEventData({
+                              ...eventData,
+                              tags: [...eventData.tags, tag],
+                            });
                           }
                         }}
                       >
@@ -347,19 +444,19 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
               </div>
 
               <div className="flex gap-3">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => setStep(1)}
                   className="flex-1 rounded-2xl h-12"
                 >
                   ← Back
                 </Button>
-                <motion.div 
+                <motion.div
                   className="flex-2"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Button 
+                  <Button
                     onClick={() => setStep(3)}
                     className="w-full bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange text-white rounded-2xl h-12 font-bold"
                   >
@@ -377,30 +474,42 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
               className="space-y-6"
             >
               <div className="text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">🎉 Event Preview</h3>
-                <p className="text-gray-600">Here's how your event will look to attendees</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  🎉 Event Preview
+                </h3>
+                <p className="text-gray-600">
+                  Here's how your event will look to attendees
+                </p>
               </div>
 
               <Card className="bg-white/80 backdrop-blur-sm rounded-3xl border-0 shadow-xl overflow-hidden">
                 <div className="h-48 bg-gradient-to-br from-instagram-pink/20 to-instagram-purple/20 flex items-center justify-center">
                   <Camera className="w-16 h-16 text-gray-400" />
-                  <span className="ml-3 text-gray-600">Event Image Preview</span>
+                  <span className="ml-3 text-gray-600">
+                    Event Image Preview
+                  </span>
                 </div>
-                
+
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <Badge className="mb-2 bg-gradient-to-r from-instagram-pink to-instagram-purple text-white">
                         {eventData.category}
                       </Badge>
-                      <h2 className="text-2xl font-bold text-gray-900">{eventData.title}</h2>
+                      <h2 className="text-2xl font-bold text-gray-900">
+                        {eventData.title}
+                      </h2>
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-gray-900">${eventData.price}</div>
-                      <div className="text-sm text-gray-600">{eventData.capacity} spots</div>
+                      <div className="text-2xl font-bold text-gray-900">
+                        ${eventData.price}
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        {eventData.capacity} spots
+                      </div>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-4 text-gray-600 mb-4">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
@@ -415,12 +524,16 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                       {eventData.location}
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-700 mb-4">{eventData.description}</p>
-                  
+
                   <div className="flex flex-wrap gap-2">
                     {eventData.tags.map((tag) => (
-                      <Badge key={tag} variant="outline" className="rounded-full">
+                      <Badge
+                        key={tag}
+                        variant="outline"
+                        className="rounded-full"
+                      >
                         {tag}
                       </Badge>
                     ))}
@@ -429,19 +542,19 @@ const CreateEventModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
               </Card>
 
               <div className="flex gap-3">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => setStep(2)}
                   className="flex-1 rounded-2xl h-12"
                 >
                   ← Edit Details
                 </Button>
-                <motion.div 
+                <motion.div
                   className="flex-2"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Button 
+                  <Button
                     onClick={() => {
                       // Handle event creation
                       setTimeout(() => {
@@ -495,7 +608,7 @@ export default function Dashboard() {
                 Manage your events and grow your community 🚀
               </motion.p>
             </div>
-            
+
             <motion.div
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -540,11 +653,15 @@ export default function Dashboard() {
                     >
                       <stat.icon className="w-6 h-6 text-white" />
                     </motion.div>
-                    <Badge className={`bg-gradient-to-r ${stat.gradient} text-white rounded-full px-3 py-1`}>
+                    <Badge
+                      className={`bg-gradient-to-r ${stat.gradient} text-white rounded-full px-3 py-1`}
+                    >
                       {stat.change}
                     </Badge>
                   </div>
-                  <h3 className="text-3xl font-black text-gray-900 mb-1">{stat.value}</h3>
+                  <h3 className="text-3xl font-black text-gray-900 mb-1">
+                    {stat.value}
+                  </h3>
                   <p className="text-gray-600 text-sm">{stat.title}</p>
                 </CardContent>
               </Card>
@@ -565,13 +682,23 @@ export default function Dashboard() {
               <Card className="bg-white/80 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-2xl font-bold text-gray-900">Your Events</CardTitle>
+                    <CardTitle className="text-2xl font-bold text-gray-900">
+                      Your Events
+                    </CardTitle>
                     <div className="flex items-center gap-2">
-                      <Button variant="outline" size="sm" className="rounded-xl">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="rounded-xl"
+                      >
                         <Filter className="w-4 h-4 mr-2" />
                         Filter
                       </Button>
-                      <Button variant="outline" size="sm" className="rounded-xl">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="rounded-xl"
+                      >
                         <Download className="w-4 h-4 mr-2" />
                         Export
                       </Button>
@@ -596,26 +723,30 @@ export default function Dashboard() {
                             className="w-20 h-20 object-cover rounded-2xl"
                             whileHover={{ scale: 1.1 }}
                           />
-                          
+
                           <div className="flex-1">
                             <div className="flex items-start justify-between mb-2">
                               <div>
-                                <h3 className="font-bold text-lg text-gray-900">{event.title}</h3>
-                                <p className="text-gray-600 text-sm">{event.date} • {event.category}</p>
+                                <h3 className="font-bold text-lg text-gray-900">
+                                  {event.title}
+                                </h3>
+                                <p className="text-gray-600 text-sm">
+                                  {event.date} • {event.category}
+                                </p>
                               </div>
                               <Badge
                                 className={`rounded-full px-3 py-1 ${
-                                  event.status === 'live' 
-                                    ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
-                                    : event.status === 'upcoming'
-                                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-                                    : 'bg-gradient-to-r from-gray-500 to-gray-600 text-white'
+                                  event.status === "live"
+                                    ? "bg-gradient-to-r from-green-500 to-emerald-500 text-white"
+                                    : event.status === "upcoming"
+                                      ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white"
+                                      : "bg-gradient-to-r from-gray-500 to-gray-600 text-white"
                                 }`}
                               >
                                 {event.status}
                               </Badge>
                             </div>
-                            
+
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-4 text-sm text-gray-600">
                                 <div className="flex items-center gap-1">
@@ -627,20 +758,41 @@ export default function Dashboard() {
                                   {event.revenue}
                                 </div>
                               </div>
-                              
+
                               <div className="flex items-center gap-2">
-                                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                                  <Button variant="outline" size="sm" className="rounded-xl">
+                                <motion.div
+                                  whileHover={{ scale: 1.1 }}
+                                  whileTap={{ scale: 0.9 }}
+                                >
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className="rounded-xl"
+                                  >
                                     <Eye className="w-4 h-4" />
                                   </Button>
                                 </motion.div>
-                                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                                  <Button variant="outline" size="sm" className="rounded-xl">
+                                <motion.div
+                                  whileHover={{ scale: 1.1 }}
+                                  whileTap={{ scale: 0.9 }}
+                                >
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className="rounded-xl"
+                                  >
                                     <Edit className="w-4 h-4" />
                                   </Button>
                                 </motion.div>
-                                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                                  <Button variant="outline" size="sm" className="rounded-xl text-red-600 hover:bg-red-50">
+                                <motion.div
+                                  whileHover={{ scale: 1.1 }}
+                                  whileTap={{ scale: 0.9 }}
+                                >
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className="rounded-xl text-red-600 hover:bg-red-50"
+                                  >
                                     <Trash2 className="w-4 h-4" />
                                   </Button>
                                 </motion.div>
@@ -672,8 +824,12 @@ export default function Dashboard() {
                   <div className="h-64 bg-gradient-to-br from-instagram-pink/10 to-instagram-purple/10 rounded-2xl flex items-center justify-center">
                     <div className="text-center">
                       <TrendingUp className="w-16 h-16 text-instagram-purple mx-auto mb-4" />
-                      <p className="text-gray-600 font-semibold">📊 Interactive Charts Coming Soon!</p>
-                      <p className="text-sm text-gray-500 mt-2">Track your event performance with detailed analytics</p>
+                      <p className="text-gray-600 font-semibold">
+                        📊 Interactive Charts Coming Soon!
+                      </p>
+                      <p className="text-sm text-gray-500 mt-2">
+                        Track your event performance with detailed analytics
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -713,24 +869,33 @@ export default function Dashboard() {
                       <Crown className="w-4 h-4 text-white" />
                     </motion.div>
                   </motion.div>
-                  
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">John Doe</h3>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-1">
+                    John Doe
+                  </h3>
                   <Badge className="mb-3 bg-gradient-to-r from-instagram-pink to-instagram-purple text-white rounded-full px-4 py-1">
                     ⭐ Pro Host
                   </Badge>
-                  
+
                   <div className="grid grid-cols-2 gap-4 text-center mb-4">
                     <div>
-                      <div className="text-2xl font-bold text-instagram-purple">47</div>
+                      <div className="text-2xl font-bold text-instagram-purple">
+                        47
+                      </div>
                       <div className="text-xs text-gray-600">Events</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-instagram-orange">4.8</div>
+                      <div className="text-2xl font-bold text-instagram-orange">
+                        4.8
+                      </div>
                       <div className="text-xs text-gray-600">Rating</div>
                     </div>
                   </div>
-                  
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
                     <Button variant="outline" className="w-full rounded-2xl">
                       <Settings className="w-4 h-4 mr-2" />
                       Profile Settings
@@ -771,13 +936,17 @@ export default function Dashboard() {
                           <span className="text-xl">{notification.icon}</span>
                         </motion.div>
                         <div className="flex-1">
-                          <p className="text-sm font-medium text-gray-900">{notification.message}</p>
-                          <p className="text-xs text-gray-500">{notification.time}</p>
+                          <p className="text-sm font-medium text-gray-900">
+                            {notification.message}
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            {notification.time}
+                          </p>
                         </div>
                       </motion.div>
                     ))}
                   </div>
-                  
+
                   <motion.div
                     className="mt-4"
                     whileHover={{ scale: 1.02 }}
@@ -807,10 +976,26 @@ export default function Dashboard() {
                 <CardContent>
                   <div className="grid grid-cols-2 gap-3">
                     {[
-                      { name: "Share Event", icon: Share2, gradient: "from-instagram-pink to-instagram-purple" },
-                      { name: "Check Analytics", icon: BarChart3, gradient: "from-instagram-purple to-instagram-blue" },
-                      { name: "Edit Profile", icon: Settings, gradient: "from-instagram-orange to-instagram-yellow" },
-                      { name: "Support", icon: Heart, gradient: "from-genz-mint to-genz-cyber" }
+                      {
+                        name: "Share Event",
+                        icon: Share2,
+                        gradient: "from-instagram-pink to-instagram-purple",
+                      },
+                      {
+                        name: "Check Analytics",
+                        icon: BarChart3,
+                        gradient: "from-instagram-purple to-instagram-blue",
+                      },
+                      {
+                        name: "Edit Profile",
+                        icon: Settings,
+                        gradient: "from-instagram-orange to-instagram-yellow",
+                      },
+                      {
+                        name: "Support",
+                        icon: Heart,
+                        gradient: "from-genz-mint to-genz-cyber",
+                      },
                     ].map((action) => (
                       <motion.div
                         key={action.name}
@@ -823,7 +1008,9 @@ export default function Dashboard() {
                         >
                           <div className="text-center">
                             <action.icon className="w-6 h-6 mx-auto mb-1" />
-                            <div className="text-xs font-semibold">{action.name}</div>
+                            <div className="text-xs font-semibold">
+                              {action.name}
+                            </div>
                           </div>
                         </Button>
                       </motion.div>
@@ -837,9 +1024,9 @@ export default function Dashboard() {
       </div>
 
       {/* Create Event Modal */}
-      <CreateEventModal 
-        isOpen={isCreateModalOpen} 
-        onClose={() => setIsCreateModalOpen(false)} 
+      <CreateEventModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
       />
     </div>
   );

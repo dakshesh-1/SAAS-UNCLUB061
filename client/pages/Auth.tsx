@@ -1,6 +1,16 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Eye, EyeOff, Mail, Lock, User, Heart, Star, Sparkles, Camera } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  User,
+  Heart,
+  Star,
+  Sparkles,
+  Camera,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,29 +30,35 @@ const socialProviders = [
     name: "Google",
     icon: "🔥",
     gradient: "from-red-500 to-orange-500",
-    hoverGradient: "from-red-600 to-orange-600"
+    hoverGradient: "from-red-600 to-orange-600",
   },
   {
     name: "Apple",
     icon: "🍎",
     gradient: "from-gray-800 to-gray-900",
-    hoverGradient: "from-gray-900 to-black"
+    hoverGradient: "from-gray-900 to-black",
   },
   {
     name: "Instagram",
     icon: "📸",
     gradient: "from-instagram-pink via-instagram-purple to-instagram-orange",
-    hoverGradient: "from-instagram-purple via-instagram-pink to-instagram-red"
+    hoverGradient: "from-instagram-purple via-instagram-pink to-instagram-red",
   },
   {
     name: "TikTok",
     icon: "🎵",
     gradient: "from-gray-900 to-red-600",
-    hoverGradient: "from-black to-red-700"
-  }
+    hoverGradient: "from-black to-red-700",
+  },
 ];
 
-const AuthForm = ({ isLogin, onToggle }: { isLogin: boolean; onToggle: () => void }) => {
+const AuthForm = ({
+  isLogin,
+  onToggle,
+}: {
+  isLogin: boolean;
+  onToggle: () => void;
+}) => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -50,11 +66,11 @@ const AuthForm = ({ isLogin, onToggle }: { isLogin: boolean; onToggle: () => voi
     email: "",
     password: "",
     confirmPassword: "",
-    agreeToTerms: false
+    agreeToTerms: false,
   });
 
   const handleInputChange = (field: string, value: string | boolean) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   return (
@@ -68,7 +84,7 @@ const AuthForm = ({ isLogin, onToggle }: { isLogin: boolean; onToggle: () => voi
     >
       <Card className="bg-white/90 backdrop-blur-xl rounded-3xl border-0 shadow-2xl overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-instagram-pink/10 via-instagram-purple/10 to-instagram-orange/10" />
-        
+
         <CardContent className="relative p-8">
           {/* Header */}
           <motion.div
@@ -79,9 +95,9 @@ const AuthForm = ({ isLogin, onToggle }: { isLogin: boolean; onToggle: () => voi
           >
             <motion.div
               className="w-20 h-20 bg-gradient-to-br from-instagram-pink via-instagram-purple to-instagram-orange rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-2xl"
-              whileHover={{ 
+              whileHover={{
                 rotate: [0, -5, 5, 0],
-                scale: 1.05 
+                scale: 1.05,
               }}
               transition={{ duration: 0.3 }}
             >
@@ -99,15 +115,14 @@ const AuthForm = ({ isLogin, onToggle }: { isLogin: boolean; onToggle: () => voi
                 ✨
               </motion.span>
             </motion.div>
-            
+
             <h1 className="text-3xl font-black bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange bg-clip-text text-transparent mb-2">
               {isLogin ? "Welcome Back!" : "Join the Vibe"}
             </h1>
             <p className="text-gray-600">
-              {isLogin 
-                ? "Ready to discover amazing events? 🎉" 
-                : "Create your account and start exploring! 🚀"
-              }
+              {isLogin
+                ? "Ready to discover amazing events? 🎉"
+                : "Create your account and start exploring! 🚀"}
             </p>
           </motion.div>
 
@@ -146,7 +161,9 @@ const AuthForm = ({ isLogin, onToggle }: { isLogin: boolean; onToggle: () => voi
             transition={{ delay: 0.8 }}
           >
             <Separator className="flex-1" />
-            <span className="text-gray-500 text-sm font-medium">or continue with email</span>
+            <span className="text-gray-500 text-sm font-medium">
+              or continue with email
+            </span>
             <Separator className="flex-1" />
           </motion.div>
 
@@ -174,7 +191,9 @@ const AuthForm = ({ isLogin, onToggle }: { isLogin: boolean; onToggle: () => voi
                     <Input
                       placeholder="First name"
                       value={formData.firstName}
-                      onChange={(e) => handleInputChange("firstName", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("firstName", e.target.value)
+                      }
                       className="pl-10 border-0 bg-gray-50 focus:bg-white transition-colors rounded-2xl h-12"
                     />
                   </div>
@@ -189,7 +208,9 @@ const AuthForm = ({ isLogin, onToggle }: { isLogin: boolean; onToggle: () => voi
                     <Input
                       placeholder="Last name"
                       value={formData.lastName}
-                      onChange={(e) => handleInputChange("lastName", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("lastName", e.target.value)
+                      }
                       className="pl-10 border-0 bg-gray-50 focus:bg-white transition-colors rounded-2xl h-12"
                     />
                   </div>
@@ -225,7 +246,9 @@ const AuthForm = ({ isLogin, onToggle }: { isLogin: boolean; onToggle: () => voi
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   value={formData.password}
-                  onChange={(e) => handleInputChange("password", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("password", e.target.value)
+                  }
                   className="pl-10 pr-10 border-0 bg-gray-50 focus:bg-white transition-colors rounded-2xl h-12"
                 />
                 <motion.button
@@ -235,7 +258,11 @@ const AuthForm = ({ isLogin, onToggle }: { isLogin: boolean; onToggle: () => voi
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {showPassword ? (
+                    <EyeOff className="w-5 h-5" />
+                  ) : (
+                    <Eye className="w-5 h-5" />
+                  )}
                 </motion.button>
               </div>
             </motion.div>
@@ -252,7 +279,9 @@ const AuthForm = ({ isLogin, onToggle }: { isLogin: boolean; onToggle: () => voi
                     type="password"
                     placeholder="Confirm password"
                     value={formData.confirmPassword}
-                    onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("confirmPassword", e.target.value)
+                    }
                     className="pl-10 border-0 bg-gray-50 focus:bg-white transition-colors rounded-2xl h-12"
                   />
                 </div>
@@ -269,7 +298,9 @@ const AuthForm = ({ isLogin, onToggle }: { isLogin: boolean; onToggle: () => voi
                 <Checkbox
                   id="terms"
                   checked={formData.agreeToTerms}
-                  onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked as boolean)}
+                  onCheckedChange={(checked) =>
+                    handleInputChange("agreeToTerms", checked as boolean)
+                  }
                 />
                 <label htmlFor="terms" className="text-sm text-gray-600">
                   I agree to the{" "}
@@ -401,25 +432,37 @@ export default function Auth() {
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {[
           { text: "Just booked my first festival! 🎵", delay: 0, side: "left" },
-          { text: "Made 50+ friends at EventVibe meetups! 👥", delay: 2, side: "right" },
-          { text: "Found the best food truck events! 🌮", delay: 4, side: "left" },
-          { text: "Discovered my new favorite artist! ⭐", delay: 6, side: "right" },
+          {
+            text: "Made 50+ friends at EventVibe meetups! 👥",
+            delay: 2,
+            side: "right",
+          },
+          {
+            text: "Found the best food truck events! 🌮",
+            delay: 4,
+            side: "left",
+          },
+          {
+            text: "Discovered my new favorite artist! ⭐",
+            delay: 6,
+            side: "right",
+          },
         ].map((story, index) => (
           <motion.div
             key={index}
-            className={`absolute ${story.side === 'left' ? 'left-4' : 'right-4'} bg-white/90 backdrop-blur-md rounded-2xl p-3 shadow-xl max-w-xs`}
+            className={`absolute ${story.side === "left" ? "left-4" : "right-4"} bg-white/90 backdrop-blur-md rounded-2xl p-3 shadow-xl max-w-xs`}
             style={{
               top: `${20 + index * 15}%`,
             }}
-            initial={{ 
-              opacity: 0, 
-              x: story.side === 'left' ? -100 : 100,
-              scale: 0.8 
+            initial={{
+              opacity: 0,
+              x: story.side === "left" ? -100 : 100,
+              scale: 0.8,
             }}
-            animate={{ 
-              opacity: [0, 1, 1, 0], 
+            animate={{
+              opacity: [0, 1, 1, 0],
               x: 0,
-              scale: [0.8, 1, 1, 0.8] 
+              scale: [0.8, 1, 1, 0.8],
             }}
             transition={{
               duration: 4,
@@ -475,14 +518,14 @@ export default function Auth() {
               </motion.div>
             ))}
           </div>
-          
+
           <motion.p
             className="text-xs text-gray-500 max-w-sm mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 }}
           >
-            Join the fastest-growing community of event enthusiasts! 
+            Join the fastest-growing community of event enthusiasts!
             <br />
             <span className="text-instagram-purple font-semibold">
               ✨ Your next adventure awaits ✨

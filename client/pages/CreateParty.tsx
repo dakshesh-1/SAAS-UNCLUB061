@@ -1,61 +1,79 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { 
-  Plus, Upload, MapPin, Calendar, Clock, Users, DollarSign,
-  Camera, Music, Sparkles, Zap, Heart, Crown, Star
+import {
+  Plus,
+  Upload,
+  MapPin,
+  Calendar,
+  Clock,
+  Users,
+  DollarSign,
+  Camera,
+  Music,
+  Sparkles,
+  Zap,
+  Heart,
+  Crown,
+  Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { GenZParticles } from "@/components/GenZParticles";
 
 const partyTypes = [
-  { 
-    id: "house-party", 
-    name: "House Party", 
-    emoji: "🏠", 
+  {
+    id: "house-party",
+    name: "House Party",
+    emoji: "🏠",
     gradient: "from-unclub-blue to-party-blue",
-    description: "Intimate vibes at your place"
+    description: "Intimate vibes at your place",
   },
-  { 
-    id: "pool-party", 
-    name: "Pool Party", 
-    emoji: "🏊‍♀️", 
+  {
+    id: "pool-party",
+    name: "Pool Party",
+    emoji: "🏊‍♀️",
     gradient: "from-unclub-pink to-party-pink",
-    description: "Make a splash this summer"
+    description: "Make a splash this summer",
   },
-  { 
-    id: "rooftop", 
-    name: "Rooftop Vibes", 
-    emoji: "🌆", 
+  {
+    id: "rooftop",
+    name: "Rooftop Vibes",
+    emoji: "🌆",
     gradient: "from-unclub-red to-party-red",
-    description: "Sky-high party energy"
+    description: "Sky-high party energy",
   },
-  { 
-    id: "beach-party", 
-    name: "Beach Party", 
-    emoji: "🏖️", 
+  {
+    id: "beach-party",
+    name: "Beach Party",
+    emoji: "🏖️",
     gradient: "from-party-electric to-unclub-hotpink",
-    description: "Sand, sun, and good times"
+    description: "Sand, sun, and good times",
   },
-  { 
-    id: "birthday", 
-    name: "Birthday Bash", 
-    emoji: "🎂", 
+  {
+    id: "birthday",
+    name: "Birthday Bash",
+    emoji: "🎂",
     gradient: "from-unclub-blue to-unclub-pink",
-    description: "Celebrate another year of awesome"
+    description: "Celebrate another year of awesome",
   },
-  { 
-    id: "game-night", 
-    name: "Game Night", 
-    emoji: "🎮", 
+  {
+    id: "game-night",
+    name: "Game Night",
+    emoji: "🎮",
     gradient: "from-party-red to-unclub-coral",
-    description: "Level up your social game"
-  }
+    description: "Level up your social game",
+  },
 ];
 
 const vibeOptions = [
@@ -64,11 +82,20 @@ const vibeOptions = [
   { id: "classy", name: "Classy & Elegant", emoji: "🥂" },
   { id: "wild", name: "Wild & Crazy", emoji: "🤪" },
   { id: "intimate", name: "Intimate & Close", emoji: "💝" },
-  { id: "energetic", name: "High Energy", emoji: "⚡" }
+  { id: "energetic", name: "High Energy", emoji: "⚡" },
 ];
 
 const musicGenres = [
-  "Pop", "Hip-Hop", "EDM", "Rock", "R&B", "Latin", "Indie", "Jazz", "Country", "Alternative"
+  "Pop",
+  "Hip-Hop",
+  "EDM",
+  "Rock",
+  "R&B",
+  "Latin",
+  "Indie",
+  "Jazz",
+  "Country",
+  "Alternative",
 ];
 
 export default function CreateParty() {
@@ -90,11 +117,11 @@ export default function CreateParty() {
     bringYourOwn: false,
     photosAllowed: true,
     parking: false,
-    accessibility: false
+    accessibility: false,
   });
 
   const updateFormData = (field: string, value: any) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const nextStep = () => {
@@ -114,7 +141,7 @@ export default function CreateParty() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20 pt-20">
       <GenZParticles />
-      
+
       <div className="max-w-4xl mx-auto px-6 py-8">
         {/* Header */}
         <motion.div
@@ -138,7 +165,9 @@ export default function CreateParty() {
           >
             Create Epic Party! 🎉
           </motion.h1>
-          <p className="text-xl text-gray-600">Let's make some unforgettable memories together!</p>
+          <p className="text-xl text-gray-600">
+            Let's make some unforgettable memories together!
+          </p>
         </motion.div>
 
         {/* Progress Steps */}
@@ -151,18 +180,26 @@ export default function CreateParty() {
           {[1, 2, 3, 4].map((step) => (
             <motion.div
               key={step}
-              className={`flex items-center gap-2 ${step <= currentStep ? 'text-unclub-blue' : 'text-gray-400'}`}
+              className={`flex items-center gap-2 ${step <= currentStep ? "text-unclub-blue" : "text-gray-400"}`}
               whileHover={{ scale: 1.05 }}
             >
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
-                step <= currentStep 
-                  ? 'bg-gradient-to-r from-unclub-blue to-unclub-pink text-white shadow-lg' 
-                  : 'bg-gray-200 text-gray-500'
-              }`}>
+              <div
+                className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
+                  step <= currentStep
+                    ? "bg-gradient-to-r from-unclub-blue to-unclub-pink text-white shadow-lg"
+                    : "bg-gray-200 text-gray-500"
+                }`}
+              >
                 {step}
               </div>
               <span className="font-semibold text-sm hidden sm:block">
-                {step === 1 ? "Party Type" : step === 2 ? "Details" : step === 3 ? "Vibe" : "Finish"}
+                {step === 1
+                  ? "Party Type"
+                  : step === 2
+                    ? "Details"
+                    : step === 3
+                      ? "Vibe"
+                      : "Finish"}
               </span>
               {step < 4 && <div className="w-8 h-px bg-gray-300" />}
             </motion.div>
@@ -185,7 +222,7 @@ export default function CreateParty() {
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
                     What kind of party are you throwing? 🤔
                   </h2>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {partyTypes.map((type, index) => (
                       <motion.div
@@ -198,14 +235,18 @@ export default function CreateParty() {
                         onClick={() => setSelectedPartyType(type.id)}
                         className={`relative cursor-pointer rounded-3xl p-6 text-center border-2 transition-all duration-300 ${
                           selectedPartyType === type.id
-                            ? 'border-unclub-blue bg-gradient-to-br from-unclub-blue/10 to-unclub-pink/10 shadow-xl'
-                            : 'border-gray-200 hover:border-unclub-pink/50 hover:shadow-lg'
+                            ? "border-unclub-blue bg-gradient-to-br from-unclub-blue/10 to-unclub-pink/10 shadow-xl"
+                            : "border-gray-200 hover:border-unclub-pink/50 hover:shadow-lg"
                         }`}
                       >
                         <div className="text-4xl mb-3">{type.emoji}</div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{type.name}</h3>
-                        <p className="text-gray-600 text-sm">{type.description}</p>
-                        
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                          {type.name}
+                        </h3>
+                        <p className="text-gray-600 text-sm">
+                          {type.description}
+                        </p>
+
                         {selectedPartyType === type.id && (
                           <motion.div
                             className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-unclub-blue to-unclub-pink rounded-full flex items-center justify-center"
@@ -233,7 +274,7 @@ export default function CreateParty() {
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
                     Tell us the deets! 📝
                   </h2>
-                  
+
                   <div className="space-y-6">
                     <div>
                       <label className="block text-lg font-bold text-gray-700 mb-2">
@@ -242,7 +283,9 @@ export default function CreateParty() {
                       <Input
                         placeholder="e.g., Epic Summer Pool Bash 🏊‍♀️"
                         value={formData.title}
-                        onChange={(e) => updateFormData('title', e.target.value)}
+                        onChange={(e) =>
+                          updateFormData("title", e.target.value)
+                        }
                         className="rounded-2xl h-14 text-lg border-2 border-gray-200 focus:border-unclub-blue"
                       />
                     </div>
@@ -257,7 +300,9 @@ export default function CreateParty() {
                           <Input
                             type="date"
                             value={formData.date}
-                            onChange={(e) => updateFormData('date', e.target.value)}
+                            onChange={(e) =>
+                              updateFormData("date", e.target.value)
+                            }
                             className="pl-14 rounded-2xl h-14 border-2 border-gray-200 focus:border-unclub-pink"
                           />
                         </div>
@@ -272,7 +317,9 @@ export default function CreateParty() {
                           <Input
                             type="time"
                             value={formData.time}
-                            onChange={(e) => updateFormData('time', e.target.value)}
+                            onChange={(e) =>
+                              updateFormData("time", e.target.value)
+                            }
                             className="pl-14 rounded-2xl h-14 border-2 border-gray-200 focus:border-unclub-red"
                           />
                         </div>
@@ -288,7 +335,9 @@ export default function CreateParty() {
                         <Input
                           placeholder="Where's the party at?"
                           value={formData.location}
-                          onChange={(e) => updateFormData('location', e.target.value)}
+                          onChange={(e) =>
+                            updateFormData("location", e.target.value)
+                          }
                           className="pl-14 rounded-2xl h-14 border-2 border-gray-200 focus:border-unclub-blue"
                         />
                       </div>
@@ -305,7 +354,9 @@ export default function CreateParty() {
                             type="number"
                             placeholder="50"
                             value={formData.capacity}
-                            onChange={(e) => updateFormData('capacity', e.target.value)}
+                            onChange={(e) =>
+                              updateFormData("capacity", e.target.value)
+                            }
                             className="pl-14 rounded-2xl h-14 border-2 border-gray-200 focus:border-unclub-pink"
                           />
                         </div>
@@ -321,7 +372,9 @@ export default function CreateParty() {
                             type="number"
                             placeholder="0 (Free!)"
                             value={formData.price}
-                            onChange={(e) => updateFormData('price', e.target.value)}
+                            onChange={(e) =>
+                              updateFormData("price", e.target.value)
+                            }
                             className="pl-14 rounded-2xl h-14 border-2 border-gray-200 focus:border-unclub-red"
                           />
                         </div>
@@ -335,7 +388,9 @@ export default function CreateParty() {
                       <Textarea
                         placeholder="Describe the vibe, what you'll have, who should come, etc..."
                         value={formData.description}
-                        onChange={(e) => updateFormData('description', e.target.value)}
+                        onChange={(e) =>
+                          updateFormData("description", e.target.value)
+                        }
                         className="rounded-2xl min-h-[120px] border-2 border-gray-200 focus:border-unclub-blue"
                       />
                     </div>
@@ -355,7 +410,7 @@ export default function CreateParty() {
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
                     Set the vibe! 🎵✨
                   </h2>
-                  
+
                   <div className="space-y-8">
                     {/* Vibe Selection */}
                     <div>
@@ -368,15 +423,17 @@ export default function CreateParty() {
                             key={vibe.id}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            onClick={() => updateFormData('vibe', vibe.id)}
+                            onClick={() => updateFormData("vibe", vibe.id)}
                             className={`cursor-pointer p-4 rounded-2xl border-2 text-center transition-all ${
                               formData.vibe === vibe.id
-                                ? 'border-unclub-blue bg-unclub-blue/10'
-                                : 'border-gray-200 hover:border-unclub-pink/50'
+                                ? "border-unclub-blue bg-unclub-blue/10"
+                                : "border-gray-200 hover:border-unclub-pink/50"
                             }`}
                           >
                             <div className="text-2xl mb-2">{vibe.emoji}</div>
-                            <div className="font-semibold text-sm">{vibe.name}</div>
+                            <div className="font-semibold text-sm">
+                              {vibe.name}
+                            </div>
                           </motion.div>
                         ))}
                       </div>
@@ -387,13 +444,20 @@ export default function CreateParty() {
                       <label className="block text-lg font-bold text-gray-700 mb-2">
                         Music Genre
                       </label>
-                      <Select value={formData.musicGenre} onValueChange={(value) => updateFormData('musicGenre', value)}>
+                      <Select
+                        value={formData.musicGenre}
+                        onValueChange={(value) =>
+                          updateFormData("musicGenre", value)
+                        }
+                      >
                         <SelectTrigger className="rounded-2xl h-14 border-2 border-gray-200">
                           <SelectValue placeholder="What music will be playing?" />
                         </SelectTrigger>
                         <SelectContent>
                           {musicGenres.map((genre) => (
-                            <SelectItem key={genre} value={genre.toLowerCase()}>{genre}</SelectItem>
+                            <SelectItem key={genre} value={genre.toLowerCase()}>
+                              {genre}
+                            </SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
@@ -401,50 +465,72 @@ export default function CreateParty() {
 
                     {/* Party Settings */}
                     <div className="space-y-4">
-                      <h3 className="text-lg font-bold text-gray-700">Party Settings</h3>
-                      
+                      <h3 className="text-lg font-bold text-gray-700">
+                        Party Settings
+                      </h3>
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="flex items-center justify-between p-4 rounded-2xl bg-gray-50">
                           <div>
-                            <div className="font-semibold">Photos Allowed 📸</div>
-                            <div className="text-sm text-gray-600">Let people take pics?</div>
+                            <div className="font-semibold">
+                              Photos Allowed 📸
+                            </div>
+                            <div className="text-sm text-gray-600">
+                              Let people take pics?
+                            </div>
                           </div>
-                          <Switch 
+                          <Switch
                             checked={formData.photosAllowed}
-                            onCheckedChange={(checked) => updateFormData('photosAllowed', checked)}
+                            onCheckedChange={(checked) =>
+                              updateFormData("photosAllowed", checked)
+                            }
                           />
                         </div>
 
                         <div className="flex items-center justify-between p-4 rounded-2xl bg-gray-50">
                           <div>
                             <div className="font-semibold">BYOB 🍺</div>
-                            <div className="text-sm text-gray-600">Bring your own drinks?</div>
+                            <div className="text-sm text-gray-600">
+                              Bring your own drinks?
+                            </div>
                           </div>
-                          <Switch 
+                          <Switch
                             checked={formData.bringYourOwn}
-                            onCheckedChange={(checked) => updateFormData('bringYourOwn', checked)}
+                            onCheckedChange={(checked) =>
+                              updateFormData("bringYourOwn", checked)
+                            }
                           />
                         </div>
 
                         <div className="flex items-center justify-between p-4 rounded-2xl bg-gray-50">
                           <div>
-                            <div className="font-semibold">Parking Available 🚗</div>
-                            <div className="text-sm text-gray-600">Is there parking?</div>
+                            <div className="font-semibold">
+                              Parking Available 🚗
+                            </div>
+                            <div className="text-sm text-gray-600">
+                              Is there parking?
+                            </div>
                           </div>
-                          <Switch 
+                          <Switch
                             checked={formData.parking}
-                            onCheckedChange={(checked) => updateFormData('parking', checked)}
+                            onCheckedChange={(checked) =>
+                              updateFormData("parking", checked)
+                            }
                           />
                         </div>
 
                         <div className="flex items-center justify-between p-4 rounded-2xl bg-gray-50">
                           <div>
                             <div className="font-semibold">Accessible ♿</div>
-                            <div className="text-sm text-gray-600">Wheelchair accessible?</div>
+                            <div className="text-sm text-gray-600">
+                              Wheelchair accessible?
+                            </div>
                           </div>
-                          <Switch 
+                          <Switch
                             checked={formData.accessibility}
-                            onCheckedChange={(checked) => updateFormData('accessibility', checked)}
+                            onCheckedChange={(checked) =>
+                              updateFormData("accessibility", checked)
+                            }
                           />
                         </div>
                       </div>
@@ -465,14 +551,20 @@ export default function CreateParty() {
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
                     Ready to party? 🚀
                   </h2>
-                  
+
                   <div className="bg-gradient-to-br from-unclub-blue/10 to-unclub-pink/10 rounded-3xl p-8 mb-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{formData.title || "Your Epic Party"}</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      {formData.title || "Your Epic Party"}
+                    </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
-                      <div>📅 {formData.date} at {formData.time}</div>
+                      <div>
+                        📅 {formData.date} at {formData.time}
+                      </div>
                       <div>📍 {formData.location}</div>
                       <div>👥 {formData.capacity} people max</div>
-                      <div>💰 {formData.price ? `$${formData.price}` : "Free!"}</div>
+                      <div>
+                        💰 {formData.price ? `$${formData.price}` : "Free!"}
+                      </div>
                     </div>
                     <p className="mt-4 text-gray-600">{formData.description}</p>
                   </div>
@@ -504,7 +596,7 @@ export default function CreateParty() {
               >
                 Back
               </Button>
-              
+
               {currentStep < 4 ? (
                 <Button
                   onClick={nextStep}

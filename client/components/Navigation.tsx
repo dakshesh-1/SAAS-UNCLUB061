@@ -1,35 +1,51 @@
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, Calendar, User, Plus, Menu, X, Search, Bell, Zap, Sparkles } from "lucide-react";
+import {
+  Home,
+  Calendar,
+  User,
+  Plus,
+  Menu,
+  X,
+  Search,
+  Bell,
+  Zap,
+  Sparkles,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 const navItems = [
-  { 
-    name: "Discover", 
-    path: "/", 
+  {
+    name: "Discover",
+    path: "/",
     icon: Home,
-    gradient: "from-unclub-blue via-unclub-pink to-unclub-red"
+    gradient: "from-unclub-blue via-unclub-pink to-unclub-red",
   },
-  { 
-    name: "Events", 
-    path: "/events", 
+  {
+    name: "Events",
+    path: "/events",
     icon: Calendar,
-    gradient: "from-party-blue via-unclub-electric to-party-neon"
+    gradient: "from-party-blue via-unclub-electric to-party-neon",
   },
-  { 
-    name: "Create", 
-    path: "/dashboard", 
+  {
+    name: "Create",
+    path: "/dashboard",
     icon: Plus,
-    gradient: "from-unclub-pink via-party-red to-unclub-coral"
+    gradient: "from-unclub-pink via-party-red to-unclub-coral",
   },
-  { 
-    name: "Profile", 
-    path: "/profile", 
+  {
+    name: "Profile",
+    path: "/profile",
     icon: User,
-    gradient: "from-party-electric via-unclub-hotpink to-party-pink"
-  }
+    gradient: "from-party-electric via-unclub-hotpink to-party-pink",
+  },
 ];
 
 const floatingIcons = [
@@ -44,7 +60,7 @@ export function Navigation() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const location = useLocation();
   const { scrollY } = useScroll();
-  
+
   const backgroundOpacity = useTransform(scrollY, [0, 100], [0.85, 0.95]);
   const blurAmount = useTransform(scrollY, [0, 100], [12, 24]);
 
@@ -52,8 +68,8 @@ export function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -70,7 +86,7 @@ export function Navigation() {
             }}
             animate={{
               y: [-item.range, item.range, -item.range],
-              x: [-item.range/2, item.range/2, -item.range/2],
+              x: [-item.range / 2, item.range / 2, -item.range / 2],
               rotate: [0, 180, 360],
               scale: [1, 1.3, 1],
             }}
@@ -128,9 +144,9 @@ export function Navigation() {
               <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
                 <motion.div
                   className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-unclub-blue via-unclub-pink to-unclub-red rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-2xl"
-                  whileHover={{ 
+                  whileHover={{
                     rotate: [0, -8, 8, 0],
-                    scale: 1.1 
+                    scale: 1.1,
                   }}
                   transition={{ duration: 0.4 }}
                 >
@@ -158,10 +174,11 @@ export function Navigation() {
                   </motion.div>
                 </motion.div>
                 <div className="hidden sm:block">
-                  <motion.span 
+                  <motion.span
                     className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent"
                     whileHover={{
-                      backgroundImage: "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
+                      backgroundImage:
+                        "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
                     }}
                   >
                     UnClub
@@ -195,10 +212,7 @@ export function Navigation() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Link
-                      to={item.path}
-                      className="relative group"
-                    >
+                    <Link to={item.path} className="relative group">
                       <motion.div
                         className={`relative px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-bold transition-all duration-300 ${
                           isActive
@@ -219,20 +233,24 @@ export function Navigation() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 0.9, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.8 }}
-                            transition={{ 
-                              type: "spring", 
-                              damping: 25, 
-                              stiffness: 400 
+                            transition={{
+                              type: "spring",
+                              damping: 25,
+                              stiffness: 400,
                             }}
                           />
                         )}
-                        
+
                         <div className="relative z-10 flex items-center space-x-2">
                           <motion.div
-                            animate={isActive ? {
-                              rotate: [0, 15, -15, 0],
-                              scale: [1, 1.15, 1],
-                            } : {}}
+                            animate={
+                              isActive
+                                ? {
+                                    rotate: [0, 15, -15, 0],
+                                    scale: [1, 1.15, 1],
+                                  }
+                                : {}
+                            }
                             transition={{
                               duration: 1.8,
                               repeat: isActive ? Infinity : 0,
@@ -240,7 +258,9 @@ export function Navigation() {
                           >
                             <item.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                           </motion.div>
-                          <span className="font-bold text-sm sm:text-base">{item.name}</span>
+                          <span className="font-bold text-sm sm:text-base">
+                            {item.name}
+                          </span>
                         </div>
 
                         {isActive && (
@@ -264,23 +284,23 @@ export function Navigation() {
                 whileHover={{ scale: 1.1, rotate: 8 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
+                <Button
+                  variant="ghost"
+                  size="sm"
                   className="rounded-xl sm:rounded-2xl text-white hover:bg-white/20 transition-all duration-300"
                 >
                   <Search className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Button>
               </motion.div>
-              
+
               <motion.div
                 whileHover={{ scale: 1.1, rotate: -8 }}
                 whileTap={{ scale: 0.9 }}
                 className="relative"
               >
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
+                <Button
+                  variant="ghost"
+                  size="sm"
                   className="rounded-xl sm:rounded-2xl text-white hover:bg-white/20 transition-all duration-300"
                 >
                   <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -315,7 +335,8 @@ export function Navigation() {
                     <motion.span
                       className="text-sm sm:text-base"
                       whileHover={{
-                        backgroundImage: "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
+                        backgroundImage:
+                          "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
                         backgroundClip: "text",
                         color: "transparent",
                       }}
@@ -392,9 +413,7 @@ export function Navigation() {
                             : "text-white/85 hover:bg-white/15 hover:text-white"
                         }`}
                       >
-                        <motion.div
-                          whileHover={{ rotate: 15, scale: 1.1 }}
-                        >
+                        <motion.div whileHover={{ rotate: 15, scale: 1.1 }}>
                           <item.icon className="w-5 h-5" />
                         </motion.div>
                         <span className="text-lg">{item.name}</span>
@@ -402,17 +421,14 @@ export function Navigation() {
                     </motion.div>
                   );
                 })}
-                
+
                 <motion.div
                   initial={{ x: -100, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: navItems.length * 0.1, duration: 0.3 }}
                   className="pt-4"
                 >
-                  <Link
-                    to="/auth"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
+                  <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
                     <Button className="w-full bg-white/25 backdrop-blur-sm hover:bg-white/35 text-white rounded-2xl shadow-xl border border-white/40 font-bold py-4 text-lg">
                       Join the Party 🎉
                     </Button>

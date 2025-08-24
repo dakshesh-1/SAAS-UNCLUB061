@@ -1,13 +1,29 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, Filter, MapPin, Calendar, Users, Star, Grid, List, SlidersHorizontal } from "lucide-react";
+import {
+  Search,
+  Filter,
+  MapPin,
+  Calendar,
+  Users,
+  Star,
+  Grid,
+  List,
+  SlidersHorizontal,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { GenZParticles } from "@/components/GenZParticles";
 
@@ -19,11 +35,12 @@ const allEvents = [
     location: "Central Park, NYC",
     date: "Jul 15, 2024",
     price: 89,
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 2500,
     rating: 4.8,
     category: "Music",
-    featured: true
+    featured: true,
   },
   {
     id: 2,
@@ -31,11 +48,12 @@ const allEvents = [
     location: "Silicon Valley, CA",
     date: "Aug 22, 2024",
     price: 299,
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 800,
     rating: 4.9,
     category: "Technology",
-    featured: true
+    featured: true,
   },
   {
     id: 3,
@@ -43,11 +61,12 @@ const allEvents = [
     location: "Napa Valley, CA",
     date: "Sep 10, 2024",
     price: 149,
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 300,
     rating: 4.7,
     category: "Food & Drink",
-    featured: false
+    featured: false,
   },
   {
     id: 4,
@@ -55,11 +74,12 @@ const allEvents = [
     location: "Chicago, IL",
     date: "Jul 28, 2024",
     price: 199,
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 500,
     rating: 4.6,
     category: "Business",
-    featured: false
+    featured: false,
   },
   {
     id: 5,
@@ -67,11 +87,12 @@ const allEvents = [
     location: "Carnegie Hall, NYC",
     date: "Aug 5, 2024",
     price: 75,
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 1200,
     rating: 4.9,
     category: "Music",
-    featured: false
+    featured: false,
   },
   {
     id: 6,
@@ -79,11 +100,12 @@ const allEvents = [
     location: "Austin, TX",
     date: "Sep 18, 2024",
     price: 35,
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 300,
     rating: 4.5,
     category: "Business",
-    featured: false
+    featured: false,
   },
   {
     id: 7,
@@ -91,11 +113,12 @@ const allEvents = [
     location: "SoHo, NYC",
     date: "Oct 5, 2024",
     price: 45,
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 150,
     rating: 4.6,
     category: "Art",
-    featured: false
+    featured: false,
   },
   {
     id: 8,
@@ -103,17 +126,32 @@ const allEvents = [
     location: "Sedona, AZ",
     date: "Oct 15, 2024",
     price: 299,
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    image:
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     attendees: 50,
     rating: 4.8,
     category: "Wellness",
-    featured: false
-  }
+    featured: false,
+  },
 ];
 
-const categories = ["All", "Music", "Technology", "Food & Drink", "Business", "Art", "Wellness"];
+const categories = [
+  "All",
+  "Music",
+  "Technology",
+  "Food & Drink",
+  "Business",
+  "Art",
+  "Wellness",
+];
 
-const FilterPanel = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+const FilterPanel = ({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) => {
   const [priceRange, setPriceRange] = useState([0, 500]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
@@ -121,7 +159,7 @@ const FilterPanel = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
     if (checked) {
       setSelectedCategories([...selectedCategories, category]);
     } else {
-      setSelectedCategories(selectedCategories.filter(c => c !== category));
+      setSelectedCategories(selectedCategories.filter((c) => c !== category));
     }
   };
 
@@ -146,7 +184,12 @@ const FilterPanel = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-semibold text-gray-900">Filters</h3>
-                <Button variant="ghost" size="sm" onClick={onClose} className="lg:hidden">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={onClose}
+                  className="lg:hidden"
+                >
                   ×
                 </Button>
               </div>
@@ -166,9 +209,14 @@ const FilterPanel = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
                         <Checkbox
                           id={category}
                           checked={selectedCategories.includes(category)}
-                          onCheckedChange={(checked) => handleCategoryChange(category, checked as boolean)}
+                          onCheckedChange={(checked) =>
+                            handleCategoryChange(category, checked as boolean)
+                          }
                         />
-                        <label htmlFor={category} className="text-sm text-gray-700 cursor-pointer">
+                        <label
+                          htmlFor={category}
+                          className="text-sm text-gray-700 cursor-pointer"
+                        >
                           {category}
                         </label>
                       </motion.div>
@@ -178,7 +226,9 @@ const FilterPanel = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
 
                 {/* Price Range */}
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-3">Price Range</h4>
+                  <h4 className="font-medium text-gray-900 mb-3">
+                    Price Range
+                  </h4>
                   <div className="px-2">
                     <Slider
                       value={priceRange}
@@ -223,13 +273,16 @@ const FilterPanel = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
                         transition={{ duration: 0.1 }}
                       >
                         <Checkbox id={`rating-${rating}`} />
-                        <label htmlFor={`rating-${rating}`} className="text-sm text-gray-700 cursor-pointer flex items-center">
-                          {rating}+ 
+                        <label
+                          htmlFor={`rating-${rating}`}
+                          className="text-sm text-gray-700 cursor-pointer flex items-center"
+                        >
+                          {rating}+
                           <div className="flex ml-1">
                             {[...Array(5)].map((_, i) => (
                               <Star
                                 key={i}
-                                className={`w-3 h-3 ${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
+                                className={`w-3 h-3 ${i < rating ? "text-yellow-400 fill-current" : "text-gray-300"}`}
                               />
                             ))}
                           </div>
@@ -256,12 +309,16 @@ const FilterPanel = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
   );
 };
 
-const EventCard = ({ event, index, viewMode }: { 
-  event: typeof allEvents[0]; 
-  index: number; 
-  viewMode: 'grid' | 'list';
+const EventCard = ({
+  event,
+  index,
+  viewMode,
+}: {
+  event: (typeof allEvents)[0];
+  index: number;
+  viewMode: "grid" | "list";
 }) => {
-  if (viewMode === 'list') {
+  if (viewMode === "list") {
     return (
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -283,7 +340,7 @@ const EventCard = ({ event, index, viewMode }: {
                   className="w-full h-full object-cover"
                 />
               </motion.div>
-              
+
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between mb-2">
                   <div>
@@ -293,14 +350,16 @@ const EventCard = ({ event, index, viewMode }: {
                     </h3>
                   </div>
                   <div className="text-right">
-                    <div className="font-bold text-xl text-gray-900">${event.price}</div>
+                    <div className="font-bold text-xl text-gray-900">
+                      ${event.price}
+                    </div>
                     <div className="flex items-center gap-1 text-sm text-gray-600">
                       <Star className="w-4 h-4 text-yellow-500 fill-current" />
                       {event.rating}
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
@@ -315,14 +374,17 @@ const EventCard = ({ event, index, viewMode }: {
                     {event.attendees}
                   </div>
                 </div>
-                
+
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="inline-block"
                 >
                   <Link to={`/event/${event.id}`}>
-                    <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl">
+                    <Button
+                      size="sm"
+                      className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl"
+                    >
                       View Details
                     </Button>
                   </Link>
@@ -365,25 +427,27 @@ const EventCard = ({ event, index, viewMode }: {
             </div>
           )}
         </div>
-        
+
         <CardContent className="p-6">
           <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
             <Calendar className="w-4 h-4" />
             {event.date}
           </div>
-          
+
           <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
             {event.title}
           </h3>
-          
+
           <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
             <MapPin className="w-4 h-4" />
             {event.location}
           </div>
-          
+
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <span className="font-bold text-xl text-gray-900">${event.price}</span>
+              <span className="font-bold text-xl text-gray-900">
+                ${event.price}
+              </span>
               <div className="flex items-center gap-1 text-sm text-gray-600">
                 <Users className="w-4 h-4" />
                 {event.attendees}
@@ -393,11 +457,8 @@ const EventCard = ({ event, index, viewMode }: {
                 {event.rating}
               </div>
             </div>
-            
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link to={`/event/${event.id}`}>
                 <Button
                   size="sm"
@@ -417,14 +478,16 @@ const EventCard = ({ event, index, viewMode }: {
 export default function Events() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState("featured");
 
-  const filteredEvents = allEvents.filter(event => {
-    const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         event.location.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === "All" || event.category === selectedCategory;
+  const filteredEvents = allEvents.filter((event) => {
+    const matchesSearch =
+      event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      event.location.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "All" || event.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -460,7 +523,7 @@ export default function Events() {
             <h1 className="text-3xl font-black bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange bg-clip-text text-transparent">
               Discover Events
             </h1>
-            
+
             <div className="flex items-center gap-4">
               <motion.div
                 whileHover={{ scale: 1.02 }}
@@ -476,23 +539,29 @@ export default function Events() {
                   Filters
                 </Button>
               </motion.div>
-              
+
               <div className="flex items-center gap-2">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <Button
-                    variant={viewMode === 'grid' ? 'default' : 'outline'}
+                    variant={viewMode === "grid" ? "default" : "outline"}
                     size="sm"
-                    onClick={() => setViewMode('grid')}
+                    onClick={() => setViewMode("grid")}
                     className="rounded-xl"
                   >
                     <Grid className="w-4 h-4" />
                   </Button>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <Button
-                    variant={viewMode === 'list' ? 'default' : 'outline'}
+                    variant={viewMode === "list" ? "default" : "outline"}
                     size="sm"
-                    onClick={() => setViewMode('list')}
+                    onClick={() => setViewMode("list")}
                     className="rounded-xl"
                   >
                     <List className="w-4 h-4" />
@@ -510,7 +579,10 @@ export default function Events() {
           <div className="hidden lg:block flex-shrink-0">
             <FilterPanel isOpen={true} onClose={() => {}} />
           </div>
-          <FilterPanel isOpen={isFilterOpen} onClose={() => setIsFilterOpen(false)} />
+          <FilterPanel
+            isOpen={isFilterOpen}
+            onClose={() => setIsFilterOpen(false)}
+          />
 
           {/* Main Content */}
           <div className="flex-1">
@@ -531,7 +603,7 @@ export default function Events() {
                     className="pl-10 border-0 bg-white/80 backdrop-blur-sm focus:bg-white transition-colors rounded-xl shadow-md"
                   />
                 </div>
-                
+
                 <Select value={sortBy} onValueChange={setSortBy}>
                   <SelectTrigger className="w-48 border-0 bg-white/80 backdrop-blur-sm rounded-xl shadow-md">
                     <SelectValue />
@@ -539,8 +611,12 @@ export default function Events() {
                   <SelectContent>
                     <SelectItem value="featured">Featured First</SelectItem>
                     <SelectItem value="date">Date</SelectItem>
-                    <SelectItem value="price-low">Price: Low to High</SelectItem>
-                    <SelectItem value="price-high">Price: High to Low</SelectItem>
+                    <SelectItem value="price-low">
+                      Price: Low to High
+                    </SelectItem>
+                    <SelectItem value="price-high">
+                      Price: High to Low
+                    </SelectItem>
                     <SelectItem value="rating">Highest Rated</SelectItem>
                   </SelectContent>
                 </Select>
@@ -555,7 +631,9 @@ export default function Events() {
                     whileTap={{ scale: 0.95 }}
                   >
                     <Button
-                      variant={selectedCategory === category ? "default" : "outline"}
+                      variant={
+                        selectedCategory === category ? "default" : "outline"
+                      }
                       size="sm"
                       onClick={() => setSelectedCategory(category)}
                       className={`rounded-full ${
@@ -585,16 +663,19 @@ export default function Events() {
             </motion.div>
 
             {/* Events Grid/List */}
-            <div className={viewMode === 'grid' 
-              ? "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" 
-              : "space-y-4"
-            }>
+            <div
+              className={
+                viewMode === "grid"
+                  ? "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+                  : "space-y-4"
+              }
+            >
               <AnimatePresence mode="wait">
                 {sortedEvents.map((event, index) => (
-                  <EventCard 
-                    key={`${event.id}-${viewMode}`} 
-                    event={event} 
-                    index={index} 
+                  <EventCard
+                    key={`${event.id}-${viewMode}`}
+                    event={event}
+                    index={index}
                     viewMode={viewMode}
                   />
                 ))}
@@ -610,8 +691,12 @@ export default function Events() {
                 <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Search className="w-8 h-8 text-gray-400" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">No events found</h3>
-                <p className="text-gray-600">Try adjusting your search or filters</p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  No events found
+                </h3>
+                <p className="text-gray-600">
+                  Try adjusting your search or filters
+                </p>
               </motion.div>
             )}
           </div>

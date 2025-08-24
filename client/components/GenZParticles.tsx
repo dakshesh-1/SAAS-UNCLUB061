@@ -26,7 +26,7 @@ export function GenZParticles() {
           }}
         />
       ))}
-      
+
       {/* Gradient orbs */}
       {[...Array(5)].map((_, index) => (
         <motion.div
