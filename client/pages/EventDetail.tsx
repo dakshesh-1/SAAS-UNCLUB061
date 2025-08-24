@@ -6,6 +6,7 @@ import {
 } from "framer-motion";
 import { useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
+import Image from "@/components/ui/image";
 import {
   Calendar,
   MapPin,
@@ -551,10 +552,11 @@ export default function EventDetail() {
             ease: "easeInOut",
           }}
         >
-          <img
+          <Image
             src={event.images[currentImageIndex]}
-            alt={event.title}
+            alt={`${event.title} - Event image ${currentImageIndex + 1}`}
             className="w-full h-full object-cover"
+            loading="eager"
           />
         </motion.div>
 
@@ -883,7 +885,7 @@ export default function EventDetail() {
                               className="flex items-center gap-3"
                             >
                               <span className="text-sm font-medium w-8">
-                                {stars}★
+                                {stars}���
                               </span>
                               <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
                                 <motion.div
