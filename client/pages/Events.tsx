@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Image from "@/components/ui/image";
 import {
   Search,
   Filter,
@@ -334,7 +335,7 @@ const EventCard = ({
                 className="flex-shrink-0 w-24 h-24 rounded-xl overflow-hidden"
                 whileHover={{ scale: 1.05 }}
               >
-                <img
+                <Image
                   src={event.image}
                   alt={event.title}
                   className="w-full h-full object-cover"
