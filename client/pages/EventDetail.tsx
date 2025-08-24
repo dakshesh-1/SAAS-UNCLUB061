@@ -506,15 +506,15 @@ export default function EventDetail() {
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const heroRef = useRef(null);
+  const event = id ? eventData[id as unknown as keyof typeof eventData] : undefined;
+
   const { scrollYProgress } = useScroll({
-    target: heroRef,
+    target: event ? heroRef : undefined,
     offset: ["start start", "end start"],
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  const event = id ? eventData[id as unknown as keyof typeof eventData] : undefined;
 
   if (!event) {
     return (
