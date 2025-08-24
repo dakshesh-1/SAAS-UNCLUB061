@@ -142,7 +142,7 @@ const EventCard = ({ event, index }: { event: typeof featuredEvents[0], index: n
               <Link to={`/event/${event.id}`}>
                 <Button
                   size="sm"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl shadow-lg"
+                  className="bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white rounded-xl shadow-lg"
                 >
                   View Details
                 </Button>
@@ -202,7 +202,7 @@ const SearchBar = () => {
             whileTap={{ scale: 0.98 }}
           >
             <Button 
-              className="w-full h-11 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-semibold shadow-lg"
+              className="w-full h-11 bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white rounded-xl font-semibold shadow-lg"
             >
               <Search className="w-5 h-5 mr-2" />
               Search Events
@@ -347,7 +347,7 @@ export default function Index() {
               <Link to="/events">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-2xl font-semibold shadow-xl"
+                  className="bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white px-8 py-3 rounded-2xl font-semibold shadow-xl"
                 >
                   Explore All Events
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -377,7 +377,7 @@ export default function Index() {
                 whileHover={{ y: -5 }}
               >
                 <motion.div
-                  className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-2xl mb-4 shadow-lg"
+                  className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-instagram-pink via-instagram-purple to-instagram-orange text-white rounded-2xl mb-4 shadow-lg"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                 >
                   <stat.icon className="w-8 h-8" />
