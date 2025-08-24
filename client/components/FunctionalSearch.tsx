@@ -96,7 +96,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
       transition={{ delay: 0.3, duration: 0.6 }}
     >
       <motion.div
-        className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-6 border border-white/30"
+        className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-3xl shadow-2xl p-6 border border-white/30 dark:border-gray-700/50"
         whileHover={{
           y: -4,
           boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
@@ -106,35 +106,35 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
           {/* Search Query */}
           <div className="relative md:col-span-2">
-            <Search className="absolute left-4 top-4 w-5 h-5 text-gray-400" />
+            <Search className="absolute left-4 top-4 w-5 h-5 text-gray-400 dark:text-gray-500" />
             <Input
               placeholder="What party are you looking for?"
               value={searchParams.query}
               onChange={(e) => updateParam("query", e.target.value)}
               onFocus={() => setShowSuggestions(true)}
-              className="pl-12 border-2 border-gray-200 focus:border-unclub-blue transition-colors rounded-2xl h-12 text-lg font-medium"
+              className="pl-12 border-2 border-gray-200 dark:border-gray-600 focus:border-unclub-blue dark:focus:border-unclub-pink transition-colors rounded-2xl h-12 text-lg font-semibold bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           {/* Location */}
           <div className="relative">
-            <MapPin className="absolute left-4 top-4 w-5 h-5 text-gray-400" />
+            <MapPin className="absolute left-4 top-4 w-5 h-5 text-gray-400 dark:text-gray-500" />
             <Input
               placeholder="City"
               value={searchParams.location}
               onChange={(e) => updateParam("location", e.target.value)}
-              className="pl-12 border-2 border-gray-200 focus:border-unclub-pink transition-colors rounded-2xl h-12"
+              className="pl-12 border-2 border-gray-200 dark:border-gray-600 focus:border-unclub-pink dark:focus:border-unclub-blue transition-colors rounded-2xl h-12 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           {/* Date */}
           <div className="relative">
-            <Calendar className="absolute left-4 top-4 w-5 h-5 text-gray-400" />
+            <Calendar className="absolute left-4 top-4 w-5 h-5 text-gray-400 dark:text-gray-500" />
             <Input
               type="date"
               value={searchParams.date}
               onChange={(e) => updateParam("date", e.target.value)}
-              className="pl-12 border-2 border-gray-200 focus:border-unclub-red transition-colors rounded-2xl h-12"
+              className="pl-12 border-2 border-gray-200 dark:border-gray-600 focus:border-unclub-red dark:focus:border-unclub-coral transition-colors rounded-2xl h-12 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             />
           </div>
         </div>
@@ -146,7 +146,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
               value={searchParams.category}
               onValueChange={(value) => updateParam("category", value)}
             >
-              <SelectTrigger className="rounded-2xl h-12 border-2 border-gray-200 focus:border-unclub-blue">
+              <SelectTrigger className="rounded-2xl h-12 border-2 border-gray-200 dark:border-gray-600 focus:border-unclub-blue dark:focus:border-unclub-pink bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
                 <SelectValue placeholder="Event type" />
               </SelectTrigger>
               <SelectContent>
@@ -177,7 +177,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
             <Button
               variant="outline"
               onClick={() => setIsExpanded(!isExpanded)}
-              className="h-12 px-4 rounded-2xl border-2 border-gray-200 hover:border-unclub-blue"
+              className="h-12 px-4 rounded-2xl border-2 border-gray-200 dark:border-gray-600 hover:border-unclub-blue dark:hover:border-unclub-pink bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             >
               <Filter className="w-5 h-5" />
             </Button>
