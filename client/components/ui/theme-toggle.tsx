@@ -13,26 +13,38 @@ export function ThemeToggle() {
         variant="ghost"
         size="sm"
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        className="relative rounded-xl bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 text-white hover:text-white transition-all duration-300"
+        className="relative rounded-xl backdrop-blur-sm border transition-all duration-300 overflow-hidden"
+        style={{
+          background:
+            theme === "dark"
+              ? "linear-gradient(135deg, hsl(210 40% 98% / 0.1), hsl(210 40% 98% / 0.2))"
+              : "linear-gradient(135deg, hsl(222.2 84% 4.9% / 0.1), hsl(222.2 84% 4.9% / 0.2))",
+          borderColor:
+            theme === "dark"
+              ? "hsl(210 40% 98% / 0.2)"
+              : "hsl(222.2 84% 4.9% / 0.2)",
+          color: theme === "dark" ? "hsl(210 40% 98%)" : "hsl(222.2 84% 4.9%)",
+        }}
       >
         <motion.div
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-20"
           animate={{
             background:
               theme === "dark"
-                ? "linear-gradient(135deg, #1a1a2e, #16213e, #0f0f23)"
-                : "linear-gradient(135deg, #fbbf24, #f59e0b, #d97706)",
+                ? "linear-gradient(135deg, #f59e0b, #fbbf24, #d97706)"
+                : "linear-gradient(135deg, #1e1b4b, #312e81, #1e3a8a)",
           }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.4 }}
           style={{ borderRadius: "0.75rem" }}
         />
-        <div className="relative z-10 flex items-center">
+        <div className="relative z-10 flex items-center justify-center w-6 h-6">
           <motion.div
             animate={{
               rotate: theme === "dark" ? 0 : 180,
               scale: theme === "dark" ? 1 : 0,
+              opacity: theme === "dark" ? 1 : 0,
             }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4 }}
             className="absolute"
           >
             <Moon className="h-4 w-4" />
@@ -41,13 +53,13 @@ export function ThemeToggle() {
             animate={{
               rotate: theme === "light" ? 0 : 180,
               scale: theme === "light" ? 1 : 0,
+              opacity: theme === "light" ? 1 : 0,
             }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4 }}
             className="absolute"
           >
             <Sun className="h-4 w-4" />
           </motion.div>
-          <div className="w-4 h-4" /> {/* Spacer */}
         </div>
       </Button>
     </motion.div>

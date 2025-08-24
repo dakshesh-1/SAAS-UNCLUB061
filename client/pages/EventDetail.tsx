@@ -37,7 +37,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-// Mock event data with more details
+// Enhanced event data with all events from the Events page
 const eventData = {
   1: {
     id: 1,
@@ -60,12 +60,12 @@ const eventData = {
     category: "Music",
     tags: ["Outdoor", "Live Music", "Food & Drinks", "All Ages"],
     description: `Experience the ultimate summer music festival in the heart of New York City! Join thousands of music lovers for an unforgettable night featuring top artists, amazing food, and incredible vibes.
-    
-    This year's lineup includes Grammy-winning artists and rising stars across multiple genres. From indie rock to electronic beats, there's something for everyone.
-    
-    The festival grounds will feature:
+
+This year's lineup includes Grammy-winning artists and rising stars across multiple genres. From indie rock to electronic beats, there's something for everyone.
+
+The festival grounds will feature:
     • 3 main stages with non-stop performances
-    • Gourmet food trucks and craft beverage stations  
+    • Gourmet food trucks and craft beverage stations
     • Interactive art installations
     • VIP lounge areas with exclusive perks
     • Professional photography opportunities`,
@@ -168,6 +168,611 @@ const eventData = {
         ],
         available: 8,
         popular: false,
+      },
+    ],
+  },
+  2: {
+    id: 2,
+    title: "Tech Innovation Summit",
+    location: "Silicon Valley, CA",
+    fullAddress: "1600 Amphitheatre Parkway, Mountain View, CA 94043",
+    date: "Aug 22, 2024",
+    time: "9:00 AM - 6:00 PM",
+    price: 299,
+    originalPrice: 399,
+    images: [
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+      "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
+      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
+    ],
+    attendees: 800,
+    maxCapacity: 1000,
+    rating: 4.9,
+    totalReviews: 234,
+    category: "Technology",
+    tags: ["Networking", "AI", "Innovation", "Professional"],
+    description: `Join Silicon Valley's most exclusive tech innovation summit! Connect with industry leaders, discover cutting-edge technologies, and shape the future of tech.
+
+This premier event brings together:
+    • Fortune 500 CTOs and tech executives
+    • Rising startups with breakthrough innovations
+    • Venture capitalists and angel investors
+    • Industry analysts and thought leaders
+
+Key highlights:
+    • Keynote presentations from tech giants
+    • Interactive product demonstrations
+    • 1-on-1 networking sessions
+    • Investment pitch competitions
+    • Exclusive startup showcases`,
+
+    lineup: [
+      { name: "Satya Nadella", time: "10:00 AM", stage: "Main Stage" },
+      { name: "Jensen Huang", time: "11:30 AM", stage: "Main Stage" },
+      { name: "AI Panel Discussion", time: "2:00 PM", stage: "Tech Stage" },
+      {
+        name: "Startup Pitch Finals",
+        time: "4:00 PM",
+        stage: "Innovation Stage",
+      },
+    ],
+
+    host: {
+      name: "TechVenture Events",
+      avatar:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      verified: true,
+      rating: 4.9,
+      eventsHosted: 89,
+      bio: "Connecting innovators and investors in Silicon Valley's premier tech events.",
+      followers: 15200,
+    },
+
+    reviews: [
+      {
+        id: 1,
+        name: "David Kim",
+        avatar:
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        rating: 5,
+        date: "2 months ago",
+        comment:
+          "Incredible networking opportunities! Met my co-founder at this event and we just closed our Series A. The quality of attendees is unmatched.",
+        helpful: 67,
+      },
+    ],
+
+    ticketTypes: [
+      {
+        id: 1,
+        name: "Professional Pass",
+        price: 299,
+        originalPrice: 399,
+        features: ["All Sessions", "Networking Lunch", "Welcome Kit"],
+        available: 45,
+        popular: true,
+      },
+      {
+        id: 2,
+        name: "Executive Pass",
+        price: 599,
+        originalPrice: 799,
+        features: [
+          "All Professional Benefits",
+          "VIP Networking Dinner",
+          "Private Executive Lounge",
+          "1-on-1 Meetings",
+          "Premium Swag",
+        ],
+        available: 12,
+        popular: false,
+      },
+    ],
+  },
+  3: {
+    id: 3,
+    title: "Food & Wine Experience",
+    location: "Napa Valley, CA",
+    fullAddress: "1234 Vineyard Lane, Napa, CA 94558",
+    date: "Sep 10, 2024",
+    time: "12:00 PM - 8:00 PM",
+    price: 149,
+    originalPrice: 199,
+    images: [
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+      "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
+      "https://images.unsplash.com/photo-1528823872057-9c018a7a7553?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
+    ],
+    attendees: 300,
+    maxCapacity: 350,
+    rating: 4.7,
+    totalReviews: 156,
+    category: "Food & Drink",
+    tags: ["Wine Tasting", "Gourmet", "Outdoor", "Luxury"],
+    description: `Indulge in Napa Valley's finest wines and culinary masterpieces in this exclusive food & wine experience. Set among rolling vineyards with breathtaking views.
+
+What awaits you:
+    • Premium wine tastings from 12 renowned wineries
+    • Gourmet food pairings by Michelin-starred chefs
+    • Live cooking demonstrations
+    • Vineyard tours with winemakers
+    • Artisanal cheese and charcuterie stations
+
+Special features:
+    • Sunset terrace dining
+    • Exclusive vintage wine releases
+    • Meet-the-winemaker sessions
+    • Take-home wine packages available
+    • Professional food photography`,
+
+    lineup: [
+      { name: "Wine Master Class", time: "1:00 PM", stage: "Tasting Room" },
+      {
+        name: "Chef Demo: Perfect Pairings",
+        time: "3:00 PM",
+        stage: "Culinary Stage",
+      },
+      { name: "Sunset Wine Tasting", time: "6:00 PM", stage: "Terrace" },
+      { name: "Vineyard Tour", time: "4:00 PM", stage: "Outdoor" },
+    ],
+
+    host: {
+      name: "Napa Culinary Events",
+      avatar:
+        "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      verified: true,
+      rating: 4.8,
+      eventsHosted: 67,
+      bio: "Curating exceptional culinary experiences in California's wine country.",
+      followers: 8900,
+    },
+
+    reviews: [
+      {
+        id: 1,
+        name: "Isabella Martinez",
+        avatar:
+          "https://images.unsplash.com/photo-1494790108755-2616b9e2b36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        rating: 5,
+        date: "1 month ago",
+        comment:
+          "Pure perfection! The wine selection was incredible and the food pairings were spot-on. The sunset dinner was the highlight of our anniversary weekend!",
+        helpful: 34,
+      },
+    ],
+
+    ticketTypes: [
+      {
+        id: 1,
+        name: "Wine Explorer",
+        price: 149,
+        originalPrice: 199,
+        features: ["Wine Tastings", "Food Pairings", "Vineyard Tour"],
+        available: 28,
+        popular: true,
+      },
+      {
+        id: 2,
+        name: "Connoisseur Experience",
+        price: 299,
+        originalPrice: 399,
+        features: [
+          "All Explorer Benefits",
+          "Private Winemaker Dinner",
+          "Exclusive Vintage Tastings",
+          "Wine Take-Home Package",
+          "Personalized Sommelier",
+        ],
+        available: 8,
+        popular: false,
+      },
+    ],
+  },
+  4: {
+    id: 4,
+    title: "Digital Marketing Masterclass",
+    location: "Chicago, IL",
+    fullAddress: "123 Business District, Chicago, IL 60601",
+    date: "Jul 28, 2024",
+    time: "9:00 AM - 5:00 PM",
+    price: 199,
+    originalPrice: 299,
+    images: [
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+      "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
+    ],
+    attendees: 500,
+    maxCapacity: 600,
+    rating: 4.6,
+    totalReviews: 89,
+    category: "Business",
+    tags: ["Marketing", "Digital", "Professional", "Certification"],
+    description: `Master the latest digital marketing strategies from industry experts. Get hands-on training, actionable insights, and networking opportunities that will transform your marketing game.
+
+What you'll learn:
+    • Advanced social media marketing strategies
+    • Data-driven campaign optimization
+    • Content marketing that converts
+    • Email marketing automation
+    • SEO and SEM best practices
+
+Bonus features:
+    • Interactive workshops
+    • Real campaign case studies
+    • Certification upon completion
+    • Access to exclusive tools
+    • 90-day follow-up support`,
+
+    lineup: [
+      { name: "Social Media Strategy", time: "10:00 AM", stage: "Main Hall" },
+      { name: "Data Analytics Workshop", time: "1:00 PM", stage: "Lab A" },
+      {
+        name: "Content Creation Masterclass",
+        time: "3:00 PM",
+        stage: "Studio",
+      },
+    ],
+
+    host: {
+      name: "Digital Marketing Institute",
+      avatar:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      verified: true,
+      rating: 4.7,
+      eventsHosted: 234,
+      bio: "Leading digital marketing education and certification programs worldwide.",
+      followers: 45600,
+    },
+
+    reviews: [
+      {
+        id: 1,
+        name: "Jennifer Walsh",
+        avatar:
+          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        rating: 5,
+        date: "3 weeks ago",
+        comment:
+          "Incredibly practical and up-to-date content! I immediately implemented what I learned and saw a 40% increase in our campaign performance.",
+        helpful: 23,
+      },
+    ],
+
+    ticketTypes: [
+      {
+        id: 1,
+        name: "Standard Access",
+        price: 199,
+        originalPrice: 299,
+        features: ["All Sessions", "Materials", "Lunch", "Certificate"],
+        available: 67,
+        popular: true,
+      },
+    ],
+  },
+  5: {
+    id: 5,
+    title: "Classical Music Evening",
+    location: "Carnegie Hall, NYC",
+    fullAddress: "881 7th Avenue, New York, NY 10019",
+    date: "Aug 5, 2024",
+    time: "7:30 PM - 10:00 PM",
+    price: 75,
+    originalPrice: 95,
+    images: [
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    ],
+    attendees: 1200,
+    maxCapacity: 1400,
+    rating: 4.9,
+    totalReviews: 342,
+    category: "Music",
+    tags: ["Classical", "Elegant", "Historic Venue", "Cultural"],
+    description: `Experience the magic of classical music in the world's most prestigious concert hall. An evening of timeless compositions performed by world-renowned musicians.
+
+Program highlights:
+    • Beethoven Symphony No. 9
+    • Mozart Piano Concerto No. 21
+    • Vivaldi's Four Seasons
+    • Special guest solo performances
+
+Venue features:
+    • Historic Carnegie Hall acoustics
+    • Pre-concert wine reception
+    • Program notes and insights
+    • Meet-the-artist opportunity
+    • Commemorative program booklet`,
+
+    lineup: [
+      {
+        name: "NY Philharmonic Orchestra",
+        time: "8:00 PM",
+        stage: "Main Stage",
+      },
+      { name: "Piano Solo - Maria Chen", time: "8:45 PM", stage: "Main Stage" },
+      { name: "Symphony Finale", time: "9:30 PM", stage: "Main Stage" },
+    ],
+
+    host: {
+      name: "Carnegie Hall",
+      avatar:
+        "https://images.unsplash.com/photo-1514533212735-5df27644bf04?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      verified: true,
+      rating: 4.9,
+      eventsHosted: 1200,
+      bio: "America's most prestigious concert hall, hosting the world's finest artists since 1891.",
+      followers: 89000,
+    },
+
+    reviews: [
+      {
+        id: 1,
+        name: "Robert Chen",
+        avatar:
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        rating: 5,
+        date: "2 weeks ago",
+        comment:
+          "Absolutely transcendent performance! The acoustics at Carnegie Hall are unmatched. This was a once-in-a-lifetime musical experience.",
+        helpful: 89,
+      },
+    ],
+
+    ticketTypes: [
+      {
+        id: 1,
+        name: "Orchestra Seating",
+        price: 75,
+        originalPrice: 95,
+        features: ["Premium Orchestra View", "Program", "Wine Reception"],
+        available: 156,
+        popular: true,
+      },
+      {
+        id: 2,
+        name: "Box Seats",
+        price: 150,
+        originalPrice: 200,
+        features: [
+          "Private Box for 4",
+          "Champagne Service",
+          "Meet & Greet",
+          "Exclusive Lounge Access",
+        ],
+        available: 8,
+        popular: false,
+      },
+    ],
+  },
+  6: {
+    id: 6,
+    title: "Startup Pitch Competition",
+    location: "Austin, TX",
+    fullAddress: "500 Innovation Blvd, Austin, TX 78701",
+    date: "Sep 18, 2024",
+    time: "6:00 PM - 10:00 PM",
+    price: 35,
+    originalPrice: 50,
+    images: [
+      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    ],
+    attendees: 300,
+    maxCapacity: 400,
+    rating: 4.5,
+    totalReviews: 78,
+    category: "Business",
+    tags: ["Startups", "Networking", "Investment", "Innovation"],
+    description: `Watch the next generation of entrepreneurs pitch their game-changing ideas to top investors. Network with founders, VCs, and innovation enthusiasts in Austin's thriving startup ecosystem.
+
+Event highlights:
+    • 20 pre-selected startup pitches
+    • $100K investment prize pool
+    • Panel of renowned investors
+    • Networking reception
+    • Live audience voting
+
+Why attend:
+    • Scout emerging investment opportunities
+    • Connect with innovative founders
+    • Learn from successful entrepreneurs
+    • Experience Austin's startup culture
+    • Exclusive investor meetups`,
+
+    lineup: [
+      { name: "Pitch Round 1", time: "6:30 PM", stage: "Main Stage" },
+      { name: "Investor Panel", time: "8:00 PM", stage: "Main Stage" },
+      { name: "Finals & Awards", time: "9:00 PM", stage: "Main Stage" },
+    ],
+
+    host: {
+      name: "Austin Startup Week",
+      avatar:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      verified: true,
+      rating: 4.6,
+      eventsHosted: 45,
+      bio: "Connecting Austin's entrepreneurial ecosystem through premier startup events.",
+      followers: 12300,
+    },
+
+    reviews: [
+      {
+        id: 1,
+        name: "Mike Johnson",
+        avatar:
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        rating: 4,
+        date: "1 month ago",
+        comment:
+          "Great energy and some really innovative startups! The networking was fantastic and I made several valuable connections.",
+        helpful: 15,
+      },
+    ],
+
+    ticketTypes: [
+      {
+        id: 1,
+        name: "General Admission",
+        price: 35,
+        originalPrice: 50,
+        features: ["Event Access", "Networking Reception", "Voting Rights"],
+        available: 89,
+        popular: true,
+      },
+    ],
+  },
+  7: {
+    id: 7,
+    title: "Art Gallery Opening",
+    location: "SoHo, NYC",
+    fullAddress: "456 Art Street, New York, NY 10013",
+    date: "Oct 5, 2024",
+    time: "6:00 PM - 10:00 PM",
+    price: 45,
+    originalPrice: 60,
+    images: [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    ],
+    attendees: 150,
+    maxCapacity: 200,
+    rating: 4.6,
+    totalReviews: 45,
+    category: "Art",
+    tags: ["Contemporary Art", "Gallery", "Cultural", "Exclusive"],
+    description: `Discover emerging contemporary artists in SoHo's newest gallery space. An exclusive opening showcasing revolutionary artworks that challenge conventional boundaries.
+
+Featured exhibitions:
+    • "Digital Dreams" - AI-generated art collection
+    • "Urban Landscapes" - Street photography series
+    • "Abstract Emotions" - Mixed media installations
+    • Live painting demonstrations
+    • Artist meet-and-greet sessions
+
+Gallery experience:
+    • Curated wine and cheese selection
+    • Artist talks and insights
+    • First purchase opportunities
+    • Professional art photography
+    • Collector networking lounge`,
+
+    lineup: [
+      { name: "Gallery Tour", time: "6:30 PM", stage: "Main Gallery" },
+      { name: "Artist Panel", time: "7:30 PM", stage: "Discussion Area" },
+      { name: "Live Painting Demo", time: "8:30 PM", stage: "Studio Space" },
+    ],
+
+    host: {
+      name: "SoHo Contemporary Gallery",
+      avatar:
+        "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      verified: true,
+      rating: 4.7,
+      eventsHosted: 23,
+      bio: "Showcasing cutting-edge contemporary art in the heart of NYC's art district.",
+      followers: 5600,
+    },
+
+    reviews: [
+      {
+        id: 1,
+        name: "Anna Williams",
+        avatar:
+          "https://images.unsplash.com/photo-1494790108755-2616b9e2b36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        rating: 5,
+        date: "2 weeks ago",
+        comment:
+          "Absolutely stunning collection! The artists were so approachable and the gallery space is beautifully curated. A must-visit for art lovers!",
+        helpful: 12,
+      },
+    ],
+
+    ticketTypes: [
+      {
+        id: 1,
+        name: "Art Enthusiast",
+        price: 45,
+        originalPrice: 60,
+        features: ["Gallery Access", "Wine & Cheese", "Artist Meet & Greet"],
+        available: 34,
+        popular: true,
+      },
+    ],
+  },
+  8: {
+    id: 8,
+    title: "Yoga & Meditation Retreat",
+    location: "Sedona, AZ",
+    fullAddress: "789 Red Rock Road, Sedona, AZ 86336",
+    date: "Oct 15, 2024",
+    time: "8:00 AM - 6:00 PM",
+    price: 299,
+    originalPrice: 399,
+    images: [
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    ],
+    attendees: 50,
+    maxCapacity: 60,
+    rating: 4.8,
+    totalReviews: 67,
+    category: "Wellness",
+    tags: ["Wellness", "Meditation", "Nature", "Spiritual"],
+    description: `Find inner peace and rejuvenation in Sedona's mystical red rock landscape. A transformative day-long retreat combining yoga, meditation, and spiritual healing practices.
+
+Retreat schedule:
+    • Morning sunrise yoga session
+    • Guided meditation in nature
+    • Healing crystal workshops
+    • Healthy gourmet lunch
+    • Sound bath healing session
+
+What's included:
+    • All yoga equipment provided
+    • Organic vegetarian meals
+    • Crystal healing kit take-home
+    • Professional wellness photography
+    • Access to sacred vortex sites`,
+
+    lineup: [
+      { name: "Sunrise Yoga", time: "8:00 AM", stage: "Red Rock Vista" },
+      { name: "Meditation Circle", time: "10:00 AM", stage: "Sacred Grove" },
+      { name: "Crystal Healing", time: "2:00 PM", stage: "Energy Center" },
+      { name: "Sound Bath", time: "4:00 PM", stage: "Healing Dome" },
+    ],
+
+    host: {
+      name: "Sedona Wellness Center",
+      avatar:
+        "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      verified: true,
+      rating: 4.9,
+      eventsHosted: 156,
+      bio: "Guiding souls to inner peace through transformative wellness experiences in Sedona.",
+      followers: 18900,
+    },
+
+    reviews: [
+      {
+        id: 1,
+        name: "Sarah Patel",
+        avatar:
+          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        rating: 5,
+        date: "1 week ago",
+        comment:
+          "Life-changing experience! The combination of Sedona's energy and expert guidance created the perfect healing environment. I left feeling completely renewed.",
+        helpful: 28,
+      },
+    ],
+
+    ticketTypes: [
+      {
+        id: 1,
+        name: "Full Retreat",
+        price: 299,
+        originalPrice: 399,
+        features: ["All Sessions", "Meals", "Materials", "Crystal Kit"],
+        available: 8,
+        popular: true,
       },
     ],
   },
@@ -522,17 +1127,60 @@ export default function EventDetail() {
 
   if (!event) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-instagram-pink/20 to-instagram-purple/20">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Event Not Found
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-instagram-pink/20 to-instagram-purple/20 dark:from-gray-900 dark:via-purple-900/10 dark:to-pink-900/10">
+        <motion.div
+          className="text-center max-w-md mx-auto px-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div
+            className="w-24 h-24 bg-gradient-to-r from-instagram-pink to-instagram-purple rounded-full flex items-center justify-center mx-auto mb-6"
+            animate={{
+              rotate: [0, 10, -10, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+            }}
+          >
+            <span className="text-4xl">🎭</span>
+          </motion.div>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            Oops! Event Not Found
           </h1>
-          <Link to="/events">
-            <Button className="bg-gradient-to-r from-instagram-pink to-instagram-purple text-white rounded-2xl">
-              Back to Events
-            </Button>
-          </Link>
-        </div>
+          <p className="text-gray-600 dark:text-gray-400 mb-8">
+            The event you're looking for might have been moved, deleted, or the
+            link might be incorrect. Let's get you back to discovering amazing
+            events!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/events">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button className="bg-gradient-to-r from-instagram-pink to-instagram-purple text-white rounded-2xl px-8 py-3 font-bold">
+                  🎉 Browse All Events
+                </Button>
+              </motion.div>
+            </Link>
+            <Link to="/dashboard">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  variant="outline"
+                  className="rounded-2xl px-8 py-3 font-bold border-2 border-instagram-purple text-instagram-purple hover:bg-instagram-purple hover:text-white"
+                >
+                  🚀 Create Event
+                </Button>
+              </motion.div>
+            </Link>
+          </div>
+        </motion.div>
       </div>
     );
   }

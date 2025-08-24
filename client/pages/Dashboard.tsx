@@ -36,6 +36,13 @@ import {
   Flame,
   Magic,
   Megaphone,
+  Copy,
+  Check,
+  ExternalLink,
+  MessageCircle,
+  Send,
+  Gauge,
+  Activity,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -59,6 +66,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
+import { Progress } from "@/components/ui/progress";
+import { useTheme } from "next-themes";
+import { Link } from "react-router-dom";
+import { toast } from "@/components/ui/use-toast";
 
 // Enhanced stats with more compelling data
 const dashboardStats = [
@@ -100,50 +111,74 @@ const dashboardStats = [
   },
 ];
 
-// More compelling event data
+// Enhanced event data with more interactive details
 const recentEvents = [
   {
     id: 1,
     title: "Epic Summer Music Festival 🎵",
     date: "Jul 15, 2024",
     attendees: 2500,
+    capacity: 3000,
     revenue: "$12,450",
+    profit: "$8,200",
     status: "sold-out",
     image:
       "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     category: "Music",
     rating: 4.9,
+    reviews: 247,
     highlights: [
       "Sold Out in 2 Hours",
       "500+ Photos Shared",
       "3 Media Features",
     ],
+    socialShares: 1250,
+    viewsToday: 89,
+    daysUntil: -5, // Past event
+    ticketsSold: 2500,
+    engagementRate: 94,
   },
   {
     id: 2,
     title: "Exclusive Tech Innovation Summit 🚀",
     date: "Aug 22, 2024",
     attendees: 800,
+    capacity: 1000,
     revenue: "$8,900",
+    profit: "$6,100",
     status: "upcoming",
     image:
       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     category: "Technology",
     rating: 4.8,
+    reviews: 134,
     highlights: ["VIP Networking", "Industry Leaders", "Premium Location"],
+    socialShares: 892,
+    viewsToday: 156,
+    daysUntil: 28,
+    ticketsSold: 800,
+    engagementRate: 87,
   },
   {
     id: 3,
     title: "Luxury Food & Wine Experience 🍷",
     date: "Sep 10, 2024",
     attendees: 300,
+    capacity: 350,
     revenue: "$4,200",
+    profit: "$2,800",
     status: "filling-fast",
     image:
       "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     category: "Food & Drink",
     rating: 4.7,
+    reviews: 89,
     highlights: ["5-Star Catering", "Wine Tastings", "Celebrity Chef"],
+    socialShares: 445,
+    viewsToday: 67,
+    daysUntil: 47,
+    ticketsSold: 300,
+    engagementRate: 91,
   },
 ];
 
@@ -516,7 +551,7 @@ const CreateEventModal = ({
 
                 <div>
                   <label className="block text-lg font-bold text-gray-700 mb-3">
-                    📸 Upload some stunning photos
+                    ���� Upload some stunning photos
                   </label>
                   <motion.div
                     className="border-2 border-dashed border-purple-300 rounded-2xl p-8 text-center hover:border-purple-500 transition-colors cursor-pointer bg-gradient-to-br from-purple-50 to-pink-50"
@@ -710,6 +745,35 @@ const CreateEventModal = ({
 export default function Dashboard() {
   const [selectedTab, setSelectedTab] = useState("overview");
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [copiedText, setCopiedText] = useState("");
+  const { theme } = useTheme();
+
+  const handleShare = (event: any) => {
+    setSelectedEvent(event);
+    setIsShareModalOpen(true);
+  };
+
+  const handleEdit = (event: any) => {
+    setSelectedEvent(event);
+    setIsEditModalOpen(true);
+  };
+
+  const copyToClipboard = async (text: string, type: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedText(type);
+      toast({
+        title: "Copied to clipboard!",
+        description: "Link copied successfully.",
+      });
+      setTimeout(() => setCopiedText(""), 2000);
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-red-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-pink-900/20">
@@ -1012,20 +1076,84 @@ export default function Dashboard() {
                           </Badge>
                         </div>
 
+                        {/* Enhanced Event Stats */}
+                        <div className="grid grid-cols-3 gap-4 mb-4">
+                          <div className="text-center p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl">
+                            <div className="flex items-center justify-center gap-1 text-blue-600 dark:text-blue-400 mb-1">
+                              <Gauge className="w-4 h-4" />
+                              <span className="text-xs font-semibold">
+                                Capacity
+                              </span>
+                            </div>
+                            <div className="font-bold text-lg text-blue-700 dark:text-blue-300">
+                              {Math.round(
+                                (event.ticketsSold / event.capacity) * 100,
+                              )}
+                              %
+                            </div>
+                            <Progress
+                              value={(event.ticketsSold / event.capacity) * 100}
+                              className="h-2 mt-1"
+                            />
+                          </div>
+                          <div className="text-center p-3 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-xl">
+                            <div className="flex items-center justify-center gap-1 text-green-600 dark:text-green-400 mb-1">
+                              <Activity className="w-4 h-4" />
+                              <span className="text-xs font-semibold">
+                                Engagement
+                              </span>
+                            </div>
+                            <div className="font-bold text-lg text-green-700 dark:text-green-300">
+                              {event.engagementRate}%
+                            </div>
+                            <div className="text-xs text-green-600 dark:text-green-400">
+                              +{event.viewsToday} today
+                            </div>
+                          </div>
+                          <div className="text-center p-3 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-xl">
+                            <div className="flex items-center justify-center gap-1 text-purple-600 dark:text-purple-400 mb-1">
+                              <Share2 className="w-4 h-4" />
+                              <span className="text-xs font-semibold">
+                                Shares
+                              </span>
+                            </div>
+                            <div className="font-bold text-lg text-purple-700 dark:text-purple-300">
+                              {event.socialShares}
+                            </div>
+                            <div className="text-xs text-purple-600 dark:text-purple-400">
+                              ⭐ {event.reviews} reviews
+                            </div>
+                          </div>
+                        </div>
+
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-6 text-sm">
                             <div className="flex items-center gap-1 font-semibold">
                               <Users className="w-4 h-4 text-purple-500" />
-                              <span className="text-purple-600">
-                                {event.attendees}
+                              <span className="text-purple-600 dark:text-purple-400">
+                                {event.attendees.toLocaleString()}
                               </span>
                             </div>
                             <div className="flex items-center gap-1 font-semibold">
                               <DollarSign className="w-4 h-4 text-green-500" />
-                              <span className="text-green-600">
+                              <span className="text-green-600 dark:text-green-400">
                                 {event.revenue}
                               </span>
                             </div>
+                            <div className="flex items-center gap-1 font-semibold">
+                              <TrendingUp className="w-4 h-4 text-blue-500" />
+                              <span className="text-blue-600 dark:text-blue-400">
+                                {event.profit} profit
+                              </span>
+                            </div>
+                            {event.daysUntil > 0 && (
+                              <div className="flex items-center gap-1 font-semibold">
+                                <Clock className="w-4 h-4 text-orange-500" />
+                                <span className="text-orange-600 dark:text-orange-400">
+                                  {event.daysUntil}d left
+                                </span>
+                              </div>
+                            )}
                           </div>
 
                           <div className="flex items-center gap-2">
@@ -1033,13 +1161,16 @@ export default function Dashboard() {
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
                             >
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                className="rounded-xl border-purple-200 text-purple-600 hover:bg-purple-50"
-                              >
-                                <Eye className="w-4 h-4" />
-                              </Button>
+                              <Link to={`/event/${event.id}`}>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="rounded-xl border-purple-200 text-purple-600 hover:bg-purple-50 dark:border-purple-700 dark:text-purple-400 dark:hover:bg-purple-900/20"
+                                  title="View Event Details"
+                                >
+                                  <Eye className="w-4 h-4" />
+                                </Button>
+                              </Link>
                             </motion.div>
                             <motion.div
                               whileHover={{ scale: 1.1 }}
@@ -1048,7 +1179,9 @@ export default function Dashboard() {
                               <Button
                                 variant="outline"
                                 size="sm"
-                                className="rounded-xl border-blue-200 text-blue-600 hover:bg-blue-50"
+                                onClick={() => handleEdit(event)}
+                                className="rounded-xl border-blue-200 text-blue-600 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-400 dark:hover:bg-blue-900/20"
+                                title="Edit Event"
                               >
                                 <Edit className="w-4 h-4" />
                               </Button>
@@ -1060,10 +1193,27 @@ export default function Dashboard() {
                               <Button
                                 variant="outline"
                                 size="sm"
-                                className="rounded-xl border-pink-200 text-pink-600 hover:bg-pink-50"
+                                onClick={() => handleShare(event)}
+                                className="rounded-xl border-pink-200 text-pink-600 hover:bg-pink-50 dark:border-pink-700 dark:text-pink-400 dark:hover:bg-pink-900/20"
+                                title="Share Event"
                               >
                                 <Share2 className="w-4 h-4" />
                               </Button>
+                            </motion.div>
+                            <motion.div
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.9 }}
+                            >
+                              <Link to={`/event/${event.id}#analytics`}>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="rounded-xl border-green-200 text-green-600 hover:bg-green-50 dark:border-green-700 dark:text-green-400 dark:hover:bg-green-900/20"
+                                  title="View Analytics"
+                                >
+                                  <BarChart3 className="w-4 h-4" />
+                                </Button>
+                              </Link>
                             </motion.div>
                           </div>
                         </div>
@@ -1119,6 +1269,204 @@ export default function Dashboard() {
         isOpen={isCreateModalOpen}
         onClose={() => setIsCreateModalOpen(false)}
       />
+
+      {/* Edit Event Modal */}
+      <Dialog open={isEditModalOpen} onOpenChange={setIsEditModalOpen}>
+        <DialogContent className="max-w-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-0 rounded-3xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              ✏️ Edit Event: {selectedEvent?.title}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="p-6 space-y-6">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                  Event Title
+                </label>
+                <Input
+                  defaultValue={selectedEvent?.title}
+                  className="rounded-xl border-2"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                  Date
+                </label>
+                <Input
+                  type="date"
+                  defaultValue={selectedEvent?.date}
+                  className="rounded-xl border-2"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                  Capacity
+                </label>
+                <Input
+                  type="number"
+                  defaultValue={selectedEvent?.capacity}
+                  className="rounded-xl border-2"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                  Category
+                </label>
+                <Select defaultValue={selectedEvent?.category}>
+                  <SelectTrigger className="rounded-xl border-2">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Music">🎵 Music</SelectItem>
+                    <SelectItem value="Technology">💻 Technology</SelectItem>
+                    <SelectItem value="Food & Drink">
+                      🍷 Food & Drink
+                    </SelectItem>
+                    <SelectItem value="Business">💼 Business</SelectItem>
+                    <SelectItem value="Art">🎨 Art</SelectItem>
+                    <SelectItem value="Wellness">🧘 Wellness</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <div className="flex gap-3 mt-8">
+              <Button
+                onClick={() => {
+                  toast({
+                    title: "Event Updated! 🎉",
+                    description: "Your event has been successfully updated.",
+                  });
+                  setIsEditModalOpen(false);
+                }}
+                className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-bold py-3"
+              >
+                💾 Save Changes
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setIsEditModalOpen(false)}
+                className="px-8 rounded-xl"
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Share Event Modal */}
+      <Dialog open={isShareModalOpen} onOpenChange={setIsShareModalOpen}>
+        <DialogContent className="max-w-lg bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-0 rounded-3xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              🚀 Share Your Event
+            </DialogTitle>
+          </DialogHeader>
+          <div className="p-6 space-y-6">
+            <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl">
+              <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
+                {selectedEvent?.title}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                {selectedEvent?.attendees} people going • {selectedEvent?.date}
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                Share Link
+              </h4>
+              <div className="flex gap-2">
+                <Input
+                  value={`https://unclub.events/event/${selectedEvent?.id}`}
+                  readOnly
+                  className="rounded-xl bg-gray-50 dark:bg-gray-800"
+                />
+                <Button
+                  onClick={() =>
+                    copyToClipboard(
+                      `https://unclub.events/event/${selectedEvent?.id}`,
+                      "link",
+                    )
+                  }
+                  className="px-4 rounded-xl"
+                >
+                  {copiedText === "link" ? (
+                    <Check className="w-4 h-4" />
+                  ) : (
+                    <Copy className="w-4 h-4" />
+                  )}
+                </Button>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                Share on Social
+              </h4>
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  {
+                    name: "Instagram",
+                    icon: "📸",
+                    color: "from-pink-500 to-purple-500",
+                    share: `Check out this amazing event: ${selectedEvent?.title}! 🎉`,
+                  },
+                  {
+                    name: "Twitter",
+                    icon: "🐦",
+                    color: "from-blue-400 to-blue-600",
+                    share: `🎉 Just discovered: ${selectedEvent?.title}! Can't wait to attend. Join me?`,
+                  },
+                  {
+                    name: "LinkedIn",
+                    icon: "💼",
+                    color: "from-blue-600 to-blue-800",
+                    share: `Excited to attend ${selectedEvent?.title} - great networking opportunity!`,
+                  },
+                ].map((platform) => (
+                  <motion.button
+                    key={platform.name}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() =>
+                      copyToClipboard(
+                        platform.share,
+                        platform.name.toLowerCase(),
+                      )
+                    }
+                    className={`p-4 rounded-xl bg-gradient-to-r ${platform.color} text-white text-center font-semibold shadow-lg`}
+                  >
+                    <div className="text-2xl mb-1">{platform.icon}</div>
+                    <div className="text-xs">{platform.name}</div>
+                    {copiedText === platform.name.toLowerCase() && (
+                      <div className="text-xs mt-1">✅ Copied!</div>
+                    )}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl">
+              <div className="flex items-center gap-2 mb-2">
+                <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
+                <span className="font-semibold text-green-700 dark:text-green-300">
+                  Sharing Impact
+                </span>
+              </div>
+              <div className="text-sm text-green-600 dark:text-green-400">
+                • {selectedEvent?.socialShares} total shares
+                <br />
+                • Events with high social shares sell 3x faster
+                <br />• Share to unlock audience insights
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
