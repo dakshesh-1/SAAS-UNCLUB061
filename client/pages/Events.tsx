@@ -149,19 +149,38 @@ const categories = [
 const FilterPanel = ({
   isOpen,
   onClose,
+  priceRange,
+  setPriceRange,
+  selectedCategories,
+  setSelectedCategories,
+  selectedDateRange,
+  setSelectedDateRange,
+  selectedRating,
+  setSelectedRating,
+  onApplyFilters,
 }: {
   isOpen: boolean;
   onClose: () => void;
+  priceRange: number[];
+  setPriceRange: (range: number[]) => void;
+  selectedCategories: string[];
+  setSelectedCategories: (categories: string[]) => void;
+  selectedDateRange: string;
+  setSelectedDateRange: (range: string) => void;
+  selectedRating: number;
+  setSelectedRating: (rating: number) => void;
+  onApplyFilters: () => void;
 }) => {
-  const [priceRange, setPriceRange] = useState([0, 500]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-
   const handleCategoryChange = (category: string, checked: boolean) => {
     if (checked) {
       setSelectedCategories([...selectedCategories, category]);
     } else {
       setSelectedCategories(selectedCategories.filter((c) => c !== category));
     }
+  };
+
+  const handleRatingChange = (rating: number, checked: boolean) => {
+    setSelectedRating(checked ? rating : 0);
   };
 
   return (
@@ -249,11 +268,12 @@ const FilterPanel = ({
                 {/* Date Filter */}
                 <div>
                   <h4 className="font-medium text-gray-900 mb-3">Date</h4>
-                  <Select>
+                  <Select value={selectedDateRange} onValueChange={setSelectedDateRange}>
                     <SelectTrigger className="border-gray-200">
                       <SelectValue placeholder="Select date range" />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="all">All Dates</SelectItem>
                       <SelectItem value="today">Today</SelectItem>
                       <SelectItem value="week">This Week</SelectItem>
                       <SelectItem value="month">This Month</SelectItem>
@@ -273,7 +293,11 @@ const FilterPanel = ({
                         whileHover={{ x: 2 }}
                         transition={{ duration: 0.1 }}
                       >
-                        <Checkbox id={`rating-${rating}`} />
+                        <Checkbox
+                          id={`rating-${rating}`}
+                          checked={selectedRating === rating}
+                          onCheckedChange={(checked) => handleRatingChange(rating, checked as boolean)}
+                        />
                         <label
                           htmlFor={`rating-${rating}`}
                           className="text-sm text-gray-700 cursor-pointer flex items-center"
@@ -297,7 +321,10 @@ const FilterPanel = ({
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl">
+                  <Button
+                    onClick={onApplyFilters}
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl"
+                  >
                     Apply Filters
                   </Button>
                 </motion.div>
