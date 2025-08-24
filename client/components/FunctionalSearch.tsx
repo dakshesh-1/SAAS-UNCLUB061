@@ -243,7 +243,7 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
 
                 <motion.button
                   onClick={() => setShowSuggestions(false)}
-                  className="mt-4 text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-2"
+                  className="mt-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                 >
                   <X className="w-4 h-4" />
@@ -264,14 +264,14 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="border-t border-gray-200 pt-6 mt-6">
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-6 mt-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                       Price Range
                     </label>
                     <Select>
-                      <SelectTrigger className="rounded-xl">
+                      <SelectTrigger className="rounded-xl bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100">
                         <SelectValue placeholder="Any price" />
                       </SelectTrigger>
                       <SelectContent>
@@ -285,11 +285,11 @@ export function FunctionalSearch({ onSearch, className = "" }: SearchProps) {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                       Time
                     </label>
                     <Select>
-                      <SelectTrigger className="rounded-xl">
+                      <SelectTrigger className="rounded-xl bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100">
                         <SelectValue placeholder="Any time" />
                       </SelectTrigger>
                       <SelectContent>
