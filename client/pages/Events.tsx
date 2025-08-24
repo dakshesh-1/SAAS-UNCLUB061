@@ -443,7 +443,7 @@ export default function Events() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-instagram-pink/20 via-instagram-purple/20 to-instagram-orange/20">
       {/* Header */}
       <motion.div
         className="bg-white/90 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-30"
@@ -453,7 +453,7 @@ export default function Events() {
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-black bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange bg-clip-text text-transparent">
               Discover Events
             </h1>
             
@@ -556,8 +556,8 @@ export default function Events() {
                       onClick={() => setSelectedCategory(category)}
                       className={`rounded-full ${
                         selectedCategory === category
-                          ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
-                          : "hover:bg-blue-50"
+                          ? "bg-gradient-to-r from-instagram-pink via-instagram-purple to-instagram-orange hover:from-instagram-purple hover:to-instagram-pink text-white"
+                          : "hover:bg-instagram-pink/10"
                       }`}
                     >
                       {category}

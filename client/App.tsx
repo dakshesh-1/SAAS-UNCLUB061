@@ -11,6 +11,7 @@ import Events from "./pages/Events";
 import EventDetail from "./pages/EventDetail";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
+import Admin from "./pages/Admin";
 import Placeholder from "./pages/Placeholder";
 import NotFound from "./pages/NotFound";
 import { Navigation } from "./components/Navigation";
@@ -30,23 +31,7 @@ const App = () => (
           <Route path="/event/:id" element={<EventDetail />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route
-            path="/admin"
-            element={
-              <Placeholder
-                title="Admin Dashboard"
-                description="Advanced admin panel with analytics and user management."
-                features={[
-                  "KPI cards with counter animations",
-                  "User management table",
-                  "Event approval system",
-                  "Revenue tracking charts",
-                  "System health monitoring",
-                  "Animated status indicators"
-                ]}
-              />
-            }
-          />
+          <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
