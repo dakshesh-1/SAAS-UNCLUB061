@@ -15,6 +15,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GenZFloatingElements } from "@/components/GenZFloatingElements";
 import { FunctionalSearch } from "@/components/FunctionalSearch";
+import { useTheme } from "next-themes";
 
 // Mock event data
 const featuredEvents = [
@@ -107,7 +108,7 @@ const EventCard = ({
       whileHover={{ y: -8, transition: { duration: 0.2 } }}
       className="group"
     >
-      <Card className="overflow-hidden rounded-2xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white/80 backdrop-blur-sm">
+      <Card className="overflow-hidden rounded-2xl border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
         <div className="relative overflow-hidden">
           <motion.img
             src={event.image}
@@ -117,13 +118,13 @@ const EventCard = ({
             transition={{ duration: 0.3 }}
           />
           <div className="absolute top-4 left-4">
-            <Badge className="bg-white/90 text-gray-800 hover:bg-white">
+            <Badge className="bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-800">
               {event.category}
             </Badge>
           </div>
           <div className="absolute top-4 right-4">
             <motion.div
-              className="bg-white/90 rounded-full p-2"
+              className="bg-white/90 dark:bg-gray-800/90 rounded-full p-2"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -133,26 +134,26 @@ const EventCard = ({
         </div>
 
         <CardContent className="p-6">
-          <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
+          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-2">
             <Calendar className="w-4 h-4" />
             {event.date}
           </div>
 
-          <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+          <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
             {event.title}
           </h3>
 
-          <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
+          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
             <MapPin className="w-4 h-4" />
             {event.location}
           </div>
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <span className="font-bold text-xl text-gray-900">
+              <span className="font-bold text-xl text-gray-900 dark:text-gray-100">
                 {event.price}
               </span>
-              <div className="flex items-center gap-1 text-sm text-gray-600">
+              <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
                 <Users className="w-4 h-4" />
                 {event.attendees}
               </div>
@@ -176,8 +177,10 @@ const EventCard = ({
 };
 
 export default function Index() {
+  const { theme } = useTheme();
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20">
+    <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20 dark:from-gray-900 dark:via-purple-900/10 dark:to-pink-900/10">
       {/* GenZ Floating Elements */}
       <GenZFloatingElements />
 
@@ -250,7 +253,7 @@ export default function Index() {
           </motion.div>
 
           <motion.p
-            className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto"
+            className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -313,7 +316,7 @@ export default function Index() {
             <h2 className="text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
               🔥 Trending Events Right Now
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-400">
               These events are selling out fast - grab your spot before it's too
               late!
             </p>
@@ -347,7 +350,7 @@ export default function Index() {
       </section>
 
       {/* Stats Section */}
-      <section className="relative px-6 py-16 bg-white/50 backdrop-blur-sm">
+      <section className="relative px-6 py-16 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
@@ -370,10 +373,10 @@ export default function Index() {
                 >
                   <stat.icon className="w-8 h-8" />
                 </motion.div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                   {stat.number}
                 </h3>
-                <p className="text-gray-600">{stat.label}</p>
+                <p className="text-gray-600 dark:text-gray-400">{stat.label}</p>
               </motion.div>
             ))}
           </div>
