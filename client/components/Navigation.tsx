@@ -80,12 +80,19 @@ export function Navigation() {
   const blurAmount = useTransform(scrollY, [0, 100], [20, 40]);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Use fallback theme if not mounted yet
+  const safeTheme = mounted ? theme : "dark";
 
   return (
     <>
