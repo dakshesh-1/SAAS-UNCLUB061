@@ -530,7 +530,14 @@ export default function Events() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState("featured");
+  const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const safeTheme = mounted ? theme : "dark";
 
   // Advanced filter states
   const [priceRange, setPriceRange] = useState([0, 500]);
