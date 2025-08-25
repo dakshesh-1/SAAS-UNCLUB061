@@ -308,10 +308,10 @@ export function Navigation() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className={`rounded-xl sm:rounded-2xl backdrop-blur-sm border transition-all duration-300 px-3 py-2 ${
+                      className={`rounded-xl sm:rounded-2xl border transition-all duration-300 px-3 py-2 ${
                         theme === "dark"
-                          ? "text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100"
-                          : "text-white hover:bg-white/20 border-white/20"
+                          ? "text-gray-300 hover:bg-gray-800/50 border-gray-600/50 hover:text-gray-100 bg-gray-800/70"
+                          : "text-white hover:bg-white/30 border-white/30 bg-white/20"
                       }`}
                     >
                       <Search className="w-4 h-4 sm:w-5 sm:h-5" />
