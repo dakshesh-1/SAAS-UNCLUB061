@@ -133,7 +133,27 @@ const upcomingEvents = [
 
 export default function Profile() {
   const [selectedTab, setSelectedTab] = useState("overview");
-  const { isAuthenticated, currentUser } = useAuth();
+  const { isAuthenticated, currentUser, users, logout, switchAccount } = useAuth();
+  const { toast } = useToast();
+
+  const handleLogout = () => {
+    logout();
+    toast({
+      title: "Logged out successfully",
+      description: "You have been logged out. See you next time! 👋",
+    });
+  };
+
+  const handleSwitchAccount = (userId: string) => {
+    const user = users.find(u => u.id === userId);
+    if (user) {
+      switchAccount(userId);
+      toast({
+        title: "Account switched",
+        description: `Switched to ${user.name}'s account! 🔄`,
+      });
+    }
+  };
 
   // If not authenticated, show the auth form
   if (!isAuthenticated) {
