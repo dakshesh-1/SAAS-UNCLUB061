@@ -123,15 +123,9 @@ export function Navigation() {
         style={{
           background:
             theme === "dark"
-              ? `linear-gradient(135deg,
-                hsl(var(--background) / 0.99),
-                hsl(var(--card) / 0.99),
-                hsl(var(--background) / 0.99))`
-              : `linear-gradient(135deg,
-                hsl(var(--unclub-blue) / ${backgroundOpacity}),
-                hsl(var(--unclub-pink) / ${backgroundOpacity}),
-                hsl(var(--unclub-red) / ${backgroundOpacity}))`,
-          backdropFilter: `blur(${blurAmount}px)`,
+              ? `linear-gradient(135deg, hsl(var(--background)), hsl(var(--card)), hsl(var(--background)))`
+              : `linear-gradient(135deg, hsl(var(--unclub-blue)), hsl(var(--unclub-pink)), hsl(var(--unclub-red)))`,
+          backdropFilter: "none",
         }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -236,8 +230,8 @@ export function Navigation() {
                       <motion.div
                         className={`relative px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-bold transition-all duration-300 ${
                           isActive
-                            ? "text-white shadow-2xl bg-white/20 backdrop-blur-sm border border-white/30"
-                            : "text-white/90 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm hover:border hover:border-white/20"
+                            ? "text-white shadow-2xl bg-white/30 border border-white/50"
+                            : "text-white/90 hover:text-white hover:bg-white/20 hover:border hover:border-white/30"
                         }`}
                         whileHover={{
                           backgroundImage: isActive
@@ -314,10 +308,10 @@ export function Navigation() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className={`rounded-xl sm:rounded-2xl backdrop-blur-sm border transition-all duration-300 px-3 py-2 ${
+                      className={`rounded-xl sm:rounded-2xl border transition-all duration-300 px-3 py-2 ${
                         theme === "dark"
-                          ? "text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100"
-                          : "text-white hover:bg-white/20 border-white/20"
+                          ? "text-gray-300 hover:bg-gray-800/50 border-gray-600/50 hover:text-gray-100 bg-gray-800/70"
+                          : "text-white hover:bg-white/30 border-white/30 bg-white/20"
                       }`}
                     >
                       <Search className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -383,10 +377,10 @@ export function Navigation() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className={`rounded-xl sm:rounded-2xl backdrop-blur-sm border transition-all duration-300 px-3 py-2 ${
+                      className={`rounded-xl sm:rounded-2xl border transition-all duration-300 px-3 py-2 ${
                         theme === "dark"
-                          ? "text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100"
-                          : "text-white hover:bg-white/20 border-white/20"
+                          ? "text-gray-300 hover:bg-gray-800/50 border-gray-600/50 hover:text-gray-100 bg-gray-800/70"
+                          : "text-white hover:bg-white/30 border-white/30 bg-white/20"
                       }`}
                     >
                       <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -463,7 +457,7 @@ export function Navigation() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link to="/auth">
-                  <Button className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white rounded-xl sm:rounded-2xl shadow-xl border border-white/30 font-bold px-4 sm:px-6 py-2 transition-all duration-300">
+                  <Button className="bg-white/30 hover:bg-white/50 text-white rounded-xl sm:rounded-2xl shadow-xl border border-white/50 font-bold px-4 sm:px-6 py-2 transition-all duration-300">
                     <motion.span
                       className="text-sm sm:text-base"
                       whileHover={{
@@ -490,10 +484,10 @@ export function Navigation() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`rounded-xl backdrop-blur-sm border px-3 py-2 ${
+                className={`rounded-xl border px-3 py-2 ${
                   theme === "dark"
-                    ? "text-gray-300 hover:bg-gray-800/20 border-gray-600/30 hover:text-gray-100"
-                    : "text-white hover:bg-white/20 border-white/20"
+                    ? "text-gray-300 hover:bg-gray-800/50 border-gray-600/50 hover:text-gray-100 bg-gray-800/70"
+                    : "text-white hover:bg-white/30 border-white/30 bg-white/20"
                 }`}
               >
                 <motion.div
@@ -524,7 +518,7 @@ export function Navigation() {
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
-              className="fixed top-16 left-0 right-0 bg-gradient-to-br from-unclub-blue via-unclub-pink to-unclub-red backdrop-blur-2xl z-50 md:hidden rounded-b-3xl mx-2 shadow-2xl"
+              className="fixed top-16 left-0 right-0 bg-gradient-to-br from-unclub-blue via-unclub-pink to-unclub-red z-50 md:hidden rounded-b-3xl mx-2 shadow-2xl"
               initial={{ y: -400, opacity: 0, scale: 0.95 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={{ y: -400, opacity: 0, scale: 0.95 }}
@@ -565,7 +559,7 @@ export function Navigation() {
                   className="pt-4"
                 >
                   <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white rounded-2xl shadow-xl border border-white/30 font-bold py-4 text-lg">
+                    <Button className="w-full bg-white/30 hover:bg-white/50 text-white rounded-2xl shadow-xl border border-white/50 font-bold py-4 text-lg">
                       Join the Party 🎉
                     </Button>
                   </Link>
@@ -577,7 +571,7 @@ export function Navigation() {
                         setIsMobileMenuOpen(false);
                         setIsSearchOpen(true);
                       }}
-                      className="flex-1 bg-white/15 backdrop-blur-sm hover:bg-white/25 text-white rounded-2xl border border-white/30 font-bold py-3"
+                      className="flex-1 bg-white/25 hover:bg-white/40 text-white rounded-2xl border border-white/40 font-bold py-3"
                     >
                       <Search className="w-4 h-4 mr-2" />
                       Search
@@ -587,7 +581,7 @@ export function Navigation() {
                         setIsMobileMenuOpen(false);
                         setIsNotificationOpen(true);
                       }}
-                      className="flex-1 bg-white/15 backdrop-blur-sm hover:bg-white/25 text-white rounded-2xl border border-white/30 font-bold py-3 relative"
+                      className="flex-1 bg-white/25 hover:bg-white/40 text-white rounded-2xl border border-white/40 font-bold py-3 relative"
                     >
                       <Bell className="w-4 h-4 mr-2" />
                       Alerts
