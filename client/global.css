@@ -230,22 +230,36 @@
     line-height: 1.4;
   }
 
-  /* Prevent text from overlapping and improve readability */
-  p {
-    @apply leading-relaxed;
+  /* Body Text - General Sans Regular */
+  p, .body-text {
+    font-family: "General Sans", sans-serif;
+    font-weight: 400;
+    font-size: clamp(16px, 2.5vw, 18px);
+    line-height: 1.6;
+    color: hsl(var(--body-text));
+    margin: 0 0 20px 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
   }
 
-  /* Stylish button and interactive element fonts */
-  button,
-  .btn {
-    @apply font-semibold tracking-wide;
+  /* UI Elements, Buttons, Filters - Satoshi Medium */
+  button, .btn, .ui-element {
+    font-family: "Satoshi", sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: hsl(var(--ui-accent));
     font-variant-numeric: tabular-nums;
-    font-feature-settings: "ss01", "cv02";
-    font-variation-settings: "wght" 600;
-    letter-spacing: 0.005em;
+    transition: all 0.3s ease;
+  }
+
+  button:hover, .btn:hover {
+    background: linear-gradient(135deg,
+      hsl(var(--ui-accent)),
+      hsl(var(--ui-accent-alt))
+    );
+    transform: translateY(-1px);
   }
 
   /* Enhanced readability for body text */
