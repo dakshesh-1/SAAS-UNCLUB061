@@ -133,7 +133,11 @@ export function Navigation() {
       >
         {/* Animated background gradient overlay */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-unclub-blue/30 via-unclub-pink/30 to-unclub-red/30"
+          className={`absolute inset-0 ${
+            theme === "dark"
+              ? "bg-gradient-to-r from-gray-800/20 via-gray-700/20 to-gray-800/20"
+              : "bg-gradient-to-r from-unclub-blue/30 via-unclub-pink/30 to-unclub-red/30"
+          }`}
           animate={{
             backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
           }}
