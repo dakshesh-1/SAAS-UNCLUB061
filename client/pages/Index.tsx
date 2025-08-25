@@ -139,7 +139,7 @@ const EventCard = ({
             {event.date}
           </div>
 
-          <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          <h3 className="font-clash text-lg mb-2 group-hover:text-ui-accent transition-colors">
             {event.title}
           </h3>
 
@@ -251,7 +251,7 @@ export default function Index() {
                     ease: "easeInOut",
                   }}
                 >
-                  Events! ����
+                  Events! 🎉
                 </motion.span>
                 <motion.div
                   className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-ui-accent via-ui-accent-alt to-heading-secondary rounded-full"
