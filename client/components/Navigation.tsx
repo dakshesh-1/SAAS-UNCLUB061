@@ -559,7 +559,7 @@ export function Navigation() {
                   className="pt-4"
                 >
                   <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white rounded-2xl shadow-xl border border-white/30 font-bold py-4 text-lg">
+                    <Button className="w-full bg-white/30 hover:bg-white/50 text-white rounded-2xl shadow-xl border border-white/50 font-bold py-4 text-lg">
                       Join the Party 🎉
                     </Button>
                   </Link>
