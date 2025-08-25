@@ -264,13 +264,13 @@ export default function Index() {
           </motion.div>
 
           <motion.p
-            className="body-text text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto"
+            className="body-text text-xl max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             Join thousands discovering{" "}
-            <span className="font-bold text-purple-600">amazing events</span>{" "}
+            <span className="font-general font-semibold text-ui-accent">amazing events</span>{" "}
             and creating
             <span className="font-bold text-pink-600">
               {" "}
