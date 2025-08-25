@@ -262,44 +262,84 @@
     transform: translateY(-1px);
   }
 
-  /* Enhanced readability for body text */
-  .body-text {
-    font-variation-settings: "wght" 450;
-    letter-spacing: -0.01em;
-    line-height: 1.7;
+  /* Gradient Animation for Headings */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
   }
 
-  /* Stylish accent text */
-  .accent-text {
-    font-feature-settings: "ss01", "ss02", "cv02";
-    font-variation-settings: "wght" 550;
-    letter-spacing: -0.005em;
+  /* Elegant Link Animations */
+  a {
+    color: hsl(var(--ui-accent));
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
   }
 
-  /* Ultra stylish display text */
-  .display-text {
-    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
-    font-variation-settings: "wght" 900;
-    letter-spacing: -0.03em;
-    line-height: 0.95;
-    text-rendering: optimizeLegibility;
+  a:hover {
+    color: hsl(var(--ui-accent-alt));
   }
 
-  /* Smooth font rendering */
+  a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(90deg,
+      hsl(var(--ui-accent)),
+      hsl(var(--ui-accent-alt))
+    );
+    transition: width 0.3s ease;
+  }
+
+  a:hover::after {
+    width: 100%;
+  }
+
+  /* Hero Text Spacing */
+  .hero-text {
+    margin: 60px 0;
+  }
+
+  /* Utility Classes */
+  .font-clash {
+    font-family: "Clash Display", sans-serif;
+  }
+
+  .font-general {
+    font-family: "General Sans", sans-serif;
+  }
+
+  .font-satoshi {
+    font-family: "Satoshi", sans-serif;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg,
+      hsl(var(--heading-primary)),
+      hsl(var(--heading-secondary)),
+      hsl(var(--heading-tertiary))
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Font Display for Performance */
+  .font-display {
+    font-display: swap;
+  }
+
+  /* Smooth Rendering */
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-  }
-
-  /* Better spacing for inline elements */
-  span,
-  a {
-    word-spacing: 0.05em;
-  }
-
-  /* Prevent layout shift from font loading */
-  .font-display {
-    font-display: swap;
   }
 }
