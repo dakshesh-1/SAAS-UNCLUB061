@@ -401,10 +401,10 @@ export default function Profile() {
                               {activity.type === "hosted" ? "🎉" : "✨"}
                             </Badge>
                           </div>
-                          <h3 className="font-bold text-lg text-gray-900">
+                          <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100">
                             {activity.event}
                           </h3>
-                          <p className="text-gray-600 text-sm">
+                          <p className="text-gray-600 dark:text-gray-400 text-sm">
                             {activity.date}
                           </p>
                         </div>
