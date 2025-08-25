@@ -488,18 +488,18 @@ const EventCard = ({
             {event.location}
           </div>
 
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <span className="font-bold text-xl text-gray-900 dark:text-gray-100">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1 overflow-hidden">
+              <span className="font-bold text-lg sm:text-xl text-gray-900 dark:text-gray-100 flex-shrink-0">
                 ${event.price}
               </span>
-              <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
-                <Users className="w-4 h-4" />
-                {event.attendees}
+              <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 min-w-0">
+                <Users className="w-4 h-4 flex-shrink-0" />
+                <span className="truncate">{event.attendees}</span>
               </div>
-              <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
-                <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                {event.rating}
+              <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 min-w-0">
+                <Star className="w-4 h-4 text-yellow-500 fill-current flex-shrink-0" />
+                <span className="truncate">{event.rating}</span>
               </div>
             </div>
 
