@@ -457,7 +457,7 @@ export function Navigation() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link to="/auth">
-                  <Button className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white rounded-xl sm:rounded-2xl shadow-xl border border-white/30 font-bold px-4 sm:px-6 py-2 transition-all duration-300">
+                  <Button className="bg-white/30 hover:bg-white/50 text-white rounded-xl sm:rounded-2xl shadow-xl border border-white/50 font-bold px-4 sm:px-6 py-2 transition-all duration-300">
                     <motion.span
                       className="text-sm sm:text-base"
                       whileHover={{
