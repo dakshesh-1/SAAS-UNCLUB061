@@ -143,8 +143,8 @@ export function Navigation() {
         <motion.div
           className={`absolute inset-0 ${
             safeTheme === "dark"
-              ? "bg-gradient-to-r from-gray-800/20 via-gray-700/20 to-gray-800/20"
-              : "bg-gradient-to-r from-unclub-blue/30 via-unclub-pink/30 to-unclub-red/30"
+              ? "bg-gradient-to-r from-refined-charcoal/20 via-aesthetic-slate/20 to-refined-charcoal/20"
+              : "bg-gradient-to-r from-aesthetic-slate/30 via-aesthetic-sage/30 to-aesthetic-stone/30"
           }`}
           animate={{
             backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
