@@ -303,9 +303,9 @@ export default function Profile() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
         >
-          <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
+          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
             <CardHeader>
-              <CardTitle className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+              <CardTitle className="text-2xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
                 <Trophy className="w-6 h-6 text-unclub-blue" />
                 Achievements
               </CardTitle>
