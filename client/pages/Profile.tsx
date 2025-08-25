@@ -146,7 +146,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20 dark:from-gray-900/40 dark:via-gray-800/40 dark:to-gray-900/40">
+    <div className="min-h-screen bg-gradient-to-br from-aesthetic-sage/20 via-aesthetic-stone/20 to-aesthetic-plum/20 dark:from-gray-900/40 dark:via-gray-800/40 dark:to-gray-900/40">
       <GenZParticles />
 
       {/* Cover Image & Profile Header */}
