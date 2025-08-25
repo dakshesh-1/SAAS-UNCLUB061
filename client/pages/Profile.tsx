@@ -485,26 +485,29 @@ export default function Profile() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {currentUser.badges.map((badge, index) => (
-                  <motion.div
-                    key={badge.id}
-                    className="text-center"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.8 + index * 0.1 }}
-                    whileHover={{ y: -5, scale: 1.05 }}
-                  >
+                {currentUser.badges.map((badge, index) => {
+                  const IconComponent = iconMap[badge.icon as keyof typeof iconMap];
+                  return (
                     <motion.div
-                      className={`w-16 h-16 bg-gradient-to-br ${badge.color} rounded-3xl flex items-center justify-center mx-auto mb-3 shadow-lg`}
-                      whileHover={{ rotate: 10 }}
+                      key={badge.id}
+                      className="text-center"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.8 + index * 0.1 }}
+                      whileHover={{ y: -5, scale: 1.05 }}
                     >
-                      <badge.icon className="w-8 h-8 text-white" />
+                      <motion.div
+                        className={`w-16 h-16 bg-gradient-to-br ${badge.color} rounded-3xl flex items-center justify-center mx-auto mb-3 shadow-lg`}
+                        whileHover={{ rotate: 10 }}
+                      >
+                        {IconComponent && <IconComponent className="w-8 h-8 text-white" />}
+                      </motion.div>
+                      <div className="text-sm font-bold text-gray-900 dark:text-gray-100">
+                        {badge.name}
+                      </div>
                     </motion.div>
-                    <div className="text-sm font-bold text-gray-900 dark:text-gray-100">
-                      {badge.name}
-                    </div>
-                  </motion.div>
-                ))}
+                  );
+                })}
               </div>
             </CardContent>
           </Card>
