@@ -147,7 +147,7 @@ export default function Profile() {
       {/* Cover Image & Profile Header */}
       <div className="relative h-64 sm:h-80 overflow-hidden">
         <motion.img
-          src={userData.coverImage}
+          src={currentUser.coverImage}
           alt="Cover"
           className="w-full h-full object-cover"
           initial={{ scale: 1.1 }}
