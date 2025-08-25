@@ -407,7 +407,7 @@ export default function Profile() {
                     whileHover={{ y: -5, scale: 1.05 }}
                   >
                     <motion.div
-                      className="w-12 h-12 bg-gradient-to-br from-unclub-blue to-unclub-pink rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg"
+                      className="w-12 h-12 bg-gradient-to-br from-aesthetic-slate to-aesthetic-sage rounded-lg flex items-center justify-center mx-auto mb-3 shadow-lg"
                       whileHover={{ rotate: 5 }}
                     >
                       <stat.icon className="w-6 h-6 text-white" />
