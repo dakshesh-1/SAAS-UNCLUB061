@@ -233,17 +233,16 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="display-text text-5xl md:text-7xl font-black bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent mb-6">
+            <h1 className="hero-text font-clash">
               Discover Epic
               <br />
               <span className="relative">
                 <motion.span
-                  className="display-text"
                   animate={{
                     textShadow: [
-                      "0 0 20px rgba(168, 85, 247, 0.4)",
-                      "0 0 40px rgba(236, 72, 153, 0.6)",
-                      "0 0 20px rgba(239, 68, 68, 0.4)",
+                      "0 0 20px hsl(var(--heading-tertiary) / 0.4)",
+                      "0 0 40px hsl(var(--heading-secondary) / 0.6)",
+                      "0 0 20px hsl(var(--heading-primary) / 0.4)",
                     ],
                   }}
                   transition={{
@@ -255,7 +254,7 @@ export default function Index() {
                   Events! 🎉
                 </motion.span>
                 <motion.div
-                  className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-full"
+                  className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-ui-accent via-ui-accent-alt to-heading-secondary rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 1, duration: 0.8 }}
