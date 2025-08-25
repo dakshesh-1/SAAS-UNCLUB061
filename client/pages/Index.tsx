@@ -379,7 +379,7 @@ export default function Index() {
                 whileHover={{ y: -5 }}
               >
                 <motion.div
-                  className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-unclub-blue via-unclub-pink to-unclub-red text-white rounded-2xl mb-4 shadow-lg"
+                  className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-aesthetic-slate via-aesthetic-sage to-aesthetic-amber text-white rounded-lg mb-4 shadow-lg"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                 >
                   <stat.icon className="w-8 h-8" />
