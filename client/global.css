@@ -117,21 +117,21 @@
     --ui-accent: 44 71% 52%; /* Elegant gold */
     --ui-accent-alt: 215 100% 67%; /* Royal blue #4A78FF */
 
-    /* Enhanced dark UnClub colors for better contrast */
-    --unclub-blue: 225 90% 70%;
-    --unclub-pink: 320 80% 75%;
-    --unclub-red: 0 85% 70%;
-    --unclub-electric: 200 85% 65%;
-    --unclub-hot-pink: 320 85% 75%;
-    --unclub-coral: 15 85% 70%;
+    /* Dark Mode Sophisticated Colors */
+    --aesthetic-slate: 215 35% 25%; /* Lighter slate for dark mode #364253 */
+    --aesthetic-sage: 155 30% 50%; /* Lighter sage #6B8E7F */
+    --aesthetic-stone: 24 15% 55%; /* Lighter stone #8B7D6B */
+    --aesthetic-plum: 280 20% 45%; /* Lighter plum #735B7E */
+    --aesthetic-amber: 35 80% 70%; /* Brighter amber #F0B990 */
+    --aesthetic-cream: 40 30% 90%; /* Brighter cream #E8E1D5 */
 
-    /* Enhanced dark party colors for better contrast */
-    --party-blue: 225 85% 65%;
-    --party-pink: 320 80% 75%;
-    --party-red: 345 85% 70%;
-    --neon-blue: 200 90% 60%;
-    --electric-pink: 315 85% 75%;
-    --vibrant-red: 5 85% 70%;
+    /* Dark mode refined accents */
+    --refined-navy: 220 50% 20%; /* Lighter navy for visibility #1A2332 */
+    --refined-forest: 155 60% 20%; /* Lighter forest #1A4A3A */
+    --refined-charcoal: 210 15% 25%; /* Lighter charcoal #363F48 */
+    --refined-bronze: 25 40% 45%; /* Lighter bronze #7A6B58 */
+    --refined-pearl: 210 20% 85%; /* Muted pearl for dark #D1D5DB */
+    --refined-smoke: 210 15% 40%; /* Lighter smoke #5A6670 */
 
     --sidebar-background: 225 25% 8%;
     --sidebar-foreground: 225 15% 95%;
