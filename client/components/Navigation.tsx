@@ -208,7 +208,11 @@ export function Navigation() {
                     UnClub
                   </motion.span>
                   <motion.div
-                    className="accent-text text-xs font-bold text-white/90 tracking-wider uppercase"
+                    className={`accent-text text-xs font-bold tracking-wider uppercase ${
+                      theme === "dark"
+                        ? "text-gray-200/90"
+                        : "text-white/90"
+                    }`}
                     animate={{
                       opacity: [0.7, 1, 0.7],
                     }}
