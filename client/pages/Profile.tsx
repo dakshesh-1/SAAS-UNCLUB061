@@ -369,7 +369,7 @@ export default function Profile() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
+          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg border-0 shadow-xl">
             <CardContent className="p-6">
               <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">
                 {currentUser.bio}
@@ -432,7 +432,7 @@ export default function Profile() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
         >
-          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
+          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg border-0 shadow-xl">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
                 <Trophy className="w-6 h-6 text-unclub-blue" />
