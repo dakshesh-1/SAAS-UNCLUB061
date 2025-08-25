@@ -453,7 +453,7 @@ export default function Profile() {
                       whileHover={{ y: -5, scale: 1.05 }}
                     >
                       <motion.div
-                        className={`w-16 h-16 bg-gradient-to-br ${badge.color} rounded-3xl flex items-center justify-center mx-auto mb-3 shadow-lg`}
+                        className={`w-16 h-16 bg-gradient-to-br ${badge.color} rounded-lg flex items-center justify-center mx-auto mb-3 shadow-lg`}
                         whileHover={{ rotate: 10 }}
                       >
                         {IconComponent && <IconComponent className="w-8 h-8 text-white" />}
