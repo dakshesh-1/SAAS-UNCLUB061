@@ -424,7 +424,7 @@ export default function Profile() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -5, scale: 1.02 }}
                 >
-                  <Card className="bg-white/80 backdrop-blur-sm rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all">
+                  <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4">
                         <motion.img
@@ -447,11 +447,11 @@ export default function Profile() {
                                 : "✨ Attending"}
                             </Badge>
                           </div>
-                          <h3 className="font-bold text-xl text-gray-900 mb-1">
+                          <h3 className="font-bold text-xl text-gray-900 dark:text-gray-100 mb-1">
                             {event.title}
                           </h3>
-                          <p className="text-gray-600 mb-2">{event.date}</p>
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <p className="text-gray-600 dark:text-gray-400 mb-2">{event.date}</p>
+                          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                             <Users className="w-4 h-4" />
                             {event.attendees} going
                           </div>
