@@ -305,6 +305,25 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Discover Epic Events Section */}
+      <section className="relative px-6 py-16 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            <h2 className="display-text text-4xl lg:text-5xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent mb-4 leading-tight">
+              🎉 Discover Epic Events 🎉
+            </h2>
+            <p className="accent-text text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              From intimate gatherings to massive festivals - find your next unforgettable experience in both light and dark modes! Join thousands discovering amazing events every day.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Featured Events Section */}
       <section className="relative px-6 py-16">
         <div className="max-w-7xl mx-auto">
