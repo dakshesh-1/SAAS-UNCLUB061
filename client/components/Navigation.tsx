@@ -185,7 +185,7 @@ export function Navigation() {
                       repeat: Infinity,
                       ease: "linear",
                     }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-2xl sm:rounded-3xl"
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-lg sm:rounded-xl"
                   />
                   <motion.div
                     animate={{
