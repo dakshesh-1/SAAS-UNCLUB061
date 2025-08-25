@@ -79,33 +79,43 @@
   }
 
   .dark {
-    --background: 222 84% 4%;
-    --foreground: 210 40% 98%;
+    /* Dark Mode - Dark navy with golden accents */
+    --background: 0 0% 5%; /* Dark navy #0D0D0D */
+    --foreground: 36 22% 95%; /* Off-white #FAFAFA */
 
-    --card: 222 84% 6%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 10%; /* Dark background #1A1A1A */
+    --card-foreground: 36 22% 95%;
 
-    --popover: 222 84% 6%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 36 22% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 84% 4.9%;
+    --primary: 44 71% 52%; /* Elegant gold #D4AF37 */
+    --primary-foreground: 0 0% 5%;
 
-    --secondary: 217 32% 15%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 36 22% 95%;
 
-    --muted: 217 32% 15%;
-    --muted-foreground: 215 20% 75%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 81%; /* Muted grey #CFCFCF */
 
-    --accent: 217 32% 18%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 36 22% 95%;
 
     --destructive: 0 75% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 36 22% 95%;
 
-    --border: 217 32% 20%;
-    --input: 217 32% 15%;
-    --ring: 212 97% 87%;
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 44 71% 52%;
+
+    /* Typography Colors - Dark Mode */
+    --heading-primary: 44 71% 52%; /* Warm gold */
+    --heading-secondary: 36 22% 95%; /* Soft ivory */
+    --heading-tertiary: 40 30% 85%; /* Muted champagne with off-white glow #F2EDE4 */
+    --subheading: 36 22% 95%; /* Off-white */
+    --body-text: 0 0% 81%; /* Muted grey */
+    --ui-accent: 44 71% 52%; /* Elegant gold */
+    --ui-accent-alt: 215 100% 67%; /* Royal blue #4A78FF */
 
     /* Enhanced dark UnClub colors for better contrast */
     --unclub-blue: 225 90% 70%;
