@@ -503,11 +503,11 @@ const EventCard = ({
               </div>
             </div>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-shrink-0">
               <Link to={`/event/${event.id}`}>
                 <Button
                   size="sm"
-                  className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white rounded-xl font-bold shadow-lg transform transition-all duration-200 hover:scale-105"
+                  className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white rounded-xl font-bold shadow-lg transition-all duration-200 whitespace-nowrap"
                 >
                   🎟️ Book Now
                 </Button>
