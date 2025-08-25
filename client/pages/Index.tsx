@@ -237,22 +237,9 @@ export default function Index() {
               Discover Epic
               <br />
               <span className="relative">
-                <motion.span
-                  animate={{
-                    textShadow: [
-                      "0 0 20px hsl(var(--heading-tertiary) / 0.4)",
-                      "0 0 40px hsl(var(--heading-secondary) / 0.6)",
-                      "0 0 20px hsl(var(--heading-primary) / 0.4)",
-                    ],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
+                <span>
                   Events! 🎉
-                </motion.span>
+                </span>
                 <motion.div
                   className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-ui-accent via-ui-accent-alt to-heading-secondary rounded-full"
                   initial={{ scaleX: 0 }}
