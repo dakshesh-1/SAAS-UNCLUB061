@@ -596,7 +596,7 @@ export default function Events() {
 
       {/* Header */}
       <motion.div
-        className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 sticky top-16 sm:top-20 z-30"
+        className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 mt-16 sm:mt-20"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
