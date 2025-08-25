@@ -123,15 +123,9 @@ export function Navigation() {
         style={{
           background:
             theme === "dark"
-              ? `linear-gradient(135deg,
-                hsl(var(--background) / 0.99),
-                hsl(var(--card) / 0.99),
-                hsl(var(--background) / 0.99))`
-              : `linear-gradient(135deg,
-                hsl(var(--unclub-blue) / ${backgroundOpacity}),
-                hsl(var(--unclub-pink) / ${backgroundOpacity}),
-                hsl(var(--unclub-red) / ${backgroundOpacity}))`,
-          backdropFilter: `blur(${blurAmount}px)`,
+              ? `linear-gradient(135deg, hsl(var(--background)), hsl(var(--card)), hsl(var(--background)))`
+              : `linear-gradient(135deg, hsl(var(--unclub-blue)), hsl(var(--unclub-pink)), hsl(var(--unclub-red)))`,
+          backdropFilter: 'none',
         }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
