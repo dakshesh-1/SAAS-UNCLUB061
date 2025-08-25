@@ -198,7 +198,7 @@ export default function Profile() {
 
                 {currentUser.isVerified && (
                   <motion.div
-                    className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-unclub-blue to-party-blue rounded-full flex items-center justify-center border-2 border-white shadow-lg"
+                    className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-aesthetic-slate to-aesthetic-sage rounded-full flex items-center justify-center border-2 border-white shadow-lg"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.5 }}
@@ -208,7 +208,7 @@ export default function Profile() {
                 )}
 
                 <motion.button
-                  className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-r from-unclub-pink to-party-pink rounded-full flex items-center justify-center border-2 border-white shadow-lg"
+                  className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-r from-aesthetic-amber to-aesthetic-stone rounded-full flex items-center justify-center border-2 border-white shadow-lg"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -227,7 +227,7 @@ export default function Profile() {
                       {currentUser.name}
                     </h1>
                     {currentUser.isVerified && (
-                      <Badge className="bg-gradient-to-r from-unclub-blue to-party-blue text-white rounded-full px-3 py-1">
+                      <Badge className="bg-gradient-to-r from-aesthetic-slate to-aesthetic-sage text-white rounded-full px-3 py-1">
                         <Zap className="w-3 h-3 mr-1" />
                         Verified
                       </Badge>
