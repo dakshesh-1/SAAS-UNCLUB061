@@ -507,13 +507,13 @@ export default function Profile() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ x: 5, scale: 1.01 }}
                 >
-                  <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all">
+                  <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg border-0 shadow-lg hover:shadow-xl transition-all">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-4">
                         <motion.img
                           src={activity.image}
                           alt={activity.event}
-                          className="w-16 h-16 object-cover rounded-2xl"
+                          className="w-16 h-16 object-cover rounded-lg"
                           whileHover={{ scale: 1.1 }}
                         />
                         <div className="flex-1">
@@ -526,8 +526,8 @@ export default function Profile() {
                             <Badge
                               className={`rounded-full px-3 py-1 ${
                                 activity.type === "hosted"
-                                  ? "bg-gradient-to-r from-unclub-pink to-party-pink text-white"
-                                  : "bg-gradient-to-r from-unclub-blue to-party-blue text-white"
+                                  ? "bg-gradient-to-r from-aesthetic-amber to-aesthetic-stone text-white"
+                                  : "bg-gradient-to-r from-aesthetic-slate to-aesthetic-sage text-white"
                               }`}
                             >
                               {activity.type === "hosted" ? "🎉" : "✨"}
