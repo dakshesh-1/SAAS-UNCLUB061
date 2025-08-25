@@ -130,10 +130,10 @@ export function Navigation() {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/20 dark:border-gray-700/50 shadow-lg"
         style={{
           background:
-            theme === "dark"
+            safeTheme === "dark"
               ? `linear-gradient(135deg, hsl(var(--background) / 0.95), hsl(var(--card) / 0.95), hsl(var(--background) / 0.95))`
               : `linear-gradient(135deg, hsl(var(--unclub-blue)), hsl(var(--unclub-pink)), hsl(var(--unclub-red)))`,
-          backdropFilter: theme === "dark" ? "blur(20px)" : "none",
+          backdropFilter: safeTheme === "dark" ? "blur(20px)" : "none",
         }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
