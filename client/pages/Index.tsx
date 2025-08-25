@@ -384,10 +384,10 @@ export default function Index() {
                 >
                   <stat.icon className="w-8 h-8" />
                 </motion.div>
-                <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                <h3 className="font-clash text-3xl mb-2">
                   {stat.number}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400">{stat.label}</p>
+                <p className="body-text">{stat.label}</p>
               </motion.div>
             ))}
           </div>
