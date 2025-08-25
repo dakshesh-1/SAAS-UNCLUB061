@@ -248,9 +248,9 @@ export default function Profile() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
+          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
             <CardContent className="p-6">
-              <p className="text-gray-700 text-lg mb-6">{userData.bio}</p>
+              <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">{userData.bio}</p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                 {[
