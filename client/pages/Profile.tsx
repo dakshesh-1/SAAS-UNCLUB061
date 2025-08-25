@@ -133,7 +133,8 @@ const upcomingEvents = [
 
 export default function Profile() {
   const [selectedTab, setSelectedTab] = useState("overview");
-  const { isAuthenticated, currentUser, users, logout, switchAccount } = useAuth();
+  const { isAuthenticated, currentUser, users, logout, switchAccount } =
+    useAuth();
   const { toast } = useToast();
 
   const handleLogout = () => {
@@ -145,7 +146,7 @@ export default function Profile() {
   };
 
   const handleSwitchAccount = (userId: string) => {
-    const user = users.find(u => u.id === userId);
+    const user = users.find((u) => u.id === userId);
     if (user) {
       switchAccount(userId);
       toast({
@@ -166,7 +167,9 @@ export default function Profile() {
       <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20 dark:from-gray-900/40 dark:via-gray-800/40 dark:to-gray-900/40 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-unclub-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400">Loading your profile...</p>
+          <p className="text-gray-600 dark:text-gray-400">
+            Loading your profile...
+          </p>
         </div>
       </div>
     );
@@ -216,7 +219,10 @@ export default function Profile() {
                 transition={{ delay: 0.2, type: "spring", damping: 15 }}
               >
                 <Avatar className="w-24 h-24 sm:w-32 sm:h-32 border-4 border-white shadow-2xl">
-                  <AvatarImage src={currentUser.avatar} alt={currentUser.name} />
+                  <AvatarImage
+                    src={currentUser.avatar}
+                    alt={currentUser.name}
+                  />
                   <AvatarFallback>{currentUser.name[0]}</AvatarFallback>
                 </Avatar>
 
@@ -292,16 +298,26 @@ export default function Profile() {
                       <ChevronDown className="w-4 h-4 ml-2" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border-0 shadow-2xl rounded-2xl">
+                  <DropdownMenuContent
+                    align="end"
+                    className="w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border-0 shadow-2xl rounded-2xl"
+                  >
                     <DropdownMenuLabel className="text-center py-3">
                       <div className="flex items-center gap-3">
                         <Avatar className="w-8 h-8">
-                          <AvatarImage src={currentUser.avatar} alt={currentUser.name} />
+                          <AvatarImage
+                            src={currentUser.avatar}
+                            alt={currentUser.name}
+                          />
                           <AvatarFallback>{currentUser.name[0]}</AvatarFallback>
                         </Avatar>
                         <div className="text-left">
-                          <div className="font-bold text-gray-900 dark:text-gray-100">{currentUser.name}</div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">{currentUser.email}</div>
+                          <div className="font-bold text-gray-900 dark:text-gray-100">
+                            {currentUser.name}
+                          </div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">
+                            {currentUser.email}
+                          </div>
                         </div>
                       </div>
                     </DropdownMenuLabel>
@@ -319,7 +335,7 @@ export default function Profile() {
                     </DropdownMenuLabel>
 
                     {users
-                      .filter(user => user.id !== currentUser.id)
+                      .filter((user) => user.id !== currentUser.id)
                       .map((user) => (
                         <DropdownMenuItem
                           key={user.id}
@@ -331,8 +347,12 @@ export default function Profile() {
                             <AvatarFallback>{user.name[0]}</AvatarFallback>
                           </Avatar>
                           <div className="flex-1">
-                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{user.name}</div>
-                            <div className="text-xs text-gray-500 dark:text-gray-400">{user.email}</div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                              {user.name}
+                            </div>
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              {user.email}
+                            </div>
                           </div>
                           {user.isVerified && (
                             <Zap className="w-3 h-3 text-blue-500" />
@@ -345,7 +365,8 @@ export default function Profile() {
                       onClick={() => {
                         toast({
                           title: "Add Account",
-                          description: "Multiple account creation would be implemented here in a real app.",
+                          description:
+                            "Multiple account creation would be implemented here in a real app.",
                         });
                       }}
                     >
@@ -380,7 +401,9 @@ export default function Profile() {
         >
           <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
             <CardContent className="p-6">
-              <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">{currentUser.bio}</p>
+              <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">
+                {currentUser.bio}
+              </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                 {[
@@ -399,7 +422,11 @@ export default function Profile() {
                     value: currentUser.stats.friends.toLocaleString(),
                     icon: Heart,
                   },
-                  { label: "Rating", value: currentUser.stats.rating, icon: Star },
+                  {
+                    label: "Rating",
+                    value: currentUser.stats.rating,
+                    icon: Star,
+                  },
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -418,7 +445,9 @@ export default function Profile() {
                     <div className="text-2xl font-black text-gray-900 dark:text-gray-100">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      {stat.label}
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -580,7 +609,9 @@ export default function Profile() {
                           <h3 className="font-bold text-xl text-gray-900 dark:text-gray-100 mb-1">
                             {event.title}
                           </h3>
-                          <p className="text-gray-600 dark:text-gray-400 mb-2">{event.date}</p>
+                          <p className="text-gray-600 dark:text-gray-400 mb-2">
+                            {event.date}
+                          </p>
                           <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                             <Users className="w-4 h-4" />
                             {event.attendees} going

@@ -59,7 +59,7 @@ export const AuthForm = () => {
 
     try {
       let success = false;
-      
+
       if (isLogin) {
         success = await login(formData.email, formData.password);
       } else {
@@ -81,14 +81,14 @@ export const AuthForm = () => {
       if (success) {
         toast({
           title: isLogin ? "Welcome back!" : "Account created!",
-          description: isLogin 
+          description: isLogin
             ? "You've successfully logged in. Welcome to the party! 🎉"
             : "Your account has been created. Let's start exploring! 🚀",
         });
       } else {
         toast({
           title: "Authentication Failed",
-          description: isLogin 
+          description: isLogin
             ? "Invalid email or password. Please try again."
             : "Failed to create account. Please try again.",
           variant: "destructive",
@@ -374,7 +374,10 @@ export const AuthForm = () => {
                       handleInputChange("agreeToTerms", checked as boolean)
                     }
                   />
-                  <label htmlFor="terms" className="text-sm text-gray-600 dark:text-gray-400">
+                  <label
+                    htmlFor="terms"
+                    className="text-sm text-gray-600 dark:text-gray-400"
+                  >
                     I agree to the{" "}
                     <span className="text-unclub-purple font-semibold cursor-pointer hover:underline">
                       Terms of Service
@@ -396,7 +399,10 @@ export const AuthForm = () => {
                 >
                   <div className="flex items-center space-x-2">
                     <Checkbox id="remember" />
-                    <label htmlFor="remember" className="text-sm text-gray-600 dark:text-gray-400">
+                    <label
+                      htmlFor="remember"
+                      className="text-sm text-gray-600 dark:text-gray-400"
+                    >
                       Remember me
                     </label>
                   </div>
@@ -425,7 +431,11 @@ export const AuthForm = () => {
                   {isLoading ? (
                     <motion.div
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      transition={{
+                        duration: 1,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
                       className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
                     />
                   ) : (
@@ -480,7 +490,11 @@ export const AuthForm = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    setFormData(prev => ({ ...prev, email: "alex@example.com", password: "demo" }));
+                    setFormData((prev) => ({
+                      ...prev,
+                      email: "alex@example.com",
+                      password: "demo",
+                    }));
                     setIsLogin(true);
                   }}
                   className="px-3 py-1 bg-unclub-blue/20 text-unclub-blue rounded-lg hover:bg-unclub-blue/30 transition-colors"
@@ -490,7 +504,11 @@ export const AuthForm = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    setFormData(prev => ({ ...prev, email: "maya@example.com", password: "demo" }));
+                    setFormData((prev) => ({
+                      ...prev,
+                      email: "maya@example.com",
+                      password: "demo",
+                    }));
                     setIsLogin(true);
                   }}
                   className="px-3 py-1 bg-unclub-pink/20 text-unclub-pink rounded-lg hover:bg-unclub-pink/30 transition-colors"
@@ -500,7 +518,11 @@ export const AuthForm = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    setFormData(prev => ({ ...prev, email: "jake@example.com", password: "demo" }));
+                    setFormData((prev) => ({
+                      ...prev,
+                      email: "jake@example.com",
+                      password: "demo",
+                    }));
                     setIsLogin(true);
                   }}
                   className="px-3 py-1 bg-unclub-red/20 text-unclub-red rounded-lg hover:bg-unclub-red/30 transition-colors"

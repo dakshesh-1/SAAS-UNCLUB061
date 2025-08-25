@@ -473,7 +473,6 @@ export function Navigation() {
                   </div>
                 </DialogContent>
               </Dialog>
-
             </div>
 
             {/* Mobile Menu Button */}
@@ -560,7 +559,6 @@ export function Navigation() {
                   transition={{ delay: navItems.length * 0.1, duration: 0.3 }}
                   className="pt-4"
                 >
-
                   {/* Mobile Search and Notifications */}
                   <div className="flex gap-3 pt-2">
                     <Button
