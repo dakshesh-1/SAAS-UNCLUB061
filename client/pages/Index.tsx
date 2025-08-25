@@ -198,7 +198,7 @@ export default function Index() {
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-unclub-blue/40 to-unclub-pink/40 dark:from-unclub-blue/30 dark:to-unclub-pink/30 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-aesthetic-slate/40 to-aesthetic-sage/40 dark:from-aesthetic-slate/30 dark:to-aesthetic-sage/30 rounded-full blur-3xl"
           animate={{
             x: [0, 50, 0],
             y: [0, -30, 0],
