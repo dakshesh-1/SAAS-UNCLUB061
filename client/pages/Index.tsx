@@ -251,7 +251,7 @@ export default function Index() {
                     ease: "easeInOut",
                   }}
                 >
-                  Events! 🎉
+                  Events! ����
                 </motion.span>
                 <motion.div
                   className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-ui-accent via-ui-accent-alt to-heading-secondary rounded-full"
@@ -324,10 +324,10 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <h2 className="display-text text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
-              ���� Trending Events Right Now
+            <h2 className="font-clash">
+              🔥 Trending Events Right Now
             </h2>
-            <p className="accent-text text-lg text-gray-600 dark:text-gray-400">
+            <p className="body-text text-lg">
               These events are selling out fast - grab your spot before it's too
               late!
             </p>
