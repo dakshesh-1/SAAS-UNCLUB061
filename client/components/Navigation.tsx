@@ -51,7 +51,7 @@ const navItems = [
     gradient: "from-unclub-pink via-party-red to-unclub-coral",
   },
   {
-    name: "Profile",
+    name: "Join Party",
     path: "/profile",
     icon: User,
     gradient: "from-party-electric via-unclub-hotpink to-party-pink",
@@ -452,26 +452,6 @@ export function Navigation() {
                 </DialogContent>
               </Dialog>
 
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link to="/auth">
-                  <Button className="bg-white/30 hover:bg-white/50 text-white rounded-xl sm:rounded-2xl shadow-xl border border-white/50 font-bold px-4 sm:px-6 py-2 transition-all duration-300">
-                    <motion.span
-                      className="text-sm sm:text-base"
-                      whileHover={{
-                        backgroundImage:
-                          "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
-                        backgroundClip: "text",
-                        color: "transparent",
-                      }}
-                    >
-                      Join Party
-                    </motion.span>
-                  </Button>
-                </Link>
-              </motion.div>
             </div>
 
             {/* Mobile Menu Button */}
@@ -558,11 +538,6 @@ export function Navigation() {
                   transition={{ delay: navItems.length * 0.1, duration: 0.3 }}
                   className="pt-4"
                 >
-                  <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-white/30 hover:bg-white/50 text-white rounded-2xl shadow-xl border border-white/50 font-bold py-4 text-lg">
-                      Join the Party 🎉
-                    </Button>
-                  </Link>
 
                   {/* Mobile Search and Notifications */}
                   <div className="flex gap-3 pt-2">
