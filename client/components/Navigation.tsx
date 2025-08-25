@@ -71,6 +71,7 @@ export function Navigation() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [mounted, setMounted] = useState(false);
   const location = useLocation();
   const { scrollY } = useScroll();
   const { theme } = useTheme();
