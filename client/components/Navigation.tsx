@@ -217,7 +217,7 @@ export function Navigation() {
                   </motion.span>
                   <motion.div
                     className={`accent-text text-xs font-bold tracking-wider uppercase ${
-                      theme === "dark"
+                      safeTheme === "dark"
                         ? "text-gray-200/90"
                         : "text-white/90"
                     }`}
