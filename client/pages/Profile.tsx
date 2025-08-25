@@ -327,7 +327,7 @@ export default function Profile() {
                     >
                       <badge.icon className="w-8 h-8 text-white" />
                     </motion.div>
-                    <div className="text-sm font-bold text-gray-900">
+                    <div className="text-sm font-bold text-gray-900 dark:text-gray-100">
                       {badge.name}
                     </div>
                   </motion.div>
