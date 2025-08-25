@@ -191,7 +191,7 @@ export default function Index() {
   const safeTheme = mounted ? theme : "dark";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-unclub-blue/15 via-unclub-pink/15 to-unclub-red/15 dark:from-gray-900 dark:via-unclub-blue/20 dark:to-unclub-pink/15">
+    <div className="min-h-screen bg-gradient-to-br from-aesthetic-sage/15 via-aesthetic-stone/15 to-aesthetic-plum/15 dark:from-gray-900 dark:via-aesthetic-slate/20 dark:to-aesthetic-sage/15">
       {/* GenZ Floating Elements */}
       <GenZFloatingElements />
 
