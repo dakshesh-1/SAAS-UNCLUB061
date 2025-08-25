@@ -15,13 +15,27 @@ import {
   Share2,
   Crown,
   Medal,
+  LogOut,
+  UserPlus,
+  ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { GenZParticles } from "@/components/GenZParticles";
+import { useAuth } from "@/contexts/AuthContext";
+import { AuthForm } from "@/components/AuthForm";
+import { useToast } from "@/hooks/use-toast";
 
 // Mock user data
 const userData = {
@@ -119,15 +133,56 @@ const upcomingEvents = [
 
 export default function Profile() {
   const [selectedTab, setSelectedTab] = useState("overview");
+  const { isAuthenticated, currentUser, users, logout, switchAccount } =
+    useAuth();
+  const { toast } = useToast();
+
+  const handleLogout = () => {
+    logout();
+    toast({
+      title: "Logged out successfully",
+      description: "You have been logged out. See you next time! 👋",
+    });
+  };
+
+  const handleSwitchAccount = (userId: string) => {
+    const user = users.find((u) => u.id === userId);
+    if (user) {
+      switchAccount(userId);
+      toast({
+        title: "Account switched",
+        description: `Switched to ${user.name}'s account! 🔄`,
+      });
+    }
+  };
+
+  // If not authenticated, show the auth form
+  if (!isAuthenticated) {
+    return <AuthForm />;
+  }
+
+  // If no user data, show a loading state
+  if (!currentUser) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20 dark:from-gray-900/40 dark:via-gray-800/40 dark:to-gray-900/40 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-unclub-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400">
+            Loading your profile...
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20">
+    <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20 dark:from-gray-900/40 dark:via-gray-800/40 dark:to-gray-900/40">
       <GenZParticles />
 
       {/* Cover Image & Profile Header */}
       <div className="relative h-64 sm:h-80 overflow-hidden">
         <motion.img
-          src={userData.coverImage}
+          src={currentUser.coverImage}
           alt="Cover"
           className="w-full h-full object-cover"
           initial={{ scale: 1.1 }}
@@ -164,11 +219,14 @@ export default function Profile() {
                 transition={{ delay: 0.2, type: "spring", damping: 15 }}
               >
                 <Avatar className="w-24 h-24 sm:w-32 sm:h-32 border-4 border-white shadow-2xl">
-                  <AvatarImage src={userData.avatar} alt={userData.name} />
-                  <AvatarFallback>{userData.name[0]}</AvatarFallback>
+                  <AvatarImage
+                    src={currentUser.avatar}
+                    alt={currentUser.name}
+                  />
+                  <AvatarFallback>{currentUser.name[0]}</AvatarFallback>
                 </Avatar>
 
-                {userData.isVerified && (
+                {currentUser.isVerified && (
                   <motion.div
                     className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-unclub-blue to-party-blue rounded-full flex items-center justify-center border-2 border-white shadow-lg"
                     initial={{ scale: 0 }}
@@ -196,9 +254,9 @@ export default function Profile() {
                 >
                   <div className="flex items-center gap-3 mb-2">
                     <h1 className="text-3xl sm:text-4xl font-black text-white">
-                      {userData.name}
+                      {currentUser.name}
                     </h1>
-                    {userData.isVerified && (
+                    {currentUser.isVerified && (
                       <Badge className="bg-gradient-to-r from-unclub-blue to-party-blue text-white rounded-full px-3 py-1">
                         <Zap className="w-3 h-3 mr-1" />
                         Verified
@@ -206,13 +264,13 @@ export default function Profile() {
                     )}
                   </div>
                   <p className="text-white/90 font-medium text-lg mb-1">
-                    {userData.username}
+                    {currentUser.username}
                   </p>
                   <div className="flex items-center gap-2 text-white/80">
                     <MapPin className="w-4 h-4" />
-                    <span>{userData.location}</span>
+                    <span>{currentUser.location}</span>
                     <span>•</span>
-                    <span>Joined {userData.joinDate}</span>
+                    <span>Joined {currentUser.joinDate}</span>
                   </div>
                 </motion.div>
               </div>
@@ -230,10 +288,103 @@ export default function Profile() {
                   <Share2 className="w-4 h-4 mr-2" />
                   Share
                 </Button>
-                <Button className="bg-gradient-to-r from-unclub-pink via-unclub-red to-party-red text-white rounded-2xl font-bold shadow-xl">
-                  <Settings className="w-4 h-4 mr-2" />
-                  Edit Profile
-                </Button>
+
+                {/* Account Dropdown Menu */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button className="bg-gradient-to-r from-unclub-pink via-unclub-red to-party-red text-white rounded-2xl font-bold shadow-xl">
+                      <Settings className="w-4 h-4 mr-2" />
+                      Account
+                      <ChevronDown className="w-4 h-4 ml-2" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent
+                    align="end"
+                    className="w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border-0 shadow-2xl rounded-2xl"
+                  >
+                    <DropdownMenuLabel className="text-center py-3">
+                      <div className="flex items-center gap-3">
+                        <Avatar className="w-8 h-8">
+                          <AvatarImage
+                            src={currentUser.avatar}
+                            alt={currentUser.name}
+                          />
+                          <AvatarFallback>{currentUser.name[0]}</AvatarFallback>
+                        </Avatar>
+                        <div className="text-left">
+                          <div className="font-bold text-gray-900 dark:text-gray-100">
+                            {currentUser.name}
+                          </div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">
+                            {currentUser.email}
+                          </div>
+                        </div>
+                      </div>
+                    </DropdownMenuLabel>
+
+                    <DropdownMenuSeparator />
+
+                    <DropdownMenuItem className="py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl mx-1">
+                      <Settings className="w-4 h-4 mr-3" />
+                      <span>Edit Profile</span>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuSeparator />
+                    <DropdownMenuLabel className="text-xs text-gray-500 dark:text-gray-400 py-2">
+                      Switch Account
+                    </DropdownMenuLabel>
+
+                    {users
+                      .filter((user) => user.id !== currentUser.id)
+                      .map((user) => (
+                        <DropdownMenuItem
+                          key={user.id}
+                          className="py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl mx-1"
+                          onClick={() => handleSwitchAccount(user.id)}
+                        >
+                          <Avatar className="w-6 h-6 mr-3">
+                            <AvatarImage src={user.avatar} alt={user.name} />
+                            <AvatarFallback>{user.name[0]}</AvatarFallback>
+                          </Avatar>
+                          <div className="flex-1">
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                              {user.name}
+                            </div>
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                              {user.email}
+                            </div>
+                          </div>
+                          {user.isVerified && (
+                            <Zap className="w-3 h-3 text-blue-500" />
+                          )}
+                        </DropdownMenuItem>
+                      ))}
+
+                    <DropdownMenuItem
+                      className="py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl mx-1"
+                      onClick={() => {
+                        toast({
+                          title: "Add Account",
+                          description:
+                            "Multiple account creation would be implemented here in a real app.",
+                        });
+                      }}
+                    >
+                      <UserPlus className="w-4 h-4 mr-3" />
+                      <span>Add Another Account</span>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuSeparator />
+
+                    <DropdownMenuItem
+                      className="py-3 cursor-pointer hover:bg-red-100 dark:hover:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl mx-1"
+                      onClick={handleLogout}
+                    >
+                      <LogOut className="w-4 h-4 mr-3" />
+                      <span>Logout</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </motion.div>
             </div>
           </div>
@@ -248,28 +399,34 @@ export default function Profile() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
+          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
             <CardContent className="p-6">
-              <p className="text-gray-700 text-lg mb-6">{userData.bio}</p>
+              <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">
+                {currentUser.bio}
+              </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                 {[
                   {
                     label: "Events Attended",
-                    value: userData.stats.eventsAttended,
+                    value: currentUser.stats.eventsAttended,
                     icon: Calendar,
                   },
                   {
                     label: "Events Hosted",
-                    value: userData.stats.eventsHosted,
+                    value: currentUser.stats.eventsHosted,
                     icon: Users,
                   },
                   {
                     label: "Party Friends",
-                    value: userData.stats.friends.toLocaleString(),
+                    value: currentUser.stats.friends.toLocaleString(),
                     icon: Heart,
                   },
-                  { label: "Rating", value: userData.stats.rating, icon: Star },
+                  {
+                    label: "Rating",
+                    value: currentUser.stats.rating,
+                    icon: Star,
+                  },
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -285,10 +442,12 @@ export default function Profile() {
                     >
                       <stat.icon className="w-6 h-6 text-white" />
                     </motion.div>
-                    <div className="text-2xl font-black text-gray-900">
+                    <div className="text-2xl font-black text-gray-900 dark:text-gray-100">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-gray-600">{stat.label}</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      {stat.label}
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -303,16 +462,16 @@ export default function Profile() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
         >
-          <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
+          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
             <CardHeader>
-              <CardTitle className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+              <CardTitle className="text-2xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
                 <Trophy className="w-6 h-6 text-unclub-blue" />
                 Achievements
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {userData.badges.map((badge, index) => (
+                {currentUser.badges.map((badge, index) => (
                   <motion.div
                     key={badge.id}
                     className="text-center"
@@ -327,7 +486,7 @@ export default function Profile() {
                     >
                       <badge.icon className="w-8 h-8 text-white" />
                     </motion.div>
-                    <div className="text-sm font-bold text-gray-900">
+                    <div className="text-sm font-bold text-gray-900 dark:text-gray-100">
                       {badge.name}
                     </div>
                   </motion.div>
@@ -348,7 +507,7 @@ export default function Profile() {
             onValueChange={setSelectedTab}
             className="w-full"
           >
-            <TabsList className="grid w-full grid-cols-3 bg-white/80 backdrop-blur-sm rounded-2xl p-1 mb-6">
+            <TabsList className="grid w-full grid-cols-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-1 mb-6">
               <TabsTrigger
                 value="overview"
                 className="rounded-xl font-semibold"
@@ -375,7 +534,7 @@ export default function Profile() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ x: 5, scale: 1.01 }}
                 >
-                  <Card className="bg-white/80 backdrop-blur-sm rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all">
+                  <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-4">
                         <motion.img
@@ -386,7 +545,7 @@ export default function Profile() {
                         />
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <span className="font-bold text-gray-900">
+                            <span className="font-bold text-gray-900 dark:text-gray-100">
                               {activity.type === "hosted"
                                 ? "Hosted"
                                 : "Attended"}
@@ -401,10 +560,10 @@ export default function Profile() {
                               {activity.type === "hosted" ? "🎉" : "✨"}
                             </Badge>
                           </div>
-                          <h3 className="font-bold text-lg text-gray-900">
+                          <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100">
                             {activity.event}
                           </h3>
-                          <p className="text-gray-600 text-sm">
+                          <p className="text-gray-600 dark:text-gray-400 text-sm">
                             {activity.date}
                           </p>
                         </div>
@@ -424,7 +583,7 @@ export default function Profile() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -5, scale: 1.02 }}
                 >
-                  <Card className="bg-white/80 backdrop-blur-sm rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all">
+                  <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4">
                         <motion.img
@@ -447,18 +606,20 @@ export default function Profile() {
                                 : "✨ Attending"}
                             </Badge>
                           </div>
-                          <h3 className="font-bold text-xl text-gray-900 mb-1">
+                          <h3 className="font-bold text-xl text-gray-900 dark:text-gray-100 mb-1">
                             {event.title}
                           </h3>
-                          <p className="text-gray-600 mb-2">{event.date}</p>
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <p className="text-gray-600 dark:text-gray-400 mb-2">
+                            {event.date}
+                          </p>
+                          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                             <Users className="w-4 h-4" />
                             {event.attendees} going
                           </div>
                         </div>
                         <Button
                           variant="outline"
-                          className="rounded-2xl border-2 border-unclub-pink text-unclub-pink hover:bg-unclub-pink hover:text-white"
+                          className="rounded-2xl border-2 border-unclub-pink text-unclub-pink hover:bg-unclub-pink hover:text-white dark:border-unclub-pink dark:text-unclub-pink dark:hover:bg-unclub-pink dark:hover:text-white"
                         >
                           View Event
                         </Button>
@@ -470,13 +631,13 @@ export default function Profile() {
             </TabsContent>
 
             <TabsContent value="photos" className="space-y-4">
-              <Card className="bg-white/80 backdrop-blur-sm rounded-2xl border-0 shadow-xl">
+              <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-xl">
                 <CardContent className="p-8 text-center">
-                  <Camera className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <Camera className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                     Party Photo Gallery
                   </h3>
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-gray-600 dark:text-gray-400 mb-6">
                     Your best party moments will appear here!
                   </p>
                   <Button className="bg-gradient-to-r from-unclub-blue to-unclub-pink text-white rounded-2xl font-bold">

@@ -1,10 +1,26 @@
 import { useTheme } from "next-themes";
 import { Toaster as Sonner } from "sonner";
+import { useEffect, useState } from "react";
 
 type ToasterProps = React.ComponentProps<typeof Sonner>;
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  let theme = "system";
+  try {
+    if (mounted) {
+      const themeContext = useTheme();
+      theme = themeContext?.theme || "system";
+    }
+  } catch (error) {
+    console.warn("Theme context not available in Sonner:", error);
+    theme = "system";
+  }
 
   return (
     <Sonner

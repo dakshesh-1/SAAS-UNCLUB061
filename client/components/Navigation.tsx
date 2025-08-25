@@ -51,7 +51,7 @@ const navItems = [
     gradient: "from-unclub-pink via-party-red to-unclub-coral",
   },
   {
-    name: "Profile",
+    name: "Join Party",
     path: "/profile",
     icon: User,
     gradient: "from-party-electric via-unclub-hotpink to-party-pink",
@@ -71,6 +71,7 @@ export function Navigation() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [mounted, setMounted] = useState(false);
   const location = useLocation();
   const { scrollY } = useScroll();
   const { theme } = useTheme();
@@ -79,12 +80,19 @@ export function Navigation() {
   const blurAmount = useTransform(scrollY, [0, 100], [20, 40]);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Use fallback theme if not mounted yet
+  const safeTheme = mounted ? theme : "dark";
 
   return (
     <>
@@ -122,10 +130,10 @@ export function Navigation() {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/20 dark:border-gray-700/50 shadow-lg"
         style={{
           background:
-            theme === "dark"
-              ? `linear-gradient(135deg, hsl(var(--background)), hsl(var(--card)), hsl(var(--background)))`
+            safeTheme === "dark"
+              ? `linear-gradient(135deg, hsl(var(--background) / 0.95), hsl(var(--card) / 0.95), hsl(var(--background) / 0.95))`
               : `linear-gradient(135deg, hsl(var(--unclub-blue)), hsl(var(--unclub-pink)), hsl(var(--unclub-red)))`,
-          backdropFilter: "none",
+          backdropFilter: safeTheme === "dark" ? "blur(20px)" : "none",
         }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -133,7 +141,11 @@ export function Navigation() {
       >
         {/* Animated background gradient overlay */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-unclub-blue/30 via-unclub-pink/30 to-unclub-red/30"
+          className={`absolute inset-0 ${
+            safeTheme === "dark"
+              ? "bg-gradient-to-r from-gray-800/20 via-gray-700/20 to-gray-800/20"
+              : "bg-gradient-to-r from-unclub-blue/30 via-unclub-pink/30 to-unclub-red/30"
+          }`}
           animate={{
             backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
           }}
@@ -189,16 +201,26 @@ export function Navigation() {
                 </motion.div>
                 <div className="hidden sm:block">
                   <motion.span
-                    className="display-text text-2xl sm:text-3xl font-black bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent"
+                    className={`display-text text-2xl sm:text-3xl font-black ${
+                      safeTheme === "dark"
+                        ? "bg-gradient-to-r from-gray-100 via-white to-gray-100 bg-clip-text text-transparent"
+                        : "bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent"
+                    }`}
                     whileHover={{
                       backgroundImage:
-                        "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
+                        safeTheme === "dark"
+                          ? "linear-gradient(45deg, #ffffff, #f0f9ff, #ffffff)"
+                          : "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
                     }}
                   >
                     UnClub
                   </motion.span>
                   <motion.div
-                    className="accent-text text-xs font-bold text-white/90 tracking-wider uppercase"
+                    className={`accent-text text-xs font-bold tracking-wider uppercase ${
+                      safeTheme === "dark"
+                        ? "text-gray-200/90"
+                        : "text-white/90"
+                    }`}
                     animate={{
                       opacity: [0.7, 1, 0.7],
                     }}
@@ -309,8 +331,8 @@ export function Navigation() {
                       variant="ghost"
                       size="sm"
                       className={`rounded-xl sm:rounded-2xl border transition-all duration-300 px-3 py-2 ${
-                        theme === "dark"
-                          ? "text-gray-300 hover:bg-gray-800/50 border-gray-600/50 hover:text-gray-100 bg-gray-800/70"
+                        safeTheme === "dark"
+                          ? "text-gray-100 hover:bg-gray-700/70 border-gray-500/70 hover:text-white bg-gray-800/90 hover:border-gray-400"
                           : "text-white hover:bg-white/30 border-white/30 bg-white/20"
                       }`}
                     >
@@ -378,8 +400,8 @@ export function Navigation() {
                       variant="ghost"
                       size="sm"
                       className={`rounded-xl sm:rounded-2xl border transition-all duration-300 px-3 py-2 ${
-                        theme === "dark"
-                          ? "text-gray-300 hover:bg-gray-800/50 border-gray-600/50 hover:text-gray-100 bg-gray-800/70"
+                        safeTheme === "dark"
+                          ? "text-gray-100 hover:bg-gray-700/70 border-gray-500/70 hover:text-white bg-gray-800/90 hover:border-gray-400"
                           : "text-white hover:bg-white/30 border-white/30 bg-white/20"
                       }`}
                     >
@@ -451,27 +473,6 @@ export function Navigation() {
                   </div>
                 </DialogContent>
               </Dialog>
-
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link to="/auth">
-                  <Button className="bg-white/30 hover:bg-white/50 text-white rounded-xl sm:rounded-2xl shadow-xl border border-white/50 font-bold px-4 sm:px-6 py-2 transition-all duration-300">
-                    <motion.span
-                      className="text-sm sm:text-base"
-                      whileHover={{
-                        backgroundImage:
-                          "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
-                        backgroundClip: "text",
-                        color: "transparent",
-                      }}
-                    >
-                      Join Party
-                    </motion.span>
-                  </Button>
-                </Link>
-              </motion.div>
             </div>
 
             {/* Mobile Menu Button */}
@@ -485,8 +486,8 @@ export function Navigation() {
                 size="sm"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={`rounded-xl border px-3 py-2 ${
-                  theme === "dark"
-                    ? "text-gray-300 hover:bg-gray-800/50 border-gray-600/50 hover:text-gray-100 bg-gray-800/70"
+                  safeTheme === "dark"
+                    ? "text-gray-100 hover:bg-gray-700/70 border-gray-500/70 hover:text-white bg-gray-800/90 hover:border-gray-400"
                     : "text-white hover:bg-white/30 border-white/30 bg-white/20"
                 }`}
               >
@@ -558,12 +559,6 @@ export function Navigation() {
                   transition={{ delay: navItems.length * 0.1, duration: 0.3 }}
                   className="pt-4"
                 >
-                  <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-white/30 hover:bg-white/50 text-white rounded-2xl shadow-xl border border-white/50 font-bold py-4 text-lg">
-                      Join the Party 🎉
-                    </Button>
-                  </Link>
-
                   {/* Mobile Search and Notifications */}
                   <div className="flex gap-3 pt-2">
                     <Button
