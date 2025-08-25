@@ -216,9 +216,9 @@ export default function Profile() {
                 >
                   <div className="flex items-center gap-3 mb-2">
                     <h1 className="text-3xl sm:text-4xl font-black text-white">
-                      {userData.name}
+                      {currentUser.name}
                     </h1>
-                    {userData.isVerified && (
+                    {currentUser.isVerified && (
                       <Badge className="bg-gradient-to-r from-unclub-blue to-party-blue text-white rounded-full px-3 py-1">
                         <Zap className="w-3 h-3 mr-1" />
                         Verified
@@ -226,13 +226,13 @@ export default function Profile() {
                     )}
                   </div>
                   <p className="text-white/90 font-medium text-lg mb-1">
-                    {userData.username}
+                    {currentUser.username}
                   </p>
                   <div className="flex items-center gap-2 text-white/80">
                     <MapPin className="w-4 h-4" />
-                    <span>{userData.location}</span>
+                    <span>{currentUser.location}</span>
                     <span>•</span>
-                    <span>Joined {userData.joinDate}</span>
+                    <span>Joined {currentUser.joinDate}</span>
                   </div>
                 </motion.div>
               </div>
