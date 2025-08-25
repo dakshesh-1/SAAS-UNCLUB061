@@ -52,21 +52,21 @@
     --ui-accent: 228 59% 29%; /* Deep navy */
     --ui-accent-alt: 11 40% 53%; /* Muted terracotta #C75C48 */
 
-    /* UnClub catchy color scheme - Blue/Pink/Red */
-    --unclub-blue: 220 100% 60%;
-    --unclub-pink: 330 100% 70%;
-    --unclub-red: 0 100% 65%;
-    --unclub-electric: 200 100% 55%;
-    --unclub-hot-pink: 320 100% 65%;
-    --unclub-coral: 15 100% 65%;
+    /* Sophisticated Aesthetic Color Palette */
+    --aesthetic-slate: 215 28% 17%; /* Deep slate blue #252B42 */
+    --aesthetic-sage: 155 25% 41%; /* Sage green #5A7A6A */
+    --aesthetic-stone: 24 9% 45%; /* Warm stone #7A7065 */
+    --aesthetic-plum: 280 15% 35%; /* Muted plum #5C4A63 */
+    --aesthetic-amber: 35 84% 62%; /* Warm amber #E8A87C */
+    --aesthetic-cream: 40 23% 85%; /* Soft cream #DDD5C7 */
 
-    /* Party vibes colors */
-    --party-blue: 210 100% 56%;
-    --party-pink: 320 100% 75%;
-    --party-red: 345 100% 60%;
-    --neon-blue: 200 100% 50%;
-    --electric-pink: 315 100% 70%;
-    --vibrant-red: 5 100% 65%;
+    /* Refined accent colors */
+    --refined-navy: 220 39% 11%; /* Deep navy #0F1419 */
+    --refined-forest: 155 100% 12%; /* Forest green #003D29 */
+    --refined-charcoal: 210 11% 15%; /* Charcoal #222831 */
+    --refined-bronze: 25 35% 35%; /* Bronze #6B5B73 */
+    --refined-pearl: 210 17% 95%; /* Pearl white #F4F6F8 */
+    --refined-smoke: 210 9% 31%; /* Smoke gray #495057 */
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
