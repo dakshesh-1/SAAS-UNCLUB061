@@ -353,7 +353,7 @@ export function Navigation() {
                         placeholder="Search for events, locations, or categories..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="pl-12 rounded-2xl h-14 text-lg border-2 border-gray-200 dark:border-gray-700"
+                        className="pl-12 rounded-lg h-14 text-lg border-2 border-gray-200 dark:border-gray-700"
                         autoFocus
                       />
                     </div>
