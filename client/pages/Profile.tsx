@@ -604,7 +604,7 @@ export default function Profile() {
             </TabsContent>
 
             <TabsContent value="photos" className="space-y-4">
-              <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-xl">
+              <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg border-0 shadow-xl">
                 <CardContent className="p-8 text-center">
                   <Camera className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
                   <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
@@ -613,7 +613,7 @@ export default function Profile() {
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
                     Your best party moments will appear here!
                   </p>
-                  <Button className="bg-gradient-to-r from-unclub-blue to-unclub-pink text-white rounded-2xl font-bold">
+                  <Button className="bg-gradient-to-r from-aesthetic-slate to-aesthetic-sage text-white rounded-lg font-bold">
                     Upload Photos
                   </Button>
                 </CardContent>
