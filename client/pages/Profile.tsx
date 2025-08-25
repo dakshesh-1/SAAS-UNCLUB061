@@ -375,7 +375,7 @@ export default function Profile() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ x: 5, scale: 1.01 }}
                 >
-                  <Card className="bg-white/80 backdrop-blur-sm rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all">
+                  <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-4">
                         <motion.img
@@ -386,7 +386,7 @@ export default function Profile() {
                         />
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <span className="font-bold text-gray-900">
+                            <span className="font-bold text-gray-900 dark:text-gray-100">
                               {activity.type === "hosted"
                                 ? "Hosted"
                                 : "Attended"}
