@@ -171,7 +171,7 @@ export default function Profile() {
           <Button
             variant="outline"
             size="sm"
-            className="bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30 rounded-2xl"
+            className="bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30 rounded-lg"
           >
             <Camera className="w-4 h-4 mr-2" />
             Edit Cover
@@ -253,7 +253,7 @@ export default function Profile() {
               >
                 <Button
                   variant="outline"
-                  className="bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30 rounded-2xl"
+                  className="bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30 rounded-lg"
                 >
                   <Share2 className="w-4 h-4 mr-2" />
                   Share
