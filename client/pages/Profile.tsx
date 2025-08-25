@@ -442,7 +442,8 @@ export default function Profile() {
             <CardContent>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {currentUser.badges.map((badge, index) => {
-                  const IconComponent = iconMap[badge.icon as keyof typeof iconMap];
+                  const IconComponent =
+                    iconMap[badge.icon as keyof typeof iconMap];
                   return (
                     <motion.div
                       key={badge.id}
@@ -456,7 +457,9 @@ export default function Profile() {
                         className={`w-16 h-16 bg-gradient-to-br ${badge.color} rounded-lg flex items-center justify-center mx-auto mb-3 shadow-lg`}
                         whileHover={{ rotate: 10 }}
                       >
-                        {IconComponent && <IconComponent className="w-8 h-8 text-white" />}
+                        {IconComponent && (
+                          <IconComponent className="w-8 h-8 text-white" />
+                        )}
                       </motion.div>
                       <div className="text-sm font-bold text-gray-900 dark:text-gray-100">
                         {badge.name}

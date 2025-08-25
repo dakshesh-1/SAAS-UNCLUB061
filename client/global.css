@@ -1,5 +1,5 @@
 /* Import Fontshare fonts */
-@import url('https://api.fontshare.com/v2/css?f[]=clash-display@700&f[]=general-sans@400,600&f[]=satoshi@500&display=swap');
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@700&f[]=general-sans@400,600&f[]=satoshi@500&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -151,7 +151,11 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: "General Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:
+      "General Sans",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.6;
@@ -164,13 +168,16 @@
   /* Fontshare Typography Hierarchy */
 
   /* Main Headings - Clash Display Bold with gradient text */
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: "Clash Display", sans-serif;
     font-weight: 700;
     letter-spacing: -0.5px;
     text-rendering: optimizeLegibility;
     margin: 40px 0 20px 0;
-    background: linear-gradient(135deg,
+    background: linear-gradient(
+      135deg,
       hsl(var(--heading-primary)),
       hsl(var(--heading-secondary)),
       hsl(var(--heading-tertiary))
@@ -182,7 +189,9 @@
     animation: gradient-shift 8s ease-in-out infinite;
   }
 
-  .dark h1, .dark h2, .dark h3 {
+  .dark h1,
+  .dark h2,
+  .dark h3 {
     text-shadow: 0 0 20px hsl(var(--heading-tertiary) / 0.3);
   }
 
@@ -205,7 +214,9 @@
   }
 
   /* Subheadings - General Sans Semibold uppercase */
-  h4, h5, h6 {
+  h4,
+  h5,
+  h6 {
     font-family: "General Sans", sans-serif;
     font-weight: 600;
     text-transform: uppercase;
@@ -231,7 +242,8 @@
   }
 
   /* Body Text - General Sans Regular */
-  p, .body-text {
+  p,
+  .body-text {
     font-family: "General Sans", sans-serif;
     font-weight: 400;
     font-size: clamp(16px, 2.5vw, 18px);
@@ -244,7 +256,9 @@
   }
 
   /* UI Elements, Buttons, Filters - Satoshi Medium */
-  button, .btn, .ui-element {
+  button,
+  .btn,
+  .ui-element {
     font-family: "Satoshi", sans-serif;
     font-weight: 500;
     text-transform: uppercase;
@@ -254,8 +268,10 @@
     transition: all 0.3s ease;
   }
 
-  button:hover, .btn:hover {
-    background: linear-gradient(135deg,
+  button:hover,
+  .btn:hover {
+    background: linear-gradient(
+      135deg,
       hsl(var(--ui-accent)),
       hsl(var(--ui-accent-alt))
     );
@@ -264,7 +280,8 @@
 
   /* Gradient Animation for Headings */
   @keyframes gradient-shift {
-    0%, 100% {
+    0%,
+    100% {
       background-position: 0% 50%;
     }
     50% {
@@ -285,13 +302,14 @@
   }
 
   a::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 0;
     height: 2px;
     bottom: -2px;
     left: 0;
-    background: linear-gradient(90deg,
+    background: linear-gradient(
+      90deg,
       hsl(var(--ui-accent)),
       hsl(var(--ui-accent-alt))
     );
@@ -321,7 +339,8 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg,
+    background: linear-gradient(
+      135deg,
       hsl(var(--heading-primary)),
       hsl(var(--heading-secondary)),
       hsl(var(--heading-tertiary))

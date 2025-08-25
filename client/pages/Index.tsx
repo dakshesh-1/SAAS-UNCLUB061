@@ -237,9 +237,7 @@ export default function Index() {
               Discover Epic
               <br />
               <span className="relative">
-                <span>
-                  Events! 🎉
-                </span>
+                <span>Events! 🎉</span>
                 <motion.div
                   className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-ui-accent via-ui-accent-alt to-heading-secondary rounded-full"
                   initial={{ scaleX: 0 }}
@@ -257,7 +255,9 @@ export default function Index() {
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             Join thousands discovering{" "}
-            <span className="font-general font-semibold text-ui-accent">amazing events</span>{" "}
+            <span className="font-general font-semibold text-ui-accent">
+              amazing events
+            </span>{" "}
             and creating
             <span className="font-bold text-pink-600">
               {" "}
@@ -311,9 +311,7 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <h2 className="font-clash">
-              🔥 Trending Events Right Now
-            </h2>
+            <h2 className="font-clash">🔥 Trending Events Right Now</h2>
             <p className="body-text text-lg">
               These events are selling out fast - grab your spot before it's too
               late!
@@ -371,9 +369,7 @@ export default function Index() {
                 >
                   <stat.icon className="w-8 h-8" />
                 </motion.div>
-                <h3 className="font-clash text-3xl mb-2">
-                  {stat.number}
-                </h3>
+                <h3 className="font-clash text-3xl mb-2">{stat.number}</h3>
                 <p className="body-text">{stat.label}</p>
               </motion.div>
             ))}
