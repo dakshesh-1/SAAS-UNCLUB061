@@ -193,10 +193,16 @@ export function Navigation() {
                 </motion.div>
                 <div className="hidden sm:block">
                   <motion.span
-                    className="display-text text-2xl sm:text-3xl font-black bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent"
+                    className={`display-text text-2xl sm:text-3xl font-black ${
+                      theme === "dark"
+                        ? "bg-gradient-to-r from-gray-100 via-white to-gray-100 bg-clip-text text-transparent"
+                        : "bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent"
+                    }`}
                     whileHover={{
                       backgroundImage:
-                        "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
+                        theme === "dark"
+                          ? "linear-gradient(45deg, #ffffff, #f0f9ff, #ffffff)"
+                          : "linear-gradient(45deg, #fff, #e0f7ff, #fff)",
                     }}
                   >
                     UnClub
