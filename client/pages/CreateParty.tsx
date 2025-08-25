@@ -36,14 +36,14 @@ const partyTypes = [
     id: "house-party",
     name: "House Party",
     emoji: "🏠",
-    gradient: "from-unclub-blue to-party-blue",
+    gradient: "from-aesthetic-slate to-aesthetic-sage",
     description: "Intimate vibes at your place",
   },
   {
     id: "pool-party",
     name: "Pool Party",
     emoji: "🏊‍♀️",
-    gradient: "from-unclub-pink to-party-pink",
+    gradient: "from-aesthetic-sage to-aesthetic-amber",
     description: "Make a splash this summer",
   },
   {
