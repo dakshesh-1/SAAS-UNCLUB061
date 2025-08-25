@@ -458,7 +458,7 @@ export default function Profile() {
                         </div>
                         <Button
                           variant="outline"
-                          className="rounded-2xl border-2 border-unclub-pink text-unclub-pink hover:bg-unclub-pink hover:text-white"
+                          className="rounded-2xl border-2 border-unclub-pink text-unclub-pink hover:bg-unclub-pink hover:text-white dark:border-unclub-pink dark:text-unclub-pink dark:hover:bg-unclub-pink dark:hover:text-white"
                         >
                           View Event
                         </Button>
