@@ -480,7 +480,7 @@ export default function Profile() {
             onValueChange={setSelectedTab}
             className="w-full"
           >
-            <TabsList className="grid w-full grid-cols-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-1 mb-6">
+            <TabsList className="grid w-full grid-cols-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg p-1 mb-6">
               <TabsTrigger
                 value="overview"
                 className="rounded-xl font-semibold"
