@@ -518,7 +518,7 @@ export function Navigation() {
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
-              className="fixed top-16 left-0 right-0 bg-gradient-to-br from-unclub-blue via-unclub-pink to-unclub-red backdrop-blur-2xl z-50 md:hidden rounded-b-3xl mx-2 shadow-2xl"
+              className="fixed top-16 left-0 right-0 bg-gradient-to-br from-unclub-blue via-unclub-pink to-unclub-red z-50 md:hidden rounded-b-3xl mx-2 shadow-2xl"
               initial={{ y: -400, opacity: 0, scale: 0.95 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={{ y: -400, opacity: 0, scale: 0.95 }}
