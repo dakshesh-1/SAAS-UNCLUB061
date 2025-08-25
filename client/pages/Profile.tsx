@@ -270,26 +270,26 @@ export default function Profile() {
         >
           <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
             <CardContent className="p-6">
-              <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">{userData.bio}</p>
+              <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">{currentUser.bio}</p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                 {[
                   {
                     label: "Events Attended",
-                    value: userData.stats.eventsAttended,
+                    value: currentUser.stats.eventsAttended,
                     icon: Calendar,
                   },
                   {
                     label: "Events Hosted",
-                    value: userData.stats.eventsHosted,
+                    value: currentUser.stats.eventsHosted,
                     icon: Users,
                   },
                   {
                     label: "Party Friends",
-                    value: userData.stats.friends.toLocaleString(),
+                    value: currentUser.stats.friends.toLocaleString(),
                     icon: Heart,
                   },
-                  { label: "Rating", value: userData.stats.rating, icon: Star },
+                  { label: "Rating", value: currentUser.stats.rating, icon: Star },
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
