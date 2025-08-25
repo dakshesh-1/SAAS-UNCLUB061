@@ -211,7 +211,7 @@ export default function Index() {
           }}
         />
         <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-unclub-red/40 to-party-pink/40 dark:from-unclub-red/30 dark:to-party-pink/30 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-aesthetic-plum/40 to-aesthetic-amber/40 dark:from-aesthetic-plum/30 dark:to-aesthetic-amber/30 rounded-full blur-3xl"
           animate={{
             x: [0, -50, 0],
             y: [0, 30, 0],
@@ -349,7 +349,7 @@ export default function Index() {
               <Link to="/events">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-unclub-blue via-unclub-pink to-unclub-red hover:from-unclub-pink hover:to-unclub-blue text-white px-8 py-3 rounded-2xl font-semibold shadow-xl"
+                  className="bg-gradient-to-r from-aesthetic-slate via-aesthetic-sage to-aesthetic-amber hover:from-aesthetic-sage hover:to-aesthetic-slate text-white px-8 py-3 rounded-lg font-semibold shadow-xl"
                 >
                   Find More Parties
                   <ArrowRight className="w-5 h-5 ml-2" />
