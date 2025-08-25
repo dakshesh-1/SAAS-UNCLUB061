@@ -262,7 +262,7 @@ export default function Profile() {
                 {/* Account Dropdown Menu */}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button className="bg-gradient-to-r from-unclub-pink via-unclub-red to-party-red text-white rounded-2xl font-bold shadow-xl">
+                    <Button className="bg-gradient-to-r from-aesthetic-amber via-aesthetic-stone to-aesthetic-plum text-white rounded-lg font-bold shadow-xl">
                       <Settings className="w-4 h-4 mr-2" />
                       Account
                       <ChevronDown className="w-4 h-4 ml-2" />
@@ -270,7 +270,7 @@ export default function Profile() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent
                     align="end"
-                    className="w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border-0 shadow-2xl rounded-2xl"
+                    className="w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border-0 shadow-2xl rounded-lg"
                   >
                     <DropdownMenuLabel className="text-center py-3">
                       <div className="flex items-center gap-3">
