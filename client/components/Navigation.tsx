@@ -480,7 +480,7 @@ export function Navigation() {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={`rounded-xl border px-3 py-2 ${
                   theme === "dark"
-                    ? "text-gray-300 hover:bg-gray-800/50 border-gray-600/50 hover:text-gray-100 bg-gray-800/70"
+                    ? "text-gray-100 hover:bg-gray-700/70 border-gray-500/70 hover:text-white bg-gray-800/90 hover:border-gray-400"
                     : "text-white hover:bg-white/30 border-white/30 bg-white/20"
                 }`}
               >
