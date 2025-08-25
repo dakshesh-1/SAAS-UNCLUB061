@@ -36,42 +36,42 @@ const partyTypes = [
     id: "house-party",
     name: "House Party",
     emoji: "🏠",
-    gradient: "from-unclub-blue to-party-blue",
+    gradient: "from-aesthetic-slate to-aesthetic-sage",
     description: "Intimate vibes at your place",
   },
   {
     id: "pool-party",
     name: "Pool Party",
     emoji: "🏊‍♀️",
-    gradient: "from-unclub-pink to-party-pink",
+    gradient: "from-aesthetic-sage to-aesthetic-amber",
     description: "Make a splash this summer",
   },
   {
     id: "rooftop",
     name: "Rooftop Vibes",
     emoji: "🌆",
-    gradient: "from-unclub-red to-party-red",
+    gradient: "from-aesthetic-plum to-aesthetic-stone",
     description: "Sky-high party energy",
   },
   {
     id: "beach-party",
     name: "Beach Party",
     emoji: "🏖️",
-    gradient: "from-party-electric to-unclub-hotpink",
+    gradient: "from-aesthetic-amber to-aesthetic-cream",
     description: "Sand, sun, and good times",
   },
   {
     id: "birthday",
     name: "Birthday Bash",
     emoji: "🎂",
-    gradient: "from-unclub-blue to-unclub-pink",
+    gradient: "from-aesthetic-slate to-aesthetic-plum",
     description: "Celebrate another year of awesome",
   },
   {
     id: "game-night",
     name: "Game Night",
     emoji: "🎮",
-    gradient: "from-party-red to-unclub-coral",
+    gradient: "from-aesthetic-stone to-aesthetic-sage",
     description: "Level up your social game",
   },
 ];
@@ -139,7 +139,7 @@ export default function CreateParty() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-aesthetic-sage/20 via-aesthetic-stone/20 to-aesthetic-plum/20 pt-20">
       <GenZParticles />
 
       <div className="max-w-4xl mx-auto px-6 py-8">
@@ -150,7 +150,7 @@ export default function CreateParty() {
           animate={{ opacity: 1, y: 0 }}
         >
           <motion.h1
-            className="text-5xl font-black bg-gradient-to-r from-unclub-blue via-unclub-pink to-unclub-red bg-clip-text text-transparent mb-4"
+            className="text-5xl font-black bg-gradient-to-r from-aesthetic-slate via-aesthetic-sage to-aesthetic-amber bg-clip-text text-transparent mb-4"
             animate={{
               backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
             }}
@@ -281,7 +281,7 @@ export default function CreateParty() {
                         Party Name *
                       </label>
                       <Input
-                        placeholder="e.g., Epic Summer Pool Bash 🏊‍♀️"
+                        placeholder="e.g., Epic Summer Pool Bash ��‍♀️"
                         value={formData.title}
                         onChange={(e) =>
                           updateFormData("title", e.target.value)

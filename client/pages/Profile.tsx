@@ -18,6 +18,8 @@ import {
   LogOut,
   UserPlus,
   ChevronDown,
+  Music,
+  Laptop,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -37,51 +39,19 @@ import { useAuth } from "@/contexts/AuthContext";
 import { AuthForm } from "@/components/AuthForm";
 import { useToast } from "@/hooks/use-toast";
 
-// Mock user data
-const userData = {
-  name: "Alex Chen",
-  username: "@alexpartyking",
-  avatar:
-    "https://images.unsplash.com/photo-1494790108755-2616b9e2b36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-  coverImage:
-    "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-  bio: "Party planner extraordinaire 🎉 | Event enthusiast | Making memories one party at a time ✨",
-  location: "Los Angeles, CA",
-  joinDate: "March 2024",
-  isVerified: true,
-  stats: {
-    eventsAttended: 47,
-    eventsHosted: 12,
-    friends: 2847,
-    rating: 4.9,
-  },
-  badges: [
-    {
-      id: 1,
-      name: "Party Legend",
-      icon: Crown,
-      color: "from-unclub-red to-party-red",
-    },
-    {
-      id: 2,
-      name: "Social Butterfly",
-      icon: Users,
-      color: "from-unclub-pink to-party-pink",
-    },
-    {
-      id: 3,
-      name: "Event Master",
-      icon: Trophy,
-      color: "from-unclub-blue to-party-blue",
-    },
-    {
-      id: 4,
-      name: "Super Host",
-      icon: Medal,
-      color: "from-party-electric to-unclub-hotpink",
-    },
-  ],
+// Icon mapping for badge icons
+const iconMap = {
+  Crown,
+  Users,
+  Trophy,
+  Medal,
+  Music,
+  Star,
+  Laptop,
+  Zap,
 };
+
+// Mock activity data
 
 const recentActivity = [
   {
@@ -164,9 +134,9 @@ export default function Profile() {
   // If no user data, show a loading state
   if (!currentUser) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20 dark:from-gray-900/40 dark:via-gray-800/40 dark:to-gray-900/40 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-aesthetic-sage/20 via-aesthetic-stone/20 to-aesthetic-plum/20 dark:from-gray-900/40 dark:via-gray-800/40 dark:to-gray-900/40 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-unclub-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-aesthetic-slate border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400">
             Loading your profile...
           </p>
@@ -176,7 +146,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-unclub-blue/20 via-unclub-pink/20 to-unclub-red/20 dark:from-gray-900/40 dark:via-gray-800/40 dark:to-gray-900/40">
+    <div className="min-h-screen bg-gradient-to-br from-aesthetic-sage/20 via-aesthetic-stone/20 to-aesthetic-plum/20 dark:from-gray-900/40 dark:via-gray-800/40 dark:to-gray-900/40">
       <GenZParticles />
 
       {/* Cover Image & Profile Header */}
@@ -201,7 +171,7 @@ export default function Profile() {
           <Button
             variant="outline"
             size="sm"
-            className="bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30 rounded-2xl"
+            className="bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30 rounded-lg"
           >
             <Camera className="w-4 h-4 mr-2" />
             Edit Cover
@@ -228,7 +198,7 @@ export default function Profile() {
 
                 {currentUser.isVerified && (
                   <motion.div
-                    className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-unclub-blue to-party-blue rounded-full flex items-center justify-center border-2 border-white shadow-lg"
+                    className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-aesthetic-slate to-aesthetic-sage rounded-full flex items-center justify-center border-2 border-white shadow-lg"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.5 }}
@@ -238,7 +208,7 @@ export default function Profile() {
                 )}
 
                 <motion.button
-                  className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-r from-unclub-pink to-party-pink rounded-full flex items-center justify-center border-2 border-white shadow-lg"
+                  className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-r from-aesthetic-amber to-aesthetic-stone rounded-full flex items-center justify-center border-2 border-white shadow-lg"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -257,7 +227,7 @@ export default function Profile() {
                       {currentUser.name}
                     </h1>
                     {currentUser.isVerified && (
-                      <Badge className="bg-gradient-to-r from-unclub-blue to-party-blue text-white rounded-full px-3 py-1">
+                      <Badge className="bg-gradient-to-r from-aesthetic-slate to-aesthetic-sage text-white rounded-full px-3 py-1">
                         <Zap className="w-3 h-3 mr-1" />
                         Verified
                       </Badge>
@@ -283,7 +253,7 @@ export default function Profile() {
               >
                 <Button
                   variant="outline"
-                  className="bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30 rounded-2xl"
+                  className="bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30 rounded-lg"
                 >
                   <Share2 className="w-4 h-4 mr-2" />
                   Share
@@ -292,7 +262,7 @@ export default function Profile() {
                 {/* Account Dropdown Menu */}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button className="bg-gradient-to-r from-unclub-pink via-unclub-red to-party-red text-white rounded-2xl font-bold shadow-xl">
+                    <Button className="bg-gradient-to-r from-aesthetic-amber via-aesthetic-stone to-aesthetic-plum text-white rounded-lg font-bold shadow-xl">
                       <Settings className="w-4 h-4 mr-2" />
                       Account
                       <ChevronDown className="w-4 h-4 ml-2" />
@@ -300,7 +270,7 @@ export default function Profile() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent
                     align="end"
-                    className="w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border-0 shadow-2xl rounded-2xl"
+                    className="w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border-0 shadow-2xl rounded-lg"
                   >
                     <DropdownMenuLabel className="text-center py-3">
                       <div className="flex items-center gap-3">
@@ -399,7 +369,7 @@ export default function Profile() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
+          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg border-0 shadow-xl">
             <CardContent className="p-6">
               <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">
                 {currentUser.bio}
@@ -437,7 +407,7 @@ export default function Profile() {
                     whileHover={{ y: -5, scale: 1.05 }}
                   >
                     <motion.div
-                      className="w-12 h-12 bg-gradient-to-br from-unclub-blue to-unclub-pink rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg"
+                      className="w-12 h-12 bg-gradient-to-br from-aesthetic-slate to-aesthetic-sage rounded-lg flex items-center justify-center mx-auto mb-3 shadow-lg"
                       whileHover={{ rotate: 5 }}
                     >
                       <stat.icon className="w-6 h-6 text-white" />
@@ -462,7 +432,7 @@ export default function Profile() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
         >
-          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border-0 shadow-xl">
+          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg border-0 shadow-xl">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
                 <Trophy className="w-6 h-6 text-unclub-blue" />
@@ -471,26 +441,32 @@ export default function Profile() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {currentUser.badges.map((badge, index) => (
-                  <motion.div
-                    key={badge.id}
-                    className="text-center"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.8 + index * 0.1 }}
-                    whileHover={{ y: -5, scale: 1.05 }}
-                  >
+                {currentUser.badges.map((badge, index) => {
+                  const IconComponent =
+                    iconMap[badge.icon as keyof typeof iconMap];
+                  return (
                     <motion.div
-                      className={`w-16 h-16 bg-gradient-to-br ${badge.color} rounded-3xl flex items-center justify-center mx-auto mb-3 shadow-lg`}
-                      whileHover={{ rotate: 10 }}
+                      key={badge.id}
+                      className="text-center"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.8 + index * 0.1 }}
+                      whileHover={{ y: -5, scale: 1.05 }}
                     >
-                      <badge.icon className="w-8 h-8 text-white" />
+                      <motion.div
+                        className={`w-16 h-16 bg-gradient-to-br ${badge.color} rounded-lg flex items-center justify-center mx-auto mb-3 shadow-lg`}
+                        whileHover={{ rotate: 10 }}
+                      >
+                        {IconComponent && (
+                          <IconComponent className="w-8 h-8 text-white" />
+                        )}
+                      </motion.div>
+                      <div className="text-sm font-bold text-gray-900 dark:text-gray-100">
+                        {badge.name}
+                      </div>
                     </motion.div>
-                    <div className="text-sm font-bold text-gray-900 dark:text-gray-100">
-                      {badge.name}
-                    </div>
-                  </motion.div>
-                ))}
+                  );
+                })}
               </div>
             </CardContent>
           </Card>
@@ -507,7 +483,7 @@ export default function Profile() {
             onValueChange={setSelectedTab}
             className="w-full"
           >
-            <TabsList className="grid w-full grid-cols-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-1 mb-6">
+            <TabsList className="grid w-full grid-cols-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg p-1 mb-6">
               <TabsTrigger
                 value="overview"
                 className="rounded-xl font-semibold"
@@ -534,13 +510,13 @@ export default function Profile() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ x: 5, scale: 1.01 }}
                 >
-                  <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all">
+                  <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg border-0 shadow-lg hover:shadow-xl transition-all">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-4">
                         <motion.img
                           src={activity.image}
                           alt={activity.event}
-                          className="w-16 h-16 object-cover rounded-2xl"
+                          className="w-16 h-16 object-cover rounded-lg"
                           whileHover={{ scale: 1.1 }}
                         />
                         <div className="flex-1">
@@ -553,8 +529,8 @@ export default function Profile() {
                             <Badge
                               className={`rounded-full px-3 py-1 ${
                                 activity.type === "hosted"
-                                  ? "bg-gradient-to-r from-unclub-pink to-party-pink text-white"
-                                  : "bg-gradient-to-r from-unclub-blue to-party-blue text-white"
+                                  ? "bg-gradient-to-r from-aesthetic-amber to-aesthetic-stone text-white"
+                                  : "bg-gradient-to-r from-aesthetic-slate to-aesthetic-sage text-white"
                               }`}
                             >
                               {activity.type === "hosted" ? "🎉" : "✨"}
@@ -583,13 +559,13 @@ export default function Profile() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -5, scale: 1.02 }}
                 >
-                  <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all">
+                  <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg border-0 shadow-lg hover:shadow-xl transition-all">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4">
                         <motion.img
                           src={event.image}
                           alt={event.title}
-                          className="w-20 h-20 object-cover rounded-2xl"
+                          className="w-20 h-20 object-cover rounded-lg"
                           whileHover={{ scale: 1.1 }}
                         />
                         <div className="flex-1">
@@ -597,8 +573,8 @@ export default function Profile() {
                             <Badge
                               className={`rounded-full px-3 py-1 ${
                                 event.type === "hosting"
-                                  ? "bg-gradient-to-r from-unclub-red to-party-red text-white"
-                                  : "bg-gradient-to-r from-unclub-blue to-party-blue text-white"
+                                  ? "bg-gradient-to-r from-aesthetic-plum to-aesthetic-amber text-white"
+                                  : "bg-gradient-to-r from-aesthetic-slate to-aesthetic-sage text-white"
                               }`}
                             >
                               {event.type === "hosting"
@@ -619,7 +595,7 @@ export default function Profile() {
                         </div>
                         <Button
                           variant="outline"
-                          className="rounded-2xl border-2 border-unclub-pink text-unclub-pink hover:bg-unclub-pink hover:text-white dark:border-unclub-pink dark:text-unclub-pink dark:hover:bg-unclub-pink dark:hover:text-white"
+                          className="rounded-lg border-2 border-aesthetic-sage text-aesthetic-sage hover:bg-aesthetic-sage hover:text-white dark:border-aesthetic-sage dark:text-aesthetic-sage dark:hover:bg-aesthetic-sage dark:hover:text-white"
                         >
                           View Event
                         </Button>
@@ -631,7 +607,7 @@ export default function Profile() {
             </TabsContent>
 
             <TabsContent value="photos" className="space-y-4">
-              <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-xl">
+              <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg border-0 shadow-xl">
                 <CardContent className="p-8 text-center">
                   <Camera className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
                   <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
@@ -640,7 +616,7 @@ export default function Profile() {
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
                     Your best party moments will appear here!
                   </p>
-                  <Button className="bg-gradient-to-r from-unclub-blue to-unclub-pink text-white rounded-2xl font-bold">
+                  <Button className="bg-gradient-to-r from-aesthetic-slate to-aesthetic-sage text-white rounded-lg font-bold">
                     Upload Photos
                   </Button>
                 </CardContent>

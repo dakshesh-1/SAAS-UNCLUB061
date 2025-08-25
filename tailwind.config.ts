@@ -13,7 +13,20 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        clash: ["Clash Display", "sans-serif"],
+        general: ["General Sans", "sans-serif"],
+        satoshi: ["Satoshi", "sans-serif"],
+      },
       colors: {
+        // Typography colors
+        "heading-primary": "hsl(var(--heading-primary))",
+        "heading-secondary": "hsl(var(--heading-secondary))",
+        "heading-tertiary": "hsl(var(--heading-tertiary))",
+        subheading: "hsl(var(--subheading))",
+        "body-text": "hsl(var(--body-text))",
+        "ui-accent": "hsl(var(--ui-accent))",
+        "ui-accent-alt": "hsl(var(--ui-accent-alt))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -57,23 +70,23 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // UnClub catchy colors
-        unclub: {
-          blue: "hsl(var(--unclub-blue))",
-          pink: "hsl(var(--unclub-pink))",
-          red: "hsl(var(--unclub-red))",
-          electric: "hsl(var(--unclub-electric))",
-          hotpink: "hsl(var(--unclub-hot-pink))",
-          coral: "hsl(var(--unclub-coral))",
+        // Sophisticated aesthetic colors
+        aesthetic: {
+          slate: "hsl(var(--aesthetic-slate))",
+          sage: "hsl(var(--aesthetic-sage))",
+          stone: "hsl(var(--aesthetic-stone))",
+          plum: "hsl(var(--aesthetic-plum))",
+          amber: "hsl(var(--aesthetic-amber))",
+          cream: "hsl(var(--aesthetic-cream))",
         },
-        // Party vibes colors
-        party: {
-          blue: "hsl(var(--party-blue))",
-          pink: "hsl(var(--party-pink))",
-          red: "hsl(var(--party-red))",
-          neon: "hsl(var(--neon-blue))",
-          electric: "hsl(var(--electric-pink))",
-          vibrant: "hsl(var(--vibrant-red))",
+        // Refined accent colors
+        refined: {
+          navy: "hsl(var(--refined-navy))",
+          forest: "hsl(var(--refined-forest))",
+          charcoal: "hsl(var(--refined-charcoal))",
+          bronze: "hsl(var(--refined-bronze))",
+          pearl: "hsl(var(--refined-pearl))",
+          smoke: "hsl(var(--refined-smoke))",
         },
       },
       borderRadius: {

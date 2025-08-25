@@ -139,7 +139,7 @@ const EventCard = ({
             {event.date}
           </div>
 
-          <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          <h3 className="font-clash text-lg mb-2 group-hover:text-ui-accent transition-colors">
             {event.title}
           </h3>
 
@@ -191,14 +191,14 @@ export default function Index() {
   const safeTheme = mounted ? theme : "dark";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-unclub-blue/15 via-unclub-pink/15 to-unclub-red/15 dark:from-gray-900 dark:via-unclub-blue/20 dark:to-unclub-pink/15">
+    <div className="min-h-screen bg-gradient-to-br from-aesthetic-sage/15 via-aesthetic-stone/15 to-aesthetic-plum/15 dark:from-gray-900 dark:via-aesthetic-slate/20 dark:to-aesthetic-sage/15">
       {/* GenZ Floating Elements */}
       <GenZFloatingElements />
 
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-unclub-blue/40 to-unclub-pink/40 dark:from-unclub-blue/30 dark:to-unclub-pink/30 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-aesthetic-slate/40 to-aesthetic-sage/40 dark:from-aesthetic-slate/30 dark:to-aesthetic-sage/30 rounded-full blur-3xl"
           animate={{
             x: [0, 50, 0],
             y: [0, -30, 0],
@@ -211,7 +211,7 @@ export default function Index() {
           }}
         />
         <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-unclub-red/40 to-party-pink/40 dark:from-unclub-red/30 dark:to-party-pink/30 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-aesthetic-plum/40 to-aesthetic-amber/40 dark:from-aesthetic-plum/30 dark:to-aesthetic-amber/30 rounded-full blur-3xl"
           animate={{
             x: [0, -50, 0],
             y: [0, 30, 0],
@@ -233,29 +233,13 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="display-text text-5xl md:text-7xl font-black bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent mb-6">
+            <h1 className="hero-text font-clash">
               Discover Epic
               <br />
               <span className="relative">
-                <motion.span
-                  className="display-text"
-                  animate={{
-                    textShadow: [
-                      "0 0 20px rgba(168, 85, 247, 0.4)",
-                      "0 0 40px rgba(236, 72, 153, 0.6)",
-                      "0 0 20px rgba(239, 68, 68, 0.4)",
-                    ],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  Events! 🎉
-                </motion.span>
+                <span>Events! 🎉</span>
                 <motion.div
-                  className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-full"
+                  className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-ui-accent via-ui-accent-alt to-heading-secondary rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 1, duration: 0.8 }}
@@ -265,13 +249,15 @@ export default function Index() {
           </motion.div>
 
           <motion.p
-            className="body-text text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto"
+            className="body-text text-xl max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             Join thousands discovering{" "}
-            <span className="font-bold text-purple-600">amazing events</span>{" "}
+            <span className="font-general font-semibold text-ui-accent">
+              amazing events
+            </span>{" "}
             and creating
             <span className="font-bold text-pink-600">
               {" "}
@@ -325,10 +311,8 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <h2 className="display-text text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
-              ���� Trending Events Right Now
-            </h2>
-            <p className="accent-text text-lg text-gray-600 dark:text-gray-400">
+            <h2 className="font-clash">🔥 Trending Events Right Now</h2>
+            <p className="body-text text-lg">
               These events are selling out fast - grab your spot before it's too
               late!
             </p>
@@ -350,7 +334,7 @@ export default function Index() {
               <Link to="/events">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-unclub-blue via-unclub-pink to-unclub-red hover:from-unclub-pink hover:to-unclub-blue text-white px-8 py-3 rounded-2xl font-semibold shadow-xl"
+                  className="bg-gradient-to-r from-aesthetic-slate via-aesthetic-sage to-aesthetic-amber hover:from-aesthetic-sage hover:to-aesthetic-slate text-white px-8 py-3 rounded-lg font-semibold shadow-xl"
                 >
                   Find More Parties
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -380,15 +364,13 @@ export default function Index() {
                 whileHover={{ y: -5 }}
               >
                 <motion.div
-                  className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-unclub-blue via-unclub-pink to-unclub-red text-white rounded-2xl mb-4 shadow-lg"
+                  className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-aesthetic-slate via-aesthetic-sage to-aesthetic-amber text-white rounded-lg mb-4 shadow-lg"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                 >
                   <stat.icon className="w-8 h-8" />
                 </motion.div>
-                <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-                  {stat.number}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">{stat.label}</p>
+                <h3 className="font-clash text-3xl mb-2">{stat.number}</h3>
+                <p className="body-text">{stat.label}</p>
               </motion.div>
             ))}
           </div>

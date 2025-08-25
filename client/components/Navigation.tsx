@@ -36,25 +36,25 @@ const navItems = [
     name: "Events",
     path: "/",
     icon: Calendar,
-    gradient: "from-party-blue via-unclub-electric to-party-neon",
+    gradient: "from-aesthetic-slate via-aesthetic-sage to-aesthetic-stone",
   },
   {
     name: "Discover",
     path: "/discover",
     icon: Home,
-    gradient: "from-unclub-blue via-unclub-pink to-unclub-red",
+    gradient: "from-aesthetic-sage via-aesthetic-plum to-aesthetic-slate",
   },
   {
     name: "Create",
     path: "/dashboard",
     icon: Plus,
-    gradient: "from-unclub-pink via-party-red to-unclub-coral",
+    gradient: "from-aesthetic-amber via-aesthetic-stone to-aesthetic-plum",
   },
   {
     name: "Join Party",
     path: "/profile",
     icon: User,
-    gradient: "from-party-electric via-unclub-hotpink to-party-pink",
+    gradient: "from-aesthetic-plum via-aesthetic-sage to-aesthetic-amber",
   },
 ];
 
@@ -143,8 +143,8 @@ export function Navigation() {
         <motion.div
           className={`absolute inset-0 ${
             safeTheme === "dark"
-              ? "bg-gradient-to-r from-gray-800/20 via-gray-700/20 to-gray-800/20"
-              : "bg-gradient-to-r from-unclub-blue/30 via-unclub-pink/30 to-unclub-red/30"
+              ? "bg-gradient-to-r from-refined-charcoal/20 via-aesthetic-slate/20 to-refined-charcoal/20"
+              : "bg-gradient-to-r from-aesthetic-slate/30 via-aesthetic-sage/30 to-aesthetic-stone/30"
           }`}
           animate={{
             backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
@@ -169,7 +169,7 @@ export function Navigation() {
             >
               <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
                 <motion.div
-                  className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-unclub-blue via-unclub-pink to-unclub-red rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-2xl"
+                  className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-aesthetic-slate via-aesthetic-sage to-aesthetic-amber rounded-lg sm:rounded-xl flex items-center justify-center shadow-2xl"
                   whileHover={{
                     rotate: [0, -8, 8, 0],
                     scale: 1.1,
@@ -185,7 +185,7 @@ export function Navigation() {
                       repeat: Infinity,
                       ease: "linear",
                     }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-2xl sm:rounded-3xl"
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-lg sm:rounded-xl"
                   />
                   <motion.div
                     animate={{
@@ -330,7 +330,7 @@ export function Navigation() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className={`rounded-xl sm:rounded-2xl border transition-all duration-300 px-3 py-2 ${
+                      className={`rounded-md border transition-all duration-300 px-3 py-2 ${
                         safeTheme === "dark"
                           ? "text-gray-100 hover:bg-gray-700/70 border-gray-500/70 hover:text-white bg-gray-800/90 hover:border-gray-400"
                           : "text-white hover:bg-white/30 border-white/30 bg-white/20"
@@ -340,9 +340,9 @@ export function Navigation() {
                     </Button>
                   </motion.div>
                 </DialogTrigger>
-                <DialogContent className="max-w-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-0 rounded-3xl">
+                <DialogContent className="max-w-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-0 rounded-lg">
                   <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-aesthetic-slate to-aesthetic-sage bg-clip-text text-transparent">
                       🔍 Search Events
                     </DialogTitle>
                   </DialogHeader>
@@ -353,7 +353,7 @@ export function Navigation() {
                         placeholder="Search for events, locations, or categories..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="pl-12 rounded-2xl h-14 text-lg border-2 border-gray-200 dark:border-gray-700"
+                        className="pl-12 rounded-lg h-14 text-lg border-2 border-gray-200 dark:border-gray-700"
                         autoFocus
                       />
                     </div>
@@ -399,7 +399,7 @@ export function Navigation() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className={`rounded-xl sm:rounded-2xl border transition-all duration-300 px-3 py-2 ${
+                      className={`rounded-md border transition-all duration-300 px-3 py-2 ${
                         safeTheme === "dark"
                           ? "text-gray-100 hover:bg-gray-700/70 border-gray-500/70 hover:text-white bg-gray-800/90 hover:border-gray-400"
                           : "text-white hover:bg-white/30 border-white/30 bg-white/20"
