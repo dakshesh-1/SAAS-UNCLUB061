@@ -571,7 +571,7 @@ export function Navigation() {
                         setIsMobileMenuOpen(false);
                         setIsSearchOpen(true);
                       }}
-                      className="flex-1 bg-white/15 backdrop-blur-sm hover:bg-white/25 text-white rounded-2xl border border-white/30 font-bold py-3"
+                      className="flex-1 bg-white/25 hover:bg-white/40 text-white rounded-2xl border border-white/40 font-bold py-3"
                     >
                       <Search className="w-4 h-4 mr-2" />
                       Search
