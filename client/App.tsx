@@ -17,6 +17,7 @@ import Profile from "./pages/Profile";
 import Placeholder from "./pages/Placeholder";
 import NotFound from "./pages/NotFound";
 import { Navigation } from "./components/Navigation";
+import { AuthProvider } from "./contexts/AuthContext";
 
 const queryClient = new QueryClient();
 
