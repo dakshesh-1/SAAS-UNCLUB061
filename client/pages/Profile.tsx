@@ -15,15 +15,27 @@ import {
   Share2,
   Crown,
   Medal,
+  LogOut,
+  UserPlus,
+  ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { GenZParticles } from "@/components/GenZParticles";
 import { useAuth } from "@/contexts/AuthContext";
 import { AuthForm } from "@/components/AuthForm";
+import { useToast } from "@/hooks/use-toast";
 
 // Mock user data
 const userData = {
