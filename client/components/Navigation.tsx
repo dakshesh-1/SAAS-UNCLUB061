@@ -125,7 +125,7 @@ export function Navigation() {
             theme === "dark"
               ? `linear-gradient(135deg, hsl(var(--background)), hsl(var(--card)), hsl(var(--background)))`
               : `linear-gradient(135deg, hsl(var(--unclub-blue)), hsl(var(--unclub-pink)), hsl(var(--unclub-red)))`,
-          backdropFilter: 'none',
+          backdropFilter: "none",
         }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -230,8 +230,8 @@ export function Navigation() {
                       <motion.div
                         className={`relative px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-bold transition-all duration-300 ${
                           isActive
-                          ? "text-white shadow-2xl bg-white/30 border border-white/50"
-                          : "text-white/90 hover:text-white hover:bg-white/20 hover:border hover:border-white/30"
+                            ? "text-white shadow-2xl bg-white/30 border border-white/50"
+                            : "text-white/90 hover:text-white hover:bg-white/20 hover:border hover:border-white/30"
                         }`}
                         whileHover={{
                           backgroundImage: isActive

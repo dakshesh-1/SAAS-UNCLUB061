@@ -503,7 +503,11 @@ const EventCard = ({
               </div>
             </div>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-shrink-0">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex-shrink-0"
+            >
               <Link to={`/event/${event.id}`}>
                 <Button
                   size="xs"
