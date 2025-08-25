@@ -39,6 +39,18 @@ import { useAuth } from "@/contexts/AuthContext";
 import { AuthForm } from "@/components/AuthForm";
 import { useToast } from "@/hooks/use-toast";
 
+// Icon mapping for badge icons
+const iconMap = {
+  Crown,
+  Users,
+  Trophy,
+  Medal,
+  Music,
+  Star,
+  Laptop,
+  Zap,
+};
+
 // Mock user data
 const userData = {
   name: "Alex Chen",
