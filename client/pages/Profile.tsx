@@ -184,11 +184,11 @@ export default function Profile() {
                 transition={{ delay: 0.2, type: "spring", damping: 15 }}
               >
                 <Avatar className="w-24 h-24 sm:w-32 sm:h-32 border-4 border-white shadow-2xl">
-                  <AvatarImage src={userData.avatar} alt={userData.name} />
-                  <AvatarFallback>{userData.name[0]}</AvatarFallback>
+                  <AvatarImage src={currentUser.avatar} alt={currentUser.name} />
+                  <AvatarFallback>{currentUser.name[0]}</AvatarFallback>
                 </Avatar>
 
-                {userData.isVerified && (
+                {currentUser.isVerified && (
                   <motion.div
                     className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-unclub-blue to-party-blue rounded-full flex items-center justify-center border-2 border-white shadow-lg"
                     initial={{ scale: 0 }}
