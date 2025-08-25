@@ -285,10 +285,10 @@ export default function Profile() {
                     >
                       <stat.icon className="w-6 h-6 text-white" />
                     </motion.div>
-                    <div className="text-2xl font-black text-gray-900">
+                    <div className="text-2xl font-black text-gray-900 dark:text-gray-100">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-gray-600">{stat.label}</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>
