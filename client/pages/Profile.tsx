@@ -556,13 +556,13 @@ export default function Profile() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -5, scale: 1.02 }}
                 >
-                  <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all">
+                  <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg border-0 shadow-lg hover:shadow-xl transition-all">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4">
                         <motion.img
                           src={event.image}
                           alt={event.title}
-                          className="w-20 h-20 object-cover rounded-2xl"
+                          className="w-20 h-20 object-cover rounded-lg"
                           whileHover={{ scale: 1.1 }}
                         />
                         <div className="flex-1">
@@ -570,8 +570,8 @@ export default function Profile() {
                             <Badge
                               className={`rounded-full px-3 py-1 ${
                                 event.type === "hosting"
-                                  ? "bg-gradient-to-r from-unclub-red to-party-red text-white"
-                                  : "bg-gradient-to-r from-unclub-blue to-party-blue text-white"
+                                  ? "bg-gradient-to-r from-aesthetic-plum to-aesthetic-amber text-white"
+                                  : "bg-gradient-to-r from-aesthetic-slate to-aesthetic-sage text-white"
                               }`}
                             >
                               {event.type === "hosting"
@@ -592,7 +592,7 @@ export default function Profile() {
                         </div>
                         <Button
                           variant="outline"
-                          className="rounded-2xl border-2 border-unclub-pink text-unclub-pink hover:bg-unclub-pink hover:text-white dark:border-unclub-pink dark:text-unclub-pink dark:hover:bg-unclub-pink dark:hover:text-white"
+                          className="rounded-lg border-2 border-aesthetic-sage text-aesthetic-sage hover:bg-aesthetic-sage hover:text-white dark:border-aesthetic-sage dark:text-aesthetic-sage dark:hover:bg-aesthetic-sage dark:hover:text-white"
                         >
                           View Event
                         </Button>
