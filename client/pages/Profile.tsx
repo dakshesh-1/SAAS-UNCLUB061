@@ -332,7 +332,7 @@ export default function Profile() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {userData.badges.map((badge, index) => (
+                {currentUser.badges.map((badge, index) => (
                   <motion.div
                     key={badge.id}
                     className="text-center"
