@@ -282,10 +282,88 @@ export default function Profile() {
                   <Share2 className="w-4 h-4 mr-2" />
                   Share
                 </Button>
-                <Button className="bg-gradient-to-r from-unclub-pink via-unclub-red to-party-red text-white rounded-2xl font-bold shadow-xl">
-                  <Settings className="w-4 h-4 mr-2" />
-                  Edit Profile
-                </Button>
+
+                {/* Account Dropdown Menu */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button className="bg-gradient-to-r from-unclub-pink via-unclub-red to-party-red text-white rounded-2xl font-bold shadow-xl">
+                      <Settings className="w-4 h-4 mr-2" />
+                      Account
+                      <ChevronDown className="w-4 h-4 ml-2" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border-0 shadow-2xl rounded-2xl">
+                    <DropdownMenuLabel className="text-center py-3">
+                      <div className="flex items-center gap-3">
+                        <Avatar className="w-8 h-8">
+                          <AvatarImage src={currentUser.avatar} alt={currentUser.name} />
+                          <AvatarFallback>{currentUser.name[0]}</AvatarFallback>
+                        </Avatar>
+                        <div className="text-left">
+                          <div className="font-bold text-gray-900 dark:text-gray-100">{currentUser.name}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">{currentUser.email}</div>
+                        </div>
+                      </div>
+                    </DropdownMenuLabel>
+
+                    <DropdownMenuSeparator />
+
+                    <DropdownMenuItem className="py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl mx-1">
+                      <Settings className="w-4 h-4 mr-3" />
+                      <span>Edit Profile</span>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuSeparator />
+                    <DropdownMenuLabel className="text-xs text-gray-500 dark:text-gray-400 py-2">
+                      Switch Account
+                    </DropdownMenuLabel>
+
+                    {users
+                      .filter(user => user.id !== currentUser.id)
+                      .map((user) => (
+                        <DropdownMenuItem
+                          key={user.id}
+                          className="py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl mx-1"
+                          onClick={() => handleSwitchAccount(user.id)}
+                        >
+                          <Avatar className="w-6 h-6 mr-3">
+                            <AvatarImage src={user.avatar} alt={user.name} />
+                            <AvatarFallback>{user.name[0]}</AvatarFallback>
+                          </Avatar>
+                          <div className="flex-1">
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{user.name}</div>
+                            <div className="text-xs text-gray-500 dark:text-gray-400">{user.email}</div>
+                          </div>
+                          {user.isVerified && (
+                            <Zap className="w-3 h-3 text-blue-500" />
+                          )}
+                        </DropdownMenuItem>
+                      ))}
+
+                    <DropdownMenuItem
+                      className="py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl mx-1"
+                      onClick={() => {
+                        toast({
+                          title: "Add Account",
+                          description: "Multiple account creation would be implemented here in a real app.",
+                        });
+                      }}
+                    >
+                      <UserPlus className="w-4 h-4 mr-3" />
+                      <span>Add Another Account</span>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuSeparator />
+
+                    <DropdownMenuItem
+                      className="py-3 cursor-pointer hover:bg-red-100 dark:hover:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl mx-1"
+                      onClick={handleLogout}
+                    >
+                      <LogOut className="w-4 h-4 mr-3" />
+                      <span>Logout</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </motion.div>
             </div>
           </div>
